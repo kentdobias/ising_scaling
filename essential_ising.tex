@@ -1,0 +1,206 @@
+%  Ising model abrupt transition.
+%
+%  Created by Jaron Kent-Dobias on Thu Apr 20 12:50:56 EDT 2017.
+%  Copyright (c) 2017 Jaron Kent-Dobias. All rights reserved.
+%
+\documentclass[fleqn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,latexsym,concmath,mathtools,xifthen,mfpic}
+
+\mathtoolsset{showonlyrefs=true}
+
+\title{Essential Singularity in the Ising Abrupt Transition}
+\author{Jaron Kent-Dobias}
+
+\date{April 20, 2017}
+
+\begin{document}
+
+\def\[{\begin{equation}}
+\def\]{\end{equation}}
+
+\def\im{\mathop{\mathrm{Im}}\nolimits}
+\def\dd{\mathrm d}
+\def\O{\mathcal O}
+\def\ei{\mathop{\mathrm{Ei}}\nolimits}
+\def\b{\mathrm b}
+
+\newcommand\pd[3][]{
+  \ifthenelse{\isempty{#1}}
+    {\def\tmp{}}
+    {\def\tmp{^#1}}
+  \frac{\partial\tmp#2}{\partial#3\tmp}
+}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+It's long been known that the decay rate $\Gamma$ of metastable states in
+statistical mechanics is often related to the metastable free energy $F$ by
+\cite{langer.1967.condensation,langer.1969.metastable,gaveau.1989.analytic}
+\[
+  \Gamma\propto\im F
+\]
+What exactly is meant by `metastable free energy' is important to establish,
+since formally the free energy relies on the existence of an equilibrium
+state. Here one can imagine either analytic continuation of the free energy
+through an abrupt phase transition, or restriction of the partition function
+trace to states in the vicinity of the local free energy minimum that
+characterizes the metastable state. In any case, the free energy develops a
+nonzero imaginary part in the metastable region. Heuristically, this can be
+thought of as similar to what happens in quantum mechanics with a non-unitary
+Hamiltonian: the imaginary part describes loss of probability in the system
+that corresponds to decay. 
+
+One can estimate the scaling of the decay rate of the {\sc 2d} Ising model
+using ideas from nucleation theory. In this framework, the metastable state
+decays when a sufficiently large domain in the stable state forms to grow
+stably to fill out the whole system. The free energy of a domain of $N$ spins
+causes a free energy change
+\[
+  \Delta F=\Sigma N^\sigma-MHN
+\]
+where $\Sigma$ is the surface tension and $1-\frac1d\leq\sigma<1$. This is
+maximized by
+\[
+  N_c=\bigg(\frac{MH}{\sigma\Sigma}\bigg)^{-1/(\sigma-1)}
+\]
+which corresponds to a free energy change
+\[
+  \Delta F_c\sim\bigg(\frac\Sigma{(MH)^\sigma}\bigg)^{1/(1-\sigma)}
+\]
+The rate of formation is proportional to the Boltzmann factor,
+\[
+  \Gamma\sim e^{-\beta \Delta
+  F_c}=e^{-\beta(\Sigma/(MH)^\sigma)^{1/(1-\sigma)}}
+\]
+For domains whose boundary is minimal, $\sigma=1-\frac1d$ and this becomes
+\[
+  \Gamma\sim e^{-\beta(\Sigma/(MH)^\sigma)^{d-1}}
+\]
+Since $\Sigma\sim t^\mu\mathcal S(ht^{-\beta\delta})$ with $\mu=-\nu+\gamma+2\beta$
+\cite{widom.1981.interface} and $M\sim t^\beta\mathcal M(ht^{-\beta\delta})$
+with $\mathcal S(0)=\O(1)$ and $\mathcal M(0)=\O(1)$,
+\[
+  \Gamma\sim e^{-1/\mathcal G(ht^{-\beta\delta})^{d-1}}
+\]
+with $\mathcal G(X)=\O(X)$. This establishes the form of $\im F$
+besides the prefactor. Results from field theory predict that, for small $H$
+and $1<d<5$, $d\neq 3$,
+\[
+  \im F\simeq\bigg(\frac h{t^\Delta}\bigg)^{-(d-3)d/2}(g^*)^{-d(d-1)/4}
+  \exp\bigg[-B\bigg(\frac h{|t|^\Delta}\bigg)^{-(d-1)}(g^*)^{-(d+1)/2}\bigg]
+\]
+\[
+  \im F\simeq\bigg(\frac
+  h{t^\Delta}\bigg)^{-7/3}(g^*)^{-8/3}\exp\bigg[-B\bigg(\frac
+  h{t^\Delta}\bigg)^{-2}(g^*)^{-2}\bigg]
+\]
+with $\Delta=3-\frac\epsilon2$, $g^*=2\pi^2\frac\epsilon{n+8}$
+\cite{houghton.1980.metastable,gunther.1980.goldstone}. This is consistent
+with our form above. We therefore predict that
+\[
+  \im F=t^{2-\alpha}\mathcal F(ht^{-\beta\delta})^{-(d-3)d/2}e^{-1/\mathcal
+    G(ht^{-\beta\delta})^{d-1}}
+\]
+In {\sc 2d} we have
+\[
+  \im F=t^2\mathcal F(ht^{-\Delta})e^{-1/\mathcal G(ht^{-\Delta})}
+\]
+with $\Delta=\beta\delta=\frac{15}8$. In terms of $X=ht^{-\Delta}$, this is
+\[
+  \im F=t^2\mathcal F(X)e^{-1/\mathcal G(X)}\simeq At^2|X|e^{-1/B|X|}
+\]
+
+\cite{langer.1967.condensation}
+
+\[
+  F(X)=\frac1\pi\int_{-\infty}^\infty\frac{\im F(X')}{X'-X}\,\dd X'
+  =\frac{At^2}\pi\int_{-\infty}^0\frac{|X'|e^{-1/B|X'|}}{X'-X}\,\dd
+  X'
+  =-\frac{At^2}\pi\int_0^\infty\frac{X'e^{-1/BX'}}{X'+X}\,\dd
+  X'
+\]
+since $\im F=0$ for $X>0$. $\pd{}h=\pd Xh\pd{}X=t^{-\Delta}\pd{}X$.
+Unfortunately this integral doesn't converge, and it seems we cannot evaluate
+this result at the level of truncation we've chosen. However, 
+
+\[
+  F(H)=At^{2-\alpha}\sum_{n=0}^\infty f_nX^n
+\]
+\[
+  f_n=\frac1\pi\int_{-\infty}^0\frac{\im F(X)}{X^{n+1}}\,\dd X
+  =\frac{(-1)^{n+1}}\pi\int_0^{\infty}\frac{Xe^{-1/BX}}{X^{n+1}}\,\dd X
+  =\frac1\pi(-1)^{n+1}B^{n-1}\Gamma(n-1)
+\]
+for $n>1$. 
+
+\begin{align}
+  \chi
+  &=\pd[2]Fh
+  =t^{-2\Delta}\pd[2]FX
+  =-\frac{2}\pi At^{2-2\Delta}\int_0^\infty\frac{X'e^{-1/BX'}}{(X+X')^3}\,\dd
+  X'\\
+  &=\frac2\pi
+  \frac{ABt^{-\gamma}}{(BX)^3}\big[BX(1-BX)+e^{1/BX}\ei(-1/BX)\big]
+\end{align}
+
+\[
+  \lim_{X\to0}\chi=-\frac4\pi ABt^{-\gamma}
+\]
+
+\[
+  \beta^{-1}\chi=C_{0\pm}|t|^{-7/4}+C_{1\pm}|t|^{-3/4}+\O(1)
+\]
+$C_{0-}=0.025\,536\,971\,9$ $C_{1-}=-0.001\,989\,410\,7$
+\cite{barouch.1973.susceptibility}
+
+CORRECTIONS TO SCALING, $u_t$ and $u_h$ instead of $t$ and $h$.
+
+\begin{align}
+  u_h
+  &=h[1+c_ht+dht^2+e_hh^2+f_ht^3+\O(t^4,th^2)]\\
+  u_t
+  &=t+b_th^2+c_t^2+d_t^3+e_tth^2+f_tt^4+\O(t^5,t^2h^2,h^4)
+\end{align}
+\begin{align}
+  c_h=\frac{\beta_c}{\sqrt2}
+  &&
+  d_h=\frac{23\beta_c^2}{16}
+  &&
+  f_h=\frac{191\beta_c^3}{48\sqrt2}\\
+  c_t=\frac{\beta_c}{\sqrt2}
+  &&
+  d_t=\frac{7\beta_c^2}6
+  &&
+  f_t=\frac{17\beta_c^3}{6\sqrt2}\\
+  e_t=b_t\beta_c\sqrt2
+  &&
+  b_t=-\frac{E_0\pi}{16\beta_c^2}
+\end{align}
+$E_0=0.040\,325\,5003$ $e_h=-0.007\,27(15)$
+\[
+  F(t,h)-F(t,0)=\sum_{n=1}^\infty\frac1{(2n)!}\chi_{2n}(t)h^{2n}
+\]
+\[
+  \chi(t,h)=\pd[2]Fh=\chi_2(t)+\sum_{n=1}^\infty\frac1{(2n)!}\chi_{2(n+1)}h^{2n}
+\]
+
+\begin{align}
+  \chi
+  &=\pd[2]Fh
+  =\pd[2]{F_\b}h
+  +\frac d{y_t}\bigg(\frac d{y_t}-1\bigg)|u_t|^{d/y_t-2}\bigg(\pd{u_t}h\bigg)^2
+\end{align}
+
+\input{figs/scaling_func.tex}
+
+\bibliographystyle{plain}
+\bibliography{essential_ising}
+
+\end{document}
+

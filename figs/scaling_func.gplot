@@ -1,0 +1,16 @@
+
+set terminal latex rotate
+set ylabel "$\\chi B/At^{-\\gamma}$"
+set xlabel "$h/Bt^{\\beta\\delta}$"
+set key off
+
+gamma = 0.57721566490153286060651209008240243104215933593992
+Ei(m, x) = gamma + log(abs(x)) + sum[k = 1 : m] x**k / (k * k!)
+Xi(m, A, B, x) = -A/(x * pi) * (1-B/x-(B/x)**2 * exp(B/x)* Ei(100, -B/x)) 
+
+set yrange [0.001:0.6]
+#set logscale xy
+
+plot [0.001:5] Xi(200, -1, 1, x)
+
+
