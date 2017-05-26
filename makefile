@@ -1,5 +1,5 @@
 
-DOC=essential_ising.tex
+DOC=essential-ising.tex
 FIGS=scaling_func
 
 all: ${FIGS:%=figs/%.tex}
