@@ -36,9 +36,6 @@
 
 \maketitle
 
-\begin{abstract}
-\end{abstract}
-
 It's long been known that the decay rate $\Gamma$ of metastable states in
 statistical mechanics is often related to the metastable free energy $F$ by
 \cite{langer.1967.condensation,langer.1969.metastable,gaveau.1989.analytic}
@@ -82,23 +79,27 @@ For domains whose boundary is minimal, $\sigma=1-\frac1d$ and this becomes
 \[
   \Gamma\sim e^{-\beta(\Sigma/(MH)^\sigma)^{d-1}}
 \]
-Since $\Sigma\sim t^\mu\mathcal S(ht^{-\beta\delta})$ with $\mu=-\nu+\gamma+2\beta$
-\cite{widom.1981.interface} and $M\sim t^\beta\mathcal M(ht^{-\beta\delta})$
-with $\mathcal S(0)=\O(1)$ and $\mathcal M(0)=\O(1)$,
+There are known scaling forms for the surface tension and magnetization, $\Sigma\sim t^\mu\mathcal S(ht^{-\beta\delta})$ with $\mu=-\nu+\gamma+2\beta$
+\cite{widom.1981.interface} and $M\sim t^\beta\mathcal M(ht^{-\beta\delta})$.
+Since both the surface tension and magnetization have nonzero finite values at
+the first-order transition $h=0$, $\mathcal S(0)=\O(1)$ and $\mathcal
+M(0)=\O(1)$. It follows that
 \[
   \Gamma\sim e^{-1/\mathcal G(ht^{-\beta\delta})^{d-1}}
 \]
 with $\mathcal G(X)=\O(X)$. This establishes the form of $\im F$
-besides the prefactor. Results from field theory predict that, for small $H$
-and $1<d<5$, $d\neq 3$,
+besides the prefactor. Results from field theory predict that, for small $h$,
 \[
-  \im F\simeq\bigg(\frac h{t^\Delta}\bigg)^{-(d-3)d/2}(g^*)^{-d(d-1)/4}
-  \exp\bigg[-B\bigg(\frac h{|t|^\Delta}\bigg)^{-(d-1)}(g^*)^{-(d+1)/2}\bigg]
-\]
-\[
-  \im F\simeq\bigg(\frac
-  h{t^\Delta}\bigg)^{-7/3}(g^*)^{-8/3}\exp\bigg[-B\bigg(\frac
-  h{t^\Delta}\bigg)^{-2}(g^*)^{-2}\bigg]
+  \im F\simeq
+  \begin{cases}
+    \big(\frac
+    h{t^\Delta}\big)^{-(d-3)d/2}(g^*)^{-d(d-1)/4}\exp\big[-B\big(\frac
+    h{|t|^\Delta}\big)^{-(d-1)}(g^*)^{-(d+1)/2}\big] & d=2,4\\
+    \big(\frac
+    h{t^\Delta}\big)^{-7/3}(g^*)^{-8/3}\exp\big[-B\big(\frac
+    h{t^\Delta}\big)^{-2}(g^*)^{-2}\big]
+    & d=3
+  \end{cases}
 \]
 with $\Delta=3-\frac\epsilon2$, $g^*=2\pi^2\frac\epsilon{n+8}$
 \cite{houghton.1980.metastable,gunther.1980.goldstone}. This is consistent
@@ -116,15 +117,12 @@ with $\Delta=\beta\delta=\frac{15}8$. In terms of $X=ht^{-\Delta}$, this is
   \im F=t^2\mathcal F(X)e^{-1/\mathcal G(X)}\simeq At^2|X|e^{-1/B|X|}
 \]
 
-\cite{langer.1967.condensation}
-
-\[
-  F(X)=\frac1\pi\int_{-\infty}^\infty\frac{\im F(X')}{X'-X}\,\dd X'
-  =\frac{At^2}\pi\int_{-\infty}^0\frac{|X'|e^{-1/B|X'|}}{X'-X}\,\dd
-  X'
-  =-\frac{At^2}\pi\int_0^\infty\frac{X'e^{-1/BX'}}{X'+X}\,\dd
-  X'
-\]
+\begin{align}
+  F(X)
+  &=\frac1\pi\int_{-\infty}^\infty\frac{\im F(X')}{X'-X}\,\dd X'
+  =\frac{At^2}\pi\int_{-\infty}^0\frac{|X'|e^{-1/B|X'|}}{X'-X}\,\dd X'\\
+  &=-\frac{At^2}\pi\int_0^\infty\frac{X'e^{-1/BX'}}{X'+X}\,\dd X'
+\end{align}
 since $\im F=0$ for $X>0$. $\pd{}h=\pd Xh\pd{}X=t^{-\Delta}\pd{}X$.
 Unfortunately this integral doesn't converge, and it seems we cannot evaluate
 this result at the level of truncation we've chosen. However, 
