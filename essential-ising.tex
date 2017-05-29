@@ -3,7 +3,7 @@
 %  Created by Jaron Kent-Dobias on Thu Apr 20 12:50:56 EDT 2017.
 %  Copyright (c) 2017 Jaron Kent-Dobias. All rights reserved.
 %
-\documentclass[fleqn]{article}
+\documentclass[aps,prl,reprint,fleqn]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -11,21 +11,17 @@
 
 \mathtoolsset{showonlyrefs=true}
 
-\title{Essential Singularity in the Ising Abrupt Transition}
-\author{Jaron Kent-Dobias}
-
-\date{April 20, 2017}
-
-\begin{document}
-
 \def\[{\begin{equation}}
 \def\]{\end{equation}}
 
+\def\re{\mathop{\mathrm{Re}}\nolimits}
 \def\im{\mathop{\mathrm{Im}}\nolimits}
 \def\dd{\mathrm d}
 \def\O{\mathcal O}
+\def\o{\mathcal o}
 \def\ei{\mathop{\mathrm{Ei}}\nolimits}
 \def\b{\mathrm b}
+\def\c{\mathrm c}
 
 \newcommand\pd[3][]{
   \ifthenelse{\isempty{#1}}
@@ -34,18 +30,58 @@
   \frac{\partial\tmp#2}{\partial#3\tmp}
 }
 
+\begin{document}
+
+\title{Essential Singularity in the Ising Abrupt Transition}
+\author{Jaron Kent-Dobias}
+\author{James P.~Sethna}
+\affiliation{Cornell University}
+
+\date{April 20, 2017}
+
+\begin{abstract}
+  Test
+\end{abstract}
+
 \maketitle
 
+The Ising model is the canonical example of a system with a continuous phase
+transition, and the study of its singular properties marked the first success
+of the renormalization group ({\sc rg}) method in statistical physics
+\cite{wilson.1971.renormalization}. This status makes sense: it's a simple
+model whose phase transition admits {\sc rg} methods in a straightforward way,
+and has exact solutions in certain dimensions and for certain parameter
+restrictions. However, in one respect the Ising critical point is not simply a
+continuous transition: it ends the line of abrupt phase transitions at zero
+field below the critical temperature. Though typically neglected in {\sc rg}
+scaling analysis of the critical point, we demonstrate that there are
+numerically measurable contributions to scaling due to the abrupt transition
+line that cannot be accounted for by analytic changes of control or
+thermodynamic variables.
+
+{\sc Rg} analysis predicts that the singular part of the free energy per site
+$F$ as a function of reduced temperature $t=1-\frac{T_c}T$ and field $h=H/T$ in the vicinity of the critical point takes the scaling form
+$F(t,h)=g_t^{2-\alpha}\mathcal F(g_hg_t^{-\Delta})$, where
+$\Delta=\beta\delta$ and $g_t$, $g_h$ are analytic functions of $t$, $h$ that
+transform exactly linearly under {\sc rg}. When studying the properties of the
+Ising critical point, it is nearly always assumed that $\mathcal F(X)$, the
+universal scaling function, is an analytic function of $X$. However, it has
+long been known that there exists an essential singularity in $\mathcal F$ at
+$X=0$, though its effects have long been believed to be unobservable
+\cite{fisher.1967.condensation}. With careful analysis, we have found that
+assuming the presence of the essential singularity is predictive of the
+scaling form of e.g. the susceptibility.
+
+The providence of the essential singularity can be understood using the
+methods of critical droplet theory for the decay of an Ising system in a
+metastable state, i.e., an equilibrium Ising state for $T<T_c$, $H>0$
+subjected to a small negative external field $H<0$.
 It's long been known that the decay rate $\Gamma$ of metastable states in
 statistical mechanics is often related to the metastable free energy $F$ by
-\cite{langer.1967.condensation,langer.1969.metastable,gaveau.1989.analytic}
-\[
-  \Gamma\propto\im F
-\]
-What exactly is meant by `metastable free energy' is important to establish,
-since formally the free energy relies on the existence of an equilibrium
-state. Here one can imagine either analytic continuation of the free energy
-through an abrupt phase transition, or restriction of the partition function
+$\Gamma\propto\im F$
+\cite{langer.1967.condensation,langer.1969.metastable,gaveau.1989.analytic}.
+`Metastable free energy' can be thought of as either an analytic continuation of the free energy
+through the abrupt phase transition, or restriction of the partition function
 trace to states in the vicinity of the local free energy minimum that
 characterizes the metastable state. In any case, the free energy develops a
 nonzero imaginary part in the metastable region. Heuristically, this can be
@@ -53,151 +89,104 @@ thought of as similar to what happens in quantum mechanics with a non-unitary
 Hamiltonian: the imaginary part describes loss of probability in the system
 that corresponds to decay. 
 
-One can estimate the scaling of the decay rate of the {\sc 2d} Ising model
-using ideas from nucleation theory. In this framework, the metastable state
-decays when a sufficiently large domain in the stable state forms to grow
-stably to fill out the whole system. The free energy of a domain of $N$ spins
-causes a free energy change
-\[
-  \Delta F=\Sigma N^\sigma-MHN
-\]
-where $\Sigma$ is the surface tension and $1-\frac1d\leq\sigma<1$. This is
-maximized by
-\[
-  N_c=\bigg(\frac{MH}{\sigma\Sigma}\bigg)^{-1/(\sigma-1)}
-\]
-which corresponds to a free energy change
-\[
-  \Delta F_c\sim\bigg(\frac\Sigma{(MH)^\sigma}\bigg)^{1/(1-\sigma)}
-\]
-The rate of formation is proportional to the Boltzmann factor,
-\[
-  \Gamma\sim e^{-\beta \Delta
-  F_c}=e^{-\beta(\Sigma/(MH)^\sigma)^{1/(1-\sigma)}}
-\]
-For domains whose boundary is minimal, $\sigma=1-\frac1d$ and this becomes
-\[
-  \Gamma\sim e^{-\beta(\Sigma/(MH)^\sigma)^{d-1}}
-\]
-There are known scaling forms for the surface tension and magnetization, $\Sigma\sim t^\mu\mathcal S(ht^{-\beta\delta})$ with $\mu=-\nu+\gamma+2\beta$
-\cite{widom.1981.interface} and $M\sim t^\beta\mathcal M(ht^{-\beta\delta})$.
-Since both the surface tension and magnetization have nonzero finite values at
-the first-order transition $h=0$, $\mathcal S(0)=\O(1)$ and $\mathcal
-M(0)=\O(1)$. It follows that
-\[
-  \Gamma\sim e^{-1/\mathcal G(ht^{-\beta\delta})^{d-1}}
-\]
-with $\mathcal G(X)=\O(X)$. This establishes the form of $\im F$
-besides the prefactor. Results from field theory predict that, for small $h$,
-\[
-  \im F\simeq
-  \begin{cases}
-    \big(\frac
-    h{t^\Delta}\big)^{-(d-3)d/2}(g^*)^{-d(d-1)/4}\exp\big[-B\big(\frac
-    h{|t|^\Delta}\big)^{-(d-1)}(g^*)^{-(d+1)/2}\big] & d=2,4\\
-    \big(\frac
-    h{t^\Delta}\big)^{-7/3}(g^*)^{-8/3}\exp\big[-B\big(\frac
-    h{t^\Delta}\big)^{-2}(g^*)^{-2}\big]
-    & d=3
-  \end{cases}
-\]
-with $\Delta=3-\frac\epsilon2$, $g^*=2\pi^2\frac\epsilon{n+8}$
-\cite{houghton.1980.metastable,gunther.1980.goldstone}. This is consistent
-with our form above. We therefore predict that
-\[
-  \im F=t^{2-\alpha}\mathcal F(ht^{-\beta\delta})^{-(d-3)d/2}e^{-1/\mathcal
-    G(ht^{-\beta\delta})^{d-1}}
-\]
-In {\sc 2d} we have
-\[
-  \im F=t^2\mathcal F(ht^{-\Delta})e^{-1/\mathcal G(ht^{-\Delta})}
-\]
-with $\Delta=\beta\delta=\frac{15}8$. In terms of $X=ht^{-\Delta}$, this is
-\[
-  \im F=t^2\mathcal F(X)e^{-1/\mathcal G(X)}\simeq At^2|X|e^{-1/B|X|}
-\]
-
+In critical droplet theory, the metastable state decays when a domain of the
+equilibrium state forms that is sufficiently large to grow and envelop the
+whole system. Assuming the free energy cost of the surface of the droplet
+scales with the number of spins $N$ like $\Sigma N^\sigma$ and that of its
+bulk scales like $-MHN$, the critical droplet size scales like
+$N_\c\sim(MH/\Sigma)^{-1/(1-\sigma)}$ and the free energy of the critical
+droplet scales like $\Delta F_\c\sim\Sigma^{1/(1-\sigma)}(HM)^{-\sigma/(1-\sigma)}$.
+Assuming domains have minimal surfaces, $\sigma=1-\frac1d$ and
+$\Delta F_\c\sim\Sigma^d(HM)^{-(d-1)}$. Assuming the scaling forms
+$\Sigma=g_t^\mu\mathcal S(g_hg_t^{-\Delta})$ and $M=g_t^\beta\mathcal
+M(g_hg_t^{-\Delta})$ and using known hyperscaling relations
+\cite{widom.1981.interface}, this implies a scaling form
 \begin{align}
-  F(X)
-  &=\frac1\pi\int_{-\infty}^\infty\frac{\im F(X')}{X'-X}\,\dd X'
-  =\frac{At^2}\pi\int_{-\infty}^0\frac{|X'|e^{-1/B|X'|}}{X'-X}\,\dd X'\\
-  &=-\frac{At^2}\pi\int_0^\infty\frac{X'e^{-1/BX'}}{X'+X}\,\dd X'
+  \Delta F_c&
+  \sim\mathcal S^d(g_hg_t^{-\Delta})(g_hg_t^{-\Delta}\mathcal
+    M(g_hg_t^{-\Delta}))^{-(d-1)}\\
+  &\sim\mathcal G^{-(d-1)}(g_h g_t^{-\Delta})
 \end{align}
-since $\im F=0$ for $X>0$. $\pd{}h=\pd Xh\pd{}X=t^{-\Delta}\pd{}X$.
-Unfortunately this integral doesn't converge, and it seems we cannot evaluate
-this result at the level of truncation we've chosen. However, 
-
+Since both surface tension and magnetization are finite and nonzero for $H=0$
+at $T<T_c$, $\mathcal G(X)=\O(X)$ for small $X$.
+The decay rate of the metastable state will be roughly given by the Boltzmann
+factor for the creation of a critical droplet, or $\Gamma\sim e^{-\beta\Delta
+F_c}$, so that
 \[
-  F(H)=At^{2-\alpha}\sum_{n=0}^\infty f_nX^n
+  \im F\sim e^{-\mathcal G(g_hg_t^{-\Delta})^{-(d-1)}}
+\]
+For $d>1$ this function has an essential singularity in the invariant
+combination $g_hg_t^{-\Delta}$.
+
+This form of $\im F$ for small $h$ is known. Henceforth we will assume $h$ and
+$t$ are sufficiently small that $g_t\simeq t$, $g_h\simeq h$, and all
+functions of both variables can be truncated at lowest order. We make the scaling ansatz that
+the imaginary part of the metastable free energy has the same singular
+behavior as the real part of the equilibrium free energy, and that for small
+$t$, $h$, $\im F(t,h)=t^{2-\alpha}\mathcal H(ht^{-\Delta})$ for
+\[
+  \mathcal H(X)=A\Theta(-X)X^\zeta e^{-1/(BX)^{d-1}}
+\]
+where $\Theta$ is the Heaviside function and with $\zeta=-(d-3)d/2$ for $d=2,4$ and $\zeta=-7/3$ for $d=3$
+\cite{houghton.1980.metastable,gunther.1980.goldstone}. Assuming that $F$ is
+analytic in the upper complex-$h$ plane, the real part of $F$ in the
+equilibrium state can be extracted from this imaginary metastable free energy
+using the Kramers--Kronig relation
+\[
+  \re F(t,h)=\frac1\pi\int_{-\infty}^\infty\frac{\im F(t,h')}{h'-h}\,\dd h'
+\]
+In {\sc 3d} and {\sc 4d} this can be computed explicitly given our scaling
+ansatz, yielding
+\[
+  \begin{aligned}
+    \mathcal F(X)&=
+    \frac{AB^{1/3}}{12\pi X^2}e^{-1/(BX)^2}
+    \bigg[\Gamma(\tfrac16)E_{7/6}((BX)^{-2})\\
+    &\hspace{10em}-4BX\Gamma(\tfrac23)E_{5/3}((BX)^{-2})\bigg]
+  \end{aligned}
+  \notag
 \]
 \[
-  f_n=\frac1\pi\int_{-\infty}^0\frac{\im F(X)}{X^{n+1}}\,\dd X
-  =\frac{(-1)^{n+1}}\pi\int_0^{\infty}\frac{Xe^{-1/BX}}{X^{n+1}}\,\dd X
-  =\frac1\pi(-1)^{n+1}B^{n-1}\Gamma(n-1)
+  \begin{aligned}
+    \mathcal F(X)&=
+    \frac{A}{9\pi X^2}e^{1/(BX)^3}
+    \Big[3\Gamma(0,(BX)^{-3})\\
+    &\hspace{2em}-3\Gamma(\tfrac23)\Gamma(\tfrac13,(BX)^{-3})
+    -\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
+  \end{aligned}
+  \notag
 \]
-for $n>1$. 
-
-\begin{align}
-  \chi
-  &=\pd[2]Fh
-  =t^{-2\Delta}\pd[2]FX
-  =-\frac{2}\pi At^{2-2\Delta}\int_0^\infty\frac{X'e^{-1/BX'}}{(X+X')^3}\,\dd
-  X'\\
-  &=\frac2\pi
-  \frac{ABt^{-\gamma}}{(BX)^3}\big[BX(1-BX)+e^{1/BX}\ei(-1/BX)\big]
-\end{align}
-
+At the level of truncation we are working at, the Kramers--Kronig relation
+does not converge in {\sc 2d}. However, the higher moments can still be
+extract, e.g., the susceptibility, by taking
 \[
-  \lim_{X\to0}\chi=-\frac4\pi ABt^{-\gamma}
+  \chi\propto\pd[2]Fh
+  =\frac2\pi\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'
 \]
-
+This yields
 \[
-  \beta^{-1}\chi=C_{0\pm}|t|^{-7/4}+C_{1\pm}|t|^{-3/4}+\O(1)
+  \chi=|t|^{-\gamma}\frac{C}{2(BX)^3}\big[BX(BX-1)-e^{1/BX}\ei(-1/BX)\big]
 \]
-$C_{0-}=0.025\,536\,971\,9$ $C_{1-}=-0.001\,989\,410\,7$
-\cite{barouch.1973.susceptibility}
-
-CORRECTIONS TO SCALING, $u_t$ and $u_h$ instead of $t$ and $h$.
-
-\begin{align}
-  u_h
-  &=h[1+c_ht+dht^2+e_hh^2+f_ht^3+\O(t^4,th^2)]\\
-  u_t
-  &=t+b_th^2+c_t^2+d_t^3+e_tth^2+f_tt^4+\O(t^5,t^2h^2,h^4)
-\end{align}
-\begin{align}
-  c_h=\frac{\beta_c}{\sqrt2}
-  &&
-  d_h=\frac{23\beta_c^2}{16}
-  &&
-  f_h=\frac{191\beta_c^3}{48\sqrt2}\\
-  c_t=\frac{\beta_c}{\sqrt2}
-  &&
-  d_t=\frac{7\beta_c^2}6
-  &&
-  f_t=\frac{17\beta_c^3}{6\sqrt2}\\
-  e_t=b_t\beta_c\sqrt2
-  &&
-  b_t=-\frac{E_0\pi}{16\beta_c^2}
-\end{align}
-$E_0=0.040\,325\,5003$ $e_h=-0.007\,27(15)$
+Scaling forms for the free energy can then be extracted by integration and
+comparison with known exact results at zero field, yielding
 \[
-  F(t,h)-F(t,0)=\sum_{n=1}^\infty\frac1{(2n)!}\chi_{2n}(t)h^{2n}
+  \mathcal M(X)=\frac{D}{BX}(BX-1)e^{1/BX}\ei(-1/BX)-D+\mathcal M(0)
 \]
+with $\mathcal
+M(0)=\big(2(\sqrt2-1)\big)^{1/4}\big((4+3\sqrt2)\sinh^{-1}1\big)^{1/8}$, and
 \[
-  \chi(t,h)=\pd[2]Fh=\chi_2(t)+\sum_{n=1}^\infty\frac1{(2n)!}\chi_{2(n+1)}h^{2n}
+  \mathcal F(X)=\mathcal F(0)+EX(\mathcal M(0)+De^{1/BX}\ei(-1/BX))
 \]
 
-\begin{align}
-  \chi
-  &=\pd[2]Fh
-  =\pd[2]{F_\b}h
-  +\frac d{y_t}\bigg(\frac d{y_t}-1\bigg)|u_t|^{d/y_t-2}\bigg(\pd{u_t}h\bigg)^2
-\end{align}
+How predictive are these scaling forms in the proximity of the critical point
+and the abrupt transition line? We used a form of the Wolff algorithm modified
+to remain efficient in the presence of an external field by incorporating the
+field as another spin with coupling $|H|$ to all others
+\cite{dimitrovic.1991.finite}. Data was then taken for susceptibility and
+magnetization for $|t|,h\leq0.1$
 
-\input{figs/scaling_func.tex}
 
-\bibliographystyle{plain}
+\bibliographystyle{apsrev4-1}
 \bibliography{essential-ising}
 
 \end{document}
