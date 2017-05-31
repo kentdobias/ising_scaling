@@ -163,7 +163,7 @@ ansatz, yielding
 for {\sc 4d}.
 At the level of truncation we are working at, the Kramers--Kronig relation
 does not converge in {\sc 2d}. However, the higher moments can still be
-extract, e.g., the susceptibility, by taking
+extracted, e.g., the susceptibility, by taking
 \[
   \chi\propto\pd[2]Fh
   =\frac2\pi\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'
@@ -202,12 +202,22 @@ in the insets of those figures. As can be seen, there is very good agreement
 between our proposed functional forms and what is measured.
 
 \begin{figure}
-  \caption{Fit of scaling form \eqref{eq:sus_scaling} to numeric data.}
+  \includegraphics{figs/fig_sus-collapse}
+  \caption{Fit of scaling form \eqref{eq:sus_scaling} to numeric data from a
+  $L=1024$ square-lattice Ising model.
+Different colored points show different values of $t$, which vary from
+$0.01$, $0.02$, \dots, $0.1$. Solid black line shows fitted form, with
+$C=0.0107\pm0.0011$ and $B=0.172\pm0.036$.}
   \label{fig:sus}
 \end{figure}
 
 \begin{figure}
-  \caption{Fit of scaling form \eqref{eq:mag_scaling} to numeric data.}
+  \includegraphics{figs/fig_mag-collapse}
+  \caption{Fit of scaling form \eqref{eq:mag_scaling} to numeric data from a
+$L=1024$ square-lattice Ising model. Different colored points show different
+values of $t$, which vary from $0.01$, $0.02$, \dots, $0.1$. Solid black lines
+shows fitted form, with $\mathcal M(0)=1.21055\pm0.00031$,
+$D=0.09440\pm0.00033$, and $B=0.085249\pm0.00099$.}
   \label{fig:mag}
 \end{figure}
 
