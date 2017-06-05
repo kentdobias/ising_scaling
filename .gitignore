@@ -1,6 +1,9 @@
-essential-ising.pdf
+*.pdf
 *.aux
 *.log
 *.bbl
 *.blg
 *Notes.bib
+*.dvi
+
+figs/*.tex

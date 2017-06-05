@@ -1,0 +1,32 @@
+
+set terminal pslatex rotate size 3.417,2.111
+set multiplot
+
+B = 0.173
+A = 0.0111
+func = "figs/fig-sus_data-func.dat"
+num = "figs/fig-sus_data-num.dat"
+
+set samples 10000
+set key off
+
+set xrange [-20:1200]
+set yrange [-0.2:13]
+set ylabel offset 1,0 "$\\chi t^{\\gamma}\\times 10^3$"
+set xlabel "$ht^{-\\beta\\delta}$"
+
+plot num using 1:(10**3 * $2):(10**3 * $3) with yerrorbars pt 0, func using (10**$1 / B):(10**(3+$2) * A) with linespoints pt 0 lw 3
+
+set size 0.65,0.65
+set origin 0.3,0.3
+set xrange [-3:3]
+set yrange [-4.5:-1.5]
+set ylabel offset 2.5,0 '\footnotesize$\chi t^\gamma$'
+set xlabel offset 0,0.5 '\footnotesize$ht^{-\beta\delta}$'
+set xtics format '\footnotesize$10^{%g}$' -2,2,3
+set ytics format '\footnotesize$10^{%g}$' -4,1,-2
+
+plot num using (log10($1)):(log10($2)):($3/$2) with yerrorbars pt 0, func using ($1-log10(B)):($2+log10(A)) with linespoints pt 0 lw 3
+
+
+
