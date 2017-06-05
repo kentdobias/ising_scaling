@@ -21,7 +21,7 @@ plot num with yerrorbars pt 0, func using (10**$1 / B):(M0 + 10**($2) * A) with 
 set size 0.6,0.6
 set origin 0.38,0.2
 set xrange [-3:3]
-set yrange [1.2:1.75]
+set yrange [1.18:1.75]
 set ylabel offset 4,0 '\footnotesize$Mt^{-\beta}$'
 set xlabel offset 0,0.5 '\footnotesize$ht^{-\beta\delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
