@@ -11,4 +11,7 @@ figs/%.tex: figs/%.gplot
 
 clean:
 	rubber --clean $(DOC)
+	rm -f $(DOC).pdf
+	rm -f $(DOC)Notes.bib
+	rm -f ${FIGS:%=figs/%.tex}
 

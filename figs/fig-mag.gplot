@@ -14,7 +14,7 @@ set key off
 set xrange [-20:1200]
 set yrange [1.18:1.75]
 set ylabel offset 1,0 '$Mt^{-\beta}$'
-set xlabel "$ht^{-\\beta\\delta}$"
+set xlabel '$ht^{-\Delta}$'
 
 plot num with yerrorbars pt 0, func using (10**$1 / B):(M0 + 10**($2) * A) with linespoints pt 0 lw 3
 
@@ -23,7 +23,7 @@ set origin 0.38,0.2
 set xrange [-3:3]
 set yrange [1.18:1.75]
 set ylabel offset 4,0 '\footnotesize$Mt^{-\beta}$'
-set xlabel offset 0,0.5 '\footnotesize$ht^{-\beta\delta}$'
+set xlabel offset 0,0.5 '\footnotesize$ht^{-\Delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize %g'
 

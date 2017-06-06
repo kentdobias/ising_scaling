@@ -12,8 +12,8 @@ set key off
 
 set xrange [-20:1200]
 set yrange [-0.2:13]
-set ylabel offset 1,0 "$\\chi t^{\\gamma}\\times 10^3$"
-set xlabel "$ht^{-\\beta\\delta}$"
+set ylabel offset 1,0 '$\chi t^{\gamma}\times 10^3$'
+set xlabel '$ht^{-\Delta}$'
 
 plot num using 1:(10**3 * $2):(10**3 * $3) with yerrorbars pt 0, func using (10**$1 / B):(10**(3+$2) * A) with linespoints pt 0 lw 3
 
@@ -22,7 +22,7 @@ set origin 0.38,0.37
 set xrange [-3:3]
 set yrange [-4.5:-1.5]
 set ylabel offset 2.5,0 '\footnotesize$\chi t^\gamma$'
-set xlabel offset 0,0.5 '\footnotesize$ht^{-\beta\delta}$'
+set xlabel offset 0,0.5 '\footnotesize$ht^{-\Delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize$10^{%g}$' -4,1,-2
 
