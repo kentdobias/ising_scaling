@@ -29,6 +29,11 @@
   \frac{\partial\tmp#2}{\partial#3\tmp}
 }
 
+\makeatletter
+\newif\ifreprint
+\@ifclasswith{revtex4-1}{reprint}{\reprinttrue}{\reprintfalse}
+\makeatother
+
 \begin{document}
 
 \title{Essential Singularities in the Ising Universal Scaling Functions}
@@ -163,6 +168,7 @@ energy in $H$ in good agreement with transfer matrix expansions
 \cite{lowe.1980.instantons}. Here, we compute the integral to come to explicit
 functional forms.  In \textsc{3d} and \textsc{4d} this can be computed
 explicitly given our scaling ansatz, yielding
+\ifreprint
 \begin{align}
   \mathcal F^{\text{\textsc{3d}}}(X)&=
   \frac{AB^{1/3}}{12\pi X^2}e^{-1/(BX)^2}
@@ -177,6 +183,20 @@ explicitly given our scaling ansatz, yielding
   -\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
   \notag
 \end{align}
+\else
+\begin{align}
+  \mathcal F^{\text{\textsc{3d}}}(X)&=
+  \frac{AB^{1/3}}{12\pi X^2}e^{-1/(BX)^2}
+  \bigg[\Gamma(\tfrac16)E_{7/6}((BX)^{-2})
+  -4BX\Gamma(\tfrac23)E_{5/3}((BX)^{-2})\bigg]
+\\
+  \mathcal F^{\text{\textsc{4d}}}(X)&=
+  \frac{A}{9\pi X^2}e^{1/(BX)^3}
+  \Big[3\Gamma(0,(BX)^{-3})
+  -3\Gamma(\tfrac23)\Gamma(\tfrac13,(BX)^{-3})
+  -\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
+\end{align}
+\fi
 for \textsc{4d}.
 At the level of truncation we are working at, the Kramers--Kronig relation
 does not converge in \textsc{2d}. However, the higher moments can still be
