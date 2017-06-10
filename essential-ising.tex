@@ -3,12 +3,12 @@
 %  Created by Jaron Kent-Dobias on Thu Apr 20 12:50:56 EDT 2017.
 %  Copyright (c) 2017 Jaron Kent-Dobias. All rights reserved.
 %
-\documentclass[aps,prl,reprint]{revtex4-1}
+\documentclass[aps,prl,preprint]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,latexsym,mathtools,xifthen}
 
-\mathtoolsset{showonlyrefs=true}
+%\mathtoolsset{showonlyrefs=true}
 
 \def\[{\begin{equation}}
 \def\]{\end{equation}}
@@ -124,12 +124,26 @@ F_\c\sim\Sigma^d(M|H|)^{-(d-1)}$. Assuming the singular scaling forms
 $\Sigma=|g_t|^\mu\mathcal S(g_h|g_t|^{-\Delta})$ and $M=|g_t|^\beta\mathcal
 M(g_h|g_t|^{-\Delta})$ and using known hyperscaling relations
 \cite{widom.1981.interface}, this implies a scaling form
-\begin{align}
-  \Delta F_c&
+\def\eqcritformone{
   \sim\mathcal S^d(g_h|g_t|^{-\Delta})(-g_h|g_t|^{-\Delta}\mathcal
-    M(g_h|g_t|^{-\Delta}))^{-(d-1)}\notag\\
-  &\sim\mathcal G^{-(d-1)}(g_h|g_t|^{-\Delta}).
-\end{align}
+    M(g_h|g_t|^{-\Delta}))^{-(d-1)}
+}
+\def\eqcritformtwo{
+  \sim\mathcal G^{-(d-1)}(g_h|g_t|^{-\Delta}).
+}
+\ifreprint
+\[
+  \begin{aligned}
+    \Delta F_c&\eqcritformone
+    \\
+    &\eqcritformtwo
+  \end{aligned}
+\]
+\else
+\[
+  \Delta F_c\eqcritformone\eqcritformtwo
+\]
+\fi
 Since both surface tension and magnetization are finite and nonzero for $H=0$
 at $T<T_c$, $\mathcal G(X)=\O(X)$ for small $X$.  The decay rate of the
 metastable state will be roughly given by the Boltzmann factor for the
@@ -168,33 +182,43 @@ energy in $H$ in good agreement with transfer matrix expansions
 \cite{lowe.1980.instantons}. Here, we compute the integral to come to explicit
 functional forms.  In \textsc{3d} and \textsc{4d} this can be computed
 explicitly given our scaling ansatz, yielding
-\ifreprint
-\begin{align}
-  \mathcal F^{\text{\textsc{3d}}}(X)&=
-  \frac{AB^{1/3}}{12\pi X^2}e^{-1/(BX)^2}
-  \bigg[\Gamma(\tfrac16)E_{7/6}((BX)^{-2})\\
-  &\hspace{10em}-4BX\Gamma(\tfrac23)E_{5/3}((BX)^{-2})\bigg]
-  \notag
-\\
-  \mathcal F^{\text{\textsc{4d}}}(X)&=
-  \frac{A}{9\pi X^2}e^{1/(BX)^3}
-  \Big[3\Gamma(0,(BX)^{-3})\\
-  &\hspace{2em}-3\Gamma(\tfrac23)\Gamma(\tfrac13,(BX)^{-3})
-  -\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
-  \notag
-\end{align}
-\else
-\begin{align}
+\def\eqthreedeeone{
   \mathcal F^{\text{\textsc{3d}}}(X)&=
   \frac{AB^{1/3}}{12\pi X^2}e^{-1/(BX)^2}
   \bigg[\Gamma(\tfrac16)E_{7/6}((BX)^{-2})
+}
+\def\eqthreedeetwo{
   -4BX\Gamma(\tfrac23)E_{5/3}((BX)^{-2})\bigg]
-\\
+}
+\def\eqfourdeeone{
   \mathcal F^{\text{\textsc{4d}}}(X)&=
   \frac{A}{9\pi X^2}e^{1/(BX)^3}
   \Big[3\Gamma(0,(BX)^{-3})
+}
+\def\eqfourdeetwo{
   -3\Gamma(\tfrac23)\Gamma(\tfrac13,(BX)^{-3})
   -\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
+}
+\ifreprint
+\begin{align}
+  &\begin{aligned}
+    \eqthreedeeone\\
+    &\hspace{6em}
+    \eqthreedeetwo
+  \end{aligned}
+  \\
+  &\begin{aligned}
+    \eqfourdeeone
+    \\
+    &\hspace{2em}
+    \eqfourdeetwo
+  \end{aligned}
+\end{align}
+\else
+\begin{align}
+  \eqthreedeeone\eqthreedeetwo
+  \\
+  \eqfourdeeone\eqfourdeetwo
 \end{align}
 \fi
 for \textsc{4d}.
@@ -275,8 +299,9 @@ better express the equation of state of the Ising model in the whole of its
 parameter space.
 
 \begin{acknowledgments}
-  The authors would like to thank Tom Lubensky for a reason that Jim should
-  really flesh out.
+  The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
+  for helpful conversations. This work was partially supported by NSF grant
+  DMR-1312160.
 \end{acknowledgments}
 
 \bibliography{essential-ising}
