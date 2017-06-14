@@ -2,10 +2,19 @@
 set terminal pslatex rotate size 3.417,2.111
 set multiplot
 
+Tc = 2 / log(1 + sqrt(2))
+Delta = 15. / 8
+gamma = 7. / 4
+
+t(T) = abs((T - Tc) / T)
+h(T, H) = H / T
+X(T, H) = h(T, H) * t(T)**(-Delta)
+
 B = 0.173
 A = 0.0111
+
 func = "figs/fig-sus_data-func.dat"
-num = "figs/fig-sus_data-num.dat"
+num = "data/data_square-2048.dat"
 
 set samples 10000
 set key off
@@ -15,7 +24,7 @@ set yrange [-0.2:13]
 set ylabel offset 1,0 '$\chi t^{\gamma}\times 10^3$'
 set xlabel '$ht^{-\Delta}$'
 
-plot num using 1:(10**3 * $2):(10**3 * $3) with yerrorbars pt 0, func using (10**$1 / B):(10**(3+$2) * A) with linespoints pt 0 lw 3
+plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using (10**$1 / B):(10**(3+$2) * A) with linespoints pt 0 lw 2 lc rgb "black"
 
 set size 0.6,0.6
 set origin 0.38,0.37
@@ -26,7 +35,7 @@ set xlabel offset 0,0.5 '\footnotesize$ht^{-\Delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize$10^{%g}$' -4,1,-2
 
-plot num using (log10($1)):(log10($2)):($3/$2) with yerrorbars pt 0, func using ($1-log10(B)):($2+log10(A)) with linespoints pt 0 lw 3
+plot num using (log10(X($2, $3))):(log10($10 * t($2)**gamma)):($11 / $10):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using ($1-log10(B)):($2+log10(A)) with linespoints pt 0 lw 2 lc rgb "black"
 
 
 

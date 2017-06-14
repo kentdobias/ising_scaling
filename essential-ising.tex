@@ -185,19 +185,19 @@ explicitly given our scaling ansatz, yielding
 \def\eqthreedeeone{
   \mathcal F^{\text{\textsc{3d}}}(X)&=
   \frac{AB^{1/3}}{12\pi X^2}e^{-1/(BX)^2}
-  \bigg[\Gamma(\tfrac16)E_{7/6}((BX)^{-2})
+  \bigg[\Gamma(\tfrac16)E_{7/6}(-(BX)^{-2})
 }
 \def\eqthreedeetwo{
-  -4BX\Gamma(\tfrac23)E_{5/3}((BX)^{-2})\bigg]
+  -4BX\Gamma(\tfrac23)E_{5/3}(-(BX)^{-2})\bigg]
 }
 \def\eqfourdeeone{
   \mathcal F^{\text{\textsc{4d}}}(X)&=
-  \frac{A}{9\pi X^2}e^{1/(BX)^3}
-  \Big[3\Gamma(0,(BX)^{-3})
+  -\frac{A}{9\pi X^2}e^{1/(BX)^3}
+  \Big[3\ei(-(BX)^{-3})
 }
 \def\eqfourdeetwo{
-  -3\Gamma(\tfrac23)\Gamma(\tfrac13,(BX)^{-3})
-  -\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
+  +3\Gamma(\tfrac23)\Gamma(\tfrac13,(BX)^{-3})
+  +\Gamma(\tfrac13)\Gamma(-\tfrac13,(BX)^{-3})\Big]
 }
 \ifreprint
 \begin{align}
@@ -240,7 +240,7 @@ $C=C_{0-}/T_c$, with $C_{0-}=0.025\,536\,971\,9$
 then be extracted by integration and comparison with known exact results at
 zero field, yielding
 \[
-  \mathcal M^{\text{\textsc{2d}}}(X)=\frac{D}{BX}(BX-1)e^{1/BX}\ei(-1/BX)-D+\mathcal M(0)
+  \mathcal M^{\text{\textsc{2d}}}(X)=\mathcal M(0)+D-\frac{D}{BX}(BX-1)e^{1/BX}\ei(-1/BX)
   \label{eq:mag_scaling}
 \]
 with $\mathcal M(0)=\big(2(\sqrt2-1)\big)^{1/4}\big((4+3\sqrt2)\sinh^{-1}1\big)^{1/8}$
