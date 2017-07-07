@@ -1,0 +1,81 @@
+
+set terminal pslatex rotate size 3.417,4.222
+set multiplot
+
+Tc = 2 / log(1 + sqrt(2))
+Delta = 15. / 8
+gamma = 7. / 4
+beta = 1. / 8
+
+t(T) = abs((T - Tc) / T)
+h(T, H) = H / T
+X(T, H) = h(T, H) * t(T)**(-Delta)
+
+poly(A, l, m, X) = A * X**m / (1 + (l * X)**(m + 1))
+polyint(A, l, m, X) = A * l**(-(m + 1)) * log(1 + (l * X)**(m + 1)) / (m + 1)
+
+M0 = (2**2.5 * asinh(1))**0.125
+B = Tc**2 * M0 / (16 * pi)
+C0 = 0.0255369719
+A = pi / 2 * C0 / (B**2 * Tc)
+
+C1 = -0.00368218
+C2 = -0.0190753
+C3 = 0.0349601
+lamb = 2.41718
+
+susfunc = "figs/fig-sus_scaling-func.dat"
+magfunc = "figs/fig-mag_scaling-func.dat"
+
+num = "data/data_square-4096.dat"
+
+set samples 10000
+set key off
+
+set size 1,1 - 0.52
+set origin 0,0.52
+set xrange [-20:1200]
+set yrange [-0.5:13]
+set ylabel offset 1,0 '$\chi|t|^{\gamma}\times 10^3$'
+set lmargin 6
+set xtics format ''
+set bmargin 0.2
+
+plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B):(10**(3+$2) * A * B**2 + 10**3 * (poly(C1, lamb, 1, 10**$1) + poly(C2, lamb, 2, 10**$1) + poly(C3, lamb, 3, 10**$1))) with lines dt 2 lw 2 lc black
+
+set bmargin -1
+set tmargin 0.2
+set size 1,0.52
+set origin 0,0
+set xrange [-20:1200]
+set yrange [1.18:1.75]
+set ylabel offset 1,0 '$M|t|^{-\beta}$'
+set xlabel '$h|t|^{-\Delta}$'
+set xtics format '%g'
+
+plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B + (polyint(Tc * C1, lamb, 1, 10**$1) + polyint(Tc * C2, lamb, 2, 10**$1) + polyint(Tc * C3, lamb, 3, 10**$1)) / B) smooth csplines with lines dt 2 lw 2 lc black
+
+set tmargin -1
+set lmargin -1
+set size 0.65,0.325
+set origin 0.31,0.5 + 0.29 / 2
+set xrange [-3:3]
+set yrange [-4.5:-1.5]
+set ylabel offset 2.5,0 '\footnotesize$\chi|t|^\gamma$'
+set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\Delta}$'
+set xtics format '\footnotesize$10^{%g}$' -2,2,3
+set ytics format '\footnotesize$10^{%g}$' -4,1,-2
+
+plot num using (log10(X($2, $3))):(log10($10 * t($2)**gamma)):($11 / $10):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using ($1-log10(B)):($2+log10(A * B**2)) with linespoints pt 0 lw 2 lc rgb "black", susfunc using ($1-log10(B)):(log10(10**$2 * A * B**2 + poly(C1, lamb, 1, 10**$1) + poly(C2, lamb, 2, 10**$1) + poly(C3, lamb, 3, 10**$1))) with lines dt 2 lw 2 lc black
+
+set size 0.65,0.325
+set origin 0.31,0.23 / 2
+set xrange [-3:3]
+set yrange [1.18:1.75]
+set ylabel offset 4,0 '\footnotesize$M|t|^{-\beta}$'
+set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\Delta}$'
+set xtics format '\footnotesize$10^{%g}$' -2,2,3
+set ytics format '\footnotesize {%g}' 1.2,.2,1.6
+
+plot num using (log10(X($2, $3))):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using ($1-log10(B)):(M0 + Tc * A * B * 10**$2) with linespoints pt 0 lw 2 lc black, magfunc using ($1 - log10(B)):(M0 + 10**($2) * Tc * A * B + (polyint(Tc * C1, lamb, 1, 10**$1) + polyint(Tc * C2, lamb, 2, 10**$1) + polyint(Tc * C3, lamb, 3, 10**$1)) / B) with lines dt 2 lw 2 lc black
+

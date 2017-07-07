@@ -3,7 +3,7 @@
 %  Created by Jaron Kent-Dobias on Thu Apr 20 12:50:56 EDT 2017.
 %  Copyright (c) 2017 Jaron Kent-Dobias. All rights reserved.
 %
-\documentclass[aps,prl,preprint]{revtex4-1}
+\documentclass[aps,prl,reprint]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,latexsym,mathtools,xifthen}
@@ -292,9 +292,9 @@ The constant $A$ can be fixed by zero-field results, with $\chi(t,0)|t|^\gamma=\
 Scaling forms for the free energy can then be extracted by direct integration
 and their constants of integration fixed by known zero field values, yielding
 \begin{align}
+  \label{eq:mag_scaling}
   \fM^\twodee(Y/B)
     &=\fM(0)+\frac{ABT_c}{\pi}\bigg(1-\frac{Y-1}Ye^{1/Y}\ei(-1/Y)\bigg)\\
-  \label{eq:mag_scaling}
   \fF^\twodee(Y/B)
     &=\fF(0)+T_cY\bigg(\frac{\fM(0)}B+\frac{AT_c}\pi e^{1/Y}\ei(-1/Y)\bigg)
 \end{align}
@@ -308,54 +308,62 @@ model have $\fS(0)=4$ and $\fM(0)=(2^{5/2}\arcsinh1)^\beta$, so
 $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\sinh^{-1}1)^{15/8})^{-1}$. 
 
 How predictive are these scaling forms in the proximity of the critical point
-and the abrupt transition line? We simulated the \twodee Ising model on square, triangluar, and hexagonal lattices using a form of the Wolff algorithm modified
+and the abrupt transition line? We simulated the \twodee Ising model on square lattice using a form of the Wolff algorithm modified
 to remain efficient in the presence of an external field. Briefly, the external field $H$ is applied by adding an extra spin $s_0$ with coupling $|H|$ to all others
 \cite{dimitrovic.1991.finite}. A quickly converging estimate for the magnetization in the finite-size system was then made by taking $M=\sgn(H)s_0\sum s_i$, i.e., the magnetization relative to the external spin. For the \twodee Ising model on a square lattice, exact results at zero temperature have $\fS(0)=4/T_c$, $\fM(0)=(2^{5/2}\arcsinh1)^\beta$ \cite{onsager.1944.crystal}, and $\fX(0)=C_{0-}/T_\c$ with $C_{0-}=0.025\,536\,971\,9$
-\cite{barouch.1973.susceptibility}, so that $B=\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$ and $A=\frac\pi2\fX(0)/B^2=2^{11/8}\pi^3(\arcsinh1)^{19/4}C_{0-}$. Data from other lattices can be mapped onto that of the square lattice using lattice--lattice scaling rules \cite{betts.1971.lattice}. If $D$ is the critical amplitude for the magnetization along the critical isotherm, i.e., $h=DM^\delta$ for $t=0$, then $t$ and $h$ for lattice $X$ are related to those of lattice $Y$ by $\frac{h_X}{D_X}=\frac{h_Y}{D_Y}$ and $t_X\fM_X(0)^{1/\beta}=t_Y\fM_Y(0)^{1/\beta}$. While $D$ is not known exactly, the ratios $D/D_\sq$ for any exactly solvable \twodee lattice are. These are tabulated, along with $\fM(0)$, in Table~\ref{tab:consts}.
+\cite{barouch.1973.susceptibility}, so that $B=\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$ and $A=\frac\pi2\fX(0)/B^2=2^{11/8}\pi^3(\arcsinh1)^{19/4}C_{0-}$. 
 Data was then taken for susceptibility and
-magnetization for $T_\c-T,H\leq0.1$. This data is plotted in Figs.~\ref{fig:sus}
-and \ref{fig:mag}, along with collapses of data onto a single universal curve
+magnetization for $T_\c-T,H\leq0.1$. This data is plotted in
+Fig.~\ref{fig:scaling_fits}, along with collapses of data onto a single universal curve
 in the insets of those figures. As can be seen, there is very good agreement
 between our proposed functional forms and what is measured.
+However, there are systematic differences that can be seen most clearly in the
+magnetization. Since our method is known to only be accurate for high moments
+of the free energy, we should expect that low moments require corrections.
+Therefore, we also fit those corrections of the form
+\begin{align}
+  \fX^{\twodee\prime}(X)&=\fX^\twodee(X)+\sum_{n=1}^Nf_n(BX)\\
+  \fM^{\twodee\prime}(X)&=\fM^\twodee(X)+\frac{T_\c}B\sum_{n=1}^NF_n(BX)
+\end{align}
+where $F_n'(x)=f_n(x)$ and
+\begin{align}
+  f_n(x)&=\frac{C_nx^n}{1+(\lambda x)^{n+1}}\\
+  F_n(x)&=\frac{C_n\lambda^{-(n+1)}}{n+1}\log(1+(\lambda x)^{n+1})
+\end{align}
+We fit these functions to our numeric data for $N=3$. The resulting curves are
+also plotted in Fig.~\ref{fig:scaling_fits} as a dashed line.
 
-\begin{table}
-  \centering
-  \begin{tabular}{c|llc}
-    Lattice    & $T_\c$             & $\fM(0)^{1/\beta}$        & $D/D_\sq$   \\
-    \hline % -------------------------------------------------------------------
-    Square     & $2/\log(1+\sqrt2)$ & $2^{5/2}\arcsinh1$        & 1           \\
-    Triangular & $4/\log3$          & $4\log3$                  & $3^{3/2}/4$ \\
-    Hexagonal  & $2/\log(2+\sqrt3)$ & $\frac8{\sqrt3}\arccosh2$ & $3^{3/2}/8$
-  \end{tabular}
-  \caption{
-    The critical temperatures and amplitudes for the magetization along both the coexistence line and the critical isotherm, for three different lattices.
-  }
-  \label{tab:consts}
-\end{table}
+
+
+
+%\begin{table}
+%  \centering
+%  \begin{tabular}{c|llc}
+%    Lattice    & $T_\c$             & $\fM(0)^{1/\beta}$        & $D/D_\sq$   \\
+%    \hline % -------------------------------------------------------------------
+%    Square     & $2/\log(1+\sqrt2)$ & $2^{5/2}\arcsinh1$        & 1           \\
+%    Triangular & $4/\log3$          & $4\log3$                  & $3^{3/2}/4$ \\
+%    Hexagonal  & $2/\log(2+\sqrt3)$ & $\frac8{\sqrt3}\arccosh2$ & $3^{3/2}/8$
+%  \end{tabular}
+%  \caption{
+%    The critical temperatures and amplitudes for the magetization along both the coexistence line and the critical isotherm, for three different lattices.
+%  }
+%  \label{tab:consts}
+%\end{table}
 
 \begin{figure}
-  \input{figs/fig-sus}
+  \input{figs/fig-susmag}
   \caption{
-    Fit of scaling form \eqref{eq:sus_scaling} to numeric data.  Data with
-    sampling error taken from Monte Carlo simulations of an $L=2048$
-    square-lattice Ising model with $T_\c-T=0.01,0.02,\ldots,0.1$ and
-    $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. Solid line shows fitted form,
-    with $C=0.0111\pm0.0023$ and $B=0.173\pm0.072$.
+    Comparisons of scaling forms \eqref{eq:sus_scaling} and
+    \eqref{eq:mag_scaling} to numeric data.  Data with
+    sampling error taken from Monte Carlo simulations of a $4096\times4096$
+    square-lattice Ising model with periodic boundary conditions and $T_\c-T=0.01,0.02,\ldots,0.1$ and
+    $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. The solid lines show our
+    analytic results, while the dashed lines have polynomial corrections of
+    the form \eqref{eq:poly} fit to the data for $N=3$, with $C_1=-0.00368$,
+    $C_2=-0.0191$, $C_3=0.0350$, and $\lambda=2.42$.
   }
-  \label{fig:sus}
-\end{figure}
-
-\begin{figure}
-  \input{figs/fig-mag}
-  \caption{
-    Fit of scaling form \eqref{eq:mag_scaling} to numeric data. Data with
-    sampling error taken from Monte Carlo simulations of an $L=2048$
-    square-lattice Ising model with $T_\c-T=0.01,0.02,\ldots,0.1$ and
-    $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. Solid line shows fitted form,
-    with $\fM(0)=1.21039\pm0.00031$,
-    $D=0.09400\pm0.00035$, and $B=0.0861\pm0.0010$.
-  }
-  \label{fig:mag}
+  \label{fig:scaling_fits}
 \end{figure}
 
 We have used results from the properties of the metastable Ising ferromagnet

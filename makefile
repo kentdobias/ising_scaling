@@ -1,6 +1,6 @@
 
 DOC=essential-ising
-FIGS=fig-sus fig-mag
+FIGS=fig-susmag
 
 all: ${FIGS:%=figs/%.tex}
 	rubber $(DOC).tex
