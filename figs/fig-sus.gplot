@@ -10,32 +10,37 @@ t(T) = abs((T - Tc) / T)
 h(T, H) = H / T
 X(T, H) = h(T, H) * t(T)**(-Delta)
 
-B = 0.173
-A = 0.0111
+B = 1 / (2**(27./16) * pi * asinh(1)**(15./8))
+A = 0.0255369719 / Tc * pi / (2 * B**2)
 
-func = "figs/fig-sus_data-func.dat"
-num = "data/data_square-2048.dat"
+C1 = -0.0160968
+C2 = 0.116242
+C3 = -0.402641
+lambda = 4.39547
+
+func = "figs/fig-sus_scaling-func.dat"
+num = "data/data_square-4096.dat"
 
 set samples 10000
 set key off
 
 set xrange [-20:1200]
-set yrange [-0.2:13]
-set ylabel offset 1,0 '$\chi t^{\gamma}\times 10^3$'
-set xlabel '$ht^{-\Delta}$'
+set yrange [-0.5:13]
+set ylabel offset 1,0 '$\chi|t|^{\gamma}\times 10^3$'
+set xlabel '$h|t|^{-\Delta}$'
 
-plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using (10**$1 / B):(10**(3+$2) * A) with linespoints pt 0 lw 2 lc rgb "black"
+plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", func using (10**$1 / B):(10**(3+$2) * A * B**2 + 10**3 * (C1 * (10**$1) + C2 * (10**$1)**2 + C3 * (10**$1)**3) / (1 + (lambda * (10**$1))**4)) with lines lt 5 lw 1 lc rgb "red"
 
 set size 0.6,0.6
 set origin 0.38,0.37
 set xrange [-3:3]
 set yrange [-4.5:-1.5]
-set ylabel offset 2.5,0 '\footnotesize$\chi t^\gamma$'
-set xlabel offset 0,0.5 '\footnotesize$ht^{-\Delta}$'
+set ylabel offset 2.5,0 '\footnotesize$\chi|t|^\gamma$'
+set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\Delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize$10^{%g}$' -4,1,-2
 
-plot num using (log10(X($2, $3))):(log10($10 * t($2)**gamma)):($11 / $10):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using ($1-log10(B)):($2+log10(A)) with linespoints pt 0 lw 2 lc rgb "black"
+plot num using (log10(X($2, $3))):(log10($10 * t($2)**gamma)):($11 / $10):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using ($1-log10(B)):($2+log10(A * B**2)) with linespoints pt 0 lw 2 lc rgb "black", func using ($1-log10(B)):(log10(10**$2 * A * B**2 + (C1 * (10**$1) + C2 * (10**$1)**2 + C3 * (10**$1)**3) / (1 + (lambda * (10**$1))**4))) with lines lt 5 lw 1 lc rgb "red"
 
 
 

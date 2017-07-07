@@ -10,33 +10,35 @@ t(T) = abs((T - Tc) / T)
 h(T, H) = H / T
 X(T, H) = h(T, H) * t(T)**(-Delta)
 
-B = 0.0861
-A = 0.094
-M0 = 1.21039
+B = 1 / (2**(27./16) * pi * asinh(1)**(15./8))
+C0 = 0.0255369719
+#A = 2**(11./8) * pi**3 * asinh(1)**(19./4) * C0
+A = pi / 2 * C0 / (B**2 * Tc)
+M0 = (2 * (sqrt(2) - 1))**(1./4) * ((4 + 3 * sqrt(2)) * asinh(1))**(1./8)
 
-func = "figs/fig-mag_data-func.dat"
-num = "data/data_square-2048.dat"
+func = "figs/fig-mag_scaling-func.dat"
+num = "data/data_square-4096.dat"
 
 set samples 10000
 set key off
 
 set xrange [-20:1200]
 set yrange [1.18:1.75]
-set ylabel offset 1,0 '$Mt^{-\beta}$'
-set xlabel '$ht^{-\Delta}$'
+set ylabel offset 1,0 '$M|t|^{-\beta}$'
+set xlabel '$h|t|^{-\Delta}$'
 
-plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using (10**$1 / B):(M0 + 10**($2) * A) with linespoints pt 0 lw 2 lc rgb "black"
+plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using (10**$1 / B):(M0 + 10**($2) * Tc * A * B) with linespoints pt 0 lw 2 lc rgb "black"
 
 set size 0.6,0.6
 set origin 0.38,0.2
 set xrange [-3:3]
 set yrange [1.18:1.75]
-set ylabel offset 4,0 '\footnotesize$Mt^{-\beta}$'
-set xlabel offset 0,0.5 '\footnotesize$ht^{-\Delta}$'
+set ylabel offset 4,0 '\footnotesize$M|t|^{-\beta}$'
+set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\Delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize %g'
 
-plot num using (log10(X($2, $3))):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using ($1-log10(B)):(M0 + A * 10**$2) with linespoints pt 0 lw 2 lc black
+plot num using (log10(X($2, $3))):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, func using ($1-log10(B)):(M0 + Tc * A * B * 10**$2) with linespoints pt 0 lw 2 lc black
 
 
 
