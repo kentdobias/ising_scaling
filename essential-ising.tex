@@ -64,10 +64,10 @@
 
 \begin{document}
 
-\title{Essential Singularities in the Ising Universal Scaling Functions}
+\title{Essential Singularities in Universal Scaling Functions at the Ising Coexistence Line}
 \author{Jaron Kent-Dobias}
 \author{James P.~Sethna}
-\affiliation{Cornell University}
+\affiliation{Laboratory of Atomic and Solid State Physics, Cornell University, Ithaca, NY, USA}
 
 \date\today
 
@@ -76,7 +76,7 @@
   used to construct a scaling ansatz for the imaginary component of the free
   energy of an Ising model in its metastable state close to the critical
   point. The analytic properties of the free energy are used to determine
-  asymptotic scaling functions for the free energy in the vicinity of the
+  scaling functions for the free energy in the vicinity of the
   critical point and the abrupt transition line. These functions have
   essential singularities at zero field. Analogous forms for the magnetization
   and susceptibility in two-dimensions are fit to numeric data and show good
@@ -102,13 +102,7 @@ thermodynamic variables.
 \textsc{Rg} analysis predicts that the singular part of the free energy per
 site $F$ as a function of reduced temperature $t=1-T_\c/T$ and field $h=H/T$ in
 the vicinity of the critical point takes the scaling form
-$F(t,h)=|t|^{2-\alpha}\fF(h|t|^{-\Delta})$ \footnote{Technically
-we should write $\fF_{\pm}$ to indicate that the universal scaling
-function takes a different form for $t<0$ and $t>0$, but we will restrict
-ourselves entirely to $t<0$ and hence $\fF_-$ for the purposes of this
-paper.}, where $\Delta=\beta\delta$ and $t$, $h$ are analytic functions of
-$t$, $h$ that transform exactly linearly under \textsc{rg}
-\cite{cardy.1996.scaling,aharony.1983.fields}. When studying the properties of
+$F(t,h)=|t|^{2-\alpha}\fF(h|t|^{-\beta\delta})$ for the low temperature phase $t<0$ \cite{cardy.1996.scaling,aharony.1983.fields}. When studying the properties of
 the Ising critical point, it is nearly always assumed that $\fF(X)$,
 the universal scaling function, is an analytic function of $X$. However, it
 has long been known that there exists an essential singularity in $\fF$
@@ -140,22 +134,24 @@ the system that corresponds to decay.
 
 In critical droplet theory, the metastable state decays when a domain of the
 equilibrium state forms whose surface-energy cost for growth is outweighed by
-bulk-energy gains. There is numerical evidence that, near the critical point, droplets are spherical \cite{gunther.1993.transfer-matrix}. The free energy cost of the surface of a droplet
-scales with its radius $R$ like $\Sigma S_\dim R^{\dim-1}$ and that of its
-bulk scales like $-M|H|V_\dim R^\dim$, where $S_\dim$ and $V_\dim$ are the surface area and
+bulk-energy gains. There is numerical evidence that, near the critical point,
+droplets are spherical \cite{gunther.1993.transfer-matrix}. The free energy
+cost of the surface of a droplet of radius $R$
+is $\Sigma S_\dim R^{\dim-1}$ and that of its
+bulk is $-M|H|V_\dim R^\dim$, where $S_\dim$ and $V_\dim$ are the surface area and
 volume of a $(\dim-1)$-sphere, respectively, and $\Sigma$ is the surface tension of the equilibrium--metastable interface. The critical droplet size then is
 $R_\c=(\dim-1)\Sigma/M|H|$ and the free energy of the critical
 droplet is $\Delta
 F_\c=\pi^{\dim/2}\Sigma^\dim((\dim-1)/M|H|)^{\dim-1}/\Gamma(1+\dim/2)$.  
 Assuming the typical singular scaling forms
-$\Sigma/T=|t|^\mu\fS(h|t|^{-\Delta})$ and $M=|t|^\beta\mathcal
-M(h|t|^{-\Delta})$ and using known hyperscaling relations
+$\Sigma/T=|t|^\mu\fS(h|t|^{-\beta\delta})$ and $M=|t|^\beta\mathcal
+M(h|t|^{-\beta\delta})$ and using known hyperscaling relations
 \cite{widom.1981.interface}, this implies a scaling form
 \def\eqcritformone{
   T\frac{\pi^{\dim/2}(\dim-1)^{\dim-1}}{\Gamma(1+\dim/2)}\frac{\fS^\dim(h|t|^{-\beta\delta})}{(-h|t|^{-\beta\delta}\fM(h|t|^{-\beta\delta}))^{\dim-1}}
 }
 \def\eqcritformtwo{
-  T\fG^{-(\dim-1)}(h|t|^{-\Delta})
+  T\fG^{-(\dim-1)}(h|t|^{-\beta\delta})
 }
 \ifreprint
 \[
@@ -181,7 +177,7 @@ and the critical domain radius $R_c$, with
   Bh|t|^{-\beta\delta}=\bigg(\frac{\Gamma(1+\dim/2)}{\pi^{\dim/2}\fS(0)(\xi_0^-)^{\dim-1}}\bigg)^{1/(\dim-1)}\frac\xi{R_\c}
 \]
 where $\xi=\xi_0^-|t|^{-\nu}$ for $t<T_c$. Since $\fS(0)(\xi_0^-)^{\dim-1}$ is a
-universal amplitude ratio, $\frac{Bh|t|^{-\beta\delta}}{\xi/R_c}$ is a
+universal amplitude ratio \cite{zinn.1996.universal}, $\frac{Bh|t|^{-\beta\delta}}{\xi/R_c}$ is a
 universal quantity.
 % The constant $B$ should be universal near the critical point given careful
 % definition of the variable $X$.
@@ -205,7 +201,7 @@ universal quantity.
 The decay rate of the metastable state is proportional to the Boltzmann factor
 for the creation of a critical droplet, yielding
 \[
-  \im F\sim\Gamma\propto e^{-\beta\Delta F_\c}=e^{-\fG(h|t|^{-\beta\delta})^{-(\dim-1)}}.
+  \im F\sim\Gamma\propto e^{-\Delta F_\c/T}=e^{-\fG(h|t|^{-\beta\delta})^{-(\dim-1)}}.
 \]
 For $d>1$ this function has an essential singularity in the invariant
 combination $h|t|^{-\beta\delta}$.
@@ -283,7 +279,7 @@ extracted, e.g., the susceptibility, by taking
   \chi=\pd[2]Fh
   =\frac2\pi\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'.
 \]
-With $\chi=|t|^{-\gamma}\fX(h|t|^{-\Delta})$, this yields
+With $\chi=|t|^{-\gamma}\fX(h|t|^{-\beta\delta})$, this yields
 \[
   \fX^\twodee(Y/B)=\frac{AB^2}{\pi Y^3}\big[Y(Y-1)-e^{1/Y}\ei(-1/Y)\big]
   \label{eq:sus_scaling}
@@ -300,12 +296,18 @@ and their constants of integration fixed by known zero field values, yielding
 \end{align}
 with $F(t,h)=|t|^{2-\alpha}\fF(h|t|^{-\beta\delta})+t^{2-\alpha}\log|t|$ in two dimensions.
 
-Previous work at zero field suggests that
-$\fX(0)=\frac{2AB^2}\pi=C_{0-}/T_\c$, with $C_{0-}=0.025\,536\,971\,9$
-\cite{barouch.1973.susceptibility}.  
-Exact results for the \twodee Ising
-model have $\fS(0)=4$ and $\fM(0)=(2^{5/2}\arcsinh1)^\beta$, so
-$B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\sinh^{-1}1)^{15/8})^{-1}$. 
+How are these functional forms to be interpreted? They are not asymptotic
+forms in any sense, as there is no limit of $t$ or $h$ in which they become
+aribitrarily correct. It is well established that this method of using
+unphysical or metastable elements of a theory to extract properties of the
+stable or equilibrium theory only works for high moments of those predictions
+\cite{parisi.1977.asymptotic,bogomolny.1977.dispersion}.
+These functions should be understood as possessing exactly the correct
+singularity  at the coexistence line, but requiring polynomial corrections,
+especially for smaller integer powers. Using these forms in conjunction with
+existing methods of describing the critical equation of state or critical
+properties with analytic functions in $h$ will incorporate these low-order
+corrections while preserving the correct singular structure.
 
 How predictive are these scaling forms in the proximity of the critical point
 and the abrupt transition line? We simulated the \twodee Ising model on square lattice using a form of the Wolff algorithm modified
@@ -313,31 +315,30 @@ to remain efficient in the presence of an external field. Briefly, the external 
 \cite{dimitrovic.1991.finite}. A quickly converging estimate for the magnetization in the finite-size system was then made by taking $M=\sgn(H)s_0\sum s_i$, i.e., the magnetization relative to the external spin. For the \twodee Ising model on a square lattice, exact results at zero temperature have $\fS(0)=4/T_c$, $\fM(0)=(2^{5/2}\arcsinh1)^\beta$ \cite{onsager.1944.crystal}, and $\fX(0)=C_{0-}/T_\c$ with $C_{0-}=0.025\,536\,971\,9$
 \cite{barouch.1973.susceptibility}, so that $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$ and $A=\frac\pi2\fX(0)/B^2=2^{11/8}\pi^3(\arcsinh1)^{19/4}C_{0-}$. 
 Data was then taken for susceptibility and
-magnetization for $T_\c-T,H\leq0.1$. This data is plotted in
-Fig.~\ref{fig:scaling_fits}, along with collapses of data onto a single universal curve
-in the insets of those figures. As can be seen, there is very good agreement
+magnetization for $T_\c-T,H\leq0.1$. The resulting scaling functions $\fX$ and
+$\fM$ are plotted using this data in
+Fig.~\ref{fig:scaling_fits}. As can be seen, there is very good agreement
 between our proposed functional forms and what is measured.
 However, there are systematic differences that can be seen most clearly in the
 magnetization. Since our method is known to only be accurate for high moments
 of the free energy, we should expect that low moments require corrections.
-Therefore, we also fit those corrections of the form
+Therefore, we also fit those corrections using 
 \begin{align}
-  \fX^{\twodee\prime}(X)&=\fX^\twodee(X)+\sum_{n=1}^Nf_n(BX)\\
-  \fM^{\twodee\prime}(X)&=\fM^\twodee(X)+\frac{T_\c}B\sum_{n=1}^NF_n(BX)
+  \fX^{\twodee\prime}(X)&=\fX^\twodee(X)+\sum_{n=1}^Nf_n(BX)\label{eq:sus_scaling_poly}\\
+  \fM^{\twodee\prime}(X)&=\fM^\twodee(X)+\frac{T_\c}B\sum_{n=1}^NF_n(BX)\label{eq:mag_scaling_poly}
 \end{align}
 where $F_n'(x)=f_n(x)$ and
 \[
   \begin{aligned}
     f_n(x)&=\frac{C_nx^n}{1+(\lambda x)^{n+1}}\\
-    F_n(x)&=\frac{C_n\lambda^{-(n+1)}}{n+1}\log(1+(\lambda x)^{n+1})
+    F_n(x)&=\frac{C_n\lambda^{-(n+1)}}{n+1}\log(1+(\lambda x)^{n+1}).
   \end{aligned}
   \label{eq:poly}
 \]
+The functions $f_n$ have been chosen to be pure integer power laws for small
+argument, but vanish appropriately at large argument.
 We fit these functions to our numeric data for $N=3$. The resulting curves are
-also plotted in Fig.~\ref{fig:scaling_fits} as a dashed line.
-
-
-
+also plotted in Fig.~\ref{fig:scaling_fits} as dashed lines.
 
 %\begin{table}
 %  \centering
@@ -357,13 +358,16 @@ also plotted in Fig.~\ref{fig:scaling_fits} as a dashed line.
 \begin{figure}
   \input{figs/fig-susmag}
   \caption{
-    Comparisons of scaling forms \eqref{eq:sus_scaling} and
-    \eqref{eq:mag_scaling} to numeric data.  Data with
-    sampling error taken from Monte Carlo simulations of a $4096\times4096$
+    Scaling functions for (top) the susceptibility and (bottom) the
+    magnetization plotted in terms of the invarient combination
+    $h|t|^{-\beta\delta}$. Points with error bars show data with
+    sampling error taken from simulations of a $4096\times4096$
     square-lattice Ising model with periodic boundary conditions and $T_\c-T=0.01,0.02,\ldots,0.1$ and
-    $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. The solid lines show our
-    analytic results, while the dashed lines have polynomial corrections of
-    the form \eqref{eq:poly} fit to the data for $N=3$, with $C_1=-0.00368$,
+    $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. Color denotes the value of
+    $T$. The solid lines show our
+    analytic results \eqref{eq:sus_scaling} and \eqref{eq:mag_scaling}, while
+    the dashed lines show fits of \eqref{eq:sus_scaling_poly} and
+    \eqref{eq:mag_scaling_poly} to the data for $N=3$, with $C_1=-0.00368$,
     $C_2=-0.0191$, $C_3=0.0350$, and $\lambda=2.42$.
   }
   \label{fig:scaling_fits}
@@ -374,7 +378,7 @@ and the analytic nature of the free energy to derive the universal scaling
 functions for the free energy, and in \twodee the magnetization and
 susceptibility, in the limit of small $t$ and $h$. Because of an essential
 singularity in these functions at $h=0$---the abrupt transition line---their
-form cannot be modified by analytic redefinition of control or thermodynamic
+form cannot be brought into that of regular functions by analytic redefinition of control or thermodynamic
 variables. These predictions match the results of simulations well. Having
 demonstrated that the essential singularity in thermodynamic functions at the
 abrupt singularity leads to observable effects. we hope that these functional

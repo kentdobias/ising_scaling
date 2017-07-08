@@ -50,7 +50,7 @@ set origin 0,0
 set xrange [-20:1200]
 set yrange [1.18:1.75]
 set ylabel offset 1,0 '$M|t|^{-\beta}$'
-set xlabel '$h|t|^{-\Delta}$'
+set xlabel '$h|t|^{-\beta\delta}$'
 set xtics format '%g'
 
 plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B + (polyint(Tc * C1, lamb, 1, 10**$1) + polyint(Tc * C2, lamb, 2, 10**$1) + polyint(Tc * C3, lamb, 3, 10**$1)) / B) smooth csplines with lines dt 2 lw 2 lc black
@@ -62,7 +62,7 @@ set origin 0.31,0.5 + 0.29 / 2
 set xrange [-3:3]
 set yrange [-4.5:-1.5]
 set ylabel offset 2.5,0 '\footnotesize$\chi|t|^\gamma$'
-set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\Delta}$'
+set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\beta\delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize$10^{%g}$' -4,1,-2
 
@@ -73,7 +73,7 @@ set origin 0.31,0.23 / 2
 set xrange [-3:3]
 set yrange [1.18:1.75]
 set ylabel offset 4,0 '\footnotesize$M|t|^{-\beta}$'
-set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\Delta}$'
+set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\beta\delta}$'
 set xtics format '\footnotesize$10^{%g}$' -2,2,3
 set ytics format '\footnotesize {%g}' 1.2,.2,1.6
 

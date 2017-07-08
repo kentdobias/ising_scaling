@@ -4,12 +4,14 @@ FIGS=fig-susmag
 DATA=data_square-4096
 FUNCS=fig-mag_scaling-func fig-sus_scaling-func
 
-all: ${FIGS:%=figs/%.tex}
-	rubber $(DOC).tex
-	dvipdf $(DOC).dvi
+all: ${DOC}.pdf
 
 figs/%.tex: figs/%.gplot ${DATA:%=data/%.dat} ${FUNCS:%=figs/%.dat}
 	gnuplot $< > $@
+
+${DOC}.pdf: ${DOC}.tex ${DOC}.bib ${FIGS:%=figs/%.tex}
+	rubber $(DOC).tex
+	dvipdf $(DOC).dvi
 
 clean:
 	rubber --clean $(DOC)
