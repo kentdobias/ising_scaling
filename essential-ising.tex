@@ -311,7 +311,7 @@ How predictive are these scaling forms in the proximity of the critical point
 and the abrupt transition line? We simulated the \twodee Ising model on square lattice using a form of the Wolff algorithm modified
 to remain efficient in the presence of an external field. Briefly, the external field $H$ is applied by adding an extra spin $s_0$ with coupling $|H|$ to all others
 \cite{dimitrovic.1991.finite}. A quickly converging estimate for the magnetization in the finite-size system was then made by taking $M=\sgn(H)s_0\sum s_i$, i.e., the magnetization relative to the external spin. For the \twodee Ising model on a square lattice, exact results at zero temperature have $\fS(0)=4/T_c$, $\fM(0)=(2^{5/2}\arcsinh1)^\beta$ \cite{onsager.1944.crystal}, and $\fX(0)=C_{0-}/T_\c$ with $C_{0-}=0.025\,536\,971\,9$
-\cite{barouch.1973.susceptibility}, so that $B=\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$ and $A=\frac\pi2\fX(0)/B^2=2^{11/8}\pi^3(\arcsinh1)^{19/4}C_{0-}$. 
+\cite{barouch.1973.susceptibility}, so that $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$ and $A=\frac\pi2\fX(0)/B^2=2^{11/8}\pi^3(\arcsinh1)^{19/4}C_{0-}$. 
 Data was then taken for susceptibility and
 magnetization for $T_\c-T,H\leq0.1$. This data is plotted in
 Fig.~\ref{fig:scaling_fits}, along with collapses of data onto a single universal curve
@@ -326,10 +326,13 @@ Therefore, we also fit those corrections of the form
   \fM^{\twodee\prime}(X)&=\fM^\twodee(X)+\frac{T_\c}B\sum_{n=1}^NF_n(BX)
 \end{align}
 where $F_n'(x)=f_n(x)$ and
-\begin{align}
-  f_n(x)&=\frac{C_nx^n}{1+(\lambda x)^{n+1}}\\
-  F_n(x)&=\frac{C_n\lambda^{-(n+1)}}{n+1}\log(1+(\lambda x)^{n+1})
-\end{align}
+\[
+  \begin{aligned}
+    f_n(x)&=\frac{C_nx^n}{1+(\lambda x)^{n+1}}\\
+    F_n(x)&=\frac{C_n\lambda^{-(n+1)}}{n+1}\log(1+(\lambda x)^{n+1})
+  \end{aligned}
+  \label{eq:poly}
+\]
 We fit these functions to our numeric data for $N=3$. The resulting curves are
 also plotted in Fig.~\ref{fig:scaling_fits} as a dashed line.
 
