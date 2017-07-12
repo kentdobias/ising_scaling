@@ -6,10 +6,10 @@ FUNCS=fig-mag_scaling-func fig-sus_scaling-func
 
 all: ${DOC}.pdf
 
-figs/%.tex: figs/%.gplot ${DATA:%=data/%.dat} ${FUNCS:%=figs/%.dat}
+%.tex: figs/%.gplot ${DATA:%=data/%.dat} ${FUNCS:%=figs/%.dat}
 	gnuplot $< > $@
 
-${DOC}.pdf: ${DOC}.tex ${DOC}.bib ${FIGS:%=figs/%.tex}
+${DOC}.pdf: ${DOC}.tex ${DOC}.bib ${FIGS:%=%.tex}
 	rubber $(DOC).tex
 	dvipdf $(DOC).dvi
 
@@ -17,5 +17,5 @@ clean:
 	rubber --clean $(DOC)
 	rm -f $(DOC).pdf
 	rm -f $(DOC)Notes.bib
-	rm -f ${FIGS:%=figs/%.tex}
+	rm -f ${FIGS:%=%.tex}
 

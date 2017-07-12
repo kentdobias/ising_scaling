@@ -19,10 +19,9 @@ B = Tc**2 * M0 / (16 * pi)
 C0 = 0.0255369719
 A = pi / 2 * C0 / (B**2 * Tc)
 
-C1 = -0.00368218
-C2 = -0.0190753
-C3 = 0.0349601
-lamb = 2.41718
+c0 = -0.012384
+lamb = 1.76962
+A2 = pi / 2 * (C0 / Tc - c0) / B**2
 
 susfunc = "figs/fig-sus_scaling-func.dat"
 magfunc = "figs/fig-mag_scaling-func.dat"
@@ -43,7 +42,7 @@ set mxtics 5
 set mytics 5
 set bmargin 0.2
 
-plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B):(10**(3+$2) * A * B**2 + 10**3 * (poly(C1, lamb, 1, 10**$1) + poly(C2, lamb, 2, 10**$1) + poly(C3, lamb, 3, 10**$1))) with lines dt 2 lw 2 lc black
+plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B):(10**(3+$2) * A2 * B**2 + 10**3 * poly(c0, lamb, 0, 10**$1)) with lines dt 2 lw 2 lc black
 
 set bmargin -1
 set tmargin 0.2
@@ -54,7 +53,7 @@ set ylabel offset 1,0 '$M|t|^{-\beta}$'
 set xlabel '$h|t|^{-\beta\delta}$'
 set xtics format '%g'
 
-plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B + (polyint(Tc * C1, lamb, 1, 10**$1) + polyint(Tc * C2, lamb, 2, 10**$1) + polyint(Tc * C3, lamb, 3, 10**$1)) / B) smooth csplines with lines dt 2 lw 2 lc black
+plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A2 * B + polyint(Tc * c0, lamb, 0, 10**$1) / B) smooth csplines with lines dt 2 lw 2 lc black
 
 set logscale xy
 set tmargin -1
@@ -71,7 +70,7 @@ set xtics add ('$\footnotesize10^{-2}$' 10**(-2), "" 0.1, '$\footnotesize10^0$' 
 set mytics 5
 set ytics format '\footnotesize$10^{%T}$' 0.00001,10,0.01
 
-plot num using (X($2, $3)):($10 * t($2)**gamma):($11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B):(10**$2 * A * B**2 + poly(C1, lamb, 1, 10**$1) + poly(C2, lamb, 2, 10**$1) + poly(C3, lamb, 3, 10**$1)) with lines dt 2 lw 2 lc black
+plot num using (X($2, $3)):($10 * t($2)**gamma):($11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B):(10**$2 * A2 * B**2 + poly(c0, lamb, 0, 10**$1)) with lines dt 2 lw 2 lc black
 
 unset logscale xy
 set logscale x
@@ -82,5 +81,5 @@ set ylabel offset 4,0 '\footnotesize$M|t|^{-\beta}$'
 set ytics format '\footnotesize {%g}' 1.2,0.2,1.8
 set mytics 5
 
-plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + Tc * A * B * 10**$2) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B + (polyint(Tc * C1, lamb, 1, 10**$1) + polyint(Tc * C2, lamb, 2, 10**$1) + polyint(Tc * C3, lamb, 3, 10**$1)) / B) with lines dt 2 lw 2 lc black
+plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + Tc * A * B * 10**$2) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A2 * B + polyint(Tc * c0, lamb, 0, 10**$1) / B) with lines dt 2 lw 2 lc black
 
