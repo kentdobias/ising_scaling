@@ -1,0 +1,18 @@
+
+The renormalization group and the scaling theories that result from its use
+have become essential to our understanding of singular behavior in
+thermodynamic functions at continuous phase transitions. Despite this, they
+have long been viewed as irrelevant to the quantitative study of abrupt phase
+transitions, and likewise the presence of an abrupt phase transition has
+typically been considered irrelevant to scaling analysis. Our work
+demonstrates, for one common model with both a continuous and a
+line of abrupt transitions, that well-known singularities in thermodynamic
+functions at the abrupt transition long assumed to be unobservable are in fact
+part of the scaling theory of the critical point, and make explicit
+predictions confirmed by numerics. This result indicates that many published
+statistical models whose abrupt transitions were not incorporated into scaling
+theories should be revisited, and introduces a novel new method for
+determining new universal scaling properties in previously poorly-understood
+regimes.
+
+
