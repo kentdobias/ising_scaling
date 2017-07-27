@@ -373,24 +373,43 @@ correction appears to match data quite well.
   \label{fig:scaling_fits}
 \end{figure}
 
-We have used results from the properties of the metastable Ising ferromagnet
-and the analytic nature of the free energy to derive universal scaling
-functions for the free energy, and in \twodee the magnetization and
-susceptibility, in the limit of small $t<0$ and $h$. Because of an essential
-singularity in these functions at $h=0$---the abrupt transition line---their
-form cannot be brought into that of any regular function by analytic
-redefinition of control or thermodynamic variables. These predictions match
-the results of simulations well. Having demonstrated that the essential
-singularity in thermodynamic functions at the abrupt transition leads to
-observable scaling effects, we hope that these functional forms will be used in
-conjunction with traditional perturbation methods to better express the
-equation of state of the Ising model in the whole of its parameter space.
+Abrupt phase transitions, such as the jump in magnetization in the Ising
+model below $T_c$, are known to imply essential singularities in the free
+energy that are usually thought to be unobservable in practice. We have
+argued that this essential singularity controls the universal scaling
+behavior near continuous phase transitions, and have derived an explicit
+analytical form for the singularity in the free energy, magnetization,
+and susceptibility for the Ising model. We have developed a Wolff algorithm 
+for the Ising model in a field, and showed that incorporating our singularity
+into the scaling function gives good convergence to the simulations in \twodee.
+
+Our results should allow improved high-precision functional forms for the free
+energy~\cite{CaselleXXX}, and should have implications for the scaling
+of correlation functions~\cite{YJXXX,XXX}. Our methods might be generalized
+to predict similar singularities in systems where nucleation and metastability
+are proximate to continuous phase transitions, such as 2D superfluid
+transitions~\cite{ALHN}, the melting of 2D crystals~\cite{XXX}, and
+freezing transitions in glasses, spin glasses, and other disordered systems.
+
+
+%We have used results from the properties of the metastable Ising ferromagnet
+%and the analytic nature of the free energy to derive universal scaling
+%functions for the free energy, and in \twodee the magnetization and
+%susceptibility, in the limit of small $t<0$ and $h$. Because of an essential
+%singularity in these functions at $h=0$---the abrupt transition line---their
+%form cannot be brought into that of any regular function by analytic
+%redefinition of control or thermodynamic variables. These predictions match
+%the results of simulations well. Having demonstrated that the essential
+%singularity in thermodynamic functions at the abrupt transition leads to
+%observable scaling effects, we hope that these functional forms will be used in
+%conjunction with traditional perturbation methods to better express the
+%equation of state of the Ising model in the whole of its parameter space.
 
 \begin{acknowledgments}
   The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
-  for helpful conversations. We would also like to thank Jim Langer for his
-  insightful canonical papers on this subject. This work was partially supported by NSF grant
-  DMR-1312160.
+  for helpful conversations. JPS thanks Jim Langer for past inspiration,
+  guidance, and encouragement. This work was supported by NSF grants
+  DMR-1312160 and DMR-1719490.
 \end{acknowledgments}
 
 \bibliography{essential-ising}
