@@ -202,7 +202,7 @@ same singular behavior as the real part of the equilibrium free energy, and
 that for small $t$, $h$, $\im F(t,h)=|t|^{2-\alpha}\fiF(h|t|^{-\beta\delta})$,
 where
 \[
-  \fiF(X)=-A\Theta(-X)(-BX)^be^{-1/(-BX)^{\dim-1}}
+  \fiF(X)=A\Theta(-X)(-BX)^be^{-1/(-BX)^{\dim-1}}
   \label{eq:im.scaling}
 \]
 and $\Theta$ is the Heaviside function. Results from combining an analysis of
@@ -224,14 +224,14 @@ given our scaling ansatz, yielding
 \def\eqthreedeeone{
   \fF^\threedee(Y/B)&=
   \frac{A}{12}\frac{e^{-1/Y^2}}{Y^2}
-  \bigg[4Y\Gamma(\tfrac23)E_{5/3}(-Y^{-2})
+  \bigg[\Gamma(\tfrac16)E_{7/6}(-Y^{-2})
 }
 \def\eqthreedeetwo{
-  -\Gamma(\tfrac16)E_{7/6}(-Y^{-2})\bigg]
+  -4Y\Gamma(\tfrac23)E_{5/3}(-Y^{-2})\bigg]
 }
 \def\eqfourdeeone{
   \fF^\fourdee(Y/B)&=
-  \frac{A}{9\pi}\frac{e^{1/Y^3}}{Y^2}
+  -\frac{A}{9\pi}\frac{e^{1/Y^3}}{Y^2}
   \Big[3\ei(-Y^{-3})
 }
 \def\eqfourdeetwo{
@@ -242,7 +242,7 @@ given our scaling ansatz, yielding
 \begin{align}
   &\begin{aligned}
     \eqthreedeeone\\
-    &\hspace{8em}
+    &\hspace{7em}
     \eqthreedeetwo
   \end{aligned}
   \\
@@ -264,13 +264,13 @@ At the level of truncation of \eqref{eq:im.scaling} at which we are working
 the Kramers--Kronig relation does not converge in \twodee. However, higher
 moments can still be extracted, e.g., the susceptibility, by taking
 \[
-  \chi=\pd[2]Fh
-  =\frac2\pi\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'.
+  \chi=\pd MH=-\frac1{T_\c}\pd[2]Fh
+  =-\frac2{\pi T_\c}\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'.
 \]
 With a scaling form defined by $\chi=|t|^{-\gamma}\fX(h|t|^{-\beta\delta})$,
 this yields
 \[
-  \fX^\twodee(Y/B)=\frac{AB^2}{\pi Y^3}\big[Y(Y-1)-e^{1/Y}\ei(-1/Y)\big]
+  \fX^\twodee(Y/B)=\frac{AB^2}{\pi T_\c Y^3}\big[Y(Y-1)-e^{1/Y}\ei(-1/Y)\big]
   \label{eq:sus_scaling}
 \]
 Scaling forms for the free energy can then be extracted by direct integration
@@ -278,9 +278,9 @@ and their constants of integration fixed by known zero field values, yielding
 \begin{align}
   \label{eq:mag_scaling}
   \fM^\twodee(Y/B)
-    &=\fM(0)+\frac{ABT_\c}{\pi}\bigg(1-\frac{Y-1}Ye^{1/Y}\ei(-1/Y)\bigg)\\
+    &=\fM(0)+\frac{AB}{\pi}\bigg(1-\frac{Y-1}Ye^{1/Y}\ei(-1/Y)\bigg)\\
   \fF^\twodee(Y/B)
-    &=\fF(0)+T_\c Y\bigg(\frac{\fM(0)}B+\frac{AT_\c}\pi e^{1/Y}\ei(-1/Y)\bigg)
+    &=-Y\bigg(\frac{\fM(0)}B-\frac{A}\pi e^{1/Y}\ei(-1/Y)\bigg)
 \end{align}
 with $F(t,h)=|t|^{2-\alpha}\fF(h|t|^{-\beta\delta})+t^{2-\alpha}\log|t|$ in
 two dimensions.
@@ -325,8 +325,8 @@ $C_0^-=0.025\,536\,971\,9$ \cite{barouch.1973.susceptibility}, so that
 $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$. If we
 assume incorrectly that \eqref{eq:sus_scaling} is the true asymptotic form of
 the susceptibility scaling function, then
-$\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi$ and the constant
-$A$ is fixed to $A=\pi\fX(0)/2B^2=2^{11/8}\pi^3(\arcsinh1)^{19/4}C_0^-$.  The
+$\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi T_\c$ and the constant
+$A$ is fixed to $A=\pi T_\c\fX(0)/2B^2=2^{19/8}\pi^3(\arcsinh1)^{15/4}C_0^-$.  The
 resulting scaling functions $\fX$ and $\fM$ are plotted as solid lines in
 Fig.~\ref{fig:scaling_fits}. As can be seen, there is very good agreement
 between our proposed functional forms and what is measured.  However, there
@@ -349,8 +349,10 @@ where $F_n'(Y)=f_n(Y)$ and
 The functions $f_n$ have been chosen to be pure integer power laws for small
 argument, but vanish appropriately at large argument. This is necessary
 because the susceptibility vanishes with $h|t|^{-\beta\delta}$ while bare
-polynomial corrections would not.  We fit these functions to our numeric data
-for $N=0$ while requiring that $C_0^-/T_\c=\fX'(0)=c_0+2AB^2/\pi$. The
+polynomial corrections would not.  We fit these functions to known moments of
+the free energy's scaling function
+\cite{mangazeev.2008.variational,mangazeev.2010.scaling} our numeric data
+for $N=0$. The
 resulting curves are also plotted as dashed lines in
 Fig.~\ref{fig:scaling_fits}. Our singular scaling function with one low-order
 correction appears to match data quite well.
@@ -385,10 +387,10 @@ into the scaling function gives good convergence to the simulations in \twodee.
 
 Our results should allow improved high-precision functional forms for the free
 energy~\cite{caselle.2001.critical}, and should have implications for the scaling
-of correlation functions~\cite{YJXXX,XXX}. Our methods might be generalized
+of correlation functions~\cite{chen.2013.universal,wu.1976.spin}. Our methods might be generalized
 to predict similar singularities in systems where nucleation and metastability
 are proximate to continuous phase transitions, such as 2D superfluid
-transitions~\cite{ALHN}, the melting of 2D crystals~\cite{XXX}, and
+transitions~\cite{ambegaokar.1978.dissipation,ambegaokar.1980.dynamics}, the melting of 2D crystals~\cite{XXX}, and
 freezing transitions in glasses, spin glasses, and other disordered systems.
 
 
