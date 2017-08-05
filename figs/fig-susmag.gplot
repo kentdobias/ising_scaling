@@ -29,7 +29,7 @@ GC(i) = G(i) * (2 * asinh(1))**2 * (Ch * (2 * asinh(1))**(-Delta))**i
 M0 = (2**2.5 * asinh(1))**0.125
 B = Tc**2 * M0 / (16 * pi)
 C0 = 0.0255369719
-A = pi / 2 * C0 / (B**2 * Tc)
+A = pi / 2 * C0 / (B**2)
 
 #c0 = -0.012384
 #lamb = 1.76962
@@ -41,10 +41,10 @@ A = pi / 2 * C0 / (B**2 * Tc)
 #A2 = pi / 2 * C0 / (B2**2 * Tc)
 
 n = 1
-c(i) = i == 1 ? 0.0037735   : 0
+c(i) = i == 1 ? 0.00856277   : 0
 lamb = 10.487
 B2 = B
-A2 = 0.749317
+A2 = 1.70034
 
 #n2 = 2
 #c2(i) = i == 1 ? -0.177238   : \
@@ -71,14 +71,14 @@ A2 = 0.749317
 #A3 = 0.88157
 
 n2 = 5
-c2(i) = i == 1 ? 0.00281829  : \
-        i == 2 ? 0.000632215 : \
-        i == 3 ? -0.0911689  : \
-        i == 4 ? 1.93584     : \
-        i == 5 ? -24.7397    : 0
+c2(i) = i == 1 ? 0.00639522  : \
+        i == 2 ? 0.00143461  : \
+        i == 3 ? -0.206879   : \
+        i == 4 ? 4.39278     : \
+        i == 5 ? -56.1389    : 0
 lamb2 = 13.2489
 B3 = B
-A3 = 0.845002
+A3 = 1.91747
 
 susfunc = "figs/fig-sus_scaling-func.dat"
 magfunc = "figs/fig-mag_scaling-func.dat"
@@ -91,15 +91,15 @@ set key off
 set size 1,1 - 0.52
 set origin 0,0.52
 set xrange [-40:1200]
-set yrange [-0.4:14.4]
-set ylabel offset 1,0 '$\chi|t|^{\gamma}\times 10^3$'
+set yrange [-1:33]
+set ylabel offset 1,0 '$T_\c\chi|t|^{\gamma}\times 10^3$'
 set lmargin 6
 set xtics format ''
 set mxtics 5
 set mytics 5
 set bmargin 0.2
 
-plot num using (X($2, $3)):(10**3 * $10 * t($2)**gamma):(10**3 * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B2):(10**(3+$2) * A2 * B2**2 + 10**3 * (sum[i=1:n] poly(c(i), lamb, i-1, 10**$1))) with lines dt 2 lw 2 lc black, susfunc using (10**$1 / B2):(10**(3+$2) * A3 * B3**2 + 10**3 * (sum[i=1:n2] poly(c2(i), lamb2, i-1, 10**$1))) with lines dt 3 lw 2 lc black, susfunc using (10**$1 / B2):(-10**3 * (sum[i=1:7] GC(i + 1) * i * (i + 1) * (10**$1 / B2)**(i-1) / Tc)) with lines dt 5 lw 2 lc black
+plot num using (X($2, $3)):(10**3 * Tc * $10 * t($2)**gamma):(10**3 * Tc * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B2):(10**(3+$2) * A2 * B2**2 + 10**3 * (sum[i=1:n] poly(c(i), lamb, i-1, 10**$1))) with lines dt 2 lw 2 lc black, susfunc using (10**$1 / B2):(10**(3+$2) * A3 * B3**2 + 10**3 * (sum[i=1:n2] poly(c2(i), lamb2, i-1, 10**$1))) with lines dt 3 lw 2 lc black, susfunc using (10**$1 / B2):(-10**3 * (sum[i=1:7] GC(i + 1) * i * (i + 1) * (10**$1 / B2)**(i-1))) with lines dt 5 lw 2 lc black
 
 set bmargin -1
 set tmargin 0.2
@@ -110,7 +110,7 @@ set ylabel offset 1,0 '$M|t|^{-\beta}$'
 set xlabel '$h|t|^{-\beta\delta}$'
 set xtics format '%g'
 
-plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + 10**($2) * Tc * A * B) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B2):(M0 + 10**($2) * Tc * A2 * B2 + (sum[i=1:n] polyint(Tc * c(i), lamb, i-1, 10**$1)) / B2) smooth csplines with lines dt 2 lw 2 lc black, magfunc using (10**$1 / B3):(M0 + 10**($2) * Tc * A3 * B3 + (sum[i=1:n2] polyint(Tc * c2(i), lamb2, i-1, 10**$1)) / B3) smooth csplines with lines dt 3 lw 2 lc black, magfunc using (10**$1 / B):(-sum[i=1:8] GC(i) * i * (10**$1 / B)**(i-1)) with lines dt 5 lw 2 lc black
+plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + 10**($2) * A * B) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B2):(M0 + 10**($2) * A2 * B2 + (sum[i=1:n] polyint(c(i), lamb, i-1, 10**$1)) / B2) smooth csplines with lines dt 2 lw 2 lc black, magfunc using (10**$1 / B3):(M0 + 10**($2) * A3 * B3 + (sum[i=1:n2] polyint(c2(i), lamb2, i-1, 10**$1)) / B3) smooth csplines with lines dt 3 lw 2 lc black, magfunc using (10**$1 / B):(-sum[i=1:8] GC(i) * i * (10**$1 / B)**(i-1)) with lines dt 5 lw 2 lc black
 
 set logscale xy
 set tmargin -1
@@ -118,8 +118,8 @@ set lmargin -1
 set size 0.65,0.325
 set origin 0.31,0.5 + 0.29 / 2
 set xrange [0.0015:1900]
-set yrange [0.00002:0.02]
-set ylabel offset 2.5,0 '\footnotesize$\chi|t|^\gamma$'
+set yrange [0.00002:0.08]
+set ylabel offset 2.5,0 '\footnotesize$T_\c\chi|t|^\gamma$'
 set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\beta\delta}$'
 set mxtics 5
 set xtics format '' -2,10,1000
@@ -127,7 +127,7 @@ set xtics add ('$\footnotesize10^{-2}$' 10**(-2), "" 0.1, '$\footnotesize10^0$' 
 set mytics 5
 set ytics format '\footnotesize$10^{%T}$' 0.00001,10,0.01
 
-plot num using (X($2, $3)):($10 * t($2)**gamma):($11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B2):(10**$2 * A2 * B2**2 + (sum[i=1:n] poly(c(i), lamb, i-1, 10**$1))) with lines dt 2 lw 2 lc black, susfunc using (10**$1 / B3):(10**$2 * A3 * B3**2 + (sum[i=1:n2] poly(c2(i), lamb2, i-1, 10**$1))) with lines dt 3 lw 2 lc black, susfunc using (10**$1 / B):(-sum[i=2:8] GC(i) * i * (i-1) * (10**$1 / B)**(i-2) / Tc) with lines dt 5 lw 2 lc black
+plot num using (X($2, $3)):(Tc * $10 * t($2)**gamma):(Tc * $11 * t($2)**gamma):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 2 lc rgb "black", susfunc using (10**$1 / B2):(10**$2 * A2 * B2**2 + (sum[i=1:n] poly(c(i), lamb, i-1, 10**$1))) with lines dt 2 lw 2 lc black, susfunc using (10**$1 / B3):(10**$2 * A3 * B3**2 + (sum[i=1:n2] poly(c2(i), lamb2, i-1, 10**$1))) with lines dt 3 lw 2 lc black, susfunc using (10**$1 / B):(-sum[i=2:8] GC(i) * i * (i-1) * (10**$1 / B)**(i-2)) with lines dt 5 lw 2 lc black
 
 unset logscale xy
 set logscale x
@@ -138,5 +138,5 @@ set ylabel offset 4,0 '\footnotesize$M|t|^{-\beta}$'
 set ytics format '\footnotesize {%g}' 1.2,0.2,1.8
 set mytics 5
 
-plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + Tc * A * B * 10**$2) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B2):(M0 + 10**($2) * Tc * A2 * B2 + (sum[i=1:n] polyint(Tc * c(i), lamb, i-1, 10**$1)) / B2) with lines dt 2 lw 2 lc black, magfunc using (10**$1 / B3):(M0 + 10**($2) * Tc * A3 * B3 + (sum[i=1:n2] polyint(Tc * c2(i), lamb2, i-1, 10**$1)) / B2) with lines dt 3 lw 2 lc black, magfunc using (10**$1 / B):(-sum[i=1:8] GC(i) * i * (10 **$1 / B)**(i-1)) with lines dt 5 lw 2 lc black
+plot num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)):(hsv2rgb(20 * t($2), 1, 1)) with yerrorbars pt 0 lc rgb variable, magfunc using (10**$1 / B):(M0 + A * B * 10**$2) with linespoints pt 0 lw 2 lc black, magfunc using (10**$1 / B2):(M0 + 10**($2) * A2 * B2 + (sum[i=1:n] polyint(c(i), lamb, i-1, 10**$1)) / B2) with lines dt 2 lw 2 lc black, magfunc using (10**$1 / B3):(M0 + 10**($2) * A3 * B3 + (sum[i=1:n2] polyint(c2(i), lamb2, i-1, 10**$1)) / B2) with lines dt 3 lw 2 lc black, magfunc using (10**$1 / B):(-sum[i=1:8] GC(i) * i * (10 **$1 / B)**(i-1)) with lines dt 5 lw 2 lc black
 

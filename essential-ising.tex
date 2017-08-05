@@ -267,10 +267,10 @@ moments can still be extracted, e.g., the susceptibility, by taking
   \chi=\pd MH=-\frac1{T_\c}\pd[2]Fh
   =-\frac2{\pi T_\c}\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'.
 \]
-With a scaling form defined by $\chi=|t|^{-\gamma}\fX(h|t|^{-\beta\delta})$,
+With a scaling form defined by $T_\c\chi=|t|^{-\gamma}\fX(h|t|^{-\beta\delta})$,
 this yields
 \[
-  \fX^\twodee(Y/B)=\frac{AB^2}{\pi T_\c Y^3}\big[Y(Y-1)-e^{1/Y}\ei(-1/Y)\big]
+  \fX^\twodee(Y/B)=\frac{AB^2}{\pi Y^3}\big[Y(Y-1)-e^{1/Y}\ei(-1/Y)\big]
   \label{eq:sus_scaling}
 \]
 Scaling forms for the free energy can then be extracted by direct integration
@@ -320,13 +320,12 @@ single curve, is plotted in Fig.~\ref{fig:scaling_fits}.
 
 For the \twodee Ising model on a square lattice, exact results at zero
 temperature have $\fS(0)=4/T_\c$, $\fM(0)=(2^{5/2}\arcsinh1)^\beta$
-\cite{onsager.1944.crystal}, and $\fX(0)=C_0^-/T_\c$ with
-$C_0^-=0.025\,536\,971\,9$ \cite{barouch.1973.susceptibility}, so that
+\cite{onsager.1944.crystal}, and $\fX(0)=C_0^-=0.025\,536\,971\,9$ \cite{barouch.1973.susceptibility}, so that
 $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$. If we
 assume incorrectly that \eqref{eq:sus_scaling} is the true asymptotic form of
 the susceptibility scaling function, then
-$\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi T_\c$ and the constant
-$A$ is fixed to $A=\pi T_\c\fX(0)/2B^2=2^{19/8}\pi^3(\arcsinh1)^{15/4}C_0^-$.  The
+$T_\c\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi$ and the constant
+$A$ is fixed to $A=\pi\fX(0)/2B^2=2^{19/8}\pi^3(\arcsinh1)^{15/4}C_0^-$.  The
 resulting scaling functions $\fX$ and $\fM$ are plotted as solid lines in
 Fig.~\ref{fig:scaling_fits}. As can be seen, there is very good agreement
 between our proposed functional forms and what is measured.  However, there
