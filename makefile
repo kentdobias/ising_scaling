@@ -1,8 +1,8 @@
 
 DOC=essential-ising
-FIGS=fig-susmag
+FIGS=fig-susmag fig-series
 DATA=data_square-4096
-FUNCS=fig-mag_scaling-func fig-sus_scaling-func
+FUNCS=fig-mag_scaling-func fig-sus_scaling-func fig-series-data
 
 all: ${DOC}.pdf
 
