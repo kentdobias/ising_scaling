@@ -281,6 +281,7 @@ and their constants of integration fixed by known zero field values, yielding
     &=\fM(0)+\frac{AB}{\pi}\bigg(1-\frac{Y-1}Ye^{1/Y}\ei(-1/Y)\bigg)\\
   \fF^\twodee(Y/B)
     &=-Y\bigg(\frac{\fM(0)}B-\frac{A}\pi e^{1/Y}\ei(-1/Y)\bigg)
+    \label{eq:2d_free_scaling}
 \end{align}
 with $F(t,h)=|t|^{2-\alpha}\fF(h|t|^{-\beta\delta})+t^{2-\alpha}\log|t|$ in
 two dimensions.
@@ -364,12 +365,13 @@ correction appears to match data quite well.
     $h|t|^{-\beta\delta}$. Points with error bars show data with sampling
     error taken from simulations of a $4096\times4096$ square-lattice Ising
     model with periodic boundary conditions and $T_\c-T=0.01,0.02,\ldots,0.1$
-    and $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. Color denotes the value of
-    $T$, with red corresponding to $0.01$ and violet to $0.1$. The solid lines
+    and $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. The solid blue lines
     show our analytic results \eqref{eq:sus_scaling} and
-    \eqref{eq:mag_scaling}, while the dashed lines show fits of
-    \eqref{eq:sus_scaling_poly} and \eqref{eq:mag_scaling_poly} to the data
-    for $N=0$, with $c_0=-0.0124$ and $\lambda=1.77$.
+    \eqref{eq:mag_scaling}, the dashed yellow lines show 
+    \eqref{eq:sus_scaling_poly} and \eqref{eq:mag_scaling_poly} for $N=0$, the
+    dotted green lines show the same for $N=4$, and the red line show the
+    polynomial resulting from truncating the series after the eight known
+    terms.
   }
   \label{fig:scaling_fits}
 \end{figure}
@@ -377,7 +379,13 @@ correction appears to match data quite well.
 \begin{figure}
   \input{fig-series}
   \caption{
-    Something
+    The series coefficients defined by $\tilde\fF(X)=\sum_nf_nX^n$. The blue
+    pluses correspond to the scaling form \eqref{eq:2d_free_scaling}, the
+    yellow saltires correspond to that form with the first four coefficients
+    fixed to known values (\eqref{eq:sus_scaling_poly} with $N=0$), the green
+    stars correspond to that form with the first eight coefficients fixed to
+    known values (\eqref{eq:sus_scaling_poly} with $N=4$), and the red squares
+    correspond to the first eight coefficients.
   }
   \label{fig:series}
 \end{figure}
