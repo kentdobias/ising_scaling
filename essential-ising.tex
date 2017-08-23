@@ -119,8 +119,10 @@ methods of critical droplet theory for the decay of an Ising system in a
 metastable state, i.e., an equilibrium Ising state for $T<T_\c$, $H>0$
 subjected to a small negative external field $H<0$. The existence of an
 essential singularity has also been suggested by transfer matrix
-\cite{mccraw.1978.metastability,enting.1980.investigation} and \textsc{rg}
-methods \cite{klein.1976.essential}.  It has long been known that the decay
+\cite{mccraw.1978.metastability,enting.1980.investigation,mangazeev.2008.variational,mangazeev.2010.scaling} and \textsc{rg}
+methods \cite{klein.1976.essential}, and a different kind of essential
+singularity is known to exist in the zero-temperature susceptibility
+\cite{orrick.2001.susceptibility,chan.2011.ising,guttmann.1996.solvability,nickel.1999.singularity,nickel.2000.addendum,assis.2017.analyticity}.  It has long been known that the decay
 rate $\Gamma$ of metastable states in statistical mechanics is often related
 to the metastable free energy $F$ by $\Gamma\propto\im F$
 \cite{langer.1969.metastable,penrose.1987.rigorous,gaveau.1989.analytic,privman.1982.analytic}.
@@ -264,10 +266,10 @@ At the level of truncation of \eqref{eq:im.scaling} at which we are working
 the Kramers--Kronig relation does not converge in \twodee. However, higher
 moments can still be extracted, e.g., the susceptibility, by taking
 \[
-  \chi=\pd MH=-\frac1{T_\c}\pd[2]Fh
-  =-\frac2{\pi T_\c}\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'.
+  \chi=\pd MH=-\frac1{T}\pd[2]Fh
+  =-\frac2{\pi T}\int_{-\infty}^\infty\frac{\im F(t,h')}{(h'-h)^3}\,\dd h'.
 \]
-With a scaling form defined by $T_\c\chi=|t|^{-\gamma}\fX(h|t|^{-\beta\delta})$,
+With a scaling form defined by $T\chi=|t|^{-\gamma}\fX(h|t|^{-\beta\delta})$,
 this yields
 \[
   \fX^\twodee(Y/B)=\frac{AB^2}{\pi Y^3}\big[Y(Y-1)-e^{1/Y}\ei(-1/Y)\big]
@@ -325,7 +327,7 @@ temperature have $\fS(0)=4/T_\c$, $\fM(0)=(2^{5/2}\arcsinh1)^\beta$
 $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$. If we
 assume incorrectly that \eqref{eq:sus_scaling} is the true asymptotic form of
 the susceptibility scaling function, then
-$T_\c\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi$ and the constant
+$T\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi$ and the constant
 $A$ is fixed to $A=\pi\fX(0)/2B^2=2^{19/8}\pi^3(\arcsinh1)^{15/4}C_0^-$.  The
 resulting scaling functions $\fX$ and $\fM$ are plotted as solid lines in
 Fig.~\ref{fig:scaling_fits}. As can be seen, there is very good agreement
@@ -405,7 +407,7 @@ energy~\cite{caselle.2001.critical}, and should have implications for the scalin
 of correlation functions~\cite{chen.2013.universal,wu.1976.spin}. Our methods might be generalized
 to predict similar singularities in systems where nucleation and metastability
 are proximate to continuous phase transitions, such as 2D superfluid
-transitions~\cite{ambegaokar.1978.dissipation,ambegaokar.1980.dynamics}, the melting of 2D crystals~\cite{XXX}, and
+transitions~\cite{ambegaokar.1978.dissipation,ambegaokar.1980.dynamics}, the melting of 2D crystals~\cite{dahm.1989.dynamics}, and
 freezing transitions in glasses, spin glasses, and other disordered systems.
 
 
@@ -424,7 +426,8 @@ freezing transitions in glasses, spin glasses, and other disordered systems.
 
 \begin{acknowledgments}
   The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
-  for helpful conversations. JPS thanks Jim Langer for past inspiration,
+  for helpful conversations. The authors would also like to think Jacques Perk
+  for pointing us to several insightful studies. JPS thanks Jim Langer for past inspiration,
   guidance, and encouragement. This work was supported by NSF grants
   DMR-1312160 and DMR-1719490.
 \end{acknowledgments}
