@@ -316,7 +316,8 @@ the presence of an external field. Briefly, the external field $H$ is applied
 by adding an extra spin $s_0$ with coupling $|H|$ to all others
 \cite{dimitrovic.1991.finite}. A quickly converging estimate for the
 magnetization in the finite-size system was then made by taking
-$M=\sgn(H)s_0\sum s_i$, i.e., the magnetization relative to the external spin.
+$M=\sgn(H)s_0\sum s_i$, i.e., the magnetization relative to the external spin
+\cite{kent-dobias.2018.wolff}.
 Data was then taken for susceptibility and magnetization for
 $T_\c-T,H\leq0.1$. This data, rescaled as appropriate to collapse onto a
 single curve, is plotted in Fig.~\ref{fig:scaling_fits}.
@@ -330,34 +331,23 @@ the susceptibility scaling function, then
 $T\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi$ and the constant
 $A$ is fixed to $A=\pi\fX(0)/2B^2=2^{19/8}\pi^3(\arcsinh1)^{15/4}C_0^-$.  The
 resulting scaling functions $\fX$ and $\fM$ are plotted as solid lines in
-Fig.~\ref{fig:scaling_fits}. As can be seen, there is very good agreement
-between our proposed functional forms and what is measured.  However, there
-are systematic differences that can be seen most clearly in the magnetization.
-Since our method is known to only be accurate for high moments of the free
-energy, we should expect that low moments require corrections.  Therefore, we
-also fit those corrections using 
-\begin{align}
-  \tilde\fX^\twodee(X)&=\fX^\twodee(X)+\sum_{n=0}^Nf_n(BX)\label{eq:sus_scaling_poly}\\
-  \tilde\fM^\twodee(X)&=\fM^\twodee(X)+\frac{T_\c}B\sum_{n=0}^NF_n(BX)\label{eq:mag_scaling_poly}
-\end{align}
-where $F_n'(Y)=f_n(Y)$ and
-\[
-  \begin{aligned}
-    f_n(Y)&=\frac{c_nx^n}{1+(\lambda Y)^{n+1}}\\
-    F_n(Y)&=\frac{c_n\lambda^{-(n+1)}}{n+1}\log(1+(\lambda Y)^{n+1}).
-  \end{aligned}
-  \label{eq:poly}
-\]
-The functions $f_n$ have been chosen to be pure integer power laws for small
-argument, but vanish appropriately at large argument. This is necessary
-because the susceptibility vanishes with $h|t|^{-\beta\delta}$ while bare
-polynomial corrections would not.  We fit these functions to known moments of
-the free energy's scaling function
-\cite{mangazeev.2008.variational,mangazeev.2010.scaling} our numeric data
-for $N=0$. The
-resulting curves are also plotted as dashed lines in
-Fig.~\ref{fig:scaling_fits}. Our singular scaling function with one low-order
-correction appears to match data quite well.
+Fig.~\ref{fig:scaling_fits}. Though there is good agreement
+between our functional forms and what is measured, there
+are systematic differences that can be seen most clearly in the
+magnetization. This is to be expected based on our earlier discussion: these
+scaling forms should only be expected to well-describe the singularity at the
+abrupt transition. Our forms both exhibit incorrect low-order
+coefficients at the transition (Fig.~\ref{fig:series}) and incorrect
+asymptotics as $h|t|^{-\beta\delta}$ becomes very large. In forthcoming work,
+we develop a method to incorporate the essential singularity in the scaling
+functions into a form that also incorporates known properties of the scaling
+functions in the rest of the configuration space using a Schofield-like
+parameterization \cite{kent-dobias.2018.parametric}. Fig.~\ref{fig:scaling_fits} shows a result as a
+dashed yellow line, which depicts the scaling form resulting from
+incorporating our singularity and the known series expansions of the scaling
+function at high temperature, low temperature, and at the critical isotherm to
+quadratic order. The low-order series coefficients of this modified form are
+also shown in Fig.~\ref{fig:series}.
 
 \begin{figure}
   \input{fig-susmag}
@@ -370,10 +360,11 @@ correction appears to match data quite well.
     and $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. The solid blue lines
     show our analytic results \eqref{eq:sus_scaling} and
     \eqref{eq:mag_scaling}, the dashed yellow lines show 
-    \eqref{eq:sus_scaling_poly} and \eqref{eq:mag_scaling_poly} for $N=0$, the
-    dotted green lines show the same for $N=4$, and the red line show the
-    polynomial resulting from truncating the series after the eight known
-    terms.
+    a scaling function modified to match known series expansions
+    in several known limits, and the
+    dotted green lines show the
+    polynomial resulting from truncating the series after the eight terms
+    reported by \cite{mangazeev.2008.variational,mangazeev.2010.scaling}.
   }
   \label{fig:scaling_fits}
 \end{figure}
@@ -383,11 +374,11 @@ correction appears to match data quite well.
   \caption{
     The series coefficients defined by $\tilde\fF(X)=\sum_nf_nX^n$. The blue
     pluses correspond to the scaling form \eqref{eq:2d_free_scaling}, the
-    yellow saltires correspond to that form with the first four coefficients
-    fixed to known values (\eqref{eq:sus_scaling_poly} with $N=0$), the green
-    stars correspond to that form with the first eight coefficients fixed to
-    known values (\eqref{eq:sus_scaling_poly} with $N=4$), and the red squares
-    correspond to the first eight coefficients.
+    yellow saltires correspond to a scaling function modified to match known
+    series expansions in several known limits, and the green
+    stars
+    correspond to the first eight coefficients from
+    \cite{mangazeev.2008.variational,mangazeev.2010.scaling}.
   }
   \label{fig:series}
 \end{figure}

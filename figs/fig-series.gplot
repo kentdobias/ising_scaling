@@ -10,13 +10,15 @@ set logscale y
 
 data = "figs/fig-series-data.dat"
 
-set xrange [-0.5:6.5]
-set yrange [0.0006:0.4]
+set xrange [0.5:8.5]
+set yrange [0.000005:5]
 set key off
 set xlabel '$n$'
-set ylabel offset 2 '$|f_n|$'
+set ylabel offset 1 '$|f_n|$'
 
-#set ytics format '\footnotesize$10^{%T}$' 0.001,10,1
+set ytics format ''
+
+set ytics add ('$\footnotesize10^{-5}$' 10**(-5),'$\footnotesize10^{-4}$' 10**(-4), '$\footnotesize10^{-3}$' 10**(-3),'$\footnotesize10^{-2}$' 10**(-2), '$\footnotesize10^{-1}$' 10**(-1),'$\footnotesize10^{0}$' 10**(0))
 
 plot \
   data using 1:2 with points lc rgb cc1, \

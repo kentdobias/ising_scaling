@@ -75,9 +75,9 @@ set bmargin 0.2
 
 plot \
   num using (X($2, $3)):(10**3 * Tc * $10 * t($2)**gamma):(10**3 * Tc * $11 * t($2)**gamma) with yerrorbars pt 0 lc black, \
-  susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  susfuncm using 1:(10**3 * $2) with lines lw 2 lc rgb cc2 dt 2, \
-  -10**3 * (sum[i=1:7] GC(i + 1) * i * (i + 1) * (x)**(i-1)) with lines lw 2 lc rgb cc3 dt 3
+  susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 3 lc rgb cc1 dt 1, \
+  susfuncm using 1:(10**3 * $2) with lines lw 3 lc rgb cc2 dt 2, \
+  -10**3 * (sum[i=1:7] GC(i + 1) * i * (i + 1) * (x)**(i-1)) with lines lw 3 lc rgb cc3 dt 3
 
 set bmargin -1
 set tmargin 0.2
@@ -90,30 +90,31 @@ set xtics format '%g'
 
 plot \
   num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)) with yerrorbars pt 0 lc black, \
-  magfunc using (10**$1 / B):(M0 + 10**($2) * A * B) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  magfuncm using 1:2 with lines lw 2 lc rgb cc2 dt 2, \
-  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 2 lc rgb cc4 dt 3
+  magfunc using (10**$1 / B):(M0 + 10**($2) * A * B) with linespoints pt 0 lw 3 lc rgb cc1 dt 1, \
+  magfuncm using 1:2 with lines lw 3 lc rgb cc2 dt 2, \
+  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 3 lc rgb cc3 dt 3
 
 set logscale xy
 set tmargin -1
 set lmargin -1
-set size 0.65,0.325
-set origin 0.31,0.5 + 0.29 / 2
+set size 0.7,0.325
+set origin 0.26,0.5 + 0.29 / 2
 set xrange [0.0015:1900]
 set yrange [0.00002:0.08]
-set ylabel offset 2.5,0 '\footnotesize$T\chi|t|^\gamma$'
+set ylabel offset 4,0 '\footnotesize$T\chi|t|^\gamma$'
 set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\beta\delta}$'
 set mxtics 5
-set xtics format '' -2,10,1000
+#set xtics format '' -2,10,1000
 set xtics add ('$\footnotesize10^{-2}$' 10**(-2), "" 0.1, '$\footnotesize10^0$' 1, "" 10, '$\footnotesize10^2$' 100, "" 1000)
 set mytics 5
-set ytics format '\footnotesize$10^{%T}$' 0.00001,10,0.01
+#set ytics format '\footnotesize$10^{%T}$' 0.00001,10,0.01
+set ytics add ('$\footnotesize10^{-4}$' 10**(-4), '$\footnotesize10^{-3}$' 10**(-3), '$\footnotesize10^{-2}$' 10**(-2))
 
 plot \
   num using (X($2, $3)):(Tc * $10 * t($2)**gamma):(Tc * $11 * t($2)**gamma) with yerrorbars pt 0 lc black, \
-  susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  susfuncm using 1:2 with lines lw 2 lc rgb cc2 dt 2, \
-  -sum[i=2:8] GC(i) * i * (i-1) * x**(i-2) with lines dt 3 lw 2 lc rgb cc4
+  susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 3 lc rgb cc1 dt 1, \
+  susfuncm using 1:2 with lines lw 3 lc rgb cc2 dt 2, \
+  -sum[i=2:8] GC(i) * i * (i-1) * x**(i-2) with lines dt 3 lw 3 lc rgb cc3
 
 unset logscale xy
 set logscale x
@@ -126,7 +127,7 @@ set mytics 5
 
 plot \
   num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)) with yerrorbars pt 0 lc black, \
-  magfunc using (10**$1 / B):(M0 + A * B * 10**$2) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  magfuncm using 1:2 with lines lw 2 lc rgb cc2 dt 2, \
-  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 2 lc rgb cc4 dt 3
+  magfunc using (10**$1 / B):(M0 + A * B * 10**$2) with linespoints pt 0 lw 3 lc rgb cc1 dt 1, \
+  magfuncm using 1:2 with lines lw 3 lc rgb cc2 dt 2, \
+  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 3 lc rgb cc3 dt 3
 
