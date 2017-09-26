@@ -53,7 +53,9 @@ A3 = 1.91747
 B3 = B
 
 susfunc = "figs/fig-sus_scaling-func.dat"
+susfuncm = "figs/fig-sus_scaling-func-mod.dat"
 magfunc = "figs/fig-mag_scaling-func.dat"
+magfuncm = "figs/fig-mag_scaling-func-mod.dat"
 
 num = "data/data_square-4096.dat"
 
@@ -64,7 +66,7 @@ set size 1,1 - 0.52
 set origin 0,0.52
 set xrange [-40:1200]
 set yrange [-1:33]
-set ylabel offset 1,0 '$T_\c\chi|t|^{\gamma}\times 10^3$'
+set ylabel offset 1,0 '$T\chi|t|^{\gamma}\times 10^3$'
 set lmargin 6
 set xtics format ''
 set mxtics 5
@@ -74,9 +76,8 @@ set bmargin 0.2
 plot \
   num using (X($2, $3)):(10**3 * Tc * $10 * t($2)**gamma):(10**3 * Tc * $11 * t($2)**gamma) with yerrorbars pt 0 lc black, \
   susfunc using (10**$1 / B):(10**(3+$2) * A * B**2) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  susfunc using (10**$1 / B2):(10**(3+$2) * A2 * B2**2 + 10**3 * (sum[i=1:n] poly(c(i), lamb, i-1, 10**$1))) with lines lw 2 lc rgb cc2 dt 2, \
-  susfunc using (10**$1 / B3):(10**(3+$2) * A3 * B3**2 + 10**3 * (sum[i=1:n2] poly(c2(i), lamb2, i-1, 10**$1))) with lines lw 2 lc rgb cc3 dt 3, \
-  -10**3 * (sum[i=1:7] GC(i + 1) * i * (i + 1) * (x)**(i-1)) with lines lw 2 lc rgb cc4 dt 4
+  susfuncm using 1:(10**3 * $2) with lines lw 2 lc rgb cc2 dt 2, \
+  -10**3 * (sum[i=1:7] GC(i + 1) * i * (i + 1) * (x)**(i-1)) with lines lw 2 lc rgb cc3 dt 3
 
 set bmargin -1
 set tmargin 0.2
@@ -90,9 +91,8 @@ set xtics format '%g'
 plot \
   num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)) with yerrorbars pt 0 lc black, \
   magfunc using (10**$1 / B):(M0 + 10**($2) * A * B) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  magfunc using (10**$1 / B2):(M0 + 10**($2) * A2 * B2 + (sum[i=1:n] polyint(c(i), lamb, i-1, 10**$1)) / B2) smooth csplines with lines lw 2 lc rgb cc2 dt 2, \
-  magfunc using (10**$1 / B3):(M0 + 10**($2) * A3 * B3 + (sum[i=1:n2] polyint(c2(i), lamb2, i-1, 10**$1)) / B3) smooth csplines with lines lw 2 lc rgb cc3 dt 3, \
-  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 2 lc rgb cc4 dt 4
+  magfuncm using 1:2 with lines lw 2 lc rgb cc2 dt 2, \
+  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 2 lc rgb cc4 dt 3
 
 set logscale xy
 set tmargin -1
@@ -101,7 +101,7 @@ set size 0.65,0.325
 set origin 0.31,0.5 + 0.29 / 2
 set xrange [0.0015:1900]
 set yrange [0.00002:0.08]
-set ylabel offset 2.5,0 '\footnotesize$T_\c\chi|t|^\gamma$'
+set ylabel offset 2.5,0 '\footnotesize$T\chi|t|^\gamma$'
 set xlabel offset 0,0.5 '\footnotesize$h|t|^{-\beta\delta}$'
 set mxtics 5
 set xtics format '' -2,10,1000
@@ -112,10 +112,8 @@ set ytics format '\footnotesize$10^{%T}$' 0.00001,10,0.01
 plot \
   num using (X($2, $3)):(Tc * $10 * t($2)**gamma):(Tc * $11 * t($2)**gamma) with yerrorbars pt 0 lc black, \
   susfunc using (10**$1 / B):(10**$2 * A * B**2) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  susfunc using (10**$1 / B2):(10**$2 * A2 * B2**2 + (sum[i=1:n] poly(c(i), lamb, i-1, 10**$1))) with lines lw 2 lc rgb cc2 dt 2, \
-  susfunc using (10**$1 / B3):(10**$2 * A3 * B3**2 + (sum[i=1:n2] poly(c2(i), lamb2, i-1, 10**$1))) with lines lw 2 lc rgb cc3 dt 3, \
-  -sum[i=2:8] GC(i) * i * (i-1) * x**(i-2) with lines dt 4 lw 2 lc rgb cc4, \
-  0.0705991 * x**(-14./15)
+  susfuncm using 1:2 with lines lw 2 lc rgb cc2 dt 2, \
+  -sum[i=2:8] GC(i) * i * (i-1) * x**(i-2) with lines dt 3 lw 2 lc rgb cc4
 
 unset logscale xy
 set logscale x
@@ -129,7 +127,6 @@ set mytics 5
 plot \
   num using (X($2, $3)):($6 * t($2)**(-beta)):($7 * t($2)**(-beta)) with yerrorbars pt 0 lc black, \
   magfunc using (10**$1 / B):(M0 + A * B * 10**$2) with linespoints pt 0 lw 2 lc rgb cc1 dt 1, \
-  magfunc using (10**$1 / B2):(M0 + 10**($2) * A2 * B2 + (sum[i=1:n] polyint(c(i), lamb, i-1, 10**$1)) / B2) with lines lw 2 lc rgb cc2 dt 2, \
-  magfunc using (10**$1 / B3):(M0 + 10**($2) * A3 * B3 + (sum[i=1:n2] polyint(c2(i), lamb2, i-1, 10**$1)) / B3) with lines lw 2 lc rgb cc3 dt 3, \
-  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 2 lc rgb cc4 dt 4
+  magfuncm using 1:2 with lines lw 2 lc rgb cc2 dt 2, \
+  -sum[i=1:8] GC(i) * i * x**(i-1) with lines lw 2 lc rgb cc4 dt 3
 
