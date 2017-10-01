@@ -32,6 +32,7 @@
 % scaling functions
 \def\fM{\mathcal M}  % magnetization
 \def\fX{\mathcal Y}  % susceptibility
+\def\fXt{\check{\mathcal Y}}  % susceptibility
 \def\fF{\mathcal F}  % free energy
 \def\fiF{\mathcal H} % imaginary free energy
 \def\fS{\mathcal S}  % surface tension
@@ -44,9 +45,9 @@
 
 % dimensions
 \def\dim{d}
-\def\twodee{\textsc{2d} }
-\def\threedee{\textsc{3d} }
-\def\fourdee{\textsc{4d} }
+\def\twodee{\textsc{2d}}
+\def\threedee{\textsc{3d}}
+\def\fourdee{\textsc{4d}}
 
 % fancy partial derivative
 \newcommand\pd[3][]{
@@ -78,8 +79,9 @@
   point. The analytic properties of the free energy are used to determine
   scaling functions for the free energy in the vicinity of the critical point
   and the abrupt transition line. These functions have essential singularities
-  at zero field. Analogous forms for the magnetization and susceptibility in
-  two dimensions are fit to numeric data and show good agreement.
+  at the abrupt transition. Analogous forms for the magnetization and susceptibility in
+  two dimensions are fit to numeric data and show good agreement, especial
+  when their nonsingular behavior is modified to match existing numeric results.
 \end{abstract}
 
 \maketitle
@@ -111,7 +113,7 @@ zero argument, though its effects have long been believed to be unobservable
 \cite{fisher.1967.condensation}, or simply just neglected
 \cite{guida.1997.3dising,schofield.1969.parametric,schofield.1969.correlation,caselle.2001.critical,josephson.1969.equation,fisher.1999.trigonometric}.
 With careful analysis, we have found that assuming the presence of the
-essential singularity is predictive of the scaling form of e.g. the
+essential singularity is predictive of the scaling form of, for instance, the
 susceptibility and magnetization.
 
 The provenance of the essential singularity can be understood using the
@@ -132,20 +134,19 @@ partition function trace to states in the vicinity of the local free energy
 minimum that characterizes the metastable state. In any case, the free energy
 develops a nonzero imaginary part in the metastable region. Heuristically,
 this can be thought of as similar to what happens in quantum mechanics with a
-non-unitary Hamiltonian: the imaginary part describes loss of probability in
-the system that corresponds to decay. 
+non-unitary Hamiltonian: the imaginary part describes loss rate of probability
+that the system occupies any `accessible' state, which corresponds to decay.
 
 In critical droplet theory, the metastable state decays when a domain of the
 equilibrium state forms whose surface-energy cost for growth is outweighed by
 bulk-energy gains. There is numerical evidence that, near the critical point,
-droplets are spherical \cite{gunther.1993.transfer-matrix}. The free energy
+these droplets are spherical \cite{gunther.1993.transfer-matrix}. The free energy
 cost of the surface of a droplet of radius $R$ is $\Sigma S_\dim R^{\dim-1}$
 and that of its bulk is $-M|H|V_\dim R^\dim$, where $S_\dim$ and $V_\dim$ are
 the surface area and volume of a $(\dim-1)$-sphere, respectively, and $\Sigma$
 is the surface tension of the equilibrium--metastable interface. The critical
-droplet size then is $R_\c=(\dim-1)\Sigma/M|H|$ and the free energy of the
-critical droplet is $\Delta
-F_\c=\pi^{\dim/2}\Sigma^\dim((\dim-1)/M|H|)^{\dim-1}/\Gamma(1+\dim/2)$.
+droplet size is then $R_\c=(\dim-1)\Sigma/M|H|$ and the free energy of the
+critical droplet is $\Delta F_\c=\pi^{\dim/2}\Sigma^\dim((\dim-1)/M|H|)^{\dim-1}/\Gamma(1+\dim/2)$.
 Assuming the typical singular scaling forms
 $\Sigma/T=|t|^\mu\fS(h|t|^{-\beta\delta})$ and $M=|t|^\beta\mathcal
 M(h|t|^{-\beta\delta})$ and using known hyperscaling relations
@@ -163,14 +164,15 @@ M(h|t|^{-\beta\delta})$ and using known hyperscaling relations
   \begin{aligned}
     \Delta F_\c
     &=\eqcritformone\\
-    &\sim\eqcritformtwo.
+    &\sim\eqcritformtwo
   \end{aligned}
 \]
 \else
 \[
-  \Delta F_\c=\eqcritformone\sim\eqcritformtwo.
+  \Delta F_\c=\eqcritformone\sim\eqcritformtwo
 \]
 \fi
+for the free energy change due to the critical droplet.
 Since both surface tension and magnetization are finite and nonzero for $H=0$
 at $T<T_\c$, $\fG(X)=-BX+\O(X^2)$ for small negative $X$ with
 \[
@@ -185,10 +187,11 @@ the correlation length $\xi$ and the critical domain radius $R_\c$, with
     {\pi^{\dim/2}\fS(0)(\xi_0^-)^{\dim-1}}\bigg)^{1/(\dim-1)}
 \]
 where the critical amplitude for the correlation length $\xi_0^-$ is defined
-by $\xi=\xi_0^-|t|^{-\nu}$ for $t<T_\c$. Since $\fS(0)(\xi_0^-)^{\dim-1}$ is a
+by $\xi=\xi_0^-|t|^{-\nu}$ for $t<T_\c$ and $H=0$. Since $\fS(0)(\xi_0^-)^{\dim-1}$ is a
 universal amplitude ratio \cite{zinn.1996.universal},
 $(Bh|t|^{-\beta\delta})/(\xi/R_\c)$ is a universal quantity.  The decay rate
-of the metastable state is proportional to the Boltzmann factor for the
+of the metastable state is proportional to the Boltzmann factor corresponding
+to the
 creation of a critical droplet, yielding
 \[
   \im F\sim\Gamma\propto e^{-\Delta F_\c/T}
@@ -219,9 +222,10 @@ free energy using the Kramers--Kronig relation
   \label{eq:kram-kron}
 \]
 This relationship has been used to compute high-order moments of the free
-energy in $H$ in good agreement with transfer matrix expansions
-\cite{lowe.1980.instantons}. Here, we compute the integral to come to explicit
-functional forms.  In \threedee and \fourdee this can be computed explicitly
+energy with $H$ in good agreement with transfer matrix expansions
+\cite{lowe.1980.instantons}. Here, we evaluate the integral explicitly to come
+to
+functional forms.  In \threedee\ and \fourdee\ this can be done directly
 given our scaling ansatz, yielding
 \def\eqthreedeeone{
   \fF^\threedee(Y/B)&=
@@ -252,16 +256,18 @@ given our scaling ansatz, yielding
     \eqfourdeeone
     \\
     &\hspace{-0.5em}
-    \eqfourdeetwo.
+    \eqfourdeetwo,
   \end{aligned}
 \end{align}
 \else
 \begin{align}
   \eqthreedeeone\eqthreedeetwo
   \\
-  \eqfourdeeone\eqfourdeetwo.
+  \eqfourdeeone\eqfourdeetwo,
 \end{align}
 \fi
+where $E_n$ is the generalized exponential integral and $\Gamma(x,y)$ is the
+incomplete gamma function.
 At the level of truncation of \eqref{eq:im.scaling} at which we are working
 the Kramers--Kronig relation does not converge in \twodee. However, higher
 moments can still be extracted, e.g., the susceptibility, by taking
@@ -276,7 +282,7 @@ this yields
   \label{eq:sus_scaling}
 \]
 Scaling forms for the free energy can then be extracted by direct integration
-and their constants of integration fixed by known zero field values, yielding
+and their constants of integration fixed by known zero-field values, yielding
 \begin{align}
   \label{eq:mag_scaling}
   \fM^\twodee(Y/B)
@@ -285,8 +291,8 @@ and their constants of integration fixed by known zero field values, yielding
     &=-Y\bigg(\frac{\fM(0)}B-\frac{A}\pi e^{1/Y}\ei(-1/Y)\bigg)
     \label{eq:2d_free_scaling}
 \end{align}
-with $F(t,h)=|t|^{2-\alpha}\fF(h|t|^{-\beta\delta})+t^{2-\alpha}\log|t|$ in
-two dimensions.
+with $F(t,h)=t^2\fF(h|t|^{-15/8})+t^2\log t^2$ in
+two dimensions, as $\alpha=0$ and $\beta\delta=\frac{15}8$.
 
 How are these functional forms to be interpreted? Though the scaling function
 \eqref{eq:im.scaling} for the imaginary free energy of the metastable state is
@@ -310,7 +316,7 @@ because, as an analytic function, progressively higher order terms of $f$ must
 eventually become arbitrarily small \cite{flanigan.1972.complex}.
 
 How predictive are these scaling forms in the proximity of the critical point
-and the abrupt transition line? We simulated the \twodee Ising model on square
+and the abrupt transition line? We simulated the \twodee\ Ising model on square
 lattice using a form of the Wolff algorithm modified to remain efficient in
 the presence of an external field. Briefly, the external field $H$ is applied
 by adding an extra spin $s_0$ with coupling $|H|$ to all others
@@ -322,7 +328,7 @@ Data was then taken for susceptibility and magnetization for
 $T_\c-T,H\leq0.1$. This data, rescaled as appropriate to collapse onto a
 single curve, is plotted in Fig.~\ref{fig:scaling_fits}.
 
-For the \twodee Ising model on a square lattice, exact results at zero
+For the \twodee\ Ising model on a square lattice, exact results at zero
 temperature have $\fS(0)=4/T_\c$, $\fM(0)=(2^{5/2}\arcsinh1)^\beta$
 \cite{onsager.1944.crystal}, and $\fX(0)=C_0^-=0.025\,536\,971\,9$ \cite{barouch.1973.susceptibility}, so that
 $B=T_\c^2\fM(0)/\pi\fS(0)^2=(2^{27/16}\pi(\arcsinh1)^{15/8})^{-1}$. If we
@@ -330,7 +336,7 @@ assume incorrectly that \eqref{eq:sus_scaling} is the true asymptotic form of
 the susceptibility scaling function, then
 $T\chi(t,0)|t|^\gamma=\lim_{X\to0}\fX^\twodee(X)=2AB^2/\pi$ and the constant
 $A$ is fixed to $A=\pi\fX(0)/2B^2=2^{19/8}\pi^3(\arcsinh1)^{15/4}C_0^-$.  The
-resulting scaling functions $\fX$ and $\fM$ are plotted as solid lines in
+resulting scaling functions $\fX$ and $\fM$ are plotted as solid blue lines in
 Fig.~\ref{fig:scaling_fits}. Though there is good agreement
 between our functional forms and what is measured, there
 are systematic differences that can be seen most clearly in the
@@ -338,16 +344,53 @@ magnetization. This is to be expected based on our earlier discussion: these
 scaling forms should only be expected to well-describe the singularity at the
 abrupt transition. Our forms both exhibit incorrect low-order
 coefficients at the transition (Fig.~\ref{fig:series}) and incorrect
-asymptotics as $h|t|^{-\beta\delta}$ becomes very large. In forthcoming work,
+asymptotics as $h|t|^{-\beta\delta}$ becomes very large.
+
+In forthcoming work,
 we develop a method to incorporate the essential singularity in the scaling
 functions into a form that also incorporates known properties of the scaling
 functions in the rest of the configuration space using a Schofield-like
-parameterization \cite{kent-dobias.2018.parametric}. Fig.~\ref{fig:scaling_fits} shows a result as a
-dashed yellow line, which depicts the scaling form resulting from
-incorporating our singularity and the known series expansions of the scaling
-function at high temperature, low temperature, and at the critical isotherm to
-quadratic order. The low-order series coefficients of this modified form are
-also shown in Fig.~\ref{fig:series}.
+parameterization \cite{kent-dobias.2018.parametric}. Briefly, we define
+parameters $R$ and $\theta$ by
+\begin{align}
+  t=R(1-\theta^2)
+  &&
+  h=h_0R^{\beta\delta}g(\theta)
+\end{align}
+where $h_0$ is a constant and $f$ is an arbitrary odd function whose first
+finite zero $\theta_\c>1$ corresponds to the abrupt transition. In these
+coordinates the invariant combination $h|t|^{-\beta\delta}$ is given by
+\[
+  h|t|^{-\beta\delta}=\frac{h_0g(\theta)}{|1-\theta^2|^{\beta\delta}}=\frac{h_0(-g'(\theta_\c))}{(\theta_c^2-1)^{\beta\delta}}(\theta_\c-\theta)
+  +\O\big( (\theta_\c-\theta)^2\big),
+\]
+an analytic function of $\theta$ about $\theta_\c$.
+The simplest
+function of the coordinate $\theta$ that exhibits the correct singularity at
+the abrupt transitions at $h=\pm0$, $t<0$ is
+\[
+  \fX(\theta)=\fX\bigg(\frac{h_0(-g'(\theta_\c))}{(\theta_\c^2-1)^{\beta\delta}}(\theta_\c-\theta)\bigg)+\fX\bigg(\frac{h_0(-g'(\theta_\c))}{(\theta_\c^2-1)^{\beta\delta}}(\theta_\c+\theta)\bigg)
+\]
+This function is analytic in the range $-\theta_\c<\theta<\theta_\c$.
+In order to correct its low-order behavior to match that expected, we
+make use of both the freedom of the coordinate transformation $f$ and an
+arbitrary analytic additive function $Y$,
+\begin{align}
+  f(\theta)=\bigg(1-\frac{\theta^2}{\theta_\c^2}\bigg)\sum_{n=0}^\infty
+  f_n\theta^{2n+1}
+  &&
+  Y(\theta)=\sum_{n=0}^\infty Y_n\theta^{2n}
+\end{align}
+so that $\tilde\fX(\theta)=\fX(\theta)+Y(\theta)$. By manipulating thees
+coefficients, we can attempt to give the resulting scaling form a series
+expansion consistent with known values. One such prediction---made by fixing
+the first four terms in the low-temperature, critical isotherm, and
+high-temperature expansions 
+of $\tilde\fX$---is shown as a dashed yellow line in
+Fig.~\ref{fig:scaling_fits}.
+As shown in Fig.~\ref{fig:series}, the low-order free energy coefficients of this prediction match known values
+exactly up to $n=5$, and improve the agreement with higher-order coefficients.
+
 
 \begin{figure}
   \input{fig-susmag}
