@@ -350,7 +350,7 @@ In forthcoming work,
 we develop a method to incorporate the essential singularity in the scaling
 functions into a form that also incorporates known properties of the scaling
 functions in the rest of the configuration space using a Schofield-like
-parameterization \cite{kent-dobias.2018.parametric}. Briefly, we define
+parameterization \cite{schofield.1969.parametric,caselle.2001.critical,kent-dobias.2018.parametric}. Briefly, we define
 parameters $R$ and $\theta$ by
 \begin{align}
   t=R(1-\theta^2)
@@ -381,7 +381,7 @@ arbitrary analytic additive function $Y$,
   &&
   Y(\theta)=\sum_{n=0}^\infty Y_n\theta^{2n}
 \end{align}
-so that $\tilde\fX(\theta)=\fX(\theta)+Y(\theta)$. By manipulating thees
+so that $\tilde\fX(\theta)=\fX(\theta)+Y(\theta)$. By manipulating these
 coefficients, we can attempt to give the resulting scaling form a series
 expansion consistent with known values. One such prediction---made by fixing
 the first four terms in the low-temperature, critical isotherm, and
@@ -390,6 +390,9 @@ of $\tilde\fX$---is shown as a dashed yellow line in
 Fig.~\ref{fig:scaling_fits}.
 As shown in Fig.~\ref{fig:series}, the low-order free energy coefficients of this prediction match known values
 exactly up to $n=5$, and improve the agreement with higher-order coefficients.
+Unlike scaling forms which treat $\fX$ as analytic at the coexistence line,
+the series coefficients of the scaling form developed here increase without
+bound at high order.
 
 
 \begin{figure}
@@ -403,10 +406,11 @@ exactly up to $n=5$, and improve the agreement with higher-order coefficients.
     and $H=0.1\times(1,2^{-1/4},\ldots,2^{-50/4})$. The solid blue lines
     show our analytic results \eqref{eq:sus_scaling} and
     \eqref{eq:mag_scaling}, the dashed yellow lines show 
-    a scaling function modified to match known series expansions
-    in several known limits, and the
+    a scaling function modified to match known series expansions of the
+    susceptibility
+    to third order, and the
     dotted green lines show the
-    polynomial resulting from truncating the series after the eight terms
+    polynomial resulting from truncating the known series expansion after the eight terms
     reported by \cite{mangazeev.2008.variational,mangazeev.2010.scaling}.
   }
   \label{fig:scaling_fits}
@@ -418,10 +422,12 @@ exactly up to $n=5$, and improve the agreement with higher-order coefficients.
     The series coefficients defined by $\tilde\fF(X)=\sum_nf_nX^n$. The blue
     pluses correspond to the scaling form \eqref{eq:2d_free_scaling}, the
     yellow saltires correspond to a scaling function modified to match known
-    series expansions in several known limits, and the green
+    series expansions of the susceptibility to third order---and therefore
+    the free energy to fifth order---and the green
     stars
     correspond to the first eight coefficients from
-    \cite{mangazeev.2008.variational,mangazeev.2010.scaling}.
+    \cite{mangazeev.2008.variational,mangazeev.2010.scaling}. The modified
+    scaling function and the known coefficients match exactly up to $n=5$.
   }
   \label{fig:series}
 \end{figure}
