@@ -1,5 +1,5 @@
 
-set terminal pslatex rotate size 3.6,2.111
+set terminal pslatex rotate size 3.417,2.111
 
 cc1 = "#5e81b5"
 cc2 = "#e19c24"
@@ -15,6 +15,8 @@ set yrange [0.000005:5]
 set key off
 set xlabel '$n$'
 set ylabel offset 2 '$|f_n|$'
+
+set lmargin 7
 
 set ytics format ''
 
