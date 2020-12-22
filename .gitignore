@@ -4,7 +4,4 @@
 *.blg
 *Notes.bib
 *.dvi
-essential-ising.pdf
-
-figs/*.tex
-fig-*.tex
+/*.pdf
