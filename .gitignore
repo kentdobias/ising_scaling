@@ -4,4 +4,8 @@
 *.blg
 *Notes.bib
 *.dvi
+*.fdb_latexmk
+*.synctex.gz
+*.fls
+*.out
 /*.pdf
