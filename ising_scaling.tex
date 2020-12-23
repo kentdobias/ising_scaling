@@ -1,4 +1,10 @@
-\documentclass[aps,prb,reprint,longbibliography,floatfix]{revtex4-2}
+\documentclass[
+  aps,
+  prb,
+  reprint,
+  longbibliography,
+  floatfix
+]{revtex4-2}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -9,14 +15,18 @@
   citecolor=purple,
   filecolor=purple,
   linkcolor=purple
-]{hyperref} % ref and cite links with pretty colors
-
-\usepackage{amsmath, graphicx, xcolor}
+]{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{xcolor}
 
 \begin{document}
 
-\title{Essential Singularities in Universal Scaling Functions at the Ising Coexistence Line}
+\title{Smooth Ising universal scaling functions}
+
 \author{Jaron Kent-Dobias}
+\affiliation{Laboratoire de Physique de l'Ecole Normale Supérieure, Paris, France}
+
 \author{James P.~Sethna}
 \affiliation{Laboratory of Atomic and Solid State Physics, Cornell University, Ithaca, NY, USA}
 
@@ -28,6 +38,77 @@
 \maketitle
 
 \cite{Campostrini_2000_Critical}
+
+
+\section{The 2D Ising model}
+
+\subsection{Definition of functions}
+
+\begin{equation} \label{eq:free.energy.2d.low}
+  F(u_t, u_h)
+  = |u_t|^2\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
+    +\frac{u_t^2}{8\pi}\log u_t^2
+\end{equation}
+where the functions $\mathcal F_\pm$ have expansions in nonnegative integer powers of their arguments.
+\begin{equation} \label{eq:free.energy.2d.mid}
+  F(u_t, u_h)
+  = |u_h|^{2/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
+    +\frac{u_t^2}{8\pi}\log u_h^{2/\beta\delta}
+\end{equation}
+where the function $\mathcal F_0$ has a convergent expansion in nonnegative integer powers of its argument \footnote{
+  To connect with Mangazeev and Fonseca, $\mathcal F_0(x)=\tilde\Phi(-x)=\Phi(-x)+(x^2/8\pi) \log x^2$ and $\mathcal F_\pm(x)=G_{\mathrm{high}/\mathrm{low}}(x)$.
+}.
+
+\begin{align}
+  \label{eq:schofield.free.energy}
+  F(R, \theta) &= R^2\mathcal F(\theta) + t(\theta)^2\frac{R^2}{8\pi}\log R^2 \\
+  \label{eq:schofield.temperature}
+  u_t(R, \theta) &= Rt(\theta) \\
+  \label{eq:schofield.field}
+  u_h(R, \theta) &= R^{\beta\delta}h(\theta)
+\end{align}
+The scaling function $\mathcal F$ can be defined in terms of the more conventional ones above by substituting \eqref{eq:schofield.temperature} and \eqref{eq:schofield.field} into \eqref{eq:free.energy.2d.low} and \eqref{eq:free.energy.2d.mid}, yielding
+\begin{equation}
+  \begin{aligned}
+    &\mathcal F(\theta)
+    =t(\theta)^2\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right]
+      +\frac{t(\theta)^2}{8\pi}\log t(\theta)^2 \\
+    &=|h(\theta)|^{2/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
+      +\frac{t(\theta)^2}{8\pi}\log h(\theta)^{2/\beta\delta}
+  \end{aligned}
+\end{equation}
+We choose the functions $t$ and $h$ so as to ensure that $F$ has an integer power series in \emph{all} regimes. $t$ is an even function of $\theta$ with $t(0)=1$ and $t(1)=0$. $h$ is an odd function with $h(0)=h(\theta_c)=0$ for some $\theta_c>1$.
+
+\begin{align}
+  t(\theta)&=1-\theta^2 \\
+  h^{(n)}(\theta)&=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^nh_i\theta^{2i+1}
+\end{align}
+
+
+\begin{equation}
+  f(x)=\Theta(-x) |x| e^{-1/|x|}
+\end{equation}
+where $\Theta$ is the Heaviside function.
+
+\begin{equation}
+  \operatorname{Im}\mathcal F(\theta)=A\left\{f\left[b(\theta_c-\theta)\right]+f\left[b(\theta_c+\theta)\right]\right\}
+\end{equation}
+
+\begin{equation}
+  \begin{aligned}
+    \operatorname{Re}\mathcal F(\theta)
+      &=G(\theta^2)-\frac{\theta^2}\pi\int d\vartheta\, \frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)} \\
+      &=G(\theta^2)+\frac A\pi\left\{f[b(\theta_c-\theta)]+f[b(\theta_c+\theta)]\right\}
+  \end{aligned}
+\end{equation}
+for arbitrary analytic function $G$ and
+\begin{equation}
+  f(x)=xe^{1/x}\operatorname{Ei}(-1/x)
+\end{equation}
+
+\section{The 3D Ising model}
+
+\section{Outlook}
 
 \begin{acknowledgments}
   The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
