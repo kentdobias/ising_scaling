@@ -1,0 +1,315 @@
+\documentclass[
+  aps,
+  prb,
+  reprint,
+  longbibliography,
+  floatfix
+]{revtex4-2}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext, newtxmath}
+\usepackage[
+  colorlinks=true,
+  urlcolor=purple,
+  citecolor=purple,
+  filecolor=purple,
+  linkcolor=purple
+]{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\begin{document}
+
+\title{Smooth Ising universal scaling functions}
+
+\author{Jaron Kent-Dobias}
+\affiliation{Laboratoire de Physique de l'Ecole Normale Supérieure, Paris, France}
+
+\author{James P.~Sethna}
+\affiliation{Laboratory of Atomic and Solid State Physics, Cornell University, Ithaca, NY, USA}
+
+\date\today
+
+\begin{abstract}
+\end{abstract}
+
+\maketitle
+
+At continuous phase transitions the thermodynamic properties of physical
+systems have singularities. Celebrated renormalization group analyses imply
+that not only the principal divergence but also entire additive functions are
+\emph{universal}, meaning that they will appear at any critical points that
+connect phases of the same symmetries in the same spatial dimension. The study
+of these universal functions is therefore doubly fruitful: it provides both a
+description of the physical or model system at hand, and \emph{every other
+system} whose symmetries, interaction range, and dimension puts it in the same
+universality class.
+
+The continuous phase transition in the two-dimensional Ising model is perhaps
+the most well studied, and its universal thermodynamic functions have likewise
+received the most attention. Precision numeric work both on the lattice
+critical theory and on the ``Ising'' critical field theory (related by
+universality) have yielded high-order polynomial expansions of those functions
+in various limits, along with a comprehensive understanding of their analytic
+properties and even their full form \cite{Fonseca_2003_Ising, Mangazeev_2008_Variational, Mangazeev_2010_Scaling}. In parallel, smooth approximations of the
+Ising ``equation of state'' have produced convenient, evaluable, differentiable
+empirical functions \cite{Guida_1997_3D, Campostrini_2000_Critical, Caselle_2001_The}. Despite being differentiable, these approximations become
+increasingly poor when derivatives are taken due to the presence of a subtle
+essential singularity that is previously unaccounted for.
+
+This paper attempts to find the best of both worlds: a smooth approximate
+universal thermodynamic function that respects the global analyticity of the
+Ising free energy, for both the two-dimensional Ising model (where much is
+known) and the three-dimensional Ising model (where comparatively less is
+known). First, parametric coordinates are introduced that remove unnecessary
+nonanalyticities from the scaling function. Then the arbitrary analytic
+functions that compose those coordinates are approximated by truncated
+polynomials whose coefficients are fixed by matching the series expansions of
+the universal function in three critical regimes: at no field and low
+temperature, no field and high temperature, and along the critical isotherm.
+
+This paper is divided into four parts. First, general aspects of the problem
+will be reviewed that are relevant in all dimensions. Then, the process
+described above will be applied to the two- and three-dimensional Ising models.
+
+\section{General aspects}
+
+\subsection{Universal scaling functions}
+
+Renormalization group analysis of the Ising critical point indicates that the free energy per site $f$ may be written, as a function of the reduced temperature $t=(T-T_c)/T_c$ and external field $h=H/T$,
+\begin{equation}
+  f(t,h)=g(t,h)+f_s(t,h)
+\end{equation}
+with $g$ a nonuniversal analytic function that depends entirely on the system
+in question and $f_s$ a singular function. The singular part $f_s$ can be said
+to be universal in the following sense: for any system that shares the
+universality with the Ising model, if the near-identity smooth change of coordinates
+$u_t(t, h)$ and $u_h(t,h)$ is made such that the flow equations for the new
+coordinates are exactly linearized, e.g.,
+\begin{align} \label{eq:flow}
+  \frac{du_t}{d\ell}=\frac1\nu u_t
+  &&
+  \frac{du_h}{d\ell}=\frac{\beta\delta}\nu u_h,
+\end{align}
+then $f_s(u_t, u_h)$ will be the same function, up to constant rescalings of
+the free energy and the nonlinear scaling fields $u_t$ and $u_h$. In order to
+fix this last degree of freedom, we adopt the convention established by
+\textbf{[probably earlier than what I'm citing here]}
+\cite{Fonseca_2003_Ising}. The dependence of the nonlinear scaling variables on
+the parameters $t$ and $h$ is also system-dependent, and their form can be
+found for common model systems (the square- and triangular-lattice Ising
+models) in the literature \cite{Clement_2019_Respect}.
+
+With the flow equations \eqref{eq:flow} along with that for the free energy,
+the form of $f_s$ is highly constrained, further reduced to a universal
+\emph{scaling function} of a single variable $u_h|u_t|^{-\beta\delta}$ (or equivalently
+$u_tu_h^{-1/\beta\delta}$) with multiplicative power laws in $u_t$ or $u_h$ and
+(sometimes) simple additive singular functions of $u_t$ and $u_h$. The special
+variables are known as scaling invariants, as they are invariant under the flow
+\eqref{eq:flow}. Reasonable assumptions about the analyticity of the scaling
+function of a single variable then fixes the principal singularity at the
+critical point.
+
+\subsection{Essential singularities and droplets}
+
+Another, more subtle, singularity exists which cannot be captured by the
+multiplicative factors or additive terms, residing instead inside the scaling
+function itself. The origin can be schematically understood to arise from a
+singularity that exists in the complex free energy of the metastable phase of
+the model, suitably continued into the equilibrium phase. When the equilibrium
+Ising model with positive magnetization is subjected to a small negative
+magnetic field, its equilibrium state instantly becomes one with a negative
+magnetization. However, under physical dynamics it takes time to arrive at this
+state, which happens after a fluctuation containing a sufficiently large
+equilibrium `bubble' occurs.
+
+The bulk of such a bubble of radius $R$ lowers the free energy by
+$2M|H|V_dR^d$, where $d$ is the dimension of space, $M$ is the magnetization,
+$H$ is the external field, and $V_d$ is the volume of a $d$-ball, but its
+surface raises the free energy by $\sigma S_dR^{d-1}$, where $\sigma$ is the
+surface tension between the stable--metastable interface and $S_d$ is the
+volume of a $(d-1)$-sphere. The bubble is sufficiently large to decay
+metastable state when the differential bulk savings outweigh the surface costs.
+
+This critical bubble occurs with free energy cost
+\begin{equation}
+  \begin{aligned}
+    \Delta F_c
+      &\simeq\left(\frac{S_d\sigma}d\right)^d\left(\frac{d-1}{2V_dM|H|}\right)^{d-1} \\
+      &\simeq T\left(\frac{S_d\mathcal S(0)}d\right)^d\left[\frac{2V_d\mathcal M(0)}{d-1}ht^{-\beta\delta}\right]^{-(d-1)}
+  \end{aligned}
+\end{equation}
+where $\mathcal S(0)$ and $\mathcal M(0)$ are the critical amplitudes for the
+surface tension and magnetization, respectively \textbf{[find more standard
+notation]} \cite{Kent-Dobias_2020_Novel}.
+In the context of statistical mechanics, Langer demonstrated that the decay rate is asymptotically proportional to the imaginary part of the free energy in the metastable phase, with (assuming Arrhenius behavior)
+\begin{equation}
+  \operatorname{Im}f\propto\Gamma\sim e^{-\beta\Delta F_c}=e^{-1/(B|h||t|^{-\beta\delta})^{d-1}}
+\end{equation}
+which can be more rigorously related in the context of quantum field theory.
+  
+This is a singular contribution that depends principally on the scaling
+invariant $ht^{-\beta\delta}\simeq u_h|u_t|^{-\beta\delta}$. It is therefore
+suggestive that this should be considered a part of the singular free energy
+$f_s$, and moreover part of the scaling function that composes it. We will therefore make the ansatz that
+\begin{equation}
+  \operatorname{Im}\mathcal F_-(\xi)=A\Theta(-\xi)|\xi|^{-b}e^{-1/(B|\xi|)^{d-1}}\left(1+O(\xi)\right)
+\end{equation}
+\cite{Houghton_1980_The}
+The exponent $b$ depends on dimension and can be found through a more careful
+accounting of the entropy of long-wavelength fluctuations in the droplet
+surface \cite{Gunther_1980_Goldstone}.
+Kramers--Kronig type dispersion relations can then be used to recover the
+singular part of the real scaling function from this asymptotic form.
+
+\subsection{Schofield coordinates}
+
+The invariant combinations $u_h|u_t|^{-\beta\delta}$ or
+$u_t|u_h|^{-1/\beta\delta}$ are natural variables to describe the scaling
+functions, but prove unwieldy when attempting to make smooth approximations.
+This is because, when defined in terms of these variables, scaling functions
+that have polynomial expansions at small argument have nonpolynomial expansions
+at large argument. Rather than deal with the creative challenge of dreaming up
+functions with different asymptotic expansions in different limits, we adopt
+different coordinates, in terms of which a scaling function can be defined that
+has polynomial expansions in \emph{all} limits.
+
+In all dimensions, the Schofield coordinates $R$ and $\theta$ will be implicitly defined by
+\begin{align} \label{eq:schofield}
+  u_t(R, \theta) = Rt(\theta)
+  &&
+  u_h(R, \theta) = R^{\beta\delta}h(\theta)
+\end{align}
+where $t$ and $h$ are polynomial functions selected so as to associate different scaling limits with different values of $\theta$. We will adopt standard forms for these functions, given by
+\begin{align} \label{eq:schofield.funcs}
+  t(\theta)=1-\theta^2
+  &&
+  h(\theta)=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^\infty h_i\theta^{2i+1}
+\end{align}
+This means that $\theta=0$ corresponds to the high-temperature zero-field line,
+$\theta=1$ to the critical isotherm at nonzero field, and $\theta=\theta_c$ to
+the low-temperature zero-field (phase coexistence) line.
+
+In practice the infinite series in \eqref{eq:schofield.funcs} cannot be
+entirely fixed, and it will be truncated at finite order. We will notate the
+truncation an upper bound of $n$ by $h^{(n)}$. The convergence of the
+coefficients as $n$ is increased will be part of our assessment of the success
+of the convergence of the scaling form.
+
+\section{The 2D Ising model}
+
+\subsection{Definition of functions}
+
+The scaling function for the two-dimensional Ising model is the most
+exhaustively studied universal forms in statistical physics and quantum field
+theory.
+\begin{equation} \label{eq:free.energy.2d.low}
+  f_s(u_t, u_h)
+  = |u_t|^2\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
+    +\frac{u_t^2}{8\pi}\log u_t^2
+\end{equation}
+where the functions $\mathcal F_\pm$ have expansions in nonnegative integer powers of their arguments.
+\begin{equation} \label{eq:free.energy.2d.mid}
+  f_s(u_t, u_h)
+  = |u_h|^{2/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
+    +\frac{u_t^2}{8\pi}\log u_h^{2/\beta\delta}
+\end{equation}
+where the function $\mathcal F_0$ has a convergent expansion in nonnegative integer powers of its argument.
+To connect with Mangazeev and Fonseca, $\mathcal F_0(x)=\tilde\Phi(-x)=\Phi(-x)+(x^2/8\pi) \log x^2$ and $\mathcal F_\pm(x)=G_{\mathrm{high}/\mathrm{low}}(x)$.
+
+Schofield coordinates all us to define a global scaling function $\mathcal F$ by
+\begin{equation} \label{eq:schofield.2d.free.energy}
+  f_s(R, \theta) = R^2\mathcal F(\theta) + t(\theta)^2\frac{R^2}{8\pi}\log R^2
+\end{equation}
+The scaling function $\mathcal F$ can be defined in terms of the more
+conventional ones above by substituting \eqref{eq:schofield} into \eqref{eq:free.energy.2d.low} and
+\eqref{eq:free.energy.2d.mid}, yielding
+\begin{equation} \label{eq:scaling.function.equivalences.2d}
+  \begin{aligned}
+    &\mathcal F(\theta)
+    =t(\theta)^2\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right]
+      +\frac{t(\theta)^2}{8\pi}\log t(\theta)^2 \\
+    &=|h(\theta)|^{2/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
+      +\frac{t(\theta)^2}{8\pi}\log h(\theta)^{2/\beta\delta}
+  \end{aligned}
+\end{equation}
+Examination of \eqref{eq:scaling.function.equivalences.2d} finds that $\mathcal F$ has expansions in integer powers in the entire domain $-\theta_c\leq0\leq\theta_c$.
+
+
+\begin{equation} \label{eq:im.f.func.2d}
+  f(x)=\Theta(-x) |x| e^{-1/|x|}
+\end{equation}
+\begin{equation}
+  \operatorname{Im}\mathcal F(\theta)=A\left\{f\left[\tilde B(\theta_c-\theta)\right]+f\left[b(\theta_c+\theta)\right]\right\}
+\end{equation}
+
+\begin{equation}
+  \begin{aligned}
+    \operatorname{Re}\mathcal F(\theta)
+      &=G(\theta^2)-\frac{\theta^2}\pi\int d\vartheta\, \frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)} \\
+      &=G(\theta^2)+\frac A\pi\left\{f[\tilde B(\theta_c-\theta)]+f[\tilde B(\theta_c+\theta)]\right\}
+  \end{aligned}
+\end{equation}
+for arbitrary analytic function $G$ with
+\begin{equation}
+  G(x)=\sum_{i=0}^\infty G_ix^i
+\end{equation}
+and $f$ is
+\begin{equation}
+  f(x)=xe^{1/x}\operatorname{Ei}(-1/x)
+\end{equation}
+the Kramers--Kronig transformation of \eqref{eq:im.f.func.2d}, where $\operatorname{Ei}$ is the exponential integral.
+
+\subsection{Iterative fitting}
+
+\subsection{Comparison with other smooth forms}
+
+\section{The three-dimensional Ising model}
+
+The three-dimensional Ising model is easier in some ways, since its hyperbolic critical point lacks stray logarithms.
+
+\begin{equation} \label{eq:free.energy.3d.low}
+  f_s(u_t, u_h)
+  = |u_t|^{2-\alpha}\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
+\end{equation}
+\begin{equation} \label{eq:free.energy.3d.mid}
+  f_s(u_t, u_h)
+  = |u_h|^{(2-\alpha)/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
+\end{equation}
+\begin{equation} \label{eq:schofield.3d.free.energy}
+  f_s(R, \theta) = R^2\mathcal F(\theta)
+\end{equation}
+\begin{equation} \label{eq:scaling.function.equivalences.3d}
+  \begin{aligned}
+    \mathcal F(\theta)
+    &=t(\theta)^{2-\alpha}\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right] \\
+    &=|h(\theta)|^{(2-\alpha)/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
+  \end{aligned}
+\end{equation}
+\begin{equation} \label{eq:im.f.func.3d}
+  f(x)=\Theta(-x) |x|^{-7/3} e^{-1/|x|^2}
+\end{equation}
+\begin{equation}
+  f(x)=\frac{e^{-1/x^2}}{12}\left[
+    \frac4x\Gamma\big(\tfrac23\big)\operatorname{E}_{\frac53}(-x^{-2})
+    -\frac1{x^2}\Gamma\big(\tfrac16\big)\operatorname{E}_{\frac76}(-x^{-2})
+  \right]
+\end{equation}
+
+\section{Outlook}
+
+The successful smooth description of the Ising free energy produced in part by analytically continuing the singular imaginary part of the metastable free energy inspires an extension of this work: a smooth function that captures the universal scaling \emph{through the coexistence line and into the metastable phase}. Indeed, the tools exist to produce this: by writing $t(\theta)=(1-\theta^2)(1-(\theta/\theta_m)^2)$ for some $\theta_m>\theta_c$, the invariant scaling combination
+
+\begin{acknowledgments}
+  The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
+  for helpful conversations. The authors would also like to think Jacques Perk
+  for pointing us to several insightful studies. JPS thanks Jim Langer for past
+  inspiration, guidance, and encouragement. This work was supported by NSF
+  grants DMR-1312160 and DMR-1719490.
+\end{acknowledgments}
+
+\bibliography{ising_scaling}
+
+\end{document}
