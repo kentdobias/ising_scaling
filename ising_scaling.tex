@@ -57,14 +57,14 @@ properties and even their full form \cite{Fonseca_2003_Ising, Mangazeev_2008_Var
 Ising ``equation of state'' have produced convenient, evaluable, differentiable
 empirical functions \cite{Guida_1997_3D, Campostrini_2000_Critical, Caselle_2001_The}. Despite being differentiable, these approximations become
 increasingly poor when derivatives are taken due to the presence of a subtle
-essential singularity that is previously unaccounted for.
+essential singularity [refs] that is previously unaccounted for.
 
 This paper attempts to find the best of both worlds: a smooth approximate
 universal thermodynamic function that respects the global analyticity of the
 Ising free energy, for both the two-dimensional Ising model (where much is
 known) and the three-dimensional Ising model (where comparatively less is
 known). First, parametric coordinates are introduced that remove unnecessary
-nonanalyticities from the scaling function. Then the arbitrary analytic
+nonanalyticities from the scaling function. {\bf [The universal scaling function has the nonanalyticities. You are writing it as a function with the right singularity, modulated somehow with an analytic function.]} Then the arbitrary analytic
 functions that compose those coordinates are approximated by truncated
 polynomials whose coefficients are fixed by matching the series expansions of
 the universal function in three critical regimes: at no field and low
@@ -80,6 +80,7 @@ described above will be applied to the two- and three-dimensional Ising models.
 
 Renormalization group analysis of the Ising critical point indicates that the free energy per site $f$ may be written, as a function of the reduced temperature $t=(T-T_c)/T_c$ and external field $h=H/T$,
 \begin{equation}
+\label{eq:AnalyticSingular}
   f(t,h)=g(t,h)+f_s(t,h)
 \end{equation}
 with $g$ a nonuniversal analytic function that depends entirely on the system
@@ -93,10 +94,10 @@ coordinates are exactly linearized, e.g.,
   &&
   \frac{du_h}{d\ell}=\frac{\beta\delta}\nu u_h,
 \end{align}
+{\bf [I've been wondering for some time about eqn (1) and the flow equation for $df/d\ell$. If $df/d\ell = D f +$ [arbitrary stuff involving f, t, and s], what arbitrary stuff is allowed in order for eqn~\ref{eq:AnalyticSingular} to hold?] }
 then $f_s(u_t, u_h)$ will be the same function, up to constant rescalings of
 the free energy and the nonlinear scaling fields $u_t$ and $u_h$. In order to
-fix this last degree of freedom, we adopt the convention established by
-\textbf{[probably earlier than what I'm citing here]}
+fix this last degree of freedom {\bf [the two rescalings?]}, we adopt the same convention as used by
 \cite{Fonseca_2003_Ising}. The dependence of the nonlinear scaling variables on
 the parameters $t$ and $h$ is also system-dependent, and their form can be
 found for common model systems (the square- and triangular-lattice Ising
@@ -148,7 +149,7 @@ In the context of statistical mechanics, Langer demonstrated that the decay rate
 \begin{equation}
   \operatorname{Im}f\propto\Gamma\sim e^{-\beta\Delta F_c}=e^{-1/(B|h||t|^{-\beta\delta})^{d-1}}
 \end{equation}
-which can be more rigorously related in the context of quantum field theory.
+which can be more rigorously related in the context of quantum field theory [ref?].
   
 This is a singular contribution that depends principally on the scaling
 invariant $ht^{-\beta\delta}\simeq u_h|u_t|^{-\beta\delta}$. It is therefore
@@ -219,7 +220,7 @@ where the functions $\mathcal F_\pm$ have expansions in nonnegative integer powe
 where the function $\mathcal F_0$ has a convergent expansion in nonnegative integer powers of its argument.
 To connect with Mangazeev and Fonseca, $\mathcal F_0(x)=\tilde\Phi(-x)=\Phi(-x)+(x^2/8\pi) \log x^2$ and $\mathcal F_\pm(x)=G_{\mathrm{high}/\mathrm{low}}(x)$.
 
-Schofield coordinates all us to define a global scaling function $\mathcal F$ by
+Schofield coordinates allow us to define a global scaling function $\mathcal F$ by
 \begin{equation} \label{eq:schofield.2d.free.energy}
   f_s(R, \theta) = R^2\mathcal F(\theta) + t(\theta)^2\frac{R^2}{8\pi}\log R^2
 \end{equation}
