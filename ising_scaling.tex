@@ -1,6 +1,6 @@
 \documentclass[
   aps,
-  prb,
+  pre,
   reprint,
   longbibliography,
   floatfix
@@ -19,6 +19,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{tikz-cd}
 
 \begin{document}
 
@@ -78,46 +79,71 @@ described above will be applied to the two- and three-dimensional Ising models.
 
 \subsection{Universal scaling functions}
 
-Renormalization group analysis of the Ising critical point indicates that the free energy per site $f$ may be written, as a function of the reduced temperature $t=(T-T_c)/T_c$ and external field $h=H/T$,
-\begin{equation}
-\label{eq:AnalyticSingular}
-  f(t,h)=g(t,h)+f_s(t,h)
-\end{equation}
-with $g$ a nonuniversal analytic function that depends entirely on the system
-in question and $f_s$ a singular function. The singular part $f_s$ can be said
-to be universal in the following sense: for any system that shares the
-universality with the Ising model, if the near-identity smooth change of coordinates
-$u_t(t, h)$ and $u_h(t,h)$ is made such that the flow equations for the new
-coordinates are exactly linearized, e.g.,
+A renormalization group analysis predicts that certain thermodynamic functions
+will be universal in the vicinity of any critical point in the Ising
+universality class. Here we will explain precisely what is meant by universal.
+
+Suppose one controls a temperature-like parameter $T$ and a magnetic field-like
+parameter $H$, which in the proximity of a critical point at $T=T_c$ and $H=0$
+have normalized reduced forms $t=(T-T_c)/T_c$ and $h=H/T$. Thermodynamic
+functions are derived from the free energy per site $f$, which depends on $t$
+and $h$. Renormalization group analysis can be used calculated the flow of
+these parameters under continuous changes of scale, yielding flow equations of
+the form
+\begin{align} \label{eq:raw.flow}
+  \frac{dt}{d\ell}=\frac1\nu t+\cdots
+  &&
+  \frac{dh}{d\ell}=\frac{\beta\delta}\nu h+\cdots
+  &&
+  \frac{df}{d\ell}=Df+\cdots
+\end{align}
+where $D$ is the dimension of space and $\nu$, $\beta$, and $\delta$ are
+dimensionless constants. The flow equations are truncated here, but in general
+all terms allowed by symmetry are present on their righthand side. By making a
+near-identity transformation to the coordinates and the free energy of the form
+$u_t(t, h)=t+\cdots$, $u_h(t, h)=h+\cdots$, and $u_f(f,t,h)=f+\cdots$, one can
+bring the flow equations into an agreed upon simplest normal form
 \begin{align} \label{eq:flow}
   \frac{du_t}{d\ell}=\frac1\nu u_t
   &&
-  \frac{du_h}{d\ell}=\frac{\beta\delta}\nu u_h,
+  \frac{du_h}{d\ell}=\frac{\beta\delta}\nu u_h
+  &&
+  \frac{du_f}{d\ell}=Du_f+g(u_t),
 \end{align}
-{\bf [I've been wondering for some time about eqn (1) and the flow equation for $df/d\ell$. If $df/d\ell = D f +$ [arbitrary stuff involving f, t, and s], what arbitrary stuff is allowed in order for eqn~\ref{eq:AnalyticSingular} to hold?] }
-then $f_s(u_t, u_h)$ will be the same function, up to constant rescalings of
-the free energy and the nonlinear scaling fields $u_t$ and $u_h$. In order to
-fix this last degree of freedom {\bf [the two rescalings?]}, we adopt the same convention as used by
-\cite{Fonseca_2003_Ising}. The dependence of the nonlinear scaling variables on
-the parameters $t$ and $h$ is also system-dependent, and their form can be
+which are exact as written. The flow of the parameters is made exactly linear,
+while that of the free energy is linearized as nearly as possible. Solving these equations for $u_f$ yields
+\begin{equation}
+  \begin{aligned}
+    u_f(u_t, u_h)
+    &=|u_t|^{D\nu}\mathcal F_\pm(u_h|u_t|^{-\beta\delta})+|u_t|^{D\nu}\int_1^{u_t}dx\,\frac{g(x)}{x^{1+D\nu}} \\
+    &=|u_h|^{D\nu/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})+|u_t|^{D\nu}\int_1^{u_t}dx\,\frac{g(x)}{x^{1+D\nu}} \\
+  \end{aligned}
+\end{equation}
+where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions.  The scaling functions are universal in the sense that if
+another system whose critical point belongs to the same universality class has
+its parameters brought to the form \eqref{eq:flow}, one will see the same
+functional form (up to constant rescaling of $u_t$ and $u_h$ and choice of
+$g$).
+
+The analyticity of the free energy at finite size implies that the functions
+$\mathcal F_\pm$ have power-law expansions of their arguments about zero. This
+is not the case at infinity, and in fact $\mathcal
+F_0(\eta)=\eta^{2/\beta\delta}\mathcal F_\pm(\eta^{-1/\beta\delta})$ itself has a power-law
+expansion about zero, implying that $\mathcal F_\pm(\xi)\sim \xi^{2\beta\delta}$ for large $x$.
+
+The free energy flow equation of the 3D Ising model can be completely linearised, giving $g(x)=0$. This is not the case for the 2D Ising model, where a term proportional to $u_t^2$ cannot be removed by a smooth change of coordinates. The scale of this term sets the relative size of $u_f$ and $u_t$.
+For the constant scale of $u_t$ and $u_h$, we adopt the same convention as used by
+\cite{Fonseca_2003_Ising}. This gives $g(u_t)=-\frac1{4\pi}u_t^2$. The dependence of the nonlinear scaling variables on
+the parameters $t$ and $h$ is system-dependent, and their form can be
 found for common model systems (the square- and triangular-lattice Ising
 models) in the literature \cite{Clement_2019_Respect}.
 
-With the flow equations \eqref{eq:flow} along with that for the free energy,
-the form of $f_s$ is highly constrained, further reduced to a universal
-\emph{scaling function} of a single variable $u_h|u_t|^{-\beta\delta}$ (or equivalently
-$u_tu_h^{-1/\beta\delta}$) with multiplicative power laws in $u_t$ or $u_h$ and
-(sometimes) simple additive singular functions of $u_t$ and $u_h$. The special
-variables are known as scaling invariants, as they are invariant under the flow
-\eqref{eq:flow}. Reasonable assumptions about the analyticity of the scaling
-function of a single variable then fixes the principal singularity at the
-critical point.
+
 
 \subsection{Essential singularities and droplets}
 
-Another, more subtle, singularity exists which cannot be captured by the
-multiplicative factors or additive terms, residing instead inside the scaling
-function itself. The origin can be schematically understood to arise from a
+
+In the low temperature phase, the free energy as a function of field has an essential singularity at zero field, which becomes a branch cut along the negative-$h$ axis when analytically continued to negative $h$ \cite{Langer_1967_Theory}. The origin can be schematically understood to arise from a
 singularity that exists in the complex free energy of the metastable phase of
 the model, suitably continued into the equilibrium phase. When the equilibrium
 Ising model with positive magnetization is subjected to a small negative
@@ -150,6 +176,16 @@ In the context of statistical mechanics, Langer demonstrated that the decay rate
   \operatorname{Im}f\propto\Gamma\sim e^{-\beta\Delta F_c}=e^{-1/(B|h||t|^{-\beta\delta})^{d-1}}
 \end{equation}
 which can be more rigorously related in the context of quantum field theory [ref?].
+
+\begin{figure}
+  \includegraphics{figs/F_lower_singularities.pdf}
+  \caption{
+    Analytic structure of the low-temperature scaling function $\mathcal F_-$
+    in the complex $\xi=u_h|u_t|^{-\beta\delta}\propto H$ plane. The circle
+    depicts the essential singularity at the first order transition, while the
+    solid line depicts Langer's branch cut.
+  } \label{fig:lower.singularities}
+\end{figure}
   
 This is a singular contribution that depends principally on the scaling
 invariant $ht^{-\beta\delta}\simeq u_h|u_t|^{-\beta\delta}$. It is therefore
@@ -162,8 +198,41 @@ $f_s$, and moreover part of the scaling function that composes it. We will there
 The exponent $b$ depends on dimension and can be found through a more careful
 accounting of the entropy of long-wavelength fluctuations in the droplet
 surface \cite{Gunther_1980_Goldstone}.
-Kramers--Kronig type dispersion relations can then be used to recover the
-singular part of the real scaling function from this asymptotic form.
+
+\subsection{Yang--Lee edge singularities}
+
+At finite size, the Ising model free energy is an analytic function of
+temperature and field because it is the logarithm of a sum of positive analytic
+functions. However, it can and does have singularities in the complex plane due
+to zeros of the partition function at complex argument, and in particular at
+imaginary values of field, $h$. Yang and Lee showed that in the thermodynamic
+limit of the high temperature phase of the model, these zeros form a branch cut
+along the imaginary $h$ axis that extends to $\pm i\infty$ starting at the
+point $\pm ih_{\mathrm{YL}}$ \cite{Yang_1952_Statistical, Lee_1952_Statistical}.
+The singularity of the phase transition occurs because these branch cuts
+descend and touch the real axis as $T$ approaches $T_c$, with
+$h_{\mathrm{YL}}\propto t^{\beta\delta}$. This implies that the
+high-temperature scaling function for the Ising model should have complex
+branch cuts beginning at $\pm i\xi_{\mathrm{YL}}$ for a universal constant
+$\xi_{\mathrm{YL}}$.
+
+\begin{figure}
+  \includegraphics{figs/F_higher_singularities.pdf}
+  \caption{
+    Analytic structure of the high-temperature scaling function $\mathcal F_+$
+    in the complex $\xi=u_h|u_t|^{-\beta\delta}\propto H$ plane. The squares
+    depict the Yang--Lee edge singularities, while the solid lines depict
+    branch cuts.
+  } \label{fig:higher.singularities}
+\end{figure}
+
+The Yang--Lee singularities are critical points in their own right, with their own universality class different from that of the Ising model \cite{Fisher_1978_Yang-Lee}.
+
+\cite{Cardy_1985_Conformal}
+\cite{Connelly_2020_Universal}
+\cite{An_2016_Functional}
+\cite{Zambelli_2017_Lee-Yang}
+\cite{Gliozzi_2014_Critical}
 
 \subsection{Schofield coordinates}
 
@@ -198,6 +267,120 @@ entirely fixed, and it will be truncated at finite order. We will notate the
 truncation an upper bound of $n$ by $h^{(n)}$. The convergence of the
 coefficients as $n$ is increased will be part of our assessment of the success
 of the convergence of the scaling form.
+
+One can now see the convenience of these coordinates. Both scaling variables depend only on $\theta$, as
+\begin{align}
+  \xi&=u_h|u_t|^{-\beta\delta}=h(\theta)|t(\theta)|^{-\beta\delta} \\
+  \eta&=u_t|u_h|^{-1/\beta\delta}=t(\theta)|h(\theta)|^{-1/\beta\delta}.
+\end{align}
+Moreover, both scaling variables have polynomial expansions in $\theta$ near zero, with
+\begin{align}
+  &\xi= h'(0)|t(0)|^{-\beta\delta}\theta+\cdots  && \text{for $\theta\simeq0$}\\
+  &\xi=h'(\theta_c)|t(\theta_c)|^{-\beta\delta}(\theta-\theta_c)+\cdots && \text{for $\theta\simeq\theta_c$}
+  \\
+  &\eta=-2(\theta-1)h(1)^{-1/\beta\delta}+\cdots && \text{for $\theta\simeq1$}.
+\end{align}
+Since the scaling functions $\mathcal F_\pm(\xi)$ and $\mathcal F_0(\eta)$ have
+polynomial expansions about small $\xi$ and $\eta$, respectively, this implies
+both will have polynomial expansions in $\theta$ at all three places above.
+
+Therefore, in Schofield coordinates one expects to be able to define a global
+scaling function $\mathcal F(\theta)$ which has a polynomial expansion in its
+argument for all real $\theta$. For small $\theta$ $\mathcal F(\theta)$ will
+resemble $\mathcal F_+$, for $\theta$ near one it will resemble $\mathcal F_0$,
+and for $\theta$ near $\theta_c$ it will resemble $\mathcal F_-$. This leads us
+to expect that the singularities present in these functions will likewise be
+present in $\mathcal F(\theta)$. This is shown in Figure
+\ref{fig:schofield.singularities}. Two copies of the Langer branch cut stretch
+out from $\pm\theta_c$, where the equilibrium phase ends, and the Yang--Lee
+edge singularities are present on the imaginary-$\theta$ line, where they must be since $\mathcal F$ has the same symmetry in $\theta$ as $\mathcal F_+$ has in $\xi$.
+
+The location of the Yang--Lee edge singularities can be calculated directly from the coordinate transformation \eqref{eq:schofield}. Since $h(\theta)$ is an odd real polynomial for real $\theta$, it is imaginary for imaginary $\theta$. Therefore, one requires that
+\begin{equation}
+  i\xi_{\mathrm{YL}}=\frac{h(i\theta_{\mathrm{YL}})}{(1+\theta_{\mathrm{YL}}^2)^{-\beta\delta}}
+\end{equation}
+The location $\theta_c$ is not fixed by any principle and will be left a floating parameter.
+
+\begin{figure}
+  \includegraphics{figs/F_theta_singularities.pdf}
+  \caption{
+    Analytic structure of the global scaling function $\mathcal F$ in the
+    complex $\theta$ plane. The circles depict essential singularities of the
+    first order transitions, the squares the Yang--Lee singularities, and the
+    solid lines depict branch cuts.
+  } \label{fig:schofield.singularities}
+\end{figure}
+
+\subsection{Singular free energy}
+
+As we have seen in the previous sections, the unavoidable singularities in the
+scaling functions are readily expressed as singular functions in the imaginary
+part of the free energy.
+
+Our strategy follows. First, we take the known singular expansions of the imaginary parts of the scaling functions $\mathcal F_{\pm}(\xi)$ and produce simplest form accessible under polynomial coordinate changes of $\xi$. Second, we assert that the imaginary part of $\mathcal F(\theta)$ must have this simplest form. Third, we perform a Kramers--Kronig type transformation to establish an explicit form for the real part of $\mathcal F(\theta)$. Finally, we make good on the assertion posited in the second step by fixing the Schofield coordinate transformation to produce the correct coefficients known for the real part of $\mathcal F_{\pm}$.
+
+This success of this stems from the commutative diagram below. So long as the
+application of Schofield coordinates and the dispersion relation can be said to
+commute, we may assume we have found correct coordinates for the simplest form
+of the imaginary part to be fixed in reality by the real part.
+\[
+  \begin{tikzcd}[row sep=large, column sep = 9em]
+  \operatorname{Im}\mathcal F_\pm(\xi) \arrow{r}{\text{Kramers--Kronig in $\xi$}} \arrow[]{d}{\text{Schofield}} & \operatorname{Re}\mathcal F_{\pm}(\xi) \arrow{d}{\text{Schofield}} \\%
+  \operatorname{Im}\mathcal F(\theta) \arrow{r}{\text{Kramers--Kronig in $\theta$}}& \operatorname{Re}\mathcal F(\theta)
+\end{tikzcd}
+\]
+
+\begin{figure}
+  \includegraphics{figs/contour_path.pdf}
+  \caption{
+    Integration contour over the global scaling function $\mathcal F$ in the
+    complex $\theta$ plane used to produce the dispersion relation. The
+    circular arc is taken to infinity, while the circles around the
+    singularities are taken to zero.
+  } \label{fig:contour}
+\end{figure}
+
+As $\theta\to\infty$, $\mathcal F(\theta)\sim\theta^{2/\beta\delta}$. In order that the contribution from the arc of the contour vanish, we must have the integrand vanish sufficiently fast at infinity. Since $2/\beta\delta<2$ in all dimensions, we will simply use 2.
+\begin{equation}
+  0=\oint_{\mathcal C}d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
+\end{equation}
+where $\mathcal C$ is the contour in Figure \ref{fig:contour}. The only
+nonvanishing contributions from this contour are along the real line and along
+the branch cut in the upper half plane. For the latter contributions, the real
+parts of the integration up and down cancel out, while the imaginary part
+doubles. This gives
+\begin{equation}
+  \begin{aligned}
+    0&=\left[\int_{-\infty}^\infty+\lim_{\epsilon\to0}\left(\int_{i\infty-\epsilon}^{i\theta_{\mathrm{YL}}-\epsilon}+\int^{i\infty+\epsilon}_{i\theta_{\mathrm{YL}}+\epsilon}\right)\right]
+      d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)} \\
+     &=\int_{-\infty}^\infty d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
+     +2i\int_{i\theta_{\mathrm{YL}}}^{i\infty}d\theta'\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)} \\
+     &=-i\pi\frac{\mathcal F(\theta)}{\theta^2}+\mathcal P\int_{-\infty}^\infty d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
+     +2i\int_{i\theta_{\mathrm{YL}}}^{i\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
+  \end{aligned}
+\end{equation}
+In principle one would need to account for the residue of the pole at zero, but since its order is less than two and $\mathcal F(0)=\mathcal F'(0)=0$, this evaluates to zero.
+\begin{equation}
+  \mathcal F(\theta)
+  =\frac{\theta^2}{i\pi}\mathcal P\int_{-\infty}^\infty d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
+  +\frac{2\theta^2}\pi\int_{i\theta_{\mathrm{YL}}}^{i\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(\theta')}{\vartheta^2(\vartheta-\theta)}
+\end{equation}
+\begin{equation}
+  \operatorname{Re}\mathcal F(\theta)
+  =\frac{\theta^2}{\pi}\mathcal P\int_{-\infty}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
+  -\frac{2\theta^2}\pi\int_{\theta_{\mathrm{YL}}}^{\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(i\vartheta)}{\vartheta(\vartheta^2+\theta^2)}
+\end{equation}
+Because the real part of $\mathcal F$ is even, the imaginary part must be odd. Therefore
+\begin{equation}
+  \operatorname{Re}\mathcal F(\theta)
+  =\frac{\theta^2}{\pi}
+  \int_{\theta_c}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
+  -\frac{2\theta^2}\pi\int_{\theta_{\mathrm{YL}}}^{\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(i\vartheta)}{\vartheta(\vartheta^2+\theta^2)}
+\end{equation}
+
+Now we must make our assertion of the form of the imaginary part of $\operatorname{Im}\mathcal F(\theta)$. Since both of the limits we are interested in---\eqref{eq:langer.sing} along the real axis and \eqref{eq:yang.lee.sing} along the imaginary axis---have symmetries which make their imaginary contribution vanish in the domain of the other limit, we do not need to construct a sophisticated combination to have the correct asymptotics: a simple sum will do!
+
+
 
 \section{The 2D Ising model}
 
@@ -269,15 +452,17 @@ the Kramers--Kronig transformation of \eqref{eq:im.f.func.2d}, where $\operatorn
 
 \section{The three-dimensional Ising model}
 
+\cite{Butera_2011_Free}
+
 The three-dimensional Ising model is easier in some ways, since its hyperbolic critical point lacks stray logarithms.
 
 \begin{equation} \label{eq:free.energy.3d.low}
   f_s(u_t, u_h)
-  = |u_t|^{2-\alpha}\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
+  = |u_t|^{D\nu}\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
 \end{equation}
 \begin{equation} \label{eq:free.energy.3d.mid}
   f_s(u_t, u_h)
-  = |u_h|^{(2-\alpha)/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
+  = |u_h|^{D\nu/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
 \end{equation}
 \begin{equation} \label{eq:schofield.3d.free.energy}
   f_s(R, \theta) = R^2\mathcal F(\theta)
