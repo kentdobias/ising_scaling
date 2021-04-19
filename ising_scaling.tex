@@ -23,7 +23,7 @@
 
 \begin{document}
 
-\title{Smooth Ising universal scaling functions}
+\title{Smooth and global Ising universal scaling functions}
 
 \author{Jaron Kent-Dobias}
 \affiliation{Laboratoire de Physique de l'Ecole Normale Supérieure, Paris, France}
@@ -110,29 +110,30 @@ bring the flow equations into an agreed upon simplest normal form
   &&
   \frac{du_f}{d\ell}=Du_f+g(u_t),
 \end{align}
-which are exact as written. The flow of the parameters is made exactly linear,
+which are exact as written \cite{Raju_2019_Normal}. The flow of the parameters is made exactly linear,
 while that of the free energy is linearized as nearly as possible. Solving these equations for $u_f$ yields
 \begin{equation}
   \begin{aligned}
-    u_f(u_t, u_h)
-    &=|u_t|^{D\nu}\mathcal F_\pm(u_h|u_t|^{-\beta\delta})+|u_t|^{D\nu}\int_1^{u_t}dx\,\frac{g(x)}{x^{1+D\nu}} \\
-    &=|u_h|^{D\nu/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})+|u_t|^{D\nu}\int_1^{u_t}dx\,\frac{g(x)}{x^{1+D\nu}} \\
+    &u_f(u_t, u_h)
+    =|u_t|^{D\nu}\mathcal F_\pm(u_h|u_t|^{-\beta\delta})+|u_t|^{D\nu}\int_1^{u_t}dx\,\frac{g(x)}{x^{1+D\nu}} \\
+    &=|u_h|^{D\nu/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})+|u_t|^{D\nu}\int_1^{u_h^{1/\beta\delta}}dx\,\frac{g(x)}{x^{1+D\nu}} \\
   \end{aligned}
 \end{equation}
-where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions.  The scaling functions are universal in the sense that if
-another system whose critical point belongs to the same universality class has
-its parameters brought to the form \eqref{eq:flow}, one will see the same
-functional form (up to constant rescaling of $u_t$ and $u_h$ and choice of
-$g$).
+where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions.
+The scaling functions are universal in the sense that if another system whose
+critical point belongs to the same universality class has its parameters
+brought to the form \eqref{eq:flow}, one will see the same functional form (up
+to constant rescaling of $u_t$ and $u_h$ and choice of $g$).
 
 The analyticity of the free energy at finite size implies that the functions
-$\mathcal F_\pm$ have power-law expansions of their arguments about zero. This
-is not the case at infinity, and in fact $\mathcal
-F_0(\eta)=\eta^{2/\beta\delta}\mathcal F_\pm(\eta^{-1/\beta\delta})$ itself has a power-law
-expansion about zero, implying that $\mathcal F_\pm(\xi)\sim \xi^{2\beta\delta}$ for large $x$.
+$\mathcal F_\pm$ and $\mathcal F_0$ have power-law expansions of their
+arguments about zero. This is not the case at infinity: since $\mathcal
+F_0(\eta)=\eta^{D\nu}\mathcal F_\pm(\eta^{-1/\beta\delta})$ has
+a power-law expansion about zero, $\mathcal F_\pm(\xi)\sim
+\xi^{D\nu/\beta\delta}$ for large $\xi$.
 
 The free energy flow equation of the 3D Ising model can be completely linearised, giving $g(x)=0$. This is not the case for the 2D Ising model, where a term proportional to $u_t^2$ cannot be removed by a smooth change of coordinates. The scale of this term sets the relative size of $u_f$ and $u_t$.
-For the constant scale of $u_t$ and $u_h$, we adopt the same convention as used by
+For the scale of $u_t$ and $u_h$, we adopt the same convention as used by
 \cite{Fonseca_2003_Ising}. This gives $g(u_t)=-\frac1{4\pi}u_t^2$. The dependence of the nonlinear scaling variables on
 the parameters $t$ and $h$ is system-dependent, and their form can be
 found for common model systems (the square- and triangular-lattice Ising
@@ -228,6 +229,12 @@ $\xi_{\mathrm{YL}}$.
 
 The Yang--Lee singularities are critical points in their own right, with their own universality class different from that of the Ising model \cite{Fisher_1978_Yang-Lee}.
 
+\begin{equation}
+  \mathcal F_+(\xi)
+  =A(\xi) +B(\xi)[1+(\xi/\xi_{\mathrm{YL}})^2]^{1+\sigma}+C(\xi)+\cdots
+\end{equation}
+for edge exponent $\sigma$.
+
 \cite{Cardy_1985_Conformal}
 \cite{Connelly_2020_Universal}
 \cite{An_2016_Functional}
@@ -286,9 +293,23 @@ both will have polynomial expansions in $\theta$ at all three places above.
 
 Therefore, in Schofield coordinates one expects to be able to define a global
 scaling function $\mathcal F(\theta)$ which has a polynomial expansion in its
-argument for all real $\theta$. For small $\theta$ $\mathcal F(\theta)$ will
+argument for all real $\theta$ by
+\begin{equation}
+  u_f(R,\theta)=R^{D\nu}\mathcal F(\theta)+|Rt(\theta)|^{D\nu}\int_1^Rdx\,\frac{g(x)}{x^{1+D\nu}}
+\end{equation}
+For small $\theta$ $\mathcal F(\theta)$ will
 resemble $\mathcal F_+$, for $\theta$ near one it will resemble $\mathcal F_0$,
-and for $\theta$ near $\theta_c$ it will resemble $\mathcal F_-$. This leads us
+and for $\theta$ near $\theta_c$ it will resemble $\mathcal F_-$. This can be seen explicitly using the definitions \eqref{eq:schofield} to relate the above form to the original scaling functions, giving
+\begin{equation} \label{eq:scaling.function.equivalences.2d}
+  \begin{aligned}
+    &\mathcal F(\theta)
+    =|t(\theta)|^{D\nu}\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right]
+    +|t(\theta)|^{D\nu}\int_1^{t(\theta)} dx\,\frac{g(x)}{x^{1+D\nu}}\\
+    &=|h(\theta)|^{D\nu/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
+    +|t(\theta)|^{D\nu}\int_1^{h(\theta)^{1/\beta\delta}} dx\,\frac{g(x)}{x^{1+D\nu}}
+  \end{aligned}
+\end{equation}
+This leads us
 to expect that the singularities present in these functions will likewise be
 present in $\mathcal F(\theta)$. This is shown in Figure
 \ref{fig:schofield.singularities}. Two copies of the Langer branch cut stretch
@@ -372,15 +393,23 @@ In principle one would need to account for the residue of the pole at zero, but 
 \end{equation}
 Because the real part of $\mathcal F$ is even, the imaginary part must be odd. Therefore
 \begin{equation}
-  \operatorname{Re}\mathcal F(\theta)
-  =\frac{\theta^2}{\pi}
-  \int_{\theta_c}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
-  -\frac{2\theta^2}\pi\int_{\theta_{\mathrm{YL}}}^{\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(i\vartheta)}{\vartheta(\vartheta^2+\theta^2)}
+  \begin{aligned}
+    \operatorname{Re}\mathcal F(\theta)
+    &=\frac{\theta^2}{\pi}
+    \int_{\theta_c}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right) \\
+    &-\frac{2\theta^2}\pi\int_{\theta_{\mathrm{YL}}}^{\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(i\vartheta)}{\vartheta(\vartheta^2+\theta^2)}
+  \end{aligned}
 \end{equation}
 
 Now we must make our assertion of the form of the imaginary part of $\operatorname{Im}\mathcal F(\theta)$. Since both of the limits we are interested in---\eqref{eq:langer.sing} along the real axis and \eqref{eq:yang.lee.sing} along the imaginary axis---have symmetries which make their imaginary contribution vanish in the domain of the other limit, we do not need to construct a sophisticated combination to have the correct asymptotics: a simple sum will do!
 
-
+For $\theta\in\mathbb C$,
+\begin{equation}
+  \mathcal F(\theta)=\mathcal F_c(\theta)+\mathcal F_{\mathrm{YL}}(\theta)+\sum_{i=0}^\infty F_{2i}\theta^{2+2i}
+\end{equation}
+\begin{equation}
+  \mathcal F_{\mathrm{YL}}(\theta)=F_{\mathrm{YL}}[1+(\theta/\theta_c)^2]^{1+\sigma}
+\end{equation}
 
 \section{The 2D Ising model}
 
@@ -390,13 +419,13 @@ The scaling function for the two-dimensional Ising model is the most
 exhaustively studied universal forms in statistical physics and quantum field
 theory.
 \begin{equation} \label{eq:free.energy.2d.low}
-  f_s(u_t, u_h)
+  u_f(u_t, u_h)
   = |u_t|^2\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
     +\frac{u_t^2}{8\pi}\log u_t^2
 \end{equation}
 where the functions $\mathcal F_\pm$ have expansions in nonnegative integer powers of their arguments.
 \begin{equation} \label{eq:free.energy.2d.mid}
-  f_s(u_t, u_h)
+  u_f(u_t, u_h)
   = |u_h|^{2/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
     +\frac{u_t^2}{8\pi}\log u_h^{2/\beta\delta}
 \end{equation}
@@ -410,45 +439,46 @@ Schofield coordinates allow us to define a global scaling function $\mathcal F$ 
 The scaling function $\mathcal F$ can be defined in terms of the more
 conventional ones above by substituting \eqref{eq:schofield} into \eqref{eq:free.energy.2d.low} and
 \eqref{eq:free.energy.2d.mid}, yielding
-\begin{equation} \label{eq:scaling.function.equivalences.2d}
-  \begin{aligned}
-    &\mathcal F(\theta)
-    =t(\theta)^2\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right]
-      +\frac{t(\theta)^2}{8\pi}\log t(\theta)^2 \\
-    &=|h(\theta)|^{2/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
-      +\frac{t(\theta)^2}{8\pi}\log h(\theta)^{2/\beta\delta}
-  \end{aligned}
-\end{equation}
 Examination of \eqref{eq:scaling.function.equivalences.2d} finds that $\mathcal F$ has expansions in integer powers in the entire domain $-\theta_c\leq0\leq\theta_c$.
 
-
-\begin{equation} \label{eq:im.f.func.2d}
-  f(x)=\Theta(-x) |x| e^{-1/|x|}
-\end{equation}
-\begin{equation}
-  \operatorname{Im}\mathcal F(\theta)=A\left\{f\left[\tilde B(\theta_c-\theta)\right]+f\left[b(\theta_c+\theta)\right]\right\}
-\end{equation}
-
+For $\theta\in\mathbb R$,
 \begin{equation}
   \begin{aligned}
-    \operatorname{Re}\mathcal F(\theta)
-      &=G(\theta^2)-\frac{\theta^2}\pi\int d\vartheta\, \frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)} \\
-      &=G(\theta^2)+\frac A\pi\left\{f[\tilde B(\theta_c-\theta)]+f[\tilde B(\theta_c+\theta)]\right\}
+    \operatorname{Im}\mathcal F(\theta+0i)&=F_c[\Theta(\theta-\theta_c)\mathcal I(\theta)-\Theta(-\theta-\theta_c)\mathcal I(-\theta)]
   \end{aligned}
 \end{equation}
-for arbitrary analytic function $G$ with
 \begin{equation}
-  G(x)=\sum_{i=0}^\infty G_ix^i
+  \mathcal I(\theta)=(\theta-\theta_c)e^{-1/B(\theta-\theta_c)}
 \end{equation}
-and $f$ is
+The dispersion integral \eqref{} can be used to find the real part of $\mathcal F_c$ for $\theta\in\mathbb R$, or
+\begin{equation} \label{eq:2d.real.Fc}
+  \operatorname{Re}\mathcal F_c(\theta)=F_c[\mathcal R(\theta)+\mathcal R(-\theta)]
+\end{equation}
+where $\mathcal R$ is given by the function
 \begin{equation}
-  f(x)=xe^{1/x}\operatorname{Ei}(-1/x)
+  \begin{aligned}
+  \mathcal R(\theta)
+  &=\frac1\pi\left[
+    \theta_ce^{1/B\theta_c}\operatorname{Ei}(-1/B\theta_c)
+    \right.\\
+  &\left.
+    +(\theta-\theta_c)e^{-1/B(\theta-\theta_c)}\operatorname{Ei}(1/B(\theta-\theta_c))
+  \right]
+  \end{aligned}
 \end{equation}
-the Kramers--Kronig transformation of \eqref{eq:im.f.func.2d}, where $\operatorname{Ei}$ is the exponential integral.
+When analytically continued to complex $\theta$, \eqref{eq:2d.real.Fc} has branch cuts in the incorrect places. The real and imaginary parts can be combined to yield the function
+\begin{equation}
+  \mathcal F_c(\theta)=F_c\left\{
+    \mathcal R(\theta)+\mathcal R(-\theta)+i\operatorname{sgn}(\operatorname{Im}\theta)[\mathcal I(\theta)-\mathcal I(-\theta)]
+  \right\}
+\end{equation}
+analytic for all $\theta\in\mathbb C$ outside the Langer branch cuts.
 
-\subsection{Iterative fitting}
 
-\subsection{Comparison with other smooth forms}
+
+\subsection{Fitting}
+
+\subsection{Comparison}
 
 \section{The three-dimensional Ising model}
 
@@ -457,31 +487,25 @@ the Kramers--Kronig transformation of \eqref{eq:im.f.func.2d}, where $\operatorn
 The three-dimensional Ising model is easier in some ways, since its hyperbolic critical point lacks stray logarithms.
 
 \begin{equation} \label{eq:free.energy.3d.low}
-  f_s(u_t, u_h)
+  u_f(u_t, u_h)
   = |u_t|^{D\nu}\mathcal F_{\pm}(u_h|u_t|^{-\beta\delta})
 \end{equation}
 \begin{equation} \label{eq:free.energy.3d.mid}
-  f_s(u_t, u_h)
+  u_f(u_t, u_h)
   = |u_h|^{D\nu/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})
 \end{equation}
 \begin{equation} \label{eq:schofield.3d.free.energy}
-  f_s(R, \theta) = R^2\mathcal F(\theta)
+  u_f(R, \theta) = R^{D\nu}\mathcal F(\theta)
 \end{equation}
 \begin{equation} \label{eq:scaling.function.equivalences.3d}
   \begin{aligned}
     \mathcal F(\theta)
-    &=t(\theta)^{2-\alpha}\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right] \\
-    &=|h(\theta)|^{(2-\alpha)/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
+    &=t(\theta)^{D\nu}\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right] \\
+    &=|h(\theta)|^{D\nu/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
   \end{aligned}
 \end{equation}
-\begin{equation} \label{eq:im.f.func.3d}
-  f(x)=\Theta(-x) |x|^{-7/3} e^{-1/|x|^2}
-\end{equation}
 \begin{equation}
-  f(x)=\frac{e^{-1/x^2}}{12}\left[
-    \frac4x\Gamma\big(\tfrac23\big)\operatorname{E}_{\frac53}(-x^{-2})
-    -\frac1{x^2}\Gamma\big(\tfrac16\big)\operatorname{E}_{\frac76}(-x^{-2})
-  \right]
+  \mathcal F_c(\theta)=F_c(\theta_c^2-\theta^2)^{-7/3}e^{-1/[B(\theta_c^2-\theta^2)]^2}
 \end{equation}
 
 \section{Outlook}
