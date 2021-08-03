@@ -712,17 +712,13 @@ The scaling function has a number of free parameters: the position $\theta_c$ of
     dat1 = 'data/glow_series_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_caselle.dat'
-
     ratLast(x) = (back2 = back1, back1 = x, back1 / back2)
-
     back1 = 0
     back2 = 0
-
-    set xrange [0:0.55]
-    set yrange [0:10]
-
     set xlabel '$1/n$'
+    set xrange [0:0.55]
     set ylabel '$\mathcal F_n/\mathcal F_{n-1}$'
+    set yrange [0:10]
 
     plot \
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
