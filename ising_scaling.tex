@@ -264,7 +264,7 @@ where $t$ and $h$ are polynomial functions selected so as to associate different
 \begin{align} \label{eq:schofield.funcs}
   t(\theta)=1-\theta^2
   &&
-  h(\theta)=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^\infty h_i\theta^{2i+1}
+  h(\theta)=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^\infty h_iP_{2i+1}(\theta/\theta_c)
 \end{align}
 This means that $\theta=0$ corresponds to the high-temperature zero-field line,
 $\theta=1$ to the critical isotherm at nonzero field, and $\theta=\theta_c$ to
@@ -777,5 +777,42 @@ The successful smooth description of the Ising free energy produced in part by a
 \end{acknowledgments}
 
 \bibliography{ising_scaling}
+
+\appendix
+
+\section{Legendre series to power series}
+
+In the work, we examine a series of the form
+\[
+  h(\theta)=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^\infty h_iP_{2i+1}(\theta/\theta_c),
+\]
+where $P_n$ is the $n$th Legendre polynomial. This form is useful for iteratively fitting the $h_i$, since these polynomials are orthogonal on the domain $[-\theta_c,\theta_c]$, but is not useful for evaluating the convergence of the function. For this a simple power expansion in $\theta$ is better. To make the conversion, first recall that
+\[
+  P_n(x)=2^n\sum_{k=0}^n\binom nk\binom{\frac{n+k-1}2}nx^k
+\]
+\[
+  \begin{aligned}
+    \sum_{i=0}^\infty h_iP_{2i+1}(\theta/\theta_c)
+    &=\sum_{i=0}^\infty h_i2^{2i+1}\sum_{k=0}^{2i+1}\frac{\theta^k}{\theta_c^k}\binom{2i+1}k\binom{\frac{2i+k}2}{2i+1} \\
+    &=\sum_{k=0}^\infty\theta^k\frac1{\theta_c^k}\sum_{i=(k-1)/2}^\infty h_i2^{2i+1}\binom{2i+1}k\binom{\frac{2i+k}2}{2i+1} \\
+    &=\sum_{j=0}^\infty\theta^{2j+1}\frac1{\theta_c^{2j+1}}\sum_{i=j}^\infty h_i2^{2i+1}\binom{2i+1}{2j+1}\binom{\frac{2i+2j+1}2}{2i+1}
+  \end{aligned}
+\]
+We saw in our fitting that at higher order the coefficients $h_i$ approached roughly the pattern $h_i/h_{i-1}=-b+m/i$ for positive constants $b$ and $m$. This recurrence relation can be solved to give
+\[
+  h_i\simeq\frac{(-1)^i}{i!}b^{i-1}(b-m)h_0\frac{\Gamma(2-\frac mb+i-1)}{\Gamma(2-\frac mb)}
+\]
+\[
+  \sum_{i=0}^\infty h_iP_{2i+1}(\theta/\theta_c)
+  =\sum_{j=0}^\infty\theta^{2j+1}\frac1{\theta_c^{2j+1}}
+  \frac{\Gamma(1+j-m/b)}{\Gamma(1-m/b)\Gamma(1+j)}2^{1+2j}(-b)^jh_0\binom{2j+\frac12}{2j+1}{}_2F_1(2j+\tfrac32,1+j-m/b;1+j;b)
+\]
+If we call this coefficient $H_j$, then
+\[
+  h(\theta)=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^\infty H_i\theta^{2i+1}
+  =\sum_{i=0}^\infty H_i\theta^{2i+1}-\frac1{\theta_c^2}\sum_{i=0}^\infty H_i\theta^{2i+3}
+  =\sum_{i=0}^\infty(H_i-H_{i-1}/\theta_c^2)\theta^{2i+1}
+\]
+for $H_{-1}=0$.
 
 \end{document}
