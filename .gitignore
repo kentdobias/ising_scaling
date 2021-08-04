@@ -9,3 +9,5 @@
 *.fls
 *.out
 /*.pdf
+*.gnuploterrors
+gnuplottex/*
