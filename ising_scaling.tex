@@ -480,6 +480,27 @@ analytic for all $\theta\in\mathbb C$ outside the Langer branch cuts.
 The scaling function has a number of free parameters: the position $\theta_c$ of the abrupt transition, prefactors in front of singular functions from the abrupt transition and the Yang--Lee point, the coefficients in the analytic part of $\mathcal F$, and the coefficients in the undetermined function $h$.
 
 \begin{table}
+  \begin{tabular}{c|ccc}
+    $n$ & $\mathcal F_-^{(n)}$ & $\mathcal F_0^{(n)}$ & $\mathcal F_+^{(n)}$ \\\hline
+    0   & 0                    & $-1.197733383797993$ & 0                    \\
+    1   & $-1.35783834$        & $-0.318810124891$    & 0                    \\
+    2   & $-0.048953289720$    & $0.110886196683$     & $-1.84522807823$     \\
+    3   & 0.0388639290         & $0.01642689465$      & 0                    \\
+    4   & $-0.068362121$       & $-2.639978\times10^{-4}$ & 8.3337117508     \\
+    5   & 0.18388371           & $-5.140526\times10^{-4}$ & 0                \\
+    6   & $-0.659170$          & $2.08856\times 10^{-4}$ & $-95.16897$       \\
+    7   & 2.937665             & $-4.4819\times10^{-5}$  & 0                 \\
+    8   & $-15.61$             & $3.16\times10^{-7}$  & 1457.62              \\
+    9   & 96.76                & $4.31\times10^{-6}$  & 0                    \\
+    10  & $-679$               & $-1.99\times10^{-6}$ & -25891               \\
+    11  & $5.34\times10^3$     &                      & 0                    \\
+    12  & $-4.66\times10^4$    &                      & $5.02\times10^5$     \\
+    13  & $4.46\times10^5$     &                      & 0                    \\
+    14  & $-4.66\times10^6$    &                      & $-1.04\times10^7$
+  \end{tabular}
+\end{table}
+
+\begin{table}
   \begin{tabular}{c|cccccccccc}
      & \multicolumn{9}{c}{$n$} \\
      & 0 & 1 & 3 & 5 & 7 & 9 & 11 & 13 & 15 & 17 \\
@@ -705,6 +726,7 @@ The scaling function has a number of free parameters: the position $\theta_c$ of
     set logscale y
     set xlabel '$n$'
     set ylabel '$\mathcal F_n$'
+
     plot \
       dat1 using 1:(abs($2)) title 'Numeric', \
       dat2 using 1:(abs($2)) title 'Ours ($n=0$)', \
@@ -763,6 +785,36 @@ The three-dimensional Ising model is easier in some ways, since its hyperbolic c
 \begin{equation}
   \mathcal F_c(\theta)=F_c(\theta_c^2-\theta^2)^{-7/3}e^{-1/[B(\theta_c^2-\theta^2)]^2}
 \end{equation}
+
+For $\theta\in\mathbb R$,
+\begin{equation}
+  \begin{aligned}
+    \operatorname{Im}\mathcal F(\theta+0i)&=F_c[\Theta(\theta-\theta_c)\mathcal I(\theta)-\Theta(-\theta-\theta_c)\mathcal I(-\theta)]
+  \end{aligned}
+\end{equation}
+\begin{equation}
+  \mathcal I(\theta)=(\theta-\theta_c)^{-7/3}e^{-1/B(\theta-\theta_c)^2}
+\end{equation}
+The dispersion integral \eqref{} can be used to find the real part of $\mathcal F_c$ for $\theta\in\mathbb R$, or
+\begin{equation} \label{eq:2d.real.Fc}
+  \operatorname{Re}\mathcal F_c(\theta)=F_c[\mathcal R(\theta)+\mathcal R(-\theta)]
+\end{equation}
+where $\mathcal R$ is given by the function
+\begin{equation}
+  \begin{aligned}
+  \mathcal R(\theta)
+  &=
+  -\frac1{12\pi}\left\{
+    4B\Gamma(2/3)\left[\frac{e^{-1/B^2\theta_c^2}}{\theta_c}\operatorname{Ei}_{\frac53}(-1/B^2\theta_c^2)
+  +\frac{e^{-1/B^2(\theta-\theta_c)^2}}{\theta-\theta_c}\operatorname{Ei}_{\frac53}(-1/B^2(\theta-\theta_c)^2)\right]\right. \\
+  &\left.-\Gamma(1/6)\left[\frac{e^{-1/B^2\theta_c^2}}{\theta_c^2}\operatorname{Ei}_{\frac76}(-1/B^2\theta_c^2) 
+      +\frac{e^{-1/B^2(\theta-\theta_c)^2}}{(\theta-\theta_c)^2}\operatorname{Ei}_{\frac76}(-1/B^2(\theta-\theta_c)^2)
+  \right]
+  \right\}
+  \end{aligned}
+\end{equation}
+
+\cite{Connelly_2020_Universal} report the location of the Yang--Lee singularity.
 
 \section{Outlook}
 
