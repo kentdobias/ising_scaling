@@ -487,6 +487,14 @@ For $\theta>\theta_c$,
 \end{equation}
 fixing $B$ and $F_c$. Since $A$ and $\tilde B$ are known exactly, these forms can be substituted.
 
+This leaves as unknown variables the positions $\theta_0$ and
+$\theta_{\mathrm{YL}}$ of the abrupt transition and Yang--Lee edge singularity,
+the amplitude $A_\mathrm{YL}$ of the latter, and the unknown functions $F$ and
+$h$. We determine these approximately by iteration in the polynomial order at
+which the free energy and its derivative matches known results. Gradients can be computed with
+
+A Levenburg--Marquardt algorithm is performed
+
 \begin{table}
   \begin{tabular}{c|ccc}
     $n$ & $\mathcal F_-^{(n)}$ & $\mathcal F_0^{(n)}$ & $\mathcal F_+^{(n)}$ \\\hline
