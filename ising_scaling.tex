@@ -41,6 +41,8 @@
 
 \maketitle
 
+\section{Introduction}
+
 At continuous phase transitions the thermodynamic properties of physical
 systems have singularities. Celebrated renormalization group analyses imply
 that not only the principal divergence but entire functions are
@@ -53,22 +55,24 @@ universality class.
 
 The continuous phase transition in the two-dimensional Ising model is the most
 well studied, and its universal thermodynamic functions have likewise received
-the most attention. Precision numeric work both on the lattice critical theory
-and on the ``Ising'' conformal field theory (related by universality) have
-yielded high-order polynomial expansions of those functions, along with a
-comprehensive understanding of their analytic properties
-\cite{Fonseca_2003_Ising, Mangazeev_2008_Variational, Mangazeev_2010_Scaling}.
-In parallel, smooth approximations of the Ising ``equation of state'' produce
-convenient, evaluable, differentiable empirical functions
-\cite{Caselle_2001_The}. Despite being differentiable, these approximations
-become increasingly poor when derivatives are taken due to the absence of
-subtle singularities.
+the most attention. Precision numeric work both on lattice models and on the
+``Ising'' conformal field theory (related by universality) have yielded
+high-order polynomial expansions of those functions, along with a comprehensive
+understanding of their analytic properties \cite{Fonseca_2003_Ising,
+Mangazeev_2008_Variational, Mangazeev_2010_Scaling}.  In parallel, smooth
+approximations of the Ising equation of state produce convenient, evaluable,
+differentiable empirical functions \cite{Caselle_2001_The}. Despite being
+differentiable, these approximations become increasingly poor when derivatives
+are taken due to the absence of subtle singularities.
 
 This paper attempts to find the best of both worlds: a smooth approximate
 universal thermodynamic function that respects the global analyticity of the
-Ising free energy. First, parametric coordinates are introduced that remove unnecessary
-singularities from the scaling function. Then the arbitrary analytic
-functions that compose those coordinates are approximated by truncated
+Ising free energy. By constructing approximate functions with the correct
+singularities, corrections converge exponentially to the true function. To make
+the construction, we review the analytic properties of the Ising scaling
+function. Parametric coordinates are introduced that remove unnecessary
+singularities that are a remnant of the coordinates. Then, the arbitrary
+analytic functions that compose those coordinates are approximated by truncated
 polynomials whose coefficients are fixed by matching the series expansions of
 the universal function.
 
@@ -76,15 +80,19 @@ the universal function.
 
 A renormalization group analysis predicts that certain thermodynamic functions
 will be universal in the vicinity of any critical point in the Ising
-universality class. Here we will explain precisely what is meant by universal.
+universality class, from perturbed conformal fields to the end of the
+liquid--gas coexistence line. Here we will review precisely what is meant by
+universal.
 
 Suppose one controls a temperature-like parameter $T$ and a magnetic field-like
 parameter $H$, which in the proximity of a critical point at $T=T_c$ and $H=0$
 have normalized reduced forms $t=(T-T_c)/T_c$ and $h=H/T$. Thermodynamic
-functions are derived from the free energy per site $f$, which depends on $t$
-and $h$. Renormalization group analysis can be used calculated the flow of
-these parameters under continuous changes of scale, yielding flow equations of
-the form
+functions are derived from the free energy per site $f=(F-F_c)/L^D$, which
+depends on $t$, $h$, and a litany of irrelevant parameters we will henceforth
+neglect.  Explicit renormalization with techniques like the
+$\epsilon$-expansion or exact solutions like Onsager's can be used calculated
+the flow of these parameters under continuous changes of scale $L=e^\ell$,
+yielding equations of the form
 \begin{align} \label{eq:raw.flow}
   \frac{dt}{d\ell}=\frac1\nu t+\cdots
   &&
@@ -92,12 +100,13 @@ the form
   &&
   \frac{df}{d\ell}=Df+\cdots
 \end{align}
-where $D$ is the dimension of space and $\nu$, $\beta$, and $\delta$ are
-dimensionless constants. The flow equations are truncated here, but in general
-all terms allowed by symmetry are present on their righthand side. By making a
-near-identity transformation to the coordinates and the free energy of the form
-$u_t(t, h)=t+\cdots$, $u_h(t, h)=h+\cdots$, and $u_f(f,t,h)=f+\cdots$, one can
-bring the flow equations into an agreed upon simplest normal form
+where $D=2$ is the dimension of space and $\nu=1$, $\beta=\frac18$, and
+$\delta=15$ are dimensionless constants. The flow equations are truncated here,
+but in general all terms allowed by the symmetries of the parameters are
+present on their righthand side. By making a near-identity transformation to
+the coordinates and the free energy of the form $u_t(t, h)=t+\cdots$, $u_h(t,
+h)=h+\cdots$, and $u_f(f,t,h)=f+\cdots$, one can bring the flow equations into
+the agreed upon simplest normal form
 \begin{align} \label{eq:flow}
   \frac{du_t}{d\ell}=\frac1\nu u_t
   &&
@@ -105,12 +114,13 @@ bring the flow equations into an agreed upon simplest normal form
   &&
   \frac{du_f}{d\ell}=Du_f-\frac1{4\pi}u_t^2
 \end{align}
-which are exact as written \cite{Raju_2019_Normal}. The flow of the parameters
-is made exactly linear, while that of the free energy is linearized as nearly
-as possible. The quadratic term in that equation is unremovable due to a
-resonance between the value of $\nu$ and the spatial dimension in two
-dimensions, while its coefficient is chosen as a matter of convention. Solving
-these equations for $u_f$ yields
+which are exact as written \cite{Raju_2019_Normal}. The flow of the
+\emph{scaling fields} $u_t$ and $u_h$ is made exactly linear, while that of the
+free energy is linearized as nearly as possible. The quadratic term in that
+equation is unremovable due to a resonance between the value of $\nu$ and the
+spatial dimension in two dimensions, while its coefficient is chosen as a
+matter of convention, fixing the scale of $u_t$. Solving these equations for
+$u_f$ yields
 \begin{equation}
   \begin{aligned}
     u_f(u_t, u_h)
@@ -122,62 +132,63 @@ where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions.
 The scaling functions are universal in the sense that if another system whose
 critical point belongs to the same universality class has its parameters
 brought to the form \eqref{eq:flow}, one will see the same functional form (up
-to constant rescaling of $u_t$ and $u_h$).
+to constant rescaling of $u_h$). The invariant scaling combinations that appear
+as the arguments to the universal scaling functions will come up often, and we
+will use $\xi=u_h|u_t|^{-\beta\delta}$ and $\eta=u_t|u_h|^{-1/\beta\delta}$.
 
-The analyticity of the free energy at finite size implies that the functions
+The analyticity of the free energy at places away from the critical point implies that the functions
 $\mathcal F_\pm$ and $\mathcal F_0$ have power-law expansions of their
-arguments about zero. This is not the case at infinity: since $\mathcal
-F_0(\eta)=\eta^{D\nu}\mathcal F_\pm(\eta^{-1/\beta\delta})$ has
-a power-law expansion about zero, $\mathcal F_\pm(\xi)\sim
-\xi^{D\nu/\beta\delta}$ for large $\xi$.
-
+arguments about zero. For instance, when $u_t$ goes to zero for nonzero $u_h$
+there is no phase transition, and the free energy must be an analytic function
+of its arguments. It follows that $\mathcal F_0$ is analytic about zero. This
+is not the case at infinity: since $\mathcal F_0(\eta)=\eta^{D\nu}\mathcal
+F_\pm(\eta^{-1/\beta\delta})$ has a power-law expansion about zero, $\mathcal
+F_\pm(\xi)\sim \xi^{D\nu/\beta\delta}$ for large $\xi$. The nonanalyticity of
+these functions at infinite argument can therefore be understood as an artifact
+of the chosen coordinates.
 
 For the scale of $u_t$ and $u_h$, we adopt the same convention as used by
 \cite{Fonseca_2003_Ising}. The dependence of the nonlinear scaling variables on
 the parameters $t$ and $h$ is system-dependent, and their form can be found for
 common model systems (the square- and triangular-lattice Ising models) in the
-literature \cite{Mangazeev_2010_Scaling, Clement_2019_Respect}.
-To connect with Mangazeev and Fonseca, $\mathcal F_0(x)=\tilde\Phi(-x)=\Phi(-x)+(x^2/8\pi) \log x^2$ and $\mathcal F_\pm(x)=G_{\mathrm{high}/\mathrm{low}}(x)$.
-
+literature \cite{Mangazeev_2010_Scaling, Clement_2019_Respect}.  To connect the
+results of thes paper with Mangazeev and Fonseca, one can write $\mathcal
+F_0(\eta)=\tilde\Phi(-\eta)=\Phi(-\eta)+(\eta^2/8\pi) \log \eta^2$ and
+$\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.
 
 \section{Singularities}
 
 \subsection{Essential singularity at the abrupt transition}
 
-In the low temperature phase, the free energy as a function of field has an
-essential singularity at zero field, which becomes a branch cut along the
-negative-$h$ axis when analytically continued to negative $h$
-\cite{Langer_1967_Theory}. The origin can be schematically understood to arise
-from a singularity that exists in the complex free energy of the metastable
-phase of the model, suitably continued into the equilibrium phase. When the
+In the low temperature phase, the free energy has an essential singularity at
+zero field, which becomes a branch cut along the negative-$h$ axis when
+analytically continued to negative $h$ \cite{Langer_1967_Theory}. The origin
+can be schematically understood to arise from a singularity that exists in the
+imaginary free energy of the metastable phase of the model. When the
 equilibrium Ising model with positive magnetization is subjected to a small
 negative magnetic field, its equilibrium state instantly becomes one with a
 negative magnetization. However, under physical dynamics it takes time to
 arrive at this state, which happens after a fluctuation containing a
 sufficiently large equilibrium `bubble' occurs.
 
-The bulk of such a bubble of radius $R$ lowers the free energy by
-$2M|H|V_DR^D$, where $D$ is the dimension of space, $M$ is the magnetization,
-$H$ is the external field, and $V_D$ is the volume of a $D$-ball, but its
-surface raises the free energy by $\sigma S_DR^{D-1}$, where $\sigma$ is the
-surface tension between the stable--metastable interface and $S_D$ is the
-volume of a $(D-1)$-sphere. The bubble is sufficiently large to decay
+The bulk of such a bubble of radius $R$ lowers the free energy by $2M|H|\pi
+R^2$, where  $M$ is the magnetization, but its surface raises the free energy
+by $2\pi R\sigma$, where $\sigma$ is the surface tension between the
+stable--metastable interface. The bubble is sufficiently large to decay
 metastable state when the differential bulk savings outweigh the surface costs.
-
 This critical bubble occurs with free energy cost
 \begin{equation}
-  \begin{aligned}
-    \Delta F_c
-      &\simeq\left(\frac{S_D\sigma}D\right)^D\left(\frac{D-1}{2V_DM|H|}\right)^{D-1} \\
-      &\simeq T\left(\frac{S_D\mathcal S(0)}D\right)^D\left[\frac{2V_D\mathcal M(0)}{D-1}ht^{-\beta\delta}\right]^{-(D-1)}
-  \end{aligned}
+  \Delta F_c
+    \simeq\frac{\pi\sigma^2}{2M|H|}
+    \simeq T\left(\frac{2M_0}{\pi\sigma_0^2}|\xi|\right)^{-1}
 \end{equation}
-where $\mathcal S(0)$ and $\mathcal M(0)$ are the critical amplitudes for the
-surface tension and magnetization, respectively \textbf{[find more standard
-notation]} \cite{Kent-Dobias_2020_Novel}.
-In the context of statistical mechanics, Langer demonstrated that the decay rate is asymptotically proportional to the imaginary part of the free energy in the metastable phase, with (assuming Arrhenius behavior)
+where $\sigma_0$ and $M_0$ are the critical amplitudes for the surface tension
+and magnetization, respectively \cite{Kent-Dobias_2020_Novel}.  In the context
+of statistical mechanics, Langer demonstrated that the decay rate is
+asymptotically proportional to the imaginary part of the free energy in the
+metastable phase, with
 \begin{equation}
-  \operatorname{Im}f\propto\Gamma\sim e^{-\beta\Delta F_c}=e^{-1/(\tilde B|h||t|^{-\beta\delta})^{D-1}}
+  \operatorname{Im}F\propto\Gamma\sim e^{-\beta\Delta F_c}\simeq e^{-1/\tilde B|\xi|}
 \end{equation}
 which can be more rigorously related in the context of quantum field theory [ref?].
 
@@ -190,19 +201,18 @@ which can be more rigorously related in the context of quantum field theory [ref
     solid line depicts Langer's branch cut.
   } \label{fig:lower.singularities}
 \end{figure}
-  
-This is a singular contribution that depends principally on the scaling
-invariant $ht^{-\beta\delta}\simeq u_h|u_t|^{-\beta\delta}$. It is therefore
-suggestive that this should be considered a part of the singular free energy
-$f_s$, and moreover part of the scaling function that composes it. We will
-therefore make the ansatz that
+
+To lowest order, this singularity is a function of the scaling invariant $\xi$
+alone. It is therefore suggestive that this should be considered a part of the
+singular free energy and moreover part of the scaling function that composes
+it. We will therefore make the ansatz that
 \begin{equation} \label{eq:essential.singularity}
-  \operatorname{Im}\mathcal F_-(\xi)=A\Theta(-\xi)|\xi|^{-b}e^{-1/(\tilde B|\xi|)^{d-1}}\left(1+O(\xi)\right)
+  \operatorname{Im}\mathcal F_-(\xi)=A\Theta(-\xi)|\xi|e^{-1/\tilde B|\xi|}\left[1+O(\xi)\right]
 \end{equation}
 \cite{Houghton_1980_The}
-The exponent $b$ depends on dimension and can be found through a more careful
-accounting of the entropy of long-wavelength fluctuations in the droplet
-surface, and in two dimensions $b=-1$ \cite{Gunther_1980_Goldstone}.
+The linear prefactor can be found through a more careful accounting of the
+entropy of long-wavelength fluctuations in the droplet surface
+\cite{Gunther_1980_Goldstone}.
 
 \subsection{Yang--Lee edge singularity}
 
@@ -231,100 +241,97 @@ $\xi_{\mathrm{YL}}$.
   } \label{fig:higher.singularities}
 \end{figure}
 
-The Yang--Lee singularities are critical points in their own right, with their own universality class different from that of the Ising model \cite{Fisher_1978_Yang-Lee}.
-
-\begin{equation}
+The Yang--Lee singularities are critical points in their own right, with their
+own universality class different from that of the Ising model
+\cite{Fisher_1978_Yang-Lee}. Asymptotically close to this point, the scaling
+function $\mathcal F_+$ takes the form
+\begin{equation} \label{eq:yang.lee.sing}
   \mathcal F_+(\xi)
-  =A(\xi) +B(\xi)[1+(\xi/\xi_{\mathrm{YL}})^2]^{1+\sigma}+C(\xi)+\cdots
+  =A(\xi) +B(\xi)[1+(\xi/\xi_{\mathrm{YL}})^2]^{1+\sigma}+\cdots
 \end{equation}
-for edge exponent $\sigma$.
+with edge exponent $\sigma=\frac16$ and $A$ and $B$ analytic functions at
+$\xi_\mathrm{YL}$.
 
 \cite{Cardy_1985_Conformal}
-\cite{Connelly_2020_Universal}
-\cite{An_2016_Functional}
-\cite{Zambelli_2017_Lee-Yang}
-\cite{Gliozzi_2014_Critical}
 
 \section{Parametric coordinates}
 
-The invariant combinations $u_h|u_t|^{-\beta\delta}$ or
-$u_t|u_h|^{-1/\beta\delta}$ are natural variables to describe the scaling
+The invariant combinations $\xi=u_h|u_t|^{-\beta\delta}$ or
+$\eta=u_t|u_h|^{-1/\beta\delta}$ are natural variables to describe the scaling
 functions, but prove unwieldy when attempting to make smooth approximations.
 This is because, when defined in terms of these variables, scaling functions
 that have polynomial expansions at small argument have nonpolynomial expansions
 at large argument. Rather than deal with the creative challenge of dreaming up
 functions with different asymptotic expansions in different limits, we adopt
-different coordinates, in terms of which a scaling function can be defined that
-has polynomial expansions in \emph{all} limits.
+another coordinate system, in terms of which a scaling function can be defined
+that has polynomial expansions in \emph{all} limits.
 
 In all dimensions, the Schofield coordinates $R$ and $\theta$ will be implicitly defined by
 \begin{align} \label{eq:schofield}
-  u_t(R, \theta) = Rt(\theta)
+  u_t(R, \theta) = R(1-\theta^2)
   &&
-  u_h(R, \theta) = R^{\beta\delta}h(\theta)
+  u_h(R, \theta) = R^{\beta\delta}g(\theta)
 \end{align}
-where $t$ and $h$ are polynomial functions selected so as to associate different scaling limits with different values of $\theta$. We will adopt standard forms for these functions, given by
+where $g$ is an odd function whose first zero lies at $\theta_0>1$. We take
 \begin{align} \label{eq:schofield.funcs}
-  t(\theta)=1-\theta^2
-  &&
-  h(\theta)=\left(1-\frac{\theta^2}{\theta_c^2}\right)\sum_{i=0}^\infty h_i\theta^{2i+1}
+  g(\theta)=\left(1-\frac{\theta^2}{\theta_0^2}\right)\sum_{i=0}^\infty g_i\theta^{2i+1}.
 \end{align}
 This means that $\theta=0$ corresponds to the high-temperature zero-field line,
-$\theta=1$ to the critical isotherm at nonzero field, and $\theta=\theta_c$ to
+$\theta=1$ to the critical isotherm at nonzero field, and $\theta=\theta_0$ to
 the low-temperature zero-field (phase coexistence) line.
-
 In practice the infinite series in \eqref{eq:schofield.funcs} cannot be
-entirely fixed, and it will be truncated at finite order. We will notate the
-truncation an upper bound of $n$ by $h^{(n)}$. The convergence of the
-coefficients as $n$ is increased will be part of our assessment of the success
-of the convergence of the scaling form.
+entirely fixed, and it will be truncated at finite order.
 
-One can now see the convenience of these coordinates. Both scaling variables depend only on $\theta$, as
+One can now see the convenience of these coordinates. Both invariant scaling
+combinations depend only on $\theta$, as
 \begin{align}
-  \xi&=u_h|u_t|^{-\beta\delta}=h(\theta)|t(\theta)|^{-\beta\delta} \\
-  \eta&=u_t|u_h|^{-1/\beta\delta}=t(\theta)|h(\theta)|^{-1/\beta\delta}.
+  \xi=u_h|u_t|^{-\beta\delta}=\frac{g(\theta)}{|1-\theta^2|^{\beta\delta}} &&
+  \eta=u_t|u_h|^{-1/\beta\delta}=\frac{1-\theta^2}{|g(\theta)|^{1/\beta\delta}}
 \end{align}
 Moreover, both scaling variables have polynomial expansions in $\theta$ near zero, with
 \begin{align}
-  &\xi= h'(0)|t(0)|^{-\beta\delta}\theta+\cdots  && \text{for $\theta\simeq0$}\\
-  &\xi=h'(\theta_c)|t(\theta_c)|^{-\beta\delta}(\theta-\theta_c)+\cdots && \text{for $\theta\simeq\theta_c$}
+  &\xi= g'(0)\theta+\cdots  && \text{for $\theta\simeq0$}\\
+  &\xi=g'(\theta_0)(\theta_0^2-1)^{-\beta\delta}(\theta-\theta_0)+\cdots && \text{for $\theta\simeq\theta_0$}
   \\
-  &\eta=-2(\theta-1)h(1)^{-1/\beta\delta}+\cdots && \text{for $\theta\simeq1$}.
+  &\eta=-2(\theta-1)g(1)^{-1/\beta\delta}+\cdots && \text{for $\theta\simeq1$}.
 \end{align}
 Since the scaling functions $\mathcal F_\pm(\xi)$ and $\mathcal F_0(\eta)$ have
 polynomial expansions about small $\xi$ and $\eta$, respectively, this implies
-both will have polynomial expansions in $\theta$ at all three places above.
+both will have polynomial expansions in $\theta$ everywhere.
 
 Therefore, in Schofield coordinates one expects to be able to define a global
 scaling function $\mathcal F(\theta)$ which has a polynomial expansion in its
 argument for all real $\theta$ by
 \begin{equation}
-  u_f(R,\theta)=R^{D\nu}\mathcal F(\theta)+t(\theta)^2\frac{R^2}{8\pi}\log R^2
+  u_f(R,\theta)=R^{D\nu}\mathcal F(\theta)+(1-\theta^2)^2\frac{R^2}{8\pi}\log R^2
 \end{equation}
 For small $\theta$, $\mathcal F(\theta)$ will
 resemble $\mathcal F_+$, for $\theta$ near one it will resemble $\mathcal F_0$,
-and for $\theta$ near $\theta_c$ it will resemble $\mathcal F_-$. This can be seen explicitly using the definitions \eqref{eq:schofield} to relate the above form to the original scaling functions, giving
+and for $\theta$ near $\theta_0$ it will resemble $\mathcal F_-$. This can be seen explicitly using the definitions \eqref{eq:schofield} to relate the above form to the original scaling functions, giving
 \begin{equation} \label{eq:scaling.function.equivalences.2d}
   \begin{aligned}
     \mathcal F(\theta)
-    &=|t(\theta)|^{D\nu}\mathcal F_\pm\left[h(\theta)|t(\theta)|^{-\beta\delta}\right]
-    +\frac{t(\theta)^2}{8\pi}\log t(\theta)^2\\
-    &=|h(\theta)|^{D\nu/\beta\delta}\mathcal F_0\left[t(\theta)|h(\theta)|^{-1/\beta\delta}\right]
-    +\frac{t(\theta)^2}{8\pi}\log h(\theta)^{2/\beta\delta}
+    &=|t(\theta)|^{D\nu}\mathcal F_\pm\left[g(\theta)|1-\theta^2|^{-\beta\delta}\right]
+    +\frac{(1-\theta^2)^2}{8\pi}\log t(\theta)^2\\
+    &=|h(\theta)|^{D\nu/\beta\delta}\mathcal F_0\left[(1-\theta^2)|g(\theta)|^{-1/\beta\delta}\right]
+    +\frac{(1-\theta^2)^2}{8\pi}\log g(\theta)^{2/\beta\delta}
   \end{aligned}
 \end{equation}
 This leads us
 to expect that the singularities present in these functions will likewise be
 present in $\mathcal F(\theta)$. This is shown in Figure
 \ref{fig:schofield.singularities}. Two copies of the Langer branch cut stretch
-out from $\pm\theta_c$, where the equilibrium phase ends, and the Yang--Lee
+out from $\pm\theta_0$, where the equilibrium phase ends, and the Yang--Lee
 edge singularities are present on the imaginary-$\theta$ line, where they must be since $\mathcal F$ has the same symmetry in $\theta$ as $\mathcal F_+$ has in $\xi$.
 
-The location of the Yang--Lee edge singularities can be calculated directly from the coordinate transformation \eqref{eq:schofield}. Since $h(\theta)$ is an odd real polynomial for real $\theta$, it is imaginary for imaginary $\theta$. Therefore, one requires that
+The location of the Yang--Lee edge singularities can be calculated directly
+from the coordinate transformation \eqref{eq:schofield}. Since $g(\theta)$ is
+an odd real polynomial for real $\theta$, it is imaginary for imaginary
+$\theta$. Therefore,
 \begin{equation}
-  i\xi_{\mathrm{YL}}=\frac{h(i\theta_{\mathrm{YL}})}{(1+\theta_{\mathrm{YL}}^2)^{-\beta\delta}}
+  i\xi_{\mathrm{YL}}=\frac{g(i\theta_{\mathrm{YL}})}{(1+\theta_{\mathrm{YL}}^2)^{-\beta\delta}}
 \end{equation}
-The location $\theta_c$ is not fixed by any principle and will be left a floating parameter.
+The location $\theta_0$ is not fixed by any principle.
 
 \begin{figure}
   \includegraphics{figs/F_theta_singularities.pdf}
@@ -399,13 +406,13 @@ Because the real part of $\mathcal F$ is even, the imaginary part must be odd. T
 \begin{equation} \label{eq:dispersion}
   \operatorname{Re}\mathcal F(\theta)
   =\frac{\theta^2}{\pi}
-  \int_{\theta_c}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
+  \int_{\theta_0}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
   -\frac{2\theta^2}\pi\int_{\theta_{\mathrm{YL}}}^{\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(i\vartheta)}{\vartheta(\vartheta^2+\theta^2)}
 \end{equation}
 
 Now we must make our assertion of the form of the imaginary part of
 $\operatorname{Im}\mathcal F(\theta)$. Since both of the limits we are
-interested in---\eqref{eq:langer.sing} along the real axis and
+interested in---\eqref{eq:essential.singularity} along the real axis and
 \eqref{eq:yang.lee.sing} along the imaginary axis---have symmetries which make
 their imaginary contribution vanish in the domain of the other limit, we do not
 need to construct a sophisticated combination to have the correct asymptotics:
@@ -424,26 +431,26 @@ the first order transition. The first is simply
 The second must be determined using the relationship \eqref{eq:dispersion}. To
 match the behavior we expect, we should have for $\theta\in\mathbb R$
 \begin{equation}
-  \operatorname{Im}\mathcal F_c(\theta+0i)=F_c[\Theta(\theta-\theta_c)\mathcal I(\theta)-\Theta(-\theta-\theta_c)\mathcal I(-\theta)]
+  \operatorname{Im}\mathcal F_c(\theta+0i)=F_c[\Theta(\theta-\theta_0)\mathcal I(\theta)-\Theta(-\theta-\theta_0)\mathcal I(-\theta)]
 \end{equation}
-where 
+where
 \begin{equation}
-  \mathcal I(\theta)=(\theta-\theta_c)e^{-1/B(\theta-\theta_c)}
+  \mathcal I(\theta)=(\theta-\theta_0)e^{-1/B(\theta-\theta_0)}
 \end{equation}
 reproduces the singularity in \eqref{eq:essential.singularity}.
 The real part for $\theta\in\mathbb R$ is therefore
 \begin{equation} \label{eq:2d.real.Fc}
   \operatorname{Re}\mathcal F_c(\theta+0i)
   =\frac{\theta^2}{\pi}
-  \int_{\theta_c}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F_c(\vartheta+0i)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
+  \int_{\theta_0}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F_c(\vartheta+0i)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
   =F_c[\mathcal R(\theta)+\mathcal R(-\theta)]
 \end{equation}
 where $\mathcal R$ is given by the function
 \begin{equation}
   \mathcal R(\theta)
   =\frac1\pi\left[
-    \theta_ce^{1/B\theta_c}\operatorname{Ei}(-1/B\theta_c)
-    +(\theta-\theta_c)e^{-1/B(\theta-\theta_c)}\operatorname{Ei}(1/B(\theta-\theta_c))
+    \theta_0e^{1/B\theta_0}\operatorname{Ei}(-1/B\theta_0)
+    +(\theta-\theta_0)e^{-1/B(\theta-\theta_0)}\operatorname{Ei}(1/B(\theta-\theta_0))
   \right]
 \end{equation}
 When analytically continued to complex $\theta$, \eqref{eq:2d.real.Fc} has branch cuts in the incorrect places. To produce a function with the correct analytic properties, these real and imaginary parts combine to yield
@@ -458,30 +465,30 @@ analytic for all $\theta\in\mathbb C$ outside the Langer branch cuts.
 
 \section{Fitting}
 
-The scaling function has a number of free parameters: the position $\theta_c$ of the abrupt transition, prefactors in front of singular functions from the abrupt transition and the Yang--Lee point, the coefficients in the analytic part of $\mathcal F$, and the coefficients in the undetermined function $h$. Other parameters are determined by known properties.
+The scaling function has a number of free parameters: the position $\theta_0$ of the abrupt transition, prefactors in front of singular functions from the abrupt transition and the Yang--Lee point, the coefficients in the analytic part of $\mathcal F$, and the coefficients in the undetermined function $h$. Other parameters are determined by known properties.
 
-For $\theta>\theta_c$,
+For $\theta>\theta_0$,
 \begin{equation}
   \begin{aligned}
     \operatorname{Im}u_f
     &\simeq A u_t(\theta)^{D\nu}\xi(\theta)\exp\left\{\frac1{\tilde B\xi(\theta)}\right\} \\
-    &=AR^{D\nu}t(\theta_c)^{D\nu}\xi'(\theta_c)(\theta-\theta_c)
-    \exp\left\{\frac1{\tilde B\xi'(\theta_c)}\left(\frac1{\theta-\theta_c}
-      -\frac{\xi''(\theta_c)}{2\xi'(\theta_c)}\right)
-      \right\}\left(1+O[(\theta-\theta_c)^2]\right)
+    &=AR^{D\nu}t(\theta_0)^{D\nu}\xi'(\theta_0)(\theta-\theta_0)
+    \exp\left\{\frac1{\tilde B\xi'(\theta_0)}\left(\frac1{\theta-\theta_0}
+      -\frac{\xi''(\theta_0)}{2\xi'(\theta_0)}\right)
+      \right\}\left(1+O[(\theta-\theta_0)^2]\right)
   \end{aligned}
 \end{equation}
 \begin{equation}
-  B=-\tilde B\xi'(\theta_c)=-\tilde B\frac{h'(\theta_c)}{|t(\theta_c)|^{1/\beta\delta}}
+  B=-\tilde B\xi'(\theta_0)=-\tilde B\frac{h'(\theta_0)}{|t(\theta_0)|^{1/\beta\delta}}
 \end{equation}
 \begin{equation}
   \begin{aligned}
-    F_c&=At(\theta_c)^{D\nu}\xi'(\theta_c)\exp\left\{
-    -\frac{\xi''(\theta_c)}{2\tilde B\xi'(\theta_c)^2}
+    F_c&=At(\theta_0)^{D\nu}\xi'(\theta_0)\exp\left\{
+    -\frac{\xi''(\theta_0)}{2\tilde B\xi'(\theta_0)^2}
   \right\} \\
        &=
-       A|t(\theta_c)|^{D\nu-\Delta}h'(\theta_c)
-       \exp\left\{-\frac1{\tilde B}\left(\frac{|t(\theta_c)|^\Delta h''(\theta_c)}{2h'(\theta_c)^2}+\frac{\Delta|t(\theta_c)|^{\Delta - 1} t'(\theta_c)}{h'(\theta_c)}
+       A|t(\theta_0)|^{D\nu-\Delta}h'(\theta_0)
+       \exp\left\{-\frac1{\tilde B}\left(\frac{|t(\theta_0)|^\Delta h''(\theta_0)}{2h'(\theta_0)^2}+\frac{\Delta|t(\theta_0)|^{\Delta - 1} t'(\theta_0)}{h'(\theta_0)}
        \right)\right\} 
   \end{aligned}
 \end{equation}
@@ -494,7 +501,7 @@ $h$. We determine these approximately by iteration in the polynomial order at
 which the free energy and its derivative matches known results. We write as a
 cost function the difference between the known series coefficients of the
 scaling functions $\mathcal F_\pm$ and the series coefficients of our
-parametric form evaluated at the same points, $\theta=0$ and $\theta=\theta_c$,
+parametric form evaluated at the same points, $\theta=0$ and $\theta=\theta_0$,
 weighted by the uncertainty in the value of the known coefficients or by a
 machine-precision cutoff, whichever is larger. A Levenburg--Marquardt algorithm
 is performed on the cost function to find a parameter combination which
@@ -733,7 +740,7 @@ accuracy of the fit results can be checked against the known values here.
 
 \section{Outlook}
 
-The successful smooth description of the Ising free energy produced in part by analytically continuing the singular imaginary part of the metastable free energy inspires an extension of this work: a smooth function that captures the universal scaling \emph{through the coexistence line and into the metastable phase}. Indeed, the tools exist to produce this: by writing $t(\theta)=(1-\theta^2)(1-(\theta/\theta_m)^2)$ for some $\theta_m>\theta_c$, the invariant scaling combination
+The successful smooth description of the Ising free energy produced in part by analytically continuing the singular imaginary part of the metastable free energy inspires an extension of this work: a smooth function that captures the universal scaling \emph{through the coexistence line and into the metastable phase}. Indeed, the tools exist to produce this: by writing $t(\theta)=(1-\theta^2)(1-(\theta/\theta_m)^2)$ for some $\theta_m>\theta_0$, the invariant scaling combination
 
 \begin{acknowledgments}
   The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
