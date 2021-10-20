@@ -381,7 +381,7 @@ simplest form of the imaginary part to be fixed later by the real part.
 \end{tikzcd}
 \]
 We require that, for $\theta\in\mathbb R$
-\begin{equation}
+\begin{equation} \label{eq:imaginary.abrupt}
   \operatorname{Im}\mathcal F(\theta+0i)=\operatorname{Im}\mathcal F_0(\theta+0i)=C_0[\Theta(\theta-\theta_0)\mathcal I(\theta)-\Theta(-\theta-\theta_0)\mathcal I(-\theta)]
 \end{equation}
 where
@@ -493,37 +493,40 @@ abrupt transition and the Yang--Lee point, the coefficients in the analytic
 part $G$ of $\mathcal F$, and the coefficients in the undetermined function
 $g$.  Other parameters are determined by known properties.
 
-For $\theta>\theta_0$,
+For $\theta>\theta_0$, the form \eqref{eq:essential.singularity} can be
+expanded around $\theta=\theta_0$ to yield
 \begin{equation}
   \begin{aligned}
     \operatorname{Im}u_f
     &\simeq A_0 u_t(\theta)^{D\nu}\xi(\theta)\exp\left\{\frac1{b\xi(\theta)}\right\} \\
-    &=A_0R^{D\nu}(\theta_0-1)^{D\nu}\xi'(\theta_0)(\theta-\theta_0)
+    &=A_0R^{D\nu}(\theta_0^2-1)^{D\nu}\xi'(\theta_0)(\theta-\theta_0)
     \exp\left\{\frac1{b\xi'(\theta_0)}\left(\frac1{\theta-\theta_0}
       -\frac{\xi''(\theta_0)}{2\xi'(\theta_0)}\right)
       \right\}\left(1+O[(\theta-\theta_0)^2]\right)
   \end{aligned}
 \end{equation}
+Comparing this with the requirement \eqref{eq:imaginary.abrupt}, we find that
 \begin{equation}
-  B=-b\xi'(\theta_0)=-b\frac{h'(\theta_0)}{(\theta_0^2-1)^{1/\beta\delta}}
+  B=-b\xi'(\theta_0)=-b\frac{g'(\theta_0)}{(\theta_0^2-1)^{1/\beta\delta}}
 \end{equation}
+and
 \begin{equation}
   \begin{aligned}
-    C_0&=At(\theta_0)^{D\nu}\xi'(\theta_0)\exp\left\{
-    -\frac{\xi''(\theta_0)}{2\tilde B\xi'(\theta_0)^2}
+    C_0&=A_0t(\theta_0^2-1)^{D\nu}\xi'(\theta_0)\exp\left\{
+    -\frac{\xi''(\theta_0)}{2b\xi'(\theta_0)^2}
   \right\} \\
        &=
-       A|t(\theta_0)|^{D\nu-\Delta}h'(\theta_0)
-       \exp\left\{-\frac1{\tilde B}\left(\frac{|t(\theta_0)|^\Delta h''(\theta_0)}{2h'(\theta_0)^2}+\frac{\Delta|t(\theta_0)|^{\Delta - 1} t'(\theta_0)}{h'(\theta_0)}
-       \right)\right\} 
+       A_0(\theta_0^2-1)^{D\nu-\Delta}g'(\theta_0)
+       \exp\left\{-\frac1b\left(\frac{(\theta_0^2-1)^\Delta g''(\theta_0)}{2g'(\theta_0)^2}-\frac{2\Delta(\theta_0^2-1)^{\Delta - 1}\theta_0}{g'(\theta_0)}
+       \right)\right\}
   \end{aligned}
 \end{equation}
-fixing $B$ and $F_c$. Since $A$ and $\tilde B$ are known exactly, these forms can be substituted.
+fixing $B$ and $C_0$.
 
 This leaves as unknown variables the positions $\theta_0$ and
 $\theta_{\mathrm{YL}}$ of the abrupt transition and Yang--Lee edge singularity,
-the amplitude $A_\mathrm{YL}$ of the latter, and the unknown functions $F$ and
-$h$. We determine these approximately by iteration in the polynomial order at
+the amplitude $C_\mathrm{YL}$ of the latter, and the unknown functions $G$ and
+$g$. We determine these approximately by iteration in the polynomial order at
 which the free energy and its derivative matches known results. We write as a
 cost function the difference between the known series coefficients of the
 scaling functions $\mathcal F_\pm$ and the series coefficients of our
@@ -671,22 +674,51 @@ accuracy of the fit results can be checked against the known values here.
 \end{table}
 
 \begin{figure}
-  \begin{gnuplot}[terminal=epslatex, terminaloptions={size 8.65cm,5.35cm}]
+  \begin{gnuplot}[terminal=epslatex]
     dat = 'data/phi_comparison.dat'
 
     set xlabel '$n$'
-    set ylabel '$|\mathcal F_0^{(n)}-|$'
+    set ylabel '$|\Delta\mathcal F_0^{(m)}(0)|$'
 
+    set format y '$10^{%T}$'
     set style data linespoints
     set logscale y
+    set key title '\raisebox{0.5em}{$m$}' bottom left
 
     plot \
       dat using 1:2 title '0', \
       dat using 1:3 title '1', \
       dat using 1:4 title '2', \
-      dat using 1:5 title '3'
+      dat using 1:5 title '3', \
+      dat using 1:6 title '4'
   \end{gnuplot}
   \caption{
+    The error in the $m$th derivative of the scaling function $\mathcal F_0$
+    with respect to $\eta$ evaluated at $\eta=0$, as a function of the
+    polynomial order $n$ at which the scaling function was fit.
+  }
+\end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat = 'data/yl_comparison.dat'
+
+    set xlabel '$n$'
+    set ylabel '$|\Delta\xi_\mathrm{YL}|$'
+    set xrange [1.5:9.5]
+    set yrange [0.000005:0.05]
+
+    set format y '$10^{%T}$'
+    set style data yerrorlines
+    set logscale y
+    unset key
+
+    plot dat using 1:2:3
+  \end{gnuplot}
+  \caption{
+    The error in the location of the Yang--Lee edge singularity as a function
+    of the polynomial order $n$ at which the scaling function was fit. Error
+    bars denote the uncertainty in the known location of the singularity.
   }
 \end{figure}
 
