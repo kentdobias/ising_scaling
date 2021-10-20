@@ -249,10 +249,15 @@ function $\mathcal F_+$ takes the form
   \mathcal F_+(\xi)
   =A(\xi) +B(\xi)[1+(\xi/\xi_{\mathrm{YL}})^2]^{1+\sigma}+\cdots
 \end{equation}
-with edge exponent $\sigma=\frac16$ and $A$ and $B$ analytic functions at
-$\xi_\mathrm{YL}$.
-
-\cite{Cardy_1985_Conformal}
+with edge exponent $\sigma=-\frac16$ and $A$ and $B$ analytic functions at
+$\xi_\mathrm{YL}$ \cite{Cardy_1985_Conformal, Fonseca_2003_Ising}. This creates
+a branch cut stemming from the critical point along the imaginary-$\xi$ axis
+with a growing imaginary part
+\begin{equation}
+  \operatorname{Im}\mathcal F_+(i\xi\pm0)\sim\pm\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}+\cdots
+\end{equation}
+This results in analytic structure for $\mathcal F_+$ shown in
+Fig.~\ref{fig:higher.singularities}.
 
 \section{Parametric coordinates}
 
@@ -319,10 +324,12 @@ and for $\theta$ near $\theta_0$ it will resemble $\mathcal F_-$. This can be se
 \end{equation}
 This leads us
 to expect that the singularities present in these functions will likewise be
-present in $\mathcal F(\theta)$. This is shown in Figure
-\ref{fig:schofield.singularities}. Two copies of the Langer branch cut stretch
-out from $\pm\theta_0$, where the equilibrium phase ends, and the Yang--Lee
-edge singularities are present on the imaginary-$\theta$ line, where they must be since $\mathcal F$ has the same symmetry in $\theta$ as $\mathcal F_+$ has in $\xi$.
+present in $\mathcal F(\theta)$. The analytic structure of this function is
+shown in Fig.~\ref{fig:schofield.singularities}. Two copies of the Langer
+branch cut stretch out from $\pm\theta_0$, where the equilibrium phase ends,
+and the Yang--Lee edge singularities are present on the imaginary-$\theta$
+line, where they must be since $\mathcal F$ has the same symmetry in $\theta$
+as $\mathcal F_+$ has in $\xi$.
 
 The location of the Yang--Lee edge singularities can be calculated directly
 from the coordinate transformation \eqref{eq:schofield}. Since $g(\theta)$ is
@@ -349,18 +356,38 @@ As we have seen in the previous sections, the unavoidable singularities in the
 scaling functions are readily expressed as singular functions in the imaginary
 part of the free energy.
 
-Our strategy follows. First, we take the known singular expansions of the imaginary parts of the scaling functions $\mathcal F_{\pm}(\xi)$ and produce simplest form accessible under polynomial coordinate changes of $\xi$. Second, we assert that the imaginary part of $\mathcal F(\theta)$ must have this simplest form. Third, we perform a Kramers--Kronig type transformation to establish an explicit form for the real part of $\mathcal F(\theta)$. Finally, we make good on the assertion posited in the second step by fixing the Schofield coordinate transformation to produce the correct coefficients known for the real part of $\mathcal F_{\pm}$.
+Our strategy follows. First, we take the singular imaginary parts of the
+scaling functions $\mathcal F_{\pm}(\xi)$ and truncate them to the lowest order
+accessible under polynomial coordinate changes of $\xi$. Then, we assert that
+the imaginary part of $\mathcal F(\theta)$ must have this simplest form,
+implicitly defining the parametric coordinate change. Third, we perform a
+Kramers--Kronig type transformation to establish an explicit form for the real
+part of $\mathcal F(\theta)$. Finally, we make good on the assertion made in
+the second step by finding the coordinate transformation that produces the
+correct series coefficients of $\mathcal F_{\pm}$.
 
 This success of this stems from the commutative diagram below. So long as the
-application of Schofield coordinates and the dispersion relation can be said to
-commute, we may assume we have found correct coordinates for the simplest form
-of the imaginary part to be fixed in reality by the real part.
+application of Schofield coordinates and the Kramers--Kronig relation can be
+said to commute, we may assume we have found correct coordinates for the
+simplest form of the imaginary part to be fixed later by the real part.
 \[
   \begin{tikzcd}[row sep=large, column sep = 9em]
   \operatorname{Im}\mathcal F_\pm(\xi) \arrow{r}{\text{Kramers--Kronig in $\xi$}} \arrow[]{d}{\text{Schofield}} & \operatorname{Re}\mathcal F_{\pm}(\xi) \arrow{d}{\text{Schofield}} \\%
   \operatorname{Im}\mathcal F(\theta) \arrow{r}{\text{Kramers--Kronig in $\theta$}}& \operatorname{Re}\mathcal F(\theta)
 \end{tikzcd}
 \]
+We require that, for $\theta\in\mathbb R$
+\begin{equation}
+  \operatorname{Im}\mathcal F(\theta+0i)=\operatorname{Im}\mathcal F_0(\theta+0i)=F_0[\Theta(\theta-\theta_0)\mathcal I(\theta)-\Theta(-\theta-\theta_0)\mathcal I(-\theta)]
+\end{equation}
+where
+\begin{equation}
+  \mathcal I(\theta)=(\theta-\theta_0)e^{-1/B(\theta-\theta_0)}
+\end{equation}
+reproduces the essential singularity in \eqref{eq:essential.singularity}. Independently, we require for $\theta\in\mathbb R$
+\begin{equation}
+  \operatorname{Im}\mathcal F(i\theta+0)=\operatorname{Im}\mathcal F_\mathrm{YL}(i\theta+0)=F_\mathrm{YL}[\Theta(\theta-\theta_\mathrm{YL})-\Theta(-\theta-\theta_\mathrm{YL})\mathcal I(-\theta)]
+\end{equation}
 
 \begin{figure}
   \includegraphics{figs/contour_path.pdf}
@@ -372,7 +399,11 @@ of the imaginary part to be fixed in reality by the real part.
   } \label{fig:contour}
 \end{figure}
 
-As $\theta\to\infty$, $\mathcal F(\theta)\sim\theta^{2/\beta\delta}$. In order that the contribution from the arc of the contour vanish, we must have the integrand vanish sufficiently fast at infinity. Since $2/\beta\delta<2$ in all dimensions, we will simply use 2.
+As $\theta\to\infty$, $\mathcal
+F(\theta)\sim\theta^{2/\beta\delta}=\theta^{16/15}$. In order that the
+contribution from the arc of the contour vanish, we must have the integrand
+vanish sufficiently fast at infinity. Since $2/\beta\delta<2$ in all
+dimensions, we will simply use 2.
 \begin{equation}
   0=\oint_{\mathcal C}d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
 \end{equation}
@@ -428,16 +459,7 @@ the first order transition. The first is simply
 \begin{equation}
   \mathcal F_{\mathrm{YL}}(\theta)=F_{\mathrm{YL}}\left[(\theta^2+\theta_{\mathrm{YL}}^2)^{1+\sigma}-\theta_{\mathrm{YL}}^{2(1+\sigma)}\right]
 \end{equation}
-The second must be determined using the relationship \eqref{eq:dispersion}. To
-match the behavior we expect, we should have for $\theta\in\mathbb R$
-\begin{equation}
-  \operatorname{Im}\mathcal F_c(\theta+0i)=F_c[\Theta(\theta-\theta_0)\mathcal I(\theta)-\Theta(-\theta-\theta_0)\mathcal I(-\theta)]
-\end{equation}
-where
-\begin{equation}
-  \mathcal I(\theta)=(\theta-\theta_0)e^{-1/B(\theta-\theta_0)}
-\end{equation}
-reproduces the singularity in \eqref{eq:essential.singularity}.
+The second must be determined using the relationship \eqref{eq:dispersion}. 
 The real part for $\theta\in\mathbb R$ is therefore
 \begin{equation} \label{eq:2d.real.Fc}
   \operatorname{Re}\mathcal F_c(\theta+0i)
