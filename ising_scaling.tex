@@ -188,9 +188,13 @@ of statistical mechanics, Langer demonstrated that the decay rate is
 asymptotically proportional to the imaginary part of the free energy in the
 metastable phase, with
 \begin{equation}
-  \operatorname{Im}F\propto\Gamma\sim e^{-\beta\Delta F_c}\simeq e^{-1/\tilde B|\xi|}
+  \operatorname{Im}F\propto\Gamma\sim e^{-\beta\Delta F_c}\simeq e^{-1/b|\xi|}
 \end{equation}
-which can be more rigorously related in the context of quantum field theory [ref?].
+which can be more rigorously related in the context of quantum field theory
+[ref?]. The constant $b=2M_0/\pi\sigma_0^2$ is predicted by known properties,
+and for our conventions for $u_t$ and $u_h$, $M_0/\sigma_0^2=\bar
+s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant.
+
 
 \begin{figure}
   \includegraphics{figs/F_lower_singularities.pdf}
@@ -207,12 +211,12 @@ alone. It is therefore suggestive that this should be considered a part of the
 singular free energy and moreover part of the scaling function that composes
 it. We will therefore make the ansatz that
 \begin{equation} \label{eq:essential.singularity}
-  \operatorname{Im}\mathcal F_-(\xi+i0)=A\Theta(-\xi)\xi e^{-1/\tilde B|\xi|}\left[1+O(\xi)\right]
+  \operatorname{Im}\mathcal F_-(\xi+i0)=A_0\Theta(-\xi)\xi e^{-1/b|\xi|}\left[1+O(\xi)\right]
 \end{equation}
 \cite{Houghton_1980_The}
 The linear prefactor can be found through a more careful accounting of the
 entropy of long-wavelength fluctuations in the droplet surface
-\cite{Gunther_1980_Goldstone}.
+\cite{Gunther_1980_Goldstone}. In conformal field theory, the prefactor is also known to be $A_0=\bar s/2\pi$.
 
 \subsection{Yang--Lee edge singularity}
 
@@ -254,7 +258,7 @@ $\xi_\mathrm{YL}$ \cite{Cardy_1985_Conformal, Fonseca_2003_Ising}. This creates
 a branch cut stemming from the critical point along the imaginary-$\xi$ axis
 with a growing imaginary part
 \begin{equation}
-  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm A\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
+  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm A_\mathrm{YL}\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
 \end{equation}
 This results in analytic structure for $\mathcal F_+$ shown in
 Fig.~\ref{fig:higher.singularities}.
@@ -384,11 +388,13 @@ where
 \begin{equation}
   \mathcal I(\theta)=(\theta-\theta_0)e^{-1/B(\theta-\theta_0)}
 \end{equation}
-reproduces the essential singularity in \eqref{eq:essential.singularity}. Independently, we require for $\theta\in\mathbb R$
+reproduces the essential singularity in \eqref{eq:essential.singularity}.
+Independently, we require for $\theta\in\mathbb R$
 \begin{equation}
   \operatorname{Im}\mathcal F(i\theta+0)=\operatorname{Im}\mathcal F_\mathrm{YL}(i\theta+0)=\frac{C_\mathrm{YL}}2\Theta(\theta^2-\theta_\mathrm{YL}^2)[(\theta/\theta_\mathrm{YL})^2-1]^{1+\sigma}
 \end{equation}
-Fixing these requirements for the imaginary part of $\mathcal F(\theta)$ fixes its real part up to an analytic even function.
+Fixing these requirements for the imaginary part of $\mathcal F(\theta)$ fixes
+its real part up to an analytic even function $G(\theta)$, real for real $\theta$.
 
 \begin{figure}
   \includegraphics{figs/contour_path.pdf}
@@ -400,19 +406,17 @@ Fixing these requirements for the imaginary part of $\mathcal F(\theta)$ fixes i
   } \label{fig:contour}
 \end{figure}
 
-As $\theta\to\infty$, $\mathcal
-F(\theta)\sim\theta^{2/\beta\delta}=\theta^{16/15}$. In order that the
-contribution from the arc of the contour vanish, we must have the integrand
-vanish sufficiently fast at infinity. Since $2/\beta\delta<2$ in all
-dimensions, we will simply use 2.
+To find the real part of the nonanalytic part of the scaling function, we make
+use of the identity
 \begin{equation}
   0=\oint_{\mathcal C}d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
 \end{equation}
-where $\mathcal C$ is the contour in Figure \ref{fig:contour}. The only
-nonvanishing contributions from this contour are along the real line and along
-the branch cut in the upper half plane. For the latter contributions, the real
-parts of the integration up and down cancel out, while the imaginary part
-doubles. This gives
+where $\mathcal C$ is the contour in Figure \ref{fig:contour}. The integral is
+zero because there are no singularites enclosed by the contour. The only
+nonvanishing contributions from this contour as the radius of the semicircle is
+taken to infinity are along the real line and along the branch cut in the upper
+half plane. For the latter contributions, the real parts of the integration up
+and down cancel out, while the imaginary part doubles. This gives
 \begin{equation}
   \begin{aligned}
     0&=\left[\int_{-\infty}^\infty+\lim_{\epsilon\to0}\left(\int_{i\infty-\epsilon}^{i\theta_{\mathrm{YL}}-\epsilon}+\int^{i\infty+\epsilon}_{i\theta_{\mathrm{YL}}+\epsilon}\right)\right]
@@ -423,12 +427,15 @@ doubles. This gives
      +2i\int_{i\theta_{\mathrm{YL}}}^{i\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
   \end{aligned}
 \end{equation}
-In principle one would need to account for the residue of the pole at zero, but since its order is less than two and $\mathcal F(0)=\mathcal F'(0)=0$, this evaluates to zero.
+where $\mathcal P$ is the principle value.  In principle one would need to
+account for the residue of the pole at zero, but since its order is less than
+two and $\mathcal F(0)=\mathcal F'(0)=0$, this evaluates to zero. Rearranging, this gives
 \begin{equation}
   \mathcal F(\theta)
   =\frac{\theta^2}{i\pi}\mathcal P\int_{-\infty}^\infty d\vartheta\,\frac{\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
   +\frac{2\theta^2}\pi\int_{i\theta_{\mathrm{YL}}}^{i\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(\theta')}{\vartheta^2(\vartheta-\theta)}
 \end{equation}
+Taking the real part of both sides, we find
 \begin{equation}
   \operatorname{Re}\mathcal F(\theta)
   =\frac{\theta^2}{\pi}\mathcal P\int_{-\infty}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2(\vartheta-\theta)}
@@ -441,32 +448,14 @@ Because the real part of $\mathcal F$ is even, the imaginary part must be odd. T
   \int_{\theta_0}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F(\vartheta)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
   -\frac{2\theta^2}\pi\int_{\theta_{\mathrm{YL}}}^{\infty}d\vartheta\,\frac{\operatorname{Im}\mathcal F(i\vartheta)}{\vartheta(\vartheta^2+\theta^2)}
 \end{equation}
-
-Now we must make our assertion of the form of the imaginary part of
-$\operatorname{Im}\mathcal F(\theta)$. Since both of the limits we are
-interested in---\eqref{eq:essential.singularity} along the real axis and
-\eqref{eq:yang.lee.sing} along the imaginary axis---have symmetries which make
-their imaginary contribution vanish in the domain of the other limit, we do not
-need to construct a sophisticated combination to have the correct asymptotics:
-a simple sum will do!
-
-For $\theta\in\mathbb C$, we take
+Evaluating these ordinary integrals, we find for $\theta\in\mathbb R$
 \begin{equation}
-  \mathcal F(\theta)=\mathcal F_c(\theta)+\mathcal F_{\mathrm{YL}}(\theta)+\sum_{i=1}^\infty F_{i}\theta^{2i},
+  \operatorname{Re}\mathcal F(\theta)=\operatorname{Re}\mathcal F_0(\theta)+\mathcal F_\mathrm{YL}(\theta)+G(\theta)
 \end{equation}
-where $\mathcal F_{\textrm{YL}}$ and $\mathcal F_c$ are functions that
-contribute the appropriate singularities expected at the Yang--Lee point and
-the first order transition. The first is simply
-\begin{equation}
-  \mathcal F_{\mathrm{YL}}(\theta)=F_{\mathrm{YL}}\left[(\theta^2+\theta_{\mathrm{YL}}^2)^{1+\sigma}-\theta_{\mathrm{YL}}^{2(1+\sigma)}\right]
-\end{equation}
-The second must be determined using the relationship \eqref{eq:dispersion}. 
-The real part for $\theta\in\mathbb R$ is therefore
+where
 \begin{equation} \label{eq:2d.real.Fc}
-  \operatorname{Re}\mathcal F_c(\theta+0i)
-  =\frac{\theta^2}{\pi}
-  \int_{\theta_0}^\infty d\vartheta\,\frac{\operatorname{Im}\mathcal F_c(\vartheta+0i)}{\vartheta^2}\left(\frac1{\vartheta-\theta}+\frac1{\vartheta+\theta}\right)
-  =F_c[\mathcal R(\theta)+\mathcal R(-\theta)]
+  \operatorname{Re}\mathcal F_0(\theta)
+  =C_0[\mathcal R(\theta)+\mathcal R(-\theta)]
 \end{equation}
 where $\mathcal R$ is given by the function
 \begin{equation}
@@ -476,37 +465,51 @@ where $\mathcal R$ is given by the function
     +(\theta-\theta_0)e^{-1/B(\theta-\theta_0)}\operatorname{Ei}(1/B(\theta-\theta_0))
   \right]
 \end{equation}
-When analytically continued to complex $\theta$, \eqref{eq:2d.real.Fc} has branch cuts in the incorrect places. To produce a function with the correct analytic properties, these real and imaginary parts combine to yield
+and
 \begin{equation}
-  \mathcal F_c(\theta)=F_c\left\{
+  \mathcal F_{\mathrm{YL}}(\theta)=C_{\mathrm{YL}}\left[(\theta^2+\theta_{\mathrm{YL}}^2)^{1+\sigma}-\theta_{\mathrm{YL}}^{2(1+\sigma)}\right]
+\end{equation}
+We have also included the analytic part $G$, which we assume has a simple series expansion
+\begin{equation}
+  G(\theta)=\sum_{i=1}^\infty G_i\theta^{2i}
+\end{equation}
+From the form of the real part, we can infer the form of $\mathcal F$ that is analytic for the whole complex plane except at the singularities and branch cuts previously discussed.
+For $\theta\in\mathbb C$, we take
+\begin{equation}
+  \mathcal F(\theta)=\mathcal F_0(\theta)+\mathcal F_{\mathrm{YL}}(\theta)+G(\theta),
+\end{equation}
+where
+\begin{equation}
+  \mathcal F_0(\theta)=C_0\left\{
     \mathcal R(\theta)+\mathcal R(-\theta)+i\operatorname{sgn}(\operatorname{Im}\theta)[\mathcal I(\theta)-\mathcal I(-\theta)]
   \right\}
 \end{equation}
-analytic for all $\theta\in\mathbb C$ outside the Langer branch cuts.
-
-
 
 \section{Fitting}
 
-The scaling function has a number of free parameters: the position $\theta_0$ of the abrupt transition, prefactors in front of singular functions from the abrupt transition and the Yang--Lee point, the coefficients in the analytic part of $\mathcal F$, and the coefficients in the undetermined function $h$. Other parameters are determined by known properties.
+The scaling function has a number of free parameters: the position $\theta_0$
+of the abrupt transition, prefactors in front of singular functions from the
+abrupt transition and the Yang--Lee point, the coefficients in the analytic
+part $G$ of $\mathcal F$, and the coefficients in the undetermined function
+$g$.  Other parameters are determined by known properties.
 
 For $\theta>\theta_0$,
 \begin{equation}
   \begin{aligned}
     \operatorname{Im}u_f
-    &\simeq A u_t(\theta)^{D\nu}\xi(\theta)\exp\left\{\frac1{\tilde B\xi(\theta)}\right\} \\
-    &=AR^{D\nu}t(\theta_0)^{D\nu}\xi'(\theta_0)(\theta-\theta_0)
-    \exp\left\{\frac1{\tilde B\xi'(\theta_0)}\left(\frac1{\theta-\theta_0}
+    &\simeq A_0 u_t(\theta)^{D\nu}\xi(\theta)\exp\left\{\frac1{b\xi(\theta)}\right\} \\
+    &=A_0R^{D\nu}(\theta_0-1)^{D\nu}\xi'(\theta_0)(\theta-\theta_0)
+    \exp\left\{\frac1{b\xi'(\theta_0)}\left(\frac1{\theta-\theta_0}
       -\frac{\xi''(\theta_0)}{2\xi'(\theta_0)}\right)
       \right\}\left(1+O[(\theta-\theta_0)^2]\right)
   \end{aligned}
 \end{equation}
 \begin{equation}
-  B=-\tilde B\xi'(\theta_0)=-\tilde B\frac{h'(\theta_0)}{|t(\theta_0)|^{1/\beta\delta}}
+  B=-b\xi'(\theta_0)=-b\frac{h'(\theta_0)}{(\theta_0^2-1)^{1/\beta\delta}}
 \end{equation}
 \begin{equation}
   \begin{aligned}
-    F_c&=At(\theta_0)^{D\nu}\xi'(\theta_0)\exp\left\{
+    C_0&=At(\theta_0)^{D\nu}\xi'(\theta_0)\exp\left\{
     -\frac{\xi''(\theta_0)}{2\tilde B\xi'(\theta_0)^2}
   \right\} \\
        &=
