@@ -207,7 +207,7 @@ alone. It is therefore suggestive that this should be considered a part of the
 singular free energy and moreover part of the scaling function that composes
 it. We will therefore make the ansatz that
 \begin{equation} \label{eq:essential.singularity}
-  \operatorname{Im}\mathcal F_-(\xi)=A\Theta(-\xi)|\xi|e^{-1/\tilde B|\xi|}\left[1+O(\xi)\right]
+  \operatorname{Im}\mathcal F_-(\xi+i0)=A\Theta(-\xi)\xi e^{-1/\tilde B|\xi|}\left[1+O(\xi)\right]
 \end{equation}
 \cite{Houghton_1980_The}
 The linear prefactor can be found through a more careful accounting of the
@@ -254,7 +254,7 @@ $\xi_\mathrm{YL}$ \cite{Cardy_1985_Conformal, Fonseca_2003_Ising}. This creates
 a branch cut stemming from the critical point along the imaginary-$\xi$ axis
 with a growing imaginary part
 \begin{equation}
-  \operatorname{Im}\mathcal F_+(i\xi\pm0)\sim\pm\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}+\cdots
+  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm A\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
 \end{equation}
 This results in analytic structure for $\mathcal F_+$ shown in
 Fig.~\ref{fig:higher.singularities}.
@@ -378,7 +378,7 @@ simplest form of the imaginary part to be fixed later by the real part.
 \]
 We require that, for $\theta\in\mathbb R$
 \begin{equation}
-  \operatorname{Im}\mathcal F(\theta+0i)=\operatorname{Im}\mathcal F_0(\theta+0i)=F_0[\Theta(\theta-\theta_0)\mathcal I(\theta)-\Theta(-\theta-\theta_0)\mathcal I(-\theta)]
+  \operatorname{Im}\mathcal F(\theta+0i)=\operatorname{Im}\mathcal F_0(\theta+0i)=C_0[\Theta(\theta-\theta_0)\mathcal I(\theta)-\Theta(-\theta-\theta_0)\mathcal I(-\theta)]
 \end{equation}
 where
 \begin{equation}
@@ -386,8 +386,9 @@ where
 \end{equation}
 reproduces the essential singularity in \eqref{eq:essential.singularity}. Independently, we require for $\theta\in\mathbb R$
 \begin{equation}
-  \operatorname{Im}\mathcal F(i\theta+0)=\operatorname{Im}\mathcal F_\mathrm{YL}(i\theta+0)=F_\mathrm{YL}[\Theta(\theta-\theta_\mathrm{YL})-\Theta(-\theta-\theta_\mathrm{YL})\mathcal I(-\theta)]
+  \operatorname{Im}\mathcal F(i\theta+0)=\operatorname{Im}\mathcal F_\mathrm{YL}(i\theta+0)=\frac{C_\mathrm{YL}}2\Theta(\theta^2-\theta_\mathrm{YL}^2)[(\theta/\theta_\mathrm{YL})^2-1]^{1+\sigma}
 \end{equation}
+Fixing these requirements for the imaginary part of $\mathcal F(\theta)$ fixes its real part up to an analytic even function.
 
 \begin{figure}
   \includegraphics{figs/contour_path.pdf}
