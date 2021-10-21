@@ -770,7 +770,7 @@ accuracy of the fit results can be checked against the known values here.
 
     plot \
       dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'Ours ($n=0$)', \
+      dat2 using 1:(abs($2)) title 'Ours ($n=2$)', \
       dat3 using 1:(abs($2)) title 'Caselle'
   \end{gnuplot}
   \caption{
@@ -792,7 +792,7 @@ accuracy of the fit results can be checked against the known values here.
 
     plot \
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
-      dat2 using (1/$1):(abs(ratLast($2))) title 'Ours ($n=0$)', \
+      dat2 using (1/$1):(abs(ratLast($2))) title 'Ours ($n=2$)', \
       dat3 using (1/$1):(abs(ratLast($2))) title 'Caselle'
   \end{gnuplot}
   \caption{
