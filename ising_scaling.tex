@@ -101,16 +101,17 @@ yielding equations of the form
   \frac{df}{d\ell}=Df+\cdots
 \end{align}
 where $D=2$ is the dimension of space and $\nu=1$, $\beta=\frac18$, and
-$\delta=15$ are dimensionless constants. The flow equations are truncated here,
-but in general all terms allowed by the symmetries of the parameters are
-present on their righthand side. By making a near-identity transformation to
-the coordinates and the free energy of the form $u_t(t, h)=t+\cdots$, $u_h(t,
-h)=h+\cdots$, and $u_f(f,t,h)=f+\cdots$, one can bring the flow equations into
-the agreed upon simplest normal form
+$\delta=15$ are dimensionless constants. The combination
+$\Delta=\beta\delta=\frac{15}8$ will appear often. The flow equations are
+truncated here, but in general all terms allowed by the symmetries of the
+parameters are present on their righthand side. By making a near-identity
+transformation to the coordinates and the free energy of the form $u_t(t,
+h)=t+\cdots$, $u_h(t, h)=h+\cdots$, and $u_f(f,t,h)=f+\cdots$, one can bring
+the flow equations into the agreed upon simplest normal form
 \begin{align} \label{eq:flow}
   \frac{du_t}{d\ell}=\frac1\nu u_t
   &&
-  \frac{du_h}{d\ell}=\frac{\beta\delta}\nu u_h
+  \frac{du_h}{d\ell}=\frac{\Delta}\nu u_h
   &&
   \frac{du_f}{d\ell}=Du_f-\frac1{4\pi}u_t^2
 \end{align}
@@ -124,8 +125,8 @@ $u_f$ yields
 \begin{equation}
   \begin{aligned}
     u_f(u_t, u_h)
-    &=|u_t|^{D\nu}\mathcal F_\pm(u_h|u_t|^{-\beta\delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_t^2 \\
-    &=|u_h|^{D\nu/\beta\delta}\mathcal F_0(u_t|u_h|^{-1/\beta\delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_h^{2/\beta\delta} \\
+    &=|u_t|^{D\nu}\mathcal F_\pm(u_h|u_t|^{-\Delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_t^2 \\
+    &=|u_h|^{D\nu/\Delta}\mathcal F_0(u_t|u_h|^{-1/\Delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_h^{2/\Delta} \\
   \end{aligned}
 \end{equation}
 where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions.
@@ -134,7 +135,7 @@ critical point belongs to the same universality class has its parameters
 brought to the form \eqref{eq:flow}, one will see the same functional form (up
 to constant rescaling of $u_h$). The invariant scaling combinations that appear
 as the arguments to the universal scaling functions will come up often, and we
-will use $\xi=u_h|u_t|^{-\beta\delta}$ and $\eta=u_t|u_h|^{-1/\beta\delta}$.
+will use $\xi=u_h|u_t|^{-\Delta}$ and $\eta=u_t|u_h|^{-1/\Delta}$.
 
 The analyticity of the free energy at places away from the critical point implies that the functions
 $\mathcal F_\pm$ and $\mathcal F_0$ have power-law expansions of their
@@ -142,8 +143,8 @@ arguments about zero. For instance, when $u_t$ goes to zero for nonzero $u_h$
 there is no phase transition, and the free energy must be an analytic function
 of its arguments. It follows that $\mathcal F_0$ is analytic about zero. This
 is not the case at infinity: since $\mathcal F_0(\eta)=\eta^{D\nu}\mathcal
-F_\pm(\eta^{-1/\beta\delta})$ has a power-law expansion about zero, $\mathcal
-F_\pm(\xi)\sim \xi^{D\nu/\beta\delta}$ for large $\xi$. The nonanalyticity of
+F_\pm(\eta^{-1/\Delta})$ has a power-law expansion about zero, $\mathcal
+F_\pm(\xi)\sim \xi^{D\nu/\Delta}$ for large $\xi$. The nonanalyticity of
 these functions at infinite argument can therefore be understood as an artifact
 of the chosen coordinates.
 
@@ -200,7 +201,7 @@ s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant.
   \includegraphics{figs/F_lower_singularities.pdf}
   \caption{
     Analytic structure of the low-temperature scaling function $\mathcal F_-$
-    in the complex $\xi=u_h|u_t|^{-\beta\delta}\propto H$ plane. The circle
+    in the complex $\xi=u_h|u_t|^{-\Delta}\propto H$ plane. The circle
     depicts the essential singularity at the first order transition, while the
     solid line depicts Langer's branch cut.
   } \label{fig:lower.singularities}
@@ -230,7 +231,7 @@ along the imaginary $h$ axis that extends to $\pm i\infty$ starting at the
 point $\pm ih_{\mathrm{YL}}$ \cite{Yang_1952_Statistical, Lee_1952_Statistical}.
 The singularity of the phase transition occurs because these branch cuts
 descend and touch the real axis as $T$ approaches $T_c$, with
-$h_{\mathrm{YL}}\propto t^{\beta\delta}$. This implies that the
+$h_{\mathrm{YL}}\propto t^{\Delta}$. This implies that the
 high-temperature scaling function for the Ising model should have complex
 branch cuts beginning at $\pm i\xi_{\mathrm{YL}}$ for a universal constant
 $\xi_{\mathrm{YL}}$.
@@ -239,7 +240,7 @@ $\xi_{\mathrm{YL}}$.
   \includegraphics{figs/F_higher_singularities.pdf}
   \caption{
     Analytic structure of the high-temperature scaling function $\mathcal F_+$
-    in the complex $\xi=u_h|u_t|^{-\beta\delta}\propto H$ plane. The squares
+    in the complex $\xi=u_h|u_t|^{-\Delta}\propto H$ plane. The squares
     depict the Yang--Lee edge singularities, while the solid lines depict
     branch cuts.
   } \label{fig:higher.singularities}
@@ -265,8 +266,8 @@ Fig.~\ref{fig:higher.singularities}.
 
 \section{Parametric coordinates}
 
-The invariant combinations $\xi=u_h|u_t|^{-\beta\delta}$ or
-$\eta=u_t|u_h|^{-1/\beta\delta}$ are natural variables to describe the scaling
+The invariant combinations $\xi=u_h|u_t|^{-\Delta}$ or
+$\eta=u_t|u_h|^{-1/\Delta}$ are natural variables to describe the scaling
 functions, but prove unwieldy when attempting to make smooth approximations.
 This is because, when defined in terms of these variables, scaling functions
 that have polynomial expansions at small argument have nonpolynomial expansions
@@ -279,7 +280,7 @@ In all dimensions, the Schofield coordinates $R$ and $\theta$ will be implicitly
 \begin{align} \label{eq:schofield}
   u_t(R, \theta) = R(1-\theta^2)
   &&
-  u_h(R, \theta) = R^{\beta\delta}g(\theta)
+  u_h(R, \theta) = R^{\Delta}g(\theta)
 \end{align}
 where $g$ is an odd function whose first zero lies at $\theta_0>1$. We take
 \begin{align} \label{eq:schofield.funcs}
@@ -294,15 +295,15 @@ entirely fixed, and it will be truncated at finite order.
 One can now see the convenience of these coordinates. Both invariant scaling
 combinations depend only on $\theta$, as
 \begin{align}
-  \xi=u_h|u_t|^{-\beta\delta}=\frac{g(\theta)}{|1-\theta^2|^{\beta\delta}} &&
-  \eta=u_t|u_h|^{-1/\beta\delta}=\frac{1-\theta^2}{|g(\theta)|^{1/\beta\delta}}
+  \xi=u_h|u_t|^{-\Delta}=\frac{g(\theta)}{|1-\theta^2|^{\Delta}} &&
+  \eta=u_t|u_h|^{-1/\Delta}=\frac{1-\theta^2}{|g(\theta)|^{1/\Delta}}
 \end{align}
 Moreover, both scaling variables have polynomial expansions in $\theta$ near zero, with
 \begin{align}
   &\xi= g'(0)\theta+\cdots  && \text{for $\theta\simeq0$}\\
-  &\xi=g'(\theta_0)(\theta_0^2-1)^{-\beta\delta}(\theta-\theta_0)+\cdots && \text{for $\theta\simeq\theta_0$}
+  &\xi=g'(\theta_0)(\theta_0^2-1)^{-\Delta}(\theta-\theta_0)+\cdots && \text{for $\theta\simeq\theta_0$}
   \\
-  &\eta=-2(\theta-1)g(1)^{-1/\beta\delta}+\cdots && \text{for $\theta\simeq1$}.
+  &\eta=-2(\theta-1)g(1)^{-1/\Delta}+\cdots && \text{for $\theta\simeq1$}.
 \end{align}
 Since the scaling functions $\mathcal F_\pm(\xi)$ and $\mathcal F_0(\eta)$ have
 polynomial expansions about small $\xi$ and $\eta$, respectively, this implies
@@ -320,10 +321,10 @@ and for $\theta$ near $\theta_0$ it will resemble $\mathcal F_-$. This can be se
 \begin{equation} \label{eq:scaling.function.equivalences.2d}
   \begin{aligned}
     \mathcal F(\theta)
-    &=|t(\theta)|^{D\nu}\mathcal F_\pm\left[g(\theta)|1-\theta^2|^{-\beta\delta}\right]
+    &=|t(\theta)|^{D\nu}\mathcal F_\pm\left[g(\theta)|1-\theta^2|^{-\Delta}\right]
     +\frac{(1-\theta^2)^2}{8\pi}\log t(\theta)^2\\
-    &=|h(\theta)|^{D\nu/\beta\delta}\mathcal F_0\left[(1-\theta^2)|g(\theta)|^{-1/\beta\delta}\right]
-    +\frac{(1-\theta^2)^2}{8\pi}\log g(\theta)^{2/\beta\delta}
+    &=|h(\theta)|^{D\nu/\Delta}\mathcal F_0\left[(1-\theta^2)|g(\theta)|^{-1/\Delta}\right]
+    +\frac{(1-\theta^2)^2}{8\pi}\log g(\theta)^{2/\Delta}
   \end{aligned}
 \end{equation}
 This leads us
@@ -340,7 +341,7 @@ from the coordinate transformation \eqref{eq:schofield}. Since $g(\theta)$ is
 an odd real polynomial for real $\theta$, it is imaginary for imaginary
 $\theta$. Therefore,
 \begin{equation}
-  i\xi_{\mathrm{YL}}=\frac{g(i\theta_{\mathrm{YL}})}{(1+\theta_{\mathrm{YL}}^2)^{-\beta\delta}}
+  i\xi_{\mathrm{YL}}=\frac{g(i\theta_{\mathrm{YL}})}{(1+\theta_{\mathrm{YL}}^2)^{-\Delta}}
 \end{equation}
 The location $\theta_0$ is not fixed by any principle.
 
@@ -507,7 +508,7 @@ expanded around $\theta=\theta_0$ to yield
 \end{equation}
 Comparing this with the requirement \eqref{eq:imaginary.abrupt}, we find that
 \begin{equation}
-  B=-b\xi'(\theta_0)=-b\frac{g'(\theta_0)}{(\theta_0^2-1)^{1/\beta\delta}}
+  B=-b\xi'(\theta_0)=-b\frac{g'(\theta_0)}{(\theta_0^2-1)^{1/\Delta}}
 \end{equation}
 and
 \begin{equation}
@@ -620,7 +621,7 @@ accuracy of the fit results can be checked against the known values here.
       $-0.12161$ &
       0.026346 & \\
       8 &
-      0.19655 & 
+      0.19655 &
       2.5513 &
       1.7323 &
       0.59677 &
@@ -641,13 +642,13 @@ accuracy of the fit results can be checked against the known values here.
     \begin{tabular}{c|llllllll}
         \hline
       $n$ &
-        \multicolumn{1}{c}{$\theta_0$} & 
-        \multicolumn{1}{c}{$h_1$} & 
-        \multicolumn{1}{c}{$h_2$} & 
-        \multicolumn{1}{c}{$h_3$} & 
-        \multicolumn{1}{c}{$h_4$} & 
-        \multicolumn{1}{c}{$h_5$} & 
-        \multicolumn{1}{c}{$h_6$} & 
+        \multicolumn{1}{c}{$\theta_0$} &
+        \multicolumn{1}{c}{$h_1$} &
+        \multicolumn{1}{c}{$h_2$} &
+        \multicolumn{1}{c}{$h_3$} &
+        \multicolumn{1}{c}{$h_4$} &
+        \multicolumn{1}{c}{$h_5$} &
+        \multicolumn{1}{c}{$h_6$} &
         \multicolumn{1}{c}{$h_7$} \\
       \hline
         2 &
@@ -668,7 +669,7 @@ accuracy of the fit results can be checked against the known values here.
       1.4324 &
       $-0.22077$ & 0.036245 & 0.010120 & $-0.0011434$ & 0.00010095 \\
       8 &
-      1.3710 & 
+      1.3710 &
       $-0.35150$ & 0.0050232 & 0.053659 & $-0.019806$ & 0.0033531 & $-0.00026034$ \\
   \end{tabular}
 \end{table}
@@ -684,6 +685,7 @@ accuracy of the fit results can be checked against the known values here.
     set style data linespoints
     set logscale y
     set key title '\raisebox{0.5em}{$m$}' bottom left
+    set xrange [1.5:9.5]
 
     plot \
       dat using 1:2 title '0', \
@@ -756,17 +758,18 @@ accuracy of the fit results can be checked against the known values here.
 \subsection{Comparison}
 
 \begin{figure}
-  \begin{gnuplot}[terminal=epslatex, terminaloptions={size 8.65cm,5.35cm}]
+  \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_series_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_caselle.dat'
     set key top left Left reverse
     set logscale y
     set xlabel '$n$'
-    set ylabel '$\mathcal F_n$'
+    set ylabel '$\mathcal F_-^{(n)}$'
+    set format y '$10^{%T}$'
 
     plot \
-      dat1 using 1:(abs($2)) title 'Numeric', \
+      dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'Ours ($n=0$)', \
       dat3 using 1:(abs($2)) title 'Caselle'
   \end{gnuplot}
@@ -775,7 +778,7 @@ accuracy of the fit results can be checked against the known values here.
 \end{figure}
 
 \begin{figure}
-  \begin{gnuplot}[terminal=epslatex, terminaloptions={size 8.65cm,5.35cm}]
+  \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_series_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_caselle.dat'
@@ -791,6 +794,39 @@ accuracy of the fit results can be checked against the known values here.
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
       dat2 using (1/$1):(abs(ratLast($2))) title 'Ours ($n=0$)', \
       dat3 using (1/$1):(abs(ratLast($2))) title 'Caselle'
+  \end{gnuplot}
+  \caption{
+  }
+\end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/ghigh_numeric.dat'
+    set key top left Left reverse
+    set logscale y
+    set xlabel '$n$'
+    set ylabel '$\mathcal F_+^{(n)}$'
+    set format y '$10^{%T}$'
+
+    plot \
+      dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars
+  \end{gnuplot}
+  \caption{
+  }
+\end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/phi_numeric.dat'
+    set key top left Left reverse
+    set logscale y
+    set xlabel '$n$'
+    set ylabel '$|\mathcal F_0^{(n)}|$'
+    set format y '$10^{%T}$'
+    set xrange [-0.5:10.5]
+
+    plot \
+      dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars
   \end{gnuplot}
   \caption{
   }
