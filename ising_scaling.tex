@@ -1,20 +1,20 @@
 \documentclass[
-  aps,
-  pre,
-  preprint,
-  longbibliography,
-  floatfix
+aps,
+pre,
+preprint,
+longbibliography,
+floatfix
 ]{revtex4-2}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{newtxtext, newtxmath}
 \usepackage[
-  colorlinks=true,
-  urlcolor=purple,
-  citecolor=purple,
-  filecolor=purple,
-  linkcolor=purple
+colorlinks=true,
+urlcolor=purple,
+citecolor=purple,
+filecolor=purple,
+linkcolor=purple
 ]{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -759,19 +759,23 @@ accuracy of the fit results can be checked against the known values here.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
-    dat1 = 'data/glow_series_numeric.dat'
+    dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_caselle.dat'
+    dat4 = 'data/glow_series_ours_9.dat'
+
     set key top left Left reverse
     set logscale y
     set xlabel '$n$'
     set ylabel '$\mathcal F_-^{(n)}$'
     set format y '$10^{%T}$'
+    set xrange [0:14.5]
 
     plot \
-      dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars, \
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'Ours ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'Caselle'
+      dat3 using 1:(abs($2)) title 'Caselle', \
+      dat4 using 1:(abs($2)) title 'Caselle'
   \end{gnuplot}
   \caption{
   }
@@ -779,21 +783,24 @@ accuracy of the fit results can be checked against the known values here.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
-    dat1 = 'data/glow_series_numeric.dat'
+    dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
+    dat4 = 'data/glow_series_ours_9.dat'
     dat3 = 'data/glow_series_caselle.dat'
     ratLast(x) = (back2 = back1, back1 = x, back1 / back2)
     back1 = 0
     back2 = 0
+
     set xlabel '$1/n$'
     set xrange [0:0.55]
-    set ylabel '$\mathcal F_n/\mathcal F_{n-1}$'
+    set ylabel '$\mathcal F_-^{(n)}/\mathcal F_-^{(n-1)}$'
     set yrange [0:15]
 
     plot \
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
       dat2 using (1/$1):(abs(ratLast($2))) title 'Ours ($n=2$)', \
-      dat3 using (1/$1):(abs(ratLast($2))) title 'Caselle'
+      dat3 using (1/$1):(abs(ratLast($2))) title 'Caselle', \
+      dat4 using (1/$1):(abs(ratLast($2))) title 'Caselle'
   \end{gnuplot}
   \caption{
   }
@@ -802,14 +809,18 @@ accuracy of the fit results can be checked against the known values here.
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/ghigh_numeric.dat'
+    dat2 = 'data/ghigh_caselle.dat'
+
     set key top left Left reverse
     set logscale y
     set xlabel '$n$'
     set ylabel '$\mathcal F_+^{(n)}$'
     set format y '$10^{%T}$'
+    set xrange [0:14.5]
 
     plot \
-      dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2)) title 'Caselle', \
   \end{gnuplot}
   \caption{
   }
