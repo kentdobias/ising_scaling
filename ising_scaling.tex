@@ -259,7 +259,7 @@ $\xi_\mathrm{YL}$ \cite{Cardy_1985_Conformal, Fonseca_2003_Ising}. This creates
 a branch cut stemming from the critical point along the imaginary-$\xi$ axis
 with a growing imaginary part
 \begin{equation}
-  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm A_\mathrm{YL}\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
+  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm\tilde A_\mathrm{YL}\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
 \end{equation}
 This results in analytic structure for $\mathcal F_+$ shown in
 Fig.~\ref{fig:higher.singularities}.
@@ -340,7 +340,7 @@ The location of the Yang--Lee edge singularities can be calculated directly
 from the coordinate transformation \eqref{eq:schofield}. Since $g(\theta)$ is
 an odd real polynomial for real $\theta$, it is imaginary for imaginary
 $\theta$. Therefore,
-\begin{equation}
+\begin{equation} \label{eq:yang-lee.theta}
   i\xi_{\mathrm{YL}}=\frac{g(i\theta_{\mathrm{YL}})}{(1+\theta_{\mathrm{YL}}^2)^{-\Delta}}
 \end{equation}
 The location $\theta_0$ is not fixed by any principle.
@@ -522,7 +522,23 @@ and
        \right)\right\}
   \end{aligned}
 \end{equation}
-fixing $B$ and $C_0$.
+fixing $B$ and $C_0$. Similarly, \eqref{eq:yang-lee.theta} puts a constraint on the value of $\theta_\mathrm{YL}$, while the known amplitude of the Yang--Lee branch cut fixes the value of $C_\mathrm{YL}$ by
+\begin{equation}
+  \begin{aligned}
+    u_f
+    &\simeq A_\mathrm{YL}|u_h(\theta)|^{D\nu/\Delta}(\eta_{\mathrm YL}-\eta(\theta))^{1+\sigma} \\
+    &=A_\mathrm{YL}R^{D\nu}|g(i\theta_\mathrm{YL})|^{D\nu/\Delta}[-\eta'(i\theta_\mathrm{YL})]^{1+\sigma}(\theta-i\theta_\mathrm{YL})^{1+\sigma}\left(1+O[(\theta-i\theta_\mathrm{YL})^2]\right)\\
+    &\simeq R^{D\nu}\mathcal F_\mathrm{YL}(\theta)
+    =C_\mathrm{YL}R^{D\nu}(2i\theta_{YL})^{1+\sigma}(\theta-i\theta_\mathrm{YL})^{1+\sigma}\left(1+O[(\theta-i\theta_\mathrm{YL})^2]\right)
+\end{aligned}
+\end{equation}
+\begin{equation}
+  C_\mathrm{YL}=A_\mathrm{YL}|g(i\theta_\mathrm{YL})|^{D\nu/\Delta}\left[\frac{-\eta'(i\theta_\mathrm{YL})}{2i\theta_\mathrm{YL}}\right]^{1+\sigma}
+\end{equation}
+where $A_\mathrm{YL}=-1.37(2)$ and $\xi_\mathrm{YL}=0.18930(5)$
+\cite{Fonseca_2003_Ising}. Because these parameters are not known exactly,
+these constraints are added to the weighted sum of squares rather than
+substituted in.
 
 This leaves as unknown variables the positions $\theta_0$ and
 $\theta_{\mathrm{YL}}$ of the abrupt transition and Yang--Lee edge singularity,
@@ -702,29 +718,6 @@ accuracy of the fit results can be checked against the known values here.
 \end{figure}
 
 \begin{figure}
-  \begin{gnuplot}[terminal=epslatex]
-    dat = 'data/yl_comparison.dat'
-
-    set xlabel '$n$'
-    set ylabel '$|\Delta\xi_\mathrm{YL}|$'
-    set xrange [1.5:9.5]
-    set yrange [0.000005:0.05]
-
-    set format y '$10^{%T}$'
-    set style data yerrorlines
-    set logscale y
-    unset key
-
-    plot dat using 1:2:3
-  \end{gnuplot}
-  \caption{
-    The error in the location of the Yang--Lee edge singularity as a function
-    of the polynomial order $n$ at which the scaling function was fit. Error
-    bars denote the uncertainty in the known location of the singularity.
-  }
-\end{figure}
-
-\begin{figure}
   \begin{gnuplot}[terminal=epslatex, terminaloptions={size 8.65cm,5.35cm}]
     dat9 = 'data/h_series_ours_9.dat'
     dat11 = 'data/h_series_ours_11.dat'
@@ -810,6 +803,8 @@ accuracy of the fit results can be checked against the known values here.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/ghigh_numeric.dat'
     dat2 = 'data/ghigh_caselle.dat'
+    dat3 = 'data/ghigh_series_ours_2.dat'
+    dat4 = 'data/ghigh_series_ours_9.dat'
 
     set key top left Left reverse
     set logscale y
@@ -821,6 +816,8 @@ accuracy of the fit results can be checked against the known values here.
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'Caselle', \
+      dat3 using 1:(abs($2)) title 'Caselle', \
+      dat4 using 1:(abs($2)) title 'Caselle'
   \end{gnuplot}
   \caption{
   }
@@ -829,7 +826,9 @@ accuracy of the fit results can be checked against the known values here.
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/phi_numeric.dat'
-    set key top left Left reverse
+    dat2 = 'data/phi_series_ours_2.dat'
+    dat3 = 'data/phi_series_ours_9.dat'
+    set key top right
     set logscale y
     set xlabel '$n$'
     set ylabel '$|\mathcal F_0^{(n)}|$'
@@ -837,7 +836,9 @@ accuracy of the fit results can be checked against the known values here.
     set xrange [-0.5:10.5]
 
     plot \
-      dat1 using 1:(abs($2)) title 'Numeric' with yerrorbars
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2)) title 'Numeric', \
+      dat3 using 1:(abs($2)) title 'Numeric'
   \end{gnuplot}
   \caption{
   }
