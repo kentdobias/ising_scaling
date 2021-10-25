@@ -585,8 +585,8 @@ the approximate functions and their derivatives can be evaluated by comparison
 to their known values at the critical isotherm, or $\theta=1$.
 
 \begin{table}\label{tab:fits}
-  \begin{tabular}{c|lll}
-    $m$ & \multicolumn{1}{c}{$\mathcal F_-^{(m)}$} & $\mathcal F_0^{(m)}$ & $\mathcal F_+^{(m)}$ \\\hline
+  \begin{tabular}{l|lll}
+    \multicolumn1{c|}{$m$} & \multicolumn{1}{c}{$\mathcal F_-^{(m)}$} & \multicolumn{1}{c}{$\mathcal F_0^{(m)}$} & \multicolumn1c{$\mathcal F_+^{(m)}$} \\\hline
     0 & \hphantom{$-$}0 & $-1.197\,733\,383\,797\ldots$ & \hphantom{$-$}0 \\
     1 & $-1.357\,838\,341\,707\ldots$ & \hphantom{$-$}$0.318\,810\,124\,891\ldots$ & \hphantom{$-$}0 \\
     2 & $-0.048\,953\,289\,720\ldots$ & \hphantom{$-$}$0.110\,886\,196\,683(2)$ & $-1.845\,228\,078\,233\ldots$ \\
@@ -751,6 +751,9 @@ Fig.~\ref{fig:error}. For the values for which we were able to make a fit, the
 error in the function and its first several derivatives appears to trend
 towards zero exponentially in the polynomial order $n$.
 
+Even at $n=2$, where only six unknown parameters have been fit, the results are
+accurate to within $2\times10^{-3}$. This approximation for the scaling functions also captures the singularities at the high- and low-temperature zero-field points well. 
+
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
@@ -771,7 +774,11 @@ towards zero exponentially in the polynomial order $n$.
       dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
-  }
+    The series coefficients for the scaling function $\mathcal F_-$ as a
+    function of polynomial order $m$. The numeric values are from Table
+    \ref{tab:fits}, and those of Caselle \textit{et al.} are from the most
+    accurate scaling function listed in \cite{Caselle_2001_The}.
+  } \label{fig:glow.series}
 \end{figure}
 
 \begin{figure}
@@ -795,6 +802,10 @@ towards zero exponentially in the polynomial order $n$.
       dat4 using (1/$1):(abs(ratLast($2))) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
+    Sequential ratios of the series coefficients of the scaling function
+    $\mathcal F_-$ as a function of inverse polynomial order $m$. The
+    extrapolated $y$-intercept of this plot gives the radius of convergence of
+    the series.
   }
 \end{figure}
 
@@ -817,6 +828,10 @@ towards zero exponentially in the polynomial order $n$.
       dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
+    The series coefficients for the scaling function $\mathcal F_+$ as a
+    function of polynomial order $m$. The numeric values are from Table
+    \ref{tab:fits}, and those of Caselle \textit{et al.} are from the most
+    accurate scaling function listed in \cite{Caselle_2001_The}.
   }
 \end{figure}
 
