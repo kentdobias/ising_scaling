@@ -579,7 +579,7 @@ accuracy of the fit results can be checked against the known values here.
 
 \begin{table}\label{tab:fits}
   \begin{tabular}{c|ccc}
-    $n$ & $\mathcal F_-^{(n)}$ & $\mathcal F_0^{(n)}$ & $\mathcal F_+^{(n)}$ \\\hline
+    $m$ & $\mathcal F_-^{(m)}$ & $\mathcal F_0^{(m)}$ & $\mathcal F_+^{(m)}$ \\\hline
     0   & 0                    & $-1.197733383797993$ & 0                    \\
     1   & $-1.35783834$        & $-0.318810124891$    & 0                    \\
     2   & $-0.048953289720$    & $0.110886196683$     & $-1.84522807823$     \\
@@ -740,8 +740,8 @@ accuracy of the fit results can be checked against the known values here.
 
     set key top left Left reverse
     set logscale y
-    set xlabel '$n$'
-    set ylabel '$\mathcal F_-^{(n)}$'
+    set xlabel '$m$'
+    set ylabel '$\mathcal F_-^{(m)}$'
     set format y '$10^{%T}$'
     set xrange [0:14.5]
 
@@ -764,9 +764,9 @@ accuracy of the fit results can be checked against the known values here.
     back1 = 0
     back2 = 0
 
-    set xlabel '$1/n$'
+    set xlabel '$1/m$'
     set xrange [0:0.55]
-    set ylabel '$\mathcal F_-^{(n)}/\mathcal F_-^{(n-1)}$'
+    set ylabel '$\mathcal F_-^{(m)}/\mathcal F_-^{(m-1)}$'
     set yrange [0:15]
 
     plot \
@@ -786,8 +786,8 @@ accuracy of the fit results can be checked against the known values here.
 
     set key top left Left reverse
     set logscale y
-    set xlabel '$n$'
-    set ylabel '$\mathcal F_+^{(n)}$'
+    set xlabel '$m$'
+    set ylabel '$\mathcal F_+^{(m)}$'
     set format y '$10^{%T}$'
     set xrange [1.5:14.5]
 
@@ -807,8 +807,8 @@ accuracy of the fit results can be checked against the known values here.
     dat3 = 'data/phi_series_ours_9.dat'
     set key top right
     set logscale y
-    set xlabel '$n$'
-    set ylabel '$|\mathcal F_0^{(n)}|$'
+    set xlabel '$m$'
+    set ylabel '$|\mathcal F_0^{(m)}|$'
     set format y '$10^{%T}$'
     set xrange [-0.5:10.5]
 
