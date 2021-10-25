@@ -604,12 +604,12 @@ accuracy of the fit results can be checked against the known values here.
     \multicolumn{1}{c|}{$n$} &
      \multicolumn{1}{c}{$\theta_\mathrm{YL}$} &
      \multicolumn{1}{c}{$A_\mathrm{YL}$} &
-     \multicolumn{1}{c}{$F_1$} &
-     \multicolumn{1}{c}{$F_2$} &
-     \multicolumn{1}{c}{$F_3$} &
-     \multicolumn{1}{c}{$F_4$} &
-     \multicolumn{1}{c}{$F_5$} &
-     \multicolumn{1}{c}{$F_6$} \\
+     \multicolumn{1}{c}{$G_1$} &
+     \multicolumn{1}{c}{$G_2$} &
+     \multicolumn{1}{c}{$G_3$} &
+     \multicolumn{1}{c}{$G_4$} &
+     \multicolumn{1}{c}{$G_5$} &
+     \multicolumn{1}{c}{$G_6$} \\
     \hline
       2 &
       0.18041 &
@@ -726,37 +726,6 @@ accuracy of the fit results can be checked against the known values here.
     The error in the $m$th derivative of the scaling function $\mathcal F_0$
     with respect to $\eta$ evaluated at $\eta=0$, as a function of the
     polynomial order $n$ at which the scaling function was fit.
-  }
-\end{figure}
-
-\begin{figure}
-  \begin{gnuplot}[terminal=epslatex, terminaloptions={size 8.65cm,5.35cm}]
-    dat9 = 'data/h_series_ours_9.dat'
-    dat11 = 'data/h_series_ours_11.dat'
-    dat13 = 'data/h_series_ours_13.dat'
-    dat15 = 'data/h_series_ours_15.dat'
-
-    ratLast(x) = (back2 = back1, back1 = x, back1 / back2)
-
-    back1 = 0
-    back2 = 0
-
-    set xrange [0:1.05]
-    set yrange [0:0.55]
-
-    set xlabel '$1/n$'
-    set ylabel '$h_n/h_{n-1}$'
-
-    set style data linespoints
-
-    plot \
-      dat9 using (1/($0)):(abs(ratLast($1))) title '9', \
-      dat11 using (1/($0)):(abs(ratLast($1))) title '11', \
-      dat13 using (1/($0)):(abs(ratLast($1))) title '13', \
-      dat15 using (1/($0)):(abs(ratLast($1))) title '15', \
-      0.5 - 0.675 * x lc black
-  \end{gnuplot}
-  \caption{
   }
 \end{figure}
 
