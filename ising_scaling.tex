@@ -584,7 +584,7 @@ use these coefficients to fix the unknown functions $G$ and $g$, the error in
 the approximate functions and their derivatives can be evaluated by comparison
 to their known values at the critical isotherm, or $\theta=1$.
 
-\begin{table}\label{tab:fits}
+\begin{table}
   \begin{tabular}{l|lll}
     \multicolumn1{c|}{$m$} & \multicolumn{1}{c}{$\mathcal F_-^{(m)}$} & \multicolumn{1}{c}{$\mathcal F_0^{(m)}$} & \multicolumn1c{$\mathcal F_+^{(m)}$} \\\hline
     0 & \hphantom{$-$}0 & $-1.197\,733\,383\,797\ldots$ & \hphantom{$-$}0 \\
@@ -610,7 +610,7 @@ to their known values at the critical isotherm, or $\theta=1$.
     \cite{Mangazeev_2008_Variational}. Those without are taken from Fonseca
     \textit{et al.}, and are assumed to be accurate to within their last digit
     \cite{Fonseca_2003_Ising}.
-  }
+  } \label{tab:fits}
 \end{table}
 
 \begin{table}
@@ -723,9 +723,9 @@ to their known values at the critical isotherm, or $\theta=1$.
     set xlabel '$n$'
     set xrange [1.5:7.5]
 
-    set ylabel '$|\Delta\mathcal F_0^{(m)}|$'
-    set format y '$10^{%T}$'
     set logscale y
+    set format y '$10^{%T}$'
+    set ylabel '$|\Delta\mathcal F_0^{(m)}|$'
     set yrange [0.000002:0.003]
 
     set style data linespoints
@@ -758,19 +758,21 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
-    dat3 = 'data/glow_series_ours_9.dat'
+    dat3 = 'data/glow_series_ours_7.dat'
     dat4 = 'data/glow_series_caselle.dat'
+
+    set xlabel '$m$'
+    set xrange [0:14.5]
 
     set key top left Left reverse
     set logscale y
-    set xlabel '$m$'
     set ylabel '$\mathcal F_-^{(m)}$'
     set format y '$10^{%T}$'
-    set xrange [0:14.5]
 
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=7$)', \
       dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
@@ -785,7 +787,7 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
-    dat3 = 'data/glow_series_ours_9.dat'
+    dat3 = 'data/glow_series_ours_7.dat'
     dat4 = 'data/glow_series_caselle.dat'
     ratLast(x) = (back2 = back1, back1 = x, back1 / back2)
     back1 = 0
@@ -799,6 +801,7 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
     plot \
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
       dat2 using (1/$1):(abs(ratLast($2))) title 'This work ($n=2$)', \
+      dat3 using (1/$1):(abs(ratLast($2))) title 'This work ($n=7$)', \
       dat4 using (1/$1):(abs(ratLast($2))) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
@@ -813,6 +816,7 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/ghigh_numeric.dat'
     dat2 = 'data/ghigh_series_ours_2.dat'
+    dat3 = 'data/ghigh_series_ours_7.dat'
     dat4 = 'data/ghigh_caselle.dat'
 
     set key top left Left reverse
@@ -825,6 +829,7 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=7$)', \
       dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
