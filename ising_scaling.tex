@@ -562,13 +562,16 @@ cost function the difference between the known series coefficients of the
 scaling functions $\mathcal F_\pm$ and the series coefficients of our
 parametric form evaluated at the same points, $\theta=0$ and $\theta=\theta_0$,
 weighted by the uncertainty in the value of the known coefficients or by a
-machine-precision cutoff, whichever is larger. A Levenburg--Marquardt algorithm
-is performed on the cost function to find a parameter combination which
-minimizes it. As larger polynomial order in the series are fit, the truncations
-of $F$ and $h$ are extended to higher order so that the codimension of the fit
-is constant. A term is added to $F$ whenever a new coefficient of the high
-temperature series is added, and one is added to $h$ whenever a new coefficient
-of the low temperature series is added.
+machine-precision cutoff, whichever is larger. We also add the difference
+between the predictions for $A_\mathrm{YL}$ and $\xi_\mathrm{YL}$ and their
+known numeric values, again weighted by their uncertainty.
+
+A Levenberg--Marquardt algorithm is performed on the cost function to find a
+parameter combination which minimizes it. As larger polynomial order in the
+series are fit, the truncations of $F$ and $h$ are extended to higher order so
+that the codimension of the fit is constant. A term is added to $F$ whenever a
+new coefficient of the high temperature series is added, and one is added to
+$h$ whenever a new coefficient of the low temperature series is added.
 
 We performed this procedure starting with $n=2$, or matching the scaling
 function at the low and high temperature zero field points to quadratic order,
@@ -721,6 +724,7 @@ accuracy of the fit results can be checked against the known values here.
     set ylabel '$|\Delta\mathcal F_0^{(m)}(0)|$'
     set format y '$10^{%T}$'
     set logscale y
+    set yrange [0.000002:0.003]
 
     set style data linespoints
     set key title '\raisebox{0.5em}{$m$}' bottom left
