@@ -735,8 +735,8 @@ accuracy of the fit results can be checked against the known values here.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
-    dat3 = 'data/glow_series_caselle.dat'
-    dat4 = 'data/glow_series_ours_9.dat'
+    dat3 = 'data/glow_series_ours_9.dat'
+    dat4 = 'data/glow_series_caselle.dat'
 
     set key top left Left reverse
     set logscale y
@@ -747,9 +747,8 @@ accuracy of the fit results can be checked against the known values here.
 
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'Ours ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'Caselle', \
-      dat4 using 1:(abs($2)) title 'Caselle'
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
   }
@@ -759,8 +758,8 @@ accuracy of the fit results can be checked against the known values here.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
-    dat4 = 'data/glow_series_ours_9.dat'
-    dat3 = 'data/glow_series_caselle.dat'
+    dat3 = 'data/glow_series_ours_9.dat'
+    dat4 = 'data/glow_series_caselle.dat'
     ratLast(x) = (back2 = back1, back1 = x, back1 / back2)
     back1 = 0
     back2 = 0
@@ -772,9 +771,8 @@ accuracy of the fit results can be checked against the known values here.
 
     plot \
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
-      dat2 using (1/$1):(abs(ratLast($2))) title 'Ours ($n=2$)', \
-      dat3 using (1/$1):(abs(ratLast($2))) title 'Caselle', \
-      dat4 using (1/$1):(abs(ratLast($2))) title 'Caselle'
+      dat2 using (1/$1):(abs(ratLast($2))) title 'This work ($n=2$)', \
+      dat4 using (1/$1):(abs(ratLast($2))) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
   }
@@ -783,22 +781,20 @@ accuracy of the fit results can be checked against the known values here.
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/ghigh_numeric.dat'
-    dat2 = 'data/ghigh_caselle.dat'
-    dat3 = 'data/ghigh_series_ours_2.dat'
-    dat4 = 'data/ghigh_series_ours_9.dat'
+    dat2 = 'data/ghigh_series_ours_2.dat'
+    dat4 = 'data/ghigh_caselle.dat'
 
     set key top left Left reverse
     set logscale y
     set xlabel '$n$'
     set ylabel '$\mathcal F_+^{(n)}$'
     set format y '$10^{%T}$'
-    set xrange [0:14.5]
+    set xrange [1.5:14.5]
 
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'Caselle', \
-      dat3 using 1:(abs($2)) title 'Caselle', \
-      dat4 using 1:(abs($2)) title 'Caselle'
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
   }
@@ -818,8 +814,8 @@ accuracy of the fit results can be checked against the known values here.
 
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'Numeric', \
-      dat3 using 1:(abs($2)) title 'Numeric'
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=7$)'
   \end{gnuplot}
   \caption{
   }
