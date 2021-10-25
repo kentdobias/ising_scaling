@@ -282,7 +282,7 @@ functions with different asymptotic expansions in different limits, we adopt
 another coordinate system, in terms of which a scaling function can be defined
 that has polynomial expansions in \emph{all} limits.
 
-In all dimensions, the Schofield coordinates $R$ and $\theta$ will be implicitly defined by
+The Schofield coordinates $R$ and $\theta$ are implicitly defined by
 \begin{align} \label{eq:schofield}
   u_t(R, \theta) = R(1-\theta^2)
   &&
@@ -701,13 +701,14 @@ accuracy of the fit results can be checked against the known values here.
     dat = 'data/phi_comparison.dat'
 
     set xlabel '$n$'
-    set ylabel '$|\Delta\mathcal F_0^{(m)}(0)|$'
+    set xrange [1.5:7.5]
 
+    set ylabel '$|\Delta\mathcal F_0^{(m)}(0)|$'
     set format y '$10^{%T}$'
-    set style data linespoints
     set logscale y
+
+    set style data linespoints
     set key title '\raisebox{0.5em}{$m$}' bottom left
-    set xrange [1.5:9.5]
 
     plot \
       dat using 1:2 title '0', \
