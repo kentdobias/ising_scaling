@@ -328,13 +328,15 @@ argument for all real $\theta$ by
 \end{equation}
 For small $\theta$, $\mathcal F(\theta)$ will
 resemble $\mathcal F_+$, for $\theta$ near one it will resemble $\mathcal F_0$,
-and for $\theta$ near $\theta_0$ it will resemble $\mathcal F_-$. This can be seen explicitly using the definitions \eqref{eq:schofield} to relate the above form to the original scaling functions, giving
+and for $\theta$ near $\theta_0$ it will resemble $\mathcal F_-$. This can be
+seen explicitly using the definitions \eqref{eq:schofield} to relate the above
+form to the original scaling functions, giving
 \begin{equation} \label{eq:scaling.function.equivalences.2d}
   \begin{aligned}
     \mathcal F(\theta)
-    &=|t(\theta)|^{D\nu}\mathcal F_\pm\left[g(\theta)|1-\theta^2|^{-\Delta}\right]
-    +\frac{(1-\theta^2)^2}{8\pi}\log t(\theta)^2\\
-    &=|h(\theta)|^{D\nu/\Delta}\mathcal F_0\left[(1-\theta^2)|g(\theta)|^{-1/\Delta}\right]
+    &=|1-\theta^2|^{D\nu}\mathcal F_\pm\left[g(\theta)|1-\theta^2|^{-\Delta}\right]
+    +\frac{(1-\theta^2)^2}{8\pi}\log(1-\theta^2)^2\\
+    &=|g(\theta)|^{D\nu/\Delta}\mathcal F_0\left[(1-\theta^2)|g(\theta)|^{-1/\Delta}\right]
     +\frac{(1-\theta^2)^2}{8\pi}\log g(\theta)^{2/\Delta}
   \end{aligned}
 \end{equation}
@@ -578,22 +580,22 @@ the series coefficients of the scaling function $\mathcal F_0$, and the
 accuracy of the fit results can be checked against the known values here.
 
 \begin{table}\label{tab:fits}
-  \begin{tabular}{c|ccc}
-    $m$ & $\mathcal F_-^{(m)}$ & $\mathcal F_0^{(m)}$ & $\mathcal F_+^{(m)}$ \\\hline
-    0   & 0                    & $-1.197733383797993$ & 0                    \\
-    1   & $-1.35783834$        & $-0.318810124891$    & 0                    \\
-    2   & $-0.048953289720$    & $0.110886196683$     & $-1.84522807823$     \\
-    3   & 0.0388639290         & $0.01642689465$      & 0                    \\
-    4   & $-0.068362121$       & $-2.639978\times10^{-4}$ & 8.3337117508     \\
-    5   & 0.18388371           & $-5.140526\times10^{-4}$ & 0                \\
-    6   & $-0.659170$          & $2.08856\times 10^{-4}$ & $-95.16897$       \\
-    7   & 2.937665             & $-4.4819\times10^{-5}$  & 0                 \\
-    8   & $-15.61$             & $3.16\times10^{-7}$  & 1457.62              \\
-    9   & 96.76                & $4.31\times10^{-6}$  & 0                    \\
-    10  & $-679$               & $-1.99\times10^{-6}$ & -25891               \\
-    11  & $5.34\times10^3$     &                      & 0                    \\
-    12  & $-4.66\times10^4$    &                      & $5.02\times10^5$     \\
-    13  & $4.46\times10^5$     &                      & 0                    \\
+  \begin{tabular}{c|lll}
+    $m$ & \multicolumn{1}{c}{$\mathcal F_-^{(m)}$} & $\mathcal F_0^{(m)}$ & $\mathcal F_+^{(m)}$ \\\hline
+    0   & \hphantom{$-$}0                    & $-1.197\,733\,383\,797\ldots$ & \hphantom{$-$}0                    \\
+    1   & $-1.357\,838\,341\,707\ldots$        & \hphantom{$-$}$0.318\,810\,124\,891\ldots$    & \hphantom{$-$}0                    \\
+    2   & $-0.048\,953\,289\,720\ldots$    & \hphantom{$-$}$0.110\,886\,196\,683(2)$     & $-1.845\,228\,078\,233\ldots$     \\
+    3   & \hphantom{$-$}$0.038\,863\,932(3)$         & $-0.016\,426\,894\,65(2)$      & \hphantom{$-$}0                    \\
+    4   & $-0.068\,362\,119(2)$       & $-2.639\,978(1)\times10^{-4}$ & \hphantom{$-$}$8.333\,711\,750(5)$     \\
+    5   & \hphantom{$-$}$0.183\,883\,70(1)$           & \hphantom{$-$}$5.140\,526(1)\times10^{-4}$ & \hphantom{$-$}0                \\
+    6   & $-0.659\,171\,4(1)$          & \hphantom{$-$}$2.088\,65(1)\times 10^{-4}$ & $-95.168\,96(1)$       \\
+    7   & \hphantom{$-$}$2.937\,665(3)$             & \hphantom{$-$}$4.481\,9(1)\times10^{-5}$  & \hphantom{$-$}0                 \\
+    8   & $-15.61(1)$             & \hphantom{$-$}$3.16\times10^{-7}$  & \hphantom{$-$}1457.62(3)              \\
+    9   & \hphantom{$-$}96.76                & $-4.31\times10^{-6}$  & \hphantom{$-$}0                    \\
+    10  & $-679$               & $-1.99\times10^{-6}$ & $-25\,891(2)$               \\
+    11  & \hphantom{$-$}$5.34\times10^3$     &                      & \hphantom{$-$}0                    \\
+    12  & $-4.66\times10^4$    &                      & \hphantom{$-$}$5.02\times10^5$     \\
+    13  & \hphantom{$-$}$4.46\times10^5$     &                      & \hphantom{$-$}0                    \\
     14  & $-4.66\times10^6$    &                      & $-1.04\times10^7$
   \end{tabular}
 \end{table}
@@ -823,7 +825,7 @@ accuracy of the fit results can be checked against the known values here.
 
 \section{Outlook}
 
-The successful smooth description of the Ising free energy produced in part by analytically continuing the singular imaginary part of the metastable free energy inspires an extension of this work: a smooth function that captures the universal scaling \emph{through the coexistence line and into the metastable phase}. Indeed, the tools exist to produce this: by writing $t(\theta)=(1-\theta^2)(1-(\theta/\theta_m)^2)$ for some $\theta_m>\theta_0$, the invariant scaling combination
+The successful smooth description of the Ising free energy produced in part by analytically continuing the singular imaginary part of the metastable free energy inspires an extension of this work: a smooth function that captures the universal scaling \emph{through the coexistence line and into the metastable phase}. Indeed, the tools exist to produce this: by writing $t=R(1-\theta^2)(1-(\theta/\theta_m)^2)$ for some $\theta_m>\theta_0$, the invariant scaling combination
 
 \begin{acknowledgments}
   The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
