@@ -564,7 +564,9 @@ parametric form evaluated at the same points, $\theta=0$ and $\theta=\theta_0$,
 weighted by the uncertainty in the value of the known coefficients or by a
 machine-precision cutoff, whichever is larger. We also add the difference
 between the predictions for $A_\mathrm{YL}$ and $\xi_\mathrm{YL}$ and their
-known numeric values, again weighted by their uncertainty.
+known numeric values, again weighted by their uncertainty. In order to
+encourage convergence, we also add to the cost the weighted coefficients
+$j!g_j$ and $j!G_j$.
 
 A Levenberg--Marquardt algorithm is performed on the cost function to find a
 parameter combination which minimizes it. As larger polynomial order in the
