@@ -797,7 +797,13 @@ error in the function and its first several derivatives appears to trend
 towards zero exponentially in the polynomial order $n$.
 
 Even at $n=2$, where only six unknown parameters have been fit, the results are
-accurate to within $2\times10^{-3}$. This approximation for the scaling functions also captures the singularities at the high- and low-temperature zero-field points well. 
+accurate to within $2\times10^{-3}$. This approximation for the scaling
+functions also captures the singularities at the high- and low-temperature
+zero-field points well. A direct comparison between the magnitudes of the
+series coefficients known numerically and those given by the approximate
+functions is shown for $\mathcal F_-$ in Fig.~\ref{fig:glow.series}, for
+$\mathcal F_+$ in Fig.~\ref{fig:ghigh.series}, and for $\mathcal F_0$ in
+Fig.~\ref{fig:phi.series}.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
@@ -830,6 +836,68 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/ghigh_numeric.dat'
+    dat2 = 'data/ghigh_series_ours_2.dat'
+    dat3 = 'data/ghigh_series_ours_7.dat'
+    dat4 = 'data/ghigh_caselle.dat'
+
+    set key top left Left reverse
+    set logscale y
+    set xlabel '$m$'
+    set ylabel '$\mathcal F_+^{(m)}$'
+    set format y '$10^{%T}$'
+    set xrange [1.5:14.5]
+
+    plot \
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=7$)', \
+      dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
+  \end{gnuplot}
+  \caption{
+    The series coefficients for the scaling function $\mathcal F_+$ as a
+    function of polynomial order $m$. The numeric values are from Table
+    \ref{tab:data}, and those of Caselle \textit{et al.} are from the most
+    accurate scaling function listed in \cite{Caselle_2001_The}.
+  } \label{fig:ghigh.series}
+\end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/phi_numeric.dat'
+    dat2 = 'data/phi_series_ours_2.dat'
+    dat3 = 'data/phi_series_ours_9.dat'
+    set key top right
+    set logscale y
+    set xlabel '$m$'
+    set ylabel '$|\mathcal F_0^{(m)}|$'
+    set format y '$10^{%T}$'
+    set xrange [-0.5:10.5]
+
+    plot \
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=7$)'
+  \end{gnuplot}
+  \caption{
+    The series coefficients for the scaling function $\mathcal F_0$ as a
+    function of polynomial order $m$. The numeric values are from Table
+    \ref{tab:data}.
+  } \label{fig:phi.series}
+\end{figure}
+
+Besides reproducing the high derivatives in the series well, the approximate
+functions defined here feature the appropriate singularity at the abrupt
+transition. Fig.~\ref{fig:glow.radius} shows the ratio of subsequent series
+coefficients for $\mathcal F_-$ as a function of the inverse order, which
+should converge in the limit of $m\to0$ to the inverse radius of convergence
+for the series. Approximations for the function without the explicit
+singularity have a nonzero radius of convergence, where both the numeric data
+and the approximate functions defined here show the appropriate divergence in
+the ratio.
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_ours_7.dat'
@@ -854,56 +922,7 @@ accurate to within $2\times10^{-3}$. This approximation for the scaling function
     $\mathcal F_-$ as a function of inverse polynomial order $m$. The
     extrapolated $y$-intercept of this plot gives the radius of convergence of
     the series.
-  }
-\end{figure}
-
-\begin{figure}
-  \begin{gnuplot}[terminal=epslatex]
-    dat1 = 'data/ghigh_numeric.dat'
-    dat2 = 'data/ghigh_series_ours_2.dat'
-    dat3 = 'data/ghigh_series_ours_7.dat'
-    dat4 = 'data/ghigh_caselle.dat'
-
-    set key top left Left reverse
-    set logscale y
-    set xlabel '$m$'
-    set ylabel '$\mathcal F_+^{(m)}$'
-    set format y '$10^{%T}$'
-    set xrange [1.5:14.5]
-
-    plot \
-      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=7$)', \
-      dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
-  \end{gnuplot}
-  \caption{
-    The series coefficients for the scaling function $\mathcal F_+$ as a
-    function of polynomial order $m$. The numeric values are from Table
-    \ref{tab:data}, and those of Caselle \textit{et al.} are from the most
-    accurate scaling function listed in \cite{Caselle_2001_The}.
-  }
-\end{figure}
-
-\begin{figure}
-  \begin{gnuplot}[terminal=epslatex]
-    dat1 = 'data/phi_numeric.dat'
-    dat2 = 'data/phi_series_ours_2.dat'
-    dat3 = 'data/phi_series_ours_9.dat'
-    set key top right
-    set logscale y
-    set xlabel '$m$'
-    set ylabel '$|\mathcal F_0^{(m)}|$'
-    set format y '$10^{%T}$'
-    set xrange [-0.5:10.5]
-
-    plot \
-      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=7$)'
-  \end{gnuplot}
-  \caption{
-  }
+  } \label{fig:glow.radius}
 \end{figure}
 
 \section{Outlook}
