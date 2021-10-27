@@ -55,7 +55,7 @@ universality class.
 
 The continuous phase transition in the two-dimensional Ising model is the most
 well studied, and its universal thermodynamic functions have likewise received
-the most attention. Precision numeric work both on lattice models and on the
+the most attention. Without a field, an exact solution is known for some lattice models \cite{Onsager_1944_Crystal}. Precision numeric work both on lattice models and on the
 ``Ising'' conformal field theory (related by universality) have yielded
 high-order polynomial expansions of those functions, along with a comprehensive
 understanding of their analytic properties \cite{Fonseca_2003_Ising,
@@ -63,15 +63,15 @@ Mangazeev_2008_Variational, Mangazeev_2010_Scaling}.  In parallel, smooth
 approximations of the Ising equation of state produce convenient, evaluable,
 differentiable empirical functions \cite{Caselle_2001_The}. Despite being
 differentiable, these approximations become increasingly poor when derivatives
-are taken due to the absence of subtle singularities.
+are taken due to the neglect of subtle singularities.
 
 This paper attempts to find the best of both worlds: a smooth approximate
-universal thermodynamic function that respects the global analyticity of the
+universal thermodynamic function that respects the global analytic properties of the
 Ising free energy. By constructing approximate functions with the correct
 singularities, corrections converge exponentially to the true function. To make
 the construction, we review the analytic properties of the Ising scaling
 function. Parametric coordinates are introduced that remove unnecessary
-singularities that are a remnant of the coordinates. Then, the arbitrary
+singularities that are a remnant of the coordinate choice. The singularities known to be present in the scaling function are incorporated in their simplest form. Then, the arbitrary
 analytic functions that compose those coordinates are approximated by truncated
 polynomials whose coefficients are fixed by matching the series expansions of
 the universal function.
@@ -87,11 +87,11 @@ universal.
 Suppose one controls a temperature-like parameter $T$ and a magnetic field-like
 parameter $H$, which in the proximity of a critical point at $T=T_c$ and $H=0$
 have normalized reduced forms $t=(T-T_c)/T_c$ and $h=H/T$. Thermodynamic
-functions are derived from the free energy per site $f=(F-F_c)/L^D$, which
+functions are derived from the free energy per site $f=(F-F_c)/N$, which
 depends on $t$, $h$, and a litany of irrelevant parameters we will henceforth
 neglect.  Explicit renormalization with techniques like the
 $\epsilon$-expansion or exact solutions like Onsager's can be used calculated
-the flow of these parameters under continuous changes of scale $L=e^\ell$,
+the flow of these parameters under continuous changes of scale $e^\ell$,
 yielding equations of the form
 \begin{align} \label{eq:raw.flow}
   \frac{dt}{d\ell}=\frac1\nu t+\cdots
@@ -118,13 +118,10 @@ the flow equations into the agreed upon simplest normal form
 which are exact as written \cite{Raju_2019_Normal}. The flow of the
 \emph{scaling fields} $u_t$ and $u_h$ is made exactly linear, while that of the
 free energy is linearized as nearly as possible. The quadratic term in that
-equation is unremovable due to a resonance between the value of $\nu$ and the
+equation is unremovable due to a `resonance' between the value of $\nu$ and the
 spatial dimension in two dimensions, while its coefficient is chosen as a
 matter of convention, fixing the scale of $u_t$. The form $u_f$ of the free
-energy is known as the singular part of the free energy, since it is equivalent
-to subtracting an analytic function of the control variables from the free
-energy, breaking it into pieces that scale homogeneously and inhomogeneously with
-renormalization.
+energy is known as the singular part of the free energy.
 
 Solving these equations for $u_f$ yields
 \begin{equation}
@@ -134,11 +131,13 @@ Solving these equations for $u_f$ yields
     &=|u_h|^{D\nu/\Delta}\mathcal F_0(u_t|u_h|^{-1/\Delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_h^{2/\Delta} \\
   \end{aligned}
 \end{equation}
-where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions.
+where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions related by a change of coordinates \footnote{To connect the
+results of this paper with Mangazeev and Fonseca, one can write $\mathcal
+F_0(\eta)=\tilde\Phi(-\eta)=\Phi(-\eta)+(\eta^2/8\pi) \log \eta^2$ and
+$\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.}.
 The scaling functions are universal in the sense that if another system whose
 critical point belongs to the same universality class has its parameters
-brought to the form \eqref{eq:flow}, one will see the same functional form (up
-to constant rescaling of $u_h$). The invariant scaling combinations that appear
+brought to the form \eqref{eq:flow}, one will see the same functional form, up to the units of $u_t$ and $u_h$. The invariant scaling combinations that appear
 as the arguments to the universal scaling functions will come up often, and we
 will use $\xi=u_h|u_t|^{-\Delta}$ and $\eta=u_t|u_h|^{-1/\Delta}$.
 
@@ -162,10 +161,7 @@ For the scale of $u_t$ and $u_h$, we adopt the same convention as used by
 \cite{Fonseca_2003_Ising}. The dependence of the nonlinear scaling variables on
 the parameters $t$ and $h$ is system-dependent, and their form can be found for
 common model systems (the square- and triangular-lattice Ising models) in the
-literature \cite{Mangazeev_2010_Scaling, Clement_2019_Respect}.  To connect the
-results of this paper with Mangazeev and Fonseca, one can write $\mathcal
-F_0(\eta)=\tilde\Phi(-\eta)=\Phi(-\eta)+(\eta^2/8\pi) \log \eta^2$ and
-$\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.
+literature \cite{Mangazeev_2010_Scaling, Clement_2019_Respect}.
 
 \section{Singularities}
 
@@ -193,8 +189,8 @@ This critical bubble occurs with free energy cost
     \simeq\frac{\pi\sigma^2}{2M|H|}
     \simeq T\left(\frac{2M_0}{\pi\sigma_0^2}|\xi|\right)^{-1}
 \end{equation}
-where $\sigma_0$ and $M_0$ are the critical amplitudes for the surface tension
-and magnetization, respectively \cite{Kent-Dobias_2020_Novel}.  In the context
+where $\sigma_0=\lim_{t\to0}t^{-\mu}\sigma$ and $M_0=\lim_{t\to0}t^{-\beta}M$ are the critical amplitudes for the surface tension
+and magnetization at zero field in the low-temperature phase \cite{Kent-Dobias_2020_Novel}.  In the context
 of statistical mechanics, Langer demonstrated that the decay rate is
 asymptotically proportional to the imaginary part of the free energy in the
 metastable phase, with
@@ -202,9 +198,9 @@ metastable phase, with
   \operatorname{Im}F\propto\Gamma\sim e^{-\beta\Delta F_c}\simeq e^{-1/b|\xi|}
 \end{equation}
 which can be more rigorously related in the context of quantum field theory
-[ref?]. The constant $b=2M_0/\pi\sigma_0^2$ is predicted by known properties,
-and for our conventions for $u_t$ and $u_h$, $M_0/\sigma_0^2=\bar
-s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant.
+\cite{Voloshin_1985_Decay}. The constant $b=2M_0/\pi\sigma_0^2$ is predicted by known properties, e.g., for the square lattice $M_0$ and $\sigma_0$ are both predicted by Onsager's solution \cite{Onsager_1944_Crystal},
+but for our conventions for $u_t$ and $u_h$, $M_0/\sigma_0^2=\bar
+s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant \cite{Fonseca_2003_Ising}.
 
 
 \begin{figure}
@@ -220,15 +216,14 @@ s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant.
 To lowest order, this singularity is a function of the scaling invariant $\xi$
 alone. It is therefore suggestive that this should be considered a part of the
 singular free energy and moreover part of the scaling function that composes
-it. There is substantial numeric evidence for this as well. We will therefore
+it. There is substantial numeric evidence for this as well \cite{Enting_1980_An, Fonseca_2003_Ising}. We will therefore
 make the ansatz that
 \begin{equation} \label{eq:essential.singularity}
   \operatorname{Im}\mathcal F_-(\xi+i0)=A_0\Theta(-\xi)\xi e^{-1/b|\xi|}\left[1+O(\xi)\right]
 \end{equation}
-\cite{Houghton_1980_The}
 The linear prefactor can be found through a more careful accounting of the
 entropy of long-wavelength fluctuations in the droplet surface
-\cite{Gunther_1980_Goldstone}. In conformal field theory, the prefactor is also known to be $A_0=\bar s/2\pi$.
+\cite{Gunther_1980_Goldstone, Houghton_1980_The}. In the Ising conformal field theory, the prefactor is known to be $A_0=\bar s/2\pi$ \cite{Voloshin_1985_Decay, Fonseca_2003_Ising}.
 
 \subsection{Yang--Lee edge singularity}
 
@@ -257,7 +252,7 @@ $\xi_{\mathrm{YL}}$.
   } \label{fig:higher.singularities}
 \end{figure}
 
-The Yang--Lee singularities are critical points in their own right, with their
+The Yang--Lee singularities, although only accessible with complex fields, are critical points in their own right, with their
 own universality class different from that of the Ising model
 \cite{Fisher_1978_Yang-Lee}. Asymptotically close to this point, the scaling
 function $\mathcal F_+$ takes the form
@@ -293,7 +288,7 @@ The Schofield coordinates $R$ and $\theta$ are implicitly defined by
   &&
   u_h(R, \theta) = R^{\Delta}g(\theta)
 \end{align}
-where $g$ is an odd function whose first zero lies at $\theta_0>1$. We take
+where $g$ is an odd function whose first zero lies at $\theta_0>1$ \cite{Schofield_1969_Parametric}. We take
 \begin{align} \label{eq:schofield.funcs}
   g(\theta)=\left(1-\frac{\theta^2}{\theta_0^2}\right)\sum_{i=0}^\infty g_i\theta^{2i+1}.
 \end{align}
