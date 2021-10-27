@@ -37,6 +37,17 @@ linkcolor=purple
 \date\today
 
 \begin{abstract}
+  We describe a method for approximating the universal scaling functions for
+  the Ising model in a field. By making use of parametric coordinates, the free
+  energy scaling function has a polynomial series everywhere. Its form is
+  taken to be a sum of the simplest functions that contain the singularities
+  which must be present: the Langer essential singularity and the Yang--Lee
+  edge singularity. Requiring that the function match series expansions in
+  the low- and high-temperature zero-field limits fixes the parametric
+  coordinate transformation. For the two-dimensional Ising model, we show that
+  this procedure converges exponentially with the order to which the series are
+  matched. We speculate that with appropriately modified parametric
+  coordinates, the method might also converge deep in the metastable phase.
 \end{abstract}
 
 \maketitle
@@ -494,7 +505,7 @@ and
 \end{equation}
 We have also included the analytic part $G$, which we assume has a simple
 series expansion
-\begin{equation}
+\begin{equation} \label{eq:analytic.free.enery}
   G(\theta)=\sum_{i=1}^\infty G_i\theta^{2i}
 \end{equation}
 From the form of the real part, we can infer the form of $\mathcal F$ that is
@@ -517,8 +528,8 @@ where
 The scaling function has a number of free parameters: the position $\theta_0$
 of the abrupt transition, prefactors in front of singular functions from the
 abrupt transition and the Yang--Lee point, the coefficients in the analytic
-part $G$ of $\mathcal F$, and the coefficients in the undetermined function
-$g$.  Other parameters are determined by known properties.
+part $G$ of $\mathcal F$, and the coefficients in the undetermined coordinate
+function $g$.  Other parameters are determined by known properties.
 
 For $\theta>\theta_0$, the form \eqref{eq:essential.singularity} can be
 expanded around $\theta=\theta_0$ to yield
@@ -581,7 +592,8 @@ machine-precision cutoff, whichever is larger. We also add the difference
 between the predictions for $A_\mathrm{YL}$ and $\xi_\mathrm{YL}$ and their
 known numeric values, again weighted by their uncertainty. In order to
 encourage convergence, we also add to the cost the weighted coefficients
-$j!g_j$ and $j!G_j$.
+$j!g_j$ and $j!G_j$ defining the function $g$ and $G$ in
+\eqref{eq:schofield.funcs} and \eqref{eq:analytic.free.enery}.
 
 A Levenberg--Marquardt algorithm is performed on the cost function to find a
 parameter combination which minimizes it. As larger polynomial order in the
@@ -781,12 +793,12 @@ to their known values at the critical isotherm, or $\theta=1$.
     dat = 'data/phi_comparison.dat'
 
     set xlabel '$n$'
-    set xrange [1.5:7.5]
+    set xrange [1.5:6.5]
 
     set logscale y
     set format y '$10^{%T}$'
     set ylabel '$|\Delta\mathcal F_0^{(m)}|$'
-    set yrange [0.000002:0.003]
+    set yrange [0.000000005:0.0005]
 
     set style data linespoints
     set key title '\raisebox{0.5em}{$m$}' bottom left
@@ -801,7 +813,9 @@ to their known values at the critical isotherm, or $\theta=1$.
   \caption{
     The error in the $m$th derivative of the scaling function $\mathcal F_0$
     with respect to $\eta$ evaluated at $\eta=0$, as a function of the
-    polynomial order $n$ at which the scaling function was fit.
+    polynomial order $n$ at which the scaling function was fit. The point
+    $\eta=0$ corresponds to the critical isotherm at $T=T_c$ and $H>0$, roughly
+    midway between the limits used in the fit at $H=0$ and $T\neq T_c$.
   } \label{fig:error}
 \end{figure}
 
@@ -824,7 +838,7 @@ Fig.~\ref{fig:phi.series}.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
-    dat3 = 'data/glow_series_ours_7.dat'
+    dat3 = 'data/glow_series_ours_6.dat'
     dat4 = 'data/glow_series_caselle.dat'
 
     set xlabel '$m$'
@@ -838,7 +852,7 @@ Fig.~\ref{fig:phi.series}.
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=7$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=6$)', \
       dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
@@ -853,7 +867,7 @@ Fig.~\ref{fig:phi.series}.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/ghigh_numeric.dat'
     dat2 = 'data/ghigh_series_ours_2.dat'
-    dat3 = 'data/ghigh_series_ours_7.dat'
+    dat3 = 'data/ghigh_series_ours_6.dat'
     dat4 = 'data/ghigh_caselle.dat'
 
     set key top left Left reverse
@@ -866,7 +880,7 @@ Fig.~\ref{fig:phi.series}.
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=7$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=6$)', \
       dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
@@ -881,7 +895,7 @@ Fig.~\ref{fig:phi.series}.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/phi_numeric.dat'
     dat2 = 'data/phi_series_ours_2.dat'
-    dat3 = 'data/phi_series_ours_9.dat'
+    dat3 = 'data/phi_series_ours_6.dat'
     set key top right
     set logscale y
     set xlabel '$m$'
@@ -892,7 +906,7 @@ Fig.~\ref{fig:phi.series}.
     plot \
       dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
       dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=7$)'
+      dat3 using 1:(abs($2)) title 'This work ($n=6$)'
   \end{gnuplot}
   \caption{
     The series coefficients for the scaling function $\mathcal F_0$ as a
@@ -915,7 +929,7 @@ the ratio.
   \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
-    dat3 = 'data/glow_series_ours_7.dat'
+    dat3 = 'data/glow_series_ours_6.dat'
     dat4 = 'data/glow_series_caselle.dat'
     ratLast(x) = (back2 = back1, back1 = x, back1 / back2)
     back1 = 0
@@ -929,7 +943,7 @@ the ratio.
     plot \
       dat1 using (1/$1):(abs(ratLast($2))) title 'Numeric', \
       dat2 using (1/$1):(abs(ratLast($2))) title 'This work ($n=2$)', \
-      dat3 using (1/$1):(abs(ratLast($2))) title 'This work ($n=7$)', \
+      dat3 using (1/$1):(abs(ratLast($2))) title 'This work ($n=6$)', \
       dat4 using (1/$1):(abs(ratLast($2))) title 'Caselle \textit{et al.}'
   \end{gnuplot}
   \caption{
