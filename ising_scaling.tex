@@ -55,31 +55,34 @@ universality class.
 
 The continuous phase transition in the two-dimensional Ising model is the most
 well studied, and its universal thermodynamic functions have likewise received
-the most attention. Without a field, an exact solution is known for some lattice models \cite{Onsager_1944_Crystal}. Precision numeric work both on lattice models and on the
-``Ising'' conformal field theory (related by universality) have yielded
-high-order polynomial expansions of those functions, along with a comprehensive
-understanding of their analytic properties \cite{Fonseca_2003_Ising,
-Mangazeev_2008_Variational, Mangazeev_2010_Scaling}.  In parallel, smooth
-approximations of the Ising equation of state produce convenient, evaluable,
-differentiable empirical functions \cite{Caselle_2001_The}. Despite being
-differentiable, these approximations become increasingly poor when derivatives
-are taken due to the neglect of subtle singularities.
+the most attention. Without a field, an exact solution is known for some
+lattice models \cite{Onsager_1944_Crystal}. Precision numeric work both on
+lattice models and on the ``Ising'' conformal field theory (related by
+universality) have yielded high-order polynomial expansions of those functions,
+along with a comprehensive understanding of their analytic properties
+\cite{Fonseca_2003_Ising, Mangazeev_2008_Variational, Mangazeev_2010_Scaling}.
+In parallel, smooth approximations of the Ising equation of state produce
+convenient, evaluable, differentiable empirical functions
+\cite{Caselle_2001_The}. Despite being differentiable, these approximations
+become increasingly poor when derivatives are taken due to the neglect of
+subtle singularities.
 
 This paper attempts to find the best of both worlds: a smooth approximate
-universal thermodynamic function that respects the global analytic properties of the
-Ising free energy. By constructing approximate functions with the correct
-singularities, corrections converge exponentially to the true function. To make
-the construction, we review the analytic properties of the Ising scaling
-function. Parametric coordinates are introduced that remove unnecessary
-singularities that are a remnant of the coordinate choice. The singularities known to be present in the scaling function are incorporated in their simplest form. Then, the arbitrary
-analytic functions that compose those coordinates are approximated by truncated
-polynomials whose coefficients are fixed by matching the series expansions of
-the universal function.
+universal thermodynamic function that respects the global analytic properties
+of the Ising free energy. By constructing approximate functions with the
+correct singularities, corrections converge \emph{exponentially} to the true
+function.  To make the construction, we review the analytic properties of the
+Ising scaling function. Parametric coordinates are introduced that remove
+unnecessary singularities that are a remnant of the coordinate choice. The
+singularities known to be present in the scaling function are incorporated in
+their simplest form. Then, the arbitrary analytic functions that compose those
+coordinates are approximated by truncated polynomials whose coefficients are
+fixed by matching the series expansions of the universal function.
 
 \section{Universal scaling functions}
 
 A renormalization group analysis predicts that certain thermodynamic functions
-will be universal in the vicinity of any critical point in the Ising
+will be universal in the vicinity of \emph{any} critical point in the Ising
 universality class, from perturbed conformal fields to the end of the
 liquid--gas coexistence line. Here we will review precisely what is meant by
 universal.
@@ -131,15 +134,17 @@ Solving these equations for $u_f$ yields
     &=|u_h|^{D\nu/\Delta}\mathcal F_0(u_t|u_h|^{-1/\Delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_h^{2/\Delta} \\
   \end{aligned}
 \end{equation}
-where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions related by a change of coordinates \footnote{To connect the
-results of this paper with Mangazeev and Fonseca, one can write $\mathcal
-F_0(\eta)=\tilde\Phi(-\eta)=\Phi(-\eta)+(\eta^2/8\pi) \log \eta^2$ and
-$\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.}.
-The scaling functions are universal in the sense that if another system whose
-critical point belongs to the same universality class has its parameters
-brought to the form \eqref{eq:flow}, one will see the same functional form, up to the units of $u_t$ and $u_h$. The invariant scaling combinations that appear
-as the arguments to the universal scaling functions will come up often, and we
-will use $\xi=u_h|u_t|^{-\Delta}$ and $\eta=u_t|u_h|^{-1/\Delta}$.
+where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions
+related by a change of coordinates \footnote{To connect the results of this
+  paper with Mangazeev and Fonseca, one can write $\mathcal
+  F_0(\eta)=\tilde\Phi(-\eta)=\Phi(-\eta)+(\eta^2/8\pi) \log \eta^2$ and
+$\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.}.  The scaling
+functions are universal in the sense that if another system whose critical
+point belongs to the same universality class has its parameters brought to the
+form \eqref{eq:flow}, one will see the same functional form, up to the units of
+$u_t$ and $u_h$. The invariant scaling combinations that appear as the
+arguments to the universal scaling functions will come up often, and we will
+use $\xi=u_h|u_t|^{-\Delta}$ and $\eta=u_t|u_h|^{-1/\Delta}$.
 
 The analyticity of the free energy at places away from the critical point
 implies that the functions $\mathcal F_\pm$ and $\mathcal F_0$ have power-law
@@ -152,10 +157,10 @@ the case at infinity: since
   \mathcal F_\pm(\xi)
   =\xi^{D\nu/\Delta}\mathcal F_0(\pm \xi^{-1/\Delta})+\frac1{8\pi}\log\xi^{2/\Delta}
 \end{equation}
-and $\mathcal F_0$ has a power-law expansion about zero, $\mathcal
-F_\pm$ has a series like $\xi^{D\nu/\Delta-j/\Delta}$ for $j\in\mathbb N$ at
-large $\xi$, along with logarithms. The nonanalyticity of these functions at
-infinite argument can be understood as an artifact of the chosen coordinates.
+and $\mathcal F_0$ has a power-law expansion about zero, $\mathcal F_\pm$ has a
+series like $\xi^{D\nu/\Delta-j/\Delta}$ for $j\in\mathbb N$ at large $\xi$,
+along with logarithms. The nonanalyticity of these functions at infinite
+argument can be understood as an artifact of the chosen coordinates.
 
 For the scale of $u_t$ and $u_h$, we adopt the same convention as used by
 \cite{Fonseca_2003_Ising}. The dependence of the nonlinear scaling variables on
@@ -189,18 +194,22 @@ This critical bubble occurs with free energy cost
     \simeq\frac{\pi\sigma^2}{2M|H|}
     \simeq T\left(\frac{2M_0}{\pi\sigma_0^2}|\xi|\right)^{-1}
 \end{equation}
-where $\sigma_0=\lim_{t\to0}t^{-\mu}\sigma$ and $M_0=\lim_{t\to0}t^{-\beta}M$ are the critical amplitudes for the surface tension
-and magnetization at zero field in the low-temperature phase \cite{Kent-Dobias_2020_Novel}.  In the context
-of statistical mechanics, Langer demonstrated that the decay rate is
+where $\sigma_0=\lim_{t\to0}t^{-\mu}\sigma$ and $M_0=\lim_{t\to0}t^{-\beta}M$
+are the critical amplitudes for the surface tension and magnetization at zero
+field in the low-temperature phase \cite{Kent-Dobias_2020_Novel}.  In the
+context of statistical mechanics, Langer demonstrated that the decay rate is
 asymptotically proportional to the imaginary part of the free energy in the
 metastable phase, with
 \begin{equation}
   \operatorname{Im}F\propto\Gamma\sim e^{-\beta\Delta F_c}\simeq e^{-1/b|\xi|}
 \end{equation}
 which can be more rigorously related in the context of quantum field theory
-\cite{Voloshin_1985_Decay}. The constant $b=2M_0/\pi\sigma_0^2$ is predicted by known properties, e.g., for the square lattice $M_0$ and $\sigma_0$ are both predicted by Onsager's solution \cite{Onsager_1944_Crystal},
-but for our conventions for $u_t$ and $u_h$, $M_0/\sigma_0^2=\bar
-s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant \cite{Fonseca_2003_Ising}.
+\cite{Voloshin_1985_Decay}. The constant $b=2M_0/\pi\sigma_0^2$ is predicted by
+known properties, e.g., for the square lattice $M_0$ and $\sigma_0$ are both
+predicted by Onsager's solution \cite{Onsager_1944_Crystal}, but for our
+conventions for $u_t$ and $u_h$, $M_0/\sigma_0^2=\bar
+s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant
+\cite{Fonseca_2003_Ising}.
 
 
 \begin{figure}
@@ -216,14 +225,17 @@ s=2^{1/12}e^{-1/8}A^{3/2}$, where $A$ is Glaisher's constant \cite{Fonseca_2003_
 To lowest order, this singularity is a function of the scaling invariant $\xi$
 alone. It is therefore suggestive that this should be considered a part of the
 singular free energy and moreover part of the scaling function that composes
-it. There is substantial numeric evidence for this as well \cite{Enting_1980_An, Fonseca_2003_Ising}. We will therefore
-make the ansatz that
+it. There is substantial numeric evidence for this as well
+\cite{Enting_1980_An, Fonseca_2003_Ising}. We will therefore make the ansatz
+that
 \begin{equation} \label{eq:essential.singularity}
   \operatorname{Im}\mathcal F_-(\xi+i0)=A_0\Theta(-\xi)\xi e^{-1/b|\xi|}\left[1+O(\xi)\right]
 \end{equation}
 The linear prefactor can be found through a more careful accounting of the
 entropy of long-wavelength fluctuations in the droplet surface
-\cite{Gunther_1980_Goldstone, Houghton_1980_The}. In the Ising conformal field theory, the prefactor is known to be $A_0=\bar s/2\pi$ \cite{Voloshin_1985_Decay, Fonseca_2003_Ising}.
+\cite{Gunther_1980_Goldstone, Houghton_1980_The}. In the Ising conformal field
+theory, the prefactor is known to be $A_0=\bar s/2\pi$
+\cite{Voloshin_1985_Decay, Fonseca_2003_Ising}.
 
 \subsection{Yang--Lee edge singularity}
 
@@ -252,10 +264,10 @@ $\xi_{\mathrm{YL}}$.
   } \label{fig:higher.singularities}
 \end{figure}
 
-The Yang--Lee singularities, although only accessible with complex fields, are critical points in their own right, with their
-own universality class different from that of the Ising model
-\cite{Fisher_1978_Yang-Lee}. Asymptotically close to this point, the scaling
-function $\mathcal F_+$ takes the form
+The Yang--Lee singularities, although only accessible with complex fields, are
+critical points in their own right, with their own universality class different
+from that of the Ising model \cite{Fisher_1978_Yang-Lee}. Asymptotically close
+to this point, the scaling function $\mathcal F_+$ takes the form
 \begin{equation} \label{eq:yang.lee.sing}
   \mathcal F_+(\xi)
   =A(\xi) +B(\xi)[1+(\xi/\xi_{\mathrm{YL}})^2]^{1+\sigma}+\cdots
@@ -288,7 +300,8 @@ The Schofield coordinates $R$ and $\theta$ are implicitly defined by
   &&
   u_h(R, \theta) = R^{\Delta}g(\theta)
 \end{align}
-where $g$ is an odd function whose first zero lies at $\theta_0>1$ \cite{Schofield_1969_Parametric}. We take
+where $g$ is an odd function whose first zero lies at $\theta_0>1$
+\cite{Schofield_1969_Parametric}. We take
 \begin{align} \label{eq:schofield.funcs}
   g(\theta)=\left(1-\frac{\theta^2}{\theta_0^2}\right)\sum_{i=0}^\infty g_i\theta^{2i+1}.
 \end{align}
@@ -304,7 +317,8 @@ combinations depend only on $\theta$, as
   \xi=u_h|u_t|^{-\Delta}=\frac{g(\theta)}{|1-\theta^2|^{\Delta}} &&
   \eta=u_t|u_h|^{-1/\Delta}=\frac{1-\theta^2}{|g(\theta)|^{1/\Delta}}
 \end{align}
-Moreover, both scaling variables have polynomial expansions in $\theta$ near zero, with
+Moreover, both scaling variables have polynomial expansions in $\theta$ near
+zero, with
 \begin{align}
   &\xi= g'(0)\theta+\cdots  && \text{for $\theta\simeq0$}\\
   &\xi=g'(\theta_0)(\theta_0^2-1)^{-\Delta}(\theta-\theta_0)+\cdots && \text{for $\theta\simeq\theta_0$}
@@ -478,11 +492,14 @@ and
 \begin{equation}
   \mathcal F_{\mathrm{YL}}(\theta)=C_{\mathrm{YL}}\left[(\theta^2+\theta_{\mathrm{YL}}^2)^{1+\sigma}-\theta_{\mathrm{YL}}^{2(1+\sigma)}\right]
 \end{equation}
-We have also included the analytic part $G$, which we assume has a simple series expansion
+We have also included the analytic part $G$, which we assume has a simple
+series expansion
 \begin{equation}
   G(\theta)=\sum_{i=1}^\infty G_i\theta^{2i}
 \end{equation}
-From the form of the real part, we can infer the form of $\mathcal F$ that is analytic for the whole complex plane except at the singularities and branch cuts previously discussed.
+From the form of the real part, we can infer the form of $\mathcal F$ that is
+analytic for the whole complex plane except at the singularities and branch
+cuts previously discussed.
 For $\theta\in\mathbb C$, we take
 \begin{equation}
   \mathcal F(\theta)=\mathcal F_0(\theta)+\mathcal F_{\mathrm{YL}}(\theta)+G(\theta),
@@ -531,7 +548,9 @@ and
        \right)\right\}
   \end{aligned}
 \end{equation}
-fixing $B$ and $C_0$. Similarly, \eqref{eq:yang-lee.theta} puts a constraint on the value of $\theta_\mathrm{YL}$, while the known amplitude of the Yang--Lee branch cut fixes the value of $C_\mathrm{YL}$ by
+fixing $B$ and $C_0$. Similarly, \eqref{eq:yang-lee.theta} puts a constraint on
+the value of $\theta_\mathrm{YL}$, while the known amplitude of the Yang--Lee
+branch cut fixes the value of $C_\mathrm{YL}$ by
 \begin{equation}
   \begin{aligned}
     u_f
