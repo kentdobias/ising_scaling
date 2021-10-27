@@ -246,7 +246,12 @@ The linear prefactor can be found through a more careful accounting of the
 entropy of long-wavelength fluctuations in the droplet surface
 \cite{Gunther_1980_Goldstone, Houghton_1980_The}. In the Ising conformal field
 theory, the prefactor is known to be $A_0=\bar s/2\pi$
-\cite{Voloshin_1985_Decay, Fonseca_2003_Ising}.
+\cite{Voloshin_1985_Decay, Fonseca_2003_Ising}. The signature of this
+singularity in the scaling function is a superexponential divergence in the
+series coefficients about $\xi=0$, which asymptotically take the form
+\begin{equation} \label{eq:low.asymptotic}
+  \mathcal F_-^\infty(m)=\frac{A_0}\pi b^{m-1}\Gamma(m-1)
+\end{equation}
 
 \subsection{Yang--Lee edge singularity}
 
@@ -288,10 +293,15 @@ $\xi_\mathrm{YL}$ \cite{Cardy_1985_Conformal, Fonseca_2003_Ising}. This creates
 a branch cut stemming from the critical point along the imaginary-$\xi$ axis
 with a growing imaginary part
 \begin{equation}
-  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm\tilde A_\mathrm{YL}\frac12\Theta(\xi^2-\xi_\mathrm{YL}^2)[(\xi/\xi_\mathrm{YL})^2-1]^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
+  \operatorname{Im}\mathcal F_+(i\xi\pm0)=\pm\tilde A_\mathrm{YL}\Theta(\xi-\xi_\mathrm{YL})(\xi-\xi_\mathrm{YL})^{1+\sigma}[1+O[(\xi-\xi_\mathrm{YL})^2]]
 \end{equation}
 This results in analytic structure for $\mathcal F_+$ shown in
-Fig.~\ref{fig:higher.singularities}.
+Fig.~\ref{fig:higher.singularities}. The signature of this in the scaling
+function is an asymptotic behavior of the coefficients which goes like
+\begin{equation} \label{eq:high.asymptotic}
+  \mathcal F_+^\infty(m)=A_\mathrm{YL}2(-1)^{2m}\theta_\mathrm{YL}^{1-\sigma-m}\binom{1-\sigma}{m}
+\end{equation}
+
 
 \section{Parametric coordinates}
 
@@ -425,7 +435,12 @@ where
 reproduces the essential singularity in \eqref{eq:essential.singularity}.
 Independently, we require for $\theta\in\mathbb R$
 \begin{equation}
-  \operatorname{Im}\mathcal F(i\theta+0)=\operatorname{Im}\mathcal F_\mathrm{YL}(i\theta+0)=\frac{C_\mathrm{YL}}2\Theta(\theta^2-\theta_\mathrm{YL}^2)[(\theta/\theta_\mathrm{YL})^2-1]^{1+\sigma}
+  \operatorname{Im}\mathcal F(i\theta+0)
+  =\operatorname{Im}\mathcal F_\mathrm{YL}(i\theta+0)
+  =\frac12C_\mathrm{YL}\left[
+    \Theta(\theta-\theta_\mathrm{YL})(\theta-\theta_\mathrm{YL})^{1+\sigma}
+    -\Theta(\theta+\theta_\mathrm{YL})(\theta+\theta_\mathrm{YL})^{1+\sigma}
+  \right]
 \end{equation}
 Fixing these requirements for the imaginary part of $\mathcal F(\theta)$ fixes
 its real part up to an analytic even function $G(\theta)$, real for real $\theta$.
@@ -501,7 +516,7 @@ where $\mathcal R$ is given by the function
 \end{equation}
 and
 \begin{equation}
-  \mathcal F_{\mathrm{YL}}(\theta)=C_{\mathrm{YL}}\left[(\theta^2+\theta_{\mathrm{YL}}^2)^{1+\sigma}-\theta_{\mathrm{YL}}^{2(1+\sigma)}\right]
+  \mathcal F_{\mathrm{YL}}(\theta)=2C_\mathrm{YL}\left[2(\theta^2+\theta_\mathrm{YL}^2)^{(1+\sigma)/2}\cos\left((1+\sigma)\tan^{-1}\frac\theta{\theta_\mathrm{YL}}\right)-\theta_\mathrm{YL}^{1+\sigma}\right]
 \end{equation}
 We have also included the analytic part $G$, which we assume has a simple
 series expansion
@@ -568,7 +583,7 @@ branch cut fixes the value of $C_\mathrm{YL}$ by
     &\simeq A_\mathrm{YL}|u_h(\theta)|^{D\nu/\Delta}(\eta_{\mathrm YL}-\eta(\theta))^{1+\sigma} \\
     &=A_\mathrm{YL}R^{D\nu}|g(i\theta_\mathrm{YL})|^{D\nu/\Delta}[-\eta'(i\theta_\mathrm{YL})]^{1+\sigma}(\theta-i\theta_\mathrm{YL})^{1+\sigma}\left(1+O[(\theta-i\theta_\mathrm{YL})^2]\right)\\
     &\simeq R^{D\nu}\mathcal F_\mathrm{YL}(\theta)
-    =C_\mathrm{YL}R^{D\nu}(2i\theta_{YL})^{1+\sigma}(\theta-i\theta_\mathrm{YL})^{1+\sigma}\left(1+O[(\theta-i\theta_\mathrm{YL})^2]\right)
+    =C_\mathrm{YL}R^{D\nu}(\theta-i\theta_\mathrm{YL})^{1+\sigma}\left(1+O[(\theta-i\theta_\mathrm{YL})^2]\right)
 \end{aligned}
 \end{equation}
 \begin{equation}
@@ -857,6 +872,37 @@ Fig.~\ref{fig:phi.series}.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/glow_numeric.dat'
+    dat2 = 'data/glow_series_ours_0.dat'
+    dat3 = 'data/glow_series_ours_6.dat'
+    dat4 = 'data/glow_series_caselle.dat'
+
+    set xlabel '$m$'
+    set xrange [0:14.5]
+
+    set key top left Left reverse
+    set ylabel '$\mathcal F_-^{(m)}/\mathcal F_-^\infty(m)$'
+
+    os = 1.3578383417065954956
+    asmp(n) = os / (2 * pi) * (2 * os / pi)**(n-1) * gamma(n - 1) / pi
+
+    plot \
+      dat1 using 1:(abs($2) / asmp($1)):($3 / asmp($1)) title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2) / asmp($1)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2) / asmp($1)) title 'This work ($n=6$)', \
+      dat4 using 1:(abs($2) / asmp($1)) title 'Caselle \textit{et al.}'
+  \end{gnuplot}
+  \caption{
+    The series coefficients for the scaling function $\mathcal F_-$ as a
+    function of polynomial order $m$, rescaled by their asymptotic limit
+    $\mathcal F_-^\infty(m)$ from \eqref{eq:low.asymptotic}. The numeric values
+    are from Table \ref{tab:data}, and those of Caselle \textit{et al.} are
+    from the most accurate scaling function listed in \cite{Caselle_2001_The}.
+  } \label{fig:glow.series}
+\end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
     dat1 = 'data/ghigh_numeric.dat'
     dat2 = 'data/ghigh_series_ours_2.dat'
     dat3 = 'data/ghigh_series_ours_6.dat'
@@ -880,6 +926,38 @@ Fig.~\ref{fig:phi.series}.
     function of polynomial order $m$. The numeric values are from Table
     \ref{tab:data}, and those of Caselle \textit{et al.} are from the most
     accurate scaling function listed in \cite{Caselle_2001_The}.
+  } \label{fig:ghigh.series}
+\end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/ghigh_numeric.dat'
+    dat2 = 'data/ghigh_series_ours_2.dat'
+    dat3 = 'data/ghigh_series_ours_6.dat'
+    dat4 = 'data/ghigh_caselle.dat'
+
+    set xlabel '$m$'
+    set ylabel '$\mathcal F_+^{(m)}/\mathcal F_+^\infty(m)$'
+    set yrange [0.8:1.5]
+    set xrange [1.5:14.5]
+
+    xYL = 0.18930
+    AYL = 1.37
+    sigma = 0.833333333333
+    asmp(n) = -AYL * 2 * exp(log(xYL)*(sigma-n))*gamma(sigma+1)/gamma(n+1)/gamma(sigma-n+1)
+
+    plot \
+    dat1 using 1:(abs($2) / abs(asmp($1))):($3 / asmp($1)) title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2) / asmp($1)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2) / asmp($1)) title 'This work ($n=6$)', \
+      dat4 using 1:(abs($2) / asmp($1)) title 'Caselle \textit{et al.}'
+  \end{gnuplot}
+  \caption{
+    The series coefficients for the scaling function $\mathcal F_+$ as a
+    function of polynomial order $m$, rescaled by their asymptotic limit
+    $\mathcal F_+^\infty(m)$ from \eqref{eq:high.asymptotic}. The numeric
+    values are from Table \ref{tab:data}, and those of Caselle \textit{et al.}
+    are from the most accurate scaling function listed in \cite{Caselle_2001_The}.
   } \label{fig:ghigh.series}
 \end{figure}
 
