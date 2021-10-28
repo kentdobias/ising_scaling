@@ -641,9 +641,10 @@ abrupt transition and the Yang--Lee point, the coefficients in the analytic
 part $G$ of the scaling function, and the coefficients in the undetermined
 coordinate function $g$.
 
-The other parameters $B$, $C_0$, $\theta_{YL}$, and $C_{YL}$ are determined by known properties. {\color{blue} XXX Is this right?}
-For $\theta>\theta_0$, the form \eqref{eq:essential.singularity} can be
-expanded around $\theta=\theta_0$ to yield
+The other parameters $B$, $C_0$, $\theta_{YL}$, and $C_{YL}$ are determined or
+further constrained by known properties. For $\theta>\theta_0$, the form
+\eqref{eq:essential.singularity} can be expanded around $\theta=\theta_0$ to
+yield
 \begin{equation}
   \begin{aligned}
     \operatorname{Im}u_f
@@ -703,8 +704,11 @@ the known coefficients or by a machine-precision cutoff, whichever is larger.
 We also add the difference between the predictions for $A_\mathrm{YL}$ and
 $\xi_\mathrm{YL}$ and their known numeric values, again weighted by their
 uncertainty. In order to encourage convergence, we also add weak residuals
-$j!g_j$ and $j!G_j$ encouraging the coefficients of the analytic functions $g$ and $G$ in
-\eqref{eq:schofield.funcs} and \eqref{eq:analytic.free.enery} to stay small. {\color{blue} Are these multiplied by a small constant? Should they have an $1/R^n$ for the expected radius of convergence?} This can be interpreted as a prior which expects these functions to be analytic, and therefore have series coefficients which decay with a factorial.
+$j!g_j$ and $j!G_j$ encouraging the coefficients of the analytic functions $g$
+and $G$ in \eqref{eq:schofield.funcs} and \eqref{eq:analytic.free.enery} to
+stay small.  This can be interpreted as a prior which expects these functions
+to be analytic, and therefore have series coefficients which decay with a
+factorial.
 
 A Levenberg--Marquardt algorithm is performed on the cost function to find a parameter combination which minimizes it. As larger polynomial order in the
 series are fit, the truncations of $G$ and $g$ are extended to higher order so
@@ -714,21 +718,19 @@ function at the low and high temperature zero field points to quadratic order), 
 through $n=6$. At higher order we began to have difficulty minimizing the cost.
 The resulting fit coefficients can be found in Table \ref{tab:fits}.
 
-Precise results exist for the value of the
-scaling function and its derivatives at the critical isotherm, or equivalently
-for the series coefficients of the scaling function $\mathcal F_0$. Since we do
-not use these coefficients in our fits, the error in the approximate scaling
-functions and their derivatives can be evaluated by comparison to their known
-values at the critical isotherm, or $\theta=1$.
-The difference between the numeric values of the coefficients $\mathcal
-F_0^{(m)}$ and those predicted by the iteratively fit scaling functions are
-shown in Fig.~\ref{fig:error}. For the values for which we were able to make a
-fit, the error in the function and its first several derivatives appear to
-trend exponentially towards zero in the polynomial order $n$. The predictions
-of our fits at the critical isotherm can be compared with the numeric values to
-higher order in Fig.~\ref{fig:phi.series}, where the absolute values of both
-are plotted. {\color{blue} XXX Is the critical isotherm still $\theta=1$ with our general coordinate change?}
-
+Precise results exist for the value of the scaling function and its derivatives
+at the critical isotherm, or equivalently for the series coefficients of the
+scaling function $\mathcal F_0$. Since we do not use these coefficients in our
+fits, the error in the approximate scaling functions and their derivatives can
+be evaluated by comparison to their known values at the critical isotherm, or
+$\theta=1$.  The difference between the numeric values of the coefficients
+$\mathcal F_0^{(m)}$ and those predicted by the iteratively fit scaling
+functions are shown in Fig.~\ref{fig:error}. For the values for which we were
+able to make a fit, the error in the function and its first several derivatives
+appear to trend exponentially towards zero in the polynomial order $n$. The
+predictions of our fits at the critical isotherm can be compared with the
+numeric values to higher order in Fig.~\ref{fig:phi.series}, where the absolute
+values of both are plotted.
 \begin{table}
   \begin{tabular}{r|lll}
     \multicolumn1{c|}{$m$} &
@@ -932,8 +934,9 @@ are plotted. {\color{blue} XXX Is the critical isotherm still $\theta=1$ with ou
     with respect to $\eta$ evaluated at $\eta=0$, as a function of the
     polynomial order $n$ at which the scaling function was fit. The point
     $\eta=0$ corresponds to the critical isotherm at $T=T_c$ and $H>0$, roughly
-    midway between the two limits used in the fit, at $H=0$ and $T$ above and below $T_c$. Convergence here should reflect overall convergence of our scaling function at all $\theta$. {\color{blue} Thicker lines? Larger symbols?}
-  } \label{fig:error}
+    midway between the two limits used in the fit, at $H=0$ and $T$ above and
+    below $T_c$. Convergence here should reflect overall convergence of our
+    scaling function at all $\theta$.} \label{fig:error}
 \end{figure}
 
 
@@ -965,7 +968,7 @@ are plotted. {\color{blue} XXX Is the critical isotherm still $\theta=1$ with ou
   \caption{
     The series coefficients for the scaling function $\mathcal F_0$ as a
     function of polynomial order $m$. The numeric values are from Table
-    \ref{tab:data}. {\color{blue} XXX Numerics is invisible? Why is the decay indicating a radius of convergence larger than $\theta_0$? Mention relation of decay to $\theta_0$? Or even plot $F_0^{(m)} \theta_0^m$ to make points easier to see?}
+    \ref{tab:data} and are partially obscured by the other data.
   } \label{fig:phi.series}
 \end{figure}
 
@@ -1045,7 +1048,9 @@ Fig.~\ref{fig:phi.series}.
     The series coefficients for the scaling function $\mathcal F_+$ as a
     function of polynomial order $m$. The numeric values are from Table
     \ref{tab:data}, and those of Caselle \textit{et al.} are from the most
-    accurate scaling function listed in \cite{Caselle_2001_The}. Note all agree well for $H$ near zero, $T > T_c$. {\color{blue} Caselle invisible?}
+    accurate scaling function listed in \cite{Caselle_2001_The}. Note all agree
+    well for $H$ near zero, $T > T_c$, as does the function of Caselle
+    \textit{et al}.
   } \label{fig:ghigh.series}
 \end{figure}
 
