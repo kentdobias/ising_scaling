@@ -1032,6 +1032,7 @@ high-order coefficients as functions of $\theta$ produce large intermediate
 derivatives as functions of $\xi$. We suspect that the nature of the truncation
 of these functions is responsible, and are investigating modifications that
 would converge better.
+Notice that this infelicity does not appear to cause significant errors in the function $\mathcal F_-(\theta)$ or its low order derivatives, as evidenced by the convergence in Fig.~\ref{fig:error}.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
@@ -1060,7 +1061,7 @@ would converge better.
     function of polynomial order $m$, rescaled by their asymptotic limit
     $\mathcal F_-^\infty(m)$ from \eqref{eq:low.asymptotic}. The numeric values
     are from Table \ref{tab:data}, and those of Caselle \textit{et al.} are
-    from the most accurate scaling function listed in \cite{Caselle_2001_The}.
+    from the most accurate scaling function listed in \cite{Caselle_2001_The}. Note that our $n=6$ fit generates significant deviations in polynomial coefficients $m$ above around 10. 
   } \label{fig:glow.series.scaled}
 \end{figure}
 
@@ -1131,7 +1132,7 @@ the ratio.
     Sequential ratios of the series coefficients of the scaling function
     $\mathcal F_-$ as a function of inverse polynomial order $m$. The
     extrapolated $y$-intercept of this plot gives the radius of convergence of
-    the series.
+    the series, which should be zero due to the essential singularity (as seen in the known numeric values and in this work). Cassel {\em et al} do not incorporate the essential singularity.
   } \label{fig:glow.radius}
 \end{figure}
 
@@ -1142,10 +1143,9 @@ Ising universal scaling function in the relevant variables. These functions are
 smooth to all orders, include the correct singularities, and appear to converge
 exponentially to the function as they are fixed to larger polynomial order.
 
-This method has some shortcomings, namely that it becomes difficult to fit the
+This method, although spectacularly successful, could be improved. It becomes difficult to fit the
 unknown functions at progressively higher order due to the complexity of the
-chain-rule derivatives, and in the inflation of intermediate large coefficients
-at the abrupt transition. These problems may be related to the precise form and
+chain-rule derivatives, and we find an inflation of predicted coefficients in our higher-precision fits. These problems may be related to the precise form and
 method of truncation for the unknown functions.
 
 The successful smooth description of the Ising free energy produced in part by
