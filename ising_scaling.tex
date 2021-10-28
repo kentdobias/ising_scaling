@@ -47,9 +47,8 @@ linkcolor=purple
   coordinate transformation. For the two-dimensional Ising model, we show that
   this procedure converges exponentially with the order to which the series are
   matched, up to seven digits of accuracy. 
-  To facilitate use, we provide Python and Mathematica implementations of the code at both lowest order (four digit) and high order (seven digit) accuracy.
-  We speculate that with appropriately modified parametric
-  coordinates, the method may converge even deep into the metastable phase.
+  To facilitate use, we provide Python and Mathematica implementations of the code at both lowest order (three digit) and high accuracy.
+  %We speculate that with appropriately modified parametric coordinates, the method may converge even deep into the metastable phase.
 \end{abstract}
 
 \maketitle
@@ -93,7 +92,7 @@ coordinates are approximated by truncated polynomials whose coefficients are
 fixed by matching the series expansions of the universal function.
 
 For the two-dimensional Ising model, this method produces scaling functions
-accurate to within $10^{-4}$ using just the values of the first three
+accurate to within $3\times 10^{-4}$ using just the values of the first three
 derivatives of the function evaluated at two points, e.g., critical amplitudes
 of the magnetization, susceptibility, and first generalized susceptibility.
 With six derivatives, it is accurate to about $10^{-7}$. We hope that with some
@@ -132,7 +131,7 @@ $\Delta=\beta\delta=\frac{15}8$ will appear often. The flow equations are
 truncated here, but in general all terms allowed by the symmetries of the
 parameters are present on their righthand side. By making a near-identity
 transformation to the coordinates and the free energy of the form $u_t(t,
-h)=t+\cdots$, $u_h(t, h)=h+\cdots$, and $u_f(f,t,h)=f+\cdots$, one can bring
+h)=t+\cdots$, $u_h(t, h)=h+\cdots$, and $u_f(f,u_t,u_h)\propto f(t,h)-f_a(t,h)$, one can bring
 the flow equations into the agreed upon simplest normal form
 \begin{align} \label{eq:flow}
   \frac{du_t}{d\ell}=\frac1\nu u_t
@@ -146,8 +145,7 @@ which are exact as written \cite{Raju_2019_Normal}. The flow of the
 free energy is linearized as nearly as possible. The quadratic term in that
 equation is unremovable due to a `resonance' between the value of $\nu$ and the
 spatial dimension in two dimensions, while its coefficient is chosen as a
-matter of convention, fixing the scale of $u_t$. The form $u_f$ of the free
-energy is known as the singular part of the free energy.
+matter of convention, fixing the scale of $u_t$. Here the free energy $f=u_f+f_a$, where $u_f(u_t,u_h)$ is known as the singular part of the free energy, and $f_a(t,h)$ is a non-universal but analytic background free energy.
 
 Solving these equations for $u_f$ yields
 \begin{equation}
@@ -157,15 +155,16 @@ Solving these equations for $u_f$ yields
     &=|u_h|^{D\nu/\Delta}\mathcal F_0(u_t|u_h|^{-1/\Delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_h^{2/\Delta} \\
   \end{aligned}
 \end{equation}
-where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined scaling functions
+where $\mathcal F_\pm$ and $\mathcal F_0$ are undetermined universal scaling functions
 related by a change of coordinates \footnote{To connect the results of this
   paper with Mangazeev and Fonseca, one can write $\mathcal
   F_0(\eta)=\tilde\Phi(-\eta)=\Phi(-\eta)+(\eta^2/8\pi) \log \eta^2$ and
 $\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.}.  The scaling
-functions are universal in the sense that if another system whose critical
-point belongs to the same universality class has its parameters brought to the
-form \eqref{eq:flow}, one will see the same functional form, up to the units of
-$u_t$ and $u_h$. The invariant scaling combinations that appear as the
+functions are universal in the sense that any system in the same universality class will share the free energy \eqref{eq:flow}, for suitable analytic functions $u_t$, $u_h$, and analytic background $f_a$ -- the singular behavior is universal up to an analytic coordinate change.
+%if another system whose critical
+%point belongs to the same universality class has its parameters brought to the
+%form \eqref{eq:flow}, one will see the same functional form, up to the units of $u_t$ and $u_h$. 
+The invariant scaling combinations that appear as the
 arguments to the universal scaling functions will come up often, and we will
 use $\xi=u_h|u_t|^{-\Delta}$ and $\eta=u_t|u_h|^{-1/\Delta}$.
 
