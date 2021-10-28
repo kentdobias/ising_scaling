@@ -353,7 +353,9 @@ entirely fixed, and it will be truncated at finite order.
     g4 = 0.0000262629
     g5 = -0.00000109745
 
+    f(t) = 1-t**2
     g(t) = (1-(t/t0)**2)*(g0*t + g1*t**3 + g2*t**5 + g3*t**7 + g4*t**9 + g5*t**11)
+    del = 15.0/8.0
 
     set xlabel '$u_t$'
     set ylabel '$u_h$'
@@ -366,9 +368,10 @@ entirely fixed, and it will be truncated at finite order.
     set trange [-t0:t0]
 
     plot \
-      (1-t**2),g(t) title '$1$', \
-      2*(1-t**2),2*g(t) title '$2$', \
-      4*(1-t**2),4*g(t) title '$4$'
+      f(t),g(t) title '$1$', \
+      2*f(t),2**del*g(t) title '$2$', \
+      4*f(t),4**del*g(t) title '$4$', \
+      t*f(t0/4),t**del*g(t0/4)
   \end{gnuplot}
   \caption{
     Example of the parametric coordinates. Lines are of constant $R$ from
