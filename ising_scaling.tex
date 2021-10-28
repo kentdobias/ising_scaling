@@ -854,15 +854,15 @@ values at the critical isotherm, or $\theta=1$.
     set ylabel '$|\Delta\mathcal F_0^{(m)}|$'
     set yrange [0.000000005:0.0005]
 
-    set style data linespoints
+    set style data yerrorlines
     set key title '\raisebox{0.5em}{$m$}' bottom left
 
     plot \
-      dat using 1:2 title '0', \
-      dat using 1:3 title '1', \
-      dat using 1:4 title '2', \
-      dat using 1:5 title '3', \
-      dat using 1:6 title '4'
+      dat using 1:2:3 title '0', \
+      dat using 1:4:5 title '1', \
+      dat using 1:6:7 title '2', \
+      dat using 1:8:9 title '3', \
+      dat using 1:10:11 title '4'
   \end{gnuplot}
   \caption{
     The error in the $m$th derivative of the scaling function $\mathcal F_0$
