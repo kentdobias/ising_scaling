@@ -373,7 +373,7 @@ entirely fixed, and it will be truncated at finite order.
   \caption{
     Example of the parametric coordinates. Lines are of constant $R$ from
     $-\theta_0$ to $\theta_0$ for $g(\theta)$ taken from the $n=6$ entry of
-    Table \ref{tab:fits}. {\color{blue} \bf XXX Can we have lines of constant $\theta$ as well? Maybe dashed? Also maybe smaller radii, $R=1/4$, 1/2, and 1? Legend could be 
+    Table \ref{tab:fits}. {\color{blue} \bf XXX Can we have lines of constant $\theta$ as well? Maybe dashed? Also maybe smaller radii, $R=1/4$, 1/2, and 1?}
   } \label{fig:schofield}
 \end{figure}
 
@@ -421,8 +421,8 @@ present in $\mathcal F(\theta)$. The analytic structure of this function is
 shown in Fig.~\ref{fig:schofield.singularities}. Two copies of the Langer
 branch cut stretch out from $\pm\theta_0$, where the equilibrium phase ends,
 and the Yang--Lee edge singularities are present on the imaginary-$\theta$
-line, where they must be since $\mathcal F$ has the same symmetry in $\theta$
-as $\mathcal F_+$ has in $\xi$.
+line (because  $\mathcal F$ has the same symmetry in $\theta$
+as $\mathcal F_+$ has in $\xi$).
 
 The location of the Yang--Lee edge singularities can be calculated directly
 from the coordinate transformation \eqref{eq:schofield}. Since $g(\theta)$ is
@@ -451,13 +451,13 @@ part of the free energy.
 
 Our strategy follows. First, we take the singular imaginary parts of the
 scaling functions $\mathcal F_{\pm}(\xi)$ and truncate them to the lowest order
-accessible under polynomial coordinate changes of $\xi$. Then, we assert that
-the imaginary part of $\mathcal F(\theta)$ must have this simplest form,
-implicitly defining the parametric coordinate change. Third, we perform a
+accessible under polynomial coordinate changes of $\xi$. Then, we constrain
+the imaginary part of $\mathcal F(\theta)$ to have this simplest form,
+implicitly defining the analytic parametric coordinate change $g(\theta)$. Third, we perform a
 Kramers--Kronig type transformation to establish an explicit form for the real
-part of $\mathcal F(\theta)$. Finally, we make good on the assertion made in
-the second step by finding the coordinate transformation that produces the
-correct series coefficients of $\mathcal F_{\pm}$.
+part of $\mathcal F(\theta)$ involving a second analytic function $G(\theta)$. Finally, we make good on the constraint made in
+the second step by fitting the coefficients of $g(\theta)$ and $G(\theta)$ to reproduce the
+correct known series coefficients of $\mathcal F_{\pm}$.
 
 This success of this stems from the commutative diagram below. So long as the
 application of Schofield coordinates and the Kramers--Kronig relation can be
@@ -589,7 +589,7 @@ The scaling function has a number of free parameters: the position $\theta_0$
 of the abrupt transition, prefactors in front of singular functions from the
 abrupt transition and the Yang--Lee point, the coefficients in the analytic
 part $G$ of the scaling function, and the coefficients in the undetermined
-coordinate function $g$. Other parameters are determined by known properties.
+coordinate function $g$. The other parameters $B$, $C_0$, $\theta_{YL$ are determined by known properties.
 
 For $\theta>\theta_0$, the form \eqref{eq:essential.singularity} can be
 expanded around $\theta=\theta_0$ to yield
