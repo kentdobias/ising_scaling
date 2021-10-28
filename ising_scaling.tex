@@ -369,55 +369,55 @@ entirely fixed, and it will be truncated at finite order.
     set trange [-t0:t0]
 
     plot sample \
-      [-t0:t0:0.001] '+' u (0.5*f($1)):(0.5*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (f($1)):(g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (1.5*f($1)):(1.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (2*f($1)):(2**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (2.5*f($1)):(2.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (3*f($1)):(3**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (3.5*f($1)):(3.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (4*f($1)):(4**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (4.5*f($1)):(4.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (5*f($1)):(5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (5.5*f($1)):(5.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (6*f($1)):(6**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (6.5*f($1)):(6.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (7*f($1)):(7**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (7.5*f($1)):(7.5**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (8*f($1)):(8**del*g($1)) lc black , \
-      [-t0:t0:0.001] '+' u (8.5*f($1)):(8.5**del*g($1)) lc black , \
-      [0:20:0.1] '+' u ($1*f(0)):($1**del*g(0)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(t0/16)):($1**del*g(t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(2*t0/16)):($1**del*g(2*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(3*t0/16)):($1**del*g(3*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(4*t0/16)):($1**del*g(4*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(5*t0/16)):($1**del*g(5*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(6*t0/16)):($1**del*g(6*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(7*t0/16)):($1**del*g(7*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(8*t0/16)):($1**del*g(8*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(9*t0/16)):($1**del*g(9*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(10*t0/16)):($1**del*g(10*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(11*t0/16)):($1**del*g(11*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(12*t0/16)):($1**del*g(12*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(13*t0/16)):($1**del*g(13*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(14*t0/16)):($1**del*g(14*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(15*t0/16)):($1**del*g(15*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(16*t0/16)):($1**del*g(16*t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(-t0/16)):($1**del*g(-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(2*-t0/16)):($1**del*g(2*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(3*-t0/16)):($1**del*g(3*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(4*-t0/16)):($1**del*g(4*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(5*-t0/16)):($1**del*g(5*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(6*-t0/16)):($1**del*g(6*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(7*-t0/16)):($1**del*g(7*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(8*-t0/16)):($1**del*g(8*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(9*-t0/16)):($1**del*g(9*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(10*-t0/16)):($1**del*g(10*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(11*-t0/16)):($1**del*g(11*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(12*-t0/16)):($1**del*g(12*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(13*-t0/16)):($1**del*g(13*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(14*-t0/16)):($1**del*g(14*-t0/16)) dt 2 lc black , \
-      [0:20:0.1] '+' u ($1*f(15*-t0/16)):($1**del*g(15*-t0/16)) dt 2 lc black , \
+      [-t0:t0:0.001] '+' u (0.5*f($1)):(0.5*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (f($1)):(g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (1.5*f($1)):(1.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (2*f($1)):(2**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (2.5*f($1)):(2.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (3*f($1)):(3**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (3.5*f($1)):(3.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (4*f($1)):(4**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (4.5*f($1)):(4.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (5*f($1)):(5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (5.5*f($1)):(5.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (6*f($1)):(6**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (6.5*f($1)):(6.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (7*f($1)):(7**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (7.5*f($1)):(7.5**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (8*f($1)):(8**del*g($1)) lc black  lw 2 , \
+      [-t0:t0:0.001] '+' u (8.5*f($1)):(8.5**del*g($1)) lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(0)):($1**del*g(0)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(t0/16)):($1**del*g(t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(2*t0/16)):($1**del*g(2*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(3*t0/16)):($1**del*g(3*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(4*t0/16)):($1**del*g(4*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(5*t0/16)):($1**del*g(5*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(6*t0/16)):($1**del*g(6*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(7*t0/16)):($1**del*g(7*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(8*t0/16)):($1**del*g(8*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(9*t0/16)):($1**del*g(9*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(10*t0/16)):($1**del*g(10*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(11*t0/16)):($1**del*g(11*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(12*t0/16)):($1**del*g(12*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(13*t0/16)):($1**del*g(13*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(14*t0/16)):($1**del*g(14*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(15*t0/16)):($1**del*g(15*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(16*t0/16)):($1**del*g(16*t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(-t0/16)):($1**del*g(-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(2*-t0/16)):($1**del*g(2*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(3*-t0/16)):($1**del*g(3*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(4*-t0/16)):($1**del*g(4*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(5*-t0/16)):($1**del*g(5*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(6*-t0/16)):($1**del*g(6*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(7*-t0/16)):($1**del*g(7*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(8*-t0/16)):($1**del*g(8*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(9*-t0/16)):($1**del*g(9*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(10*-t0/16)):($1**del*g(10*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(11*-t0/16)):($1**del*g(11*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(12*-t0/16)):($1**del*g(12*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(13*-t0/16)):($1**del*g(13*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(14*-t0/16)):($1**del*g(14*-t0/16)) dt 2 lc black  lw 2 , \
+      [0:20:0.1] '+' u ($1*f(15*-t0/16)):($1**del*g(15*-t0/16)) dt 2 lc black  lw 2 
   \end{gnuplot}
   \caption{
     Example of the parametric coordinates. Solid lines are of constant
@@ -900,6 +900,13 @@ are plotted. {\color{blue} XXX Is the critical isotherm still $\theta=1$ with ou
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat = 'data/phi_comparison.dat'
 
     set xlabel '$n$'
@@ -933,6 +940,13 @@ are plotted. {\color{blue} XXX Is the critical isotherm still $\theta=1$ with ou
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat1 = 'data/phi_numeric.dat'
     dat2 = 'data/phi_series_ours_2.dat'
     dat3 = 'data/phi_series_ours_6.dat'
@@ -966,6 +980,13 @@ Fig.~\ref{fig:phi.series}.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_ours_6.dat'
@@ -995,6 +1016,13 @@ Fig.~\ref{fig:phi.series}.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat1 = 'data/ghigh_numeric.dat'
     dat2 = 'data/ghigh_series_ours_2.dat'
     dat3 = 'data/ghigh_series_ours_6.dat'
@@ -1036,6 +1064,13 @@ Notice that this infelicity does not appear to cause significant errors in the f
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_ours_6.dat'
@@ -1067,6 +1102,13 @@ Notice that this infelicity does not appear to cause significant errors in the f
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat1 = 'data/ghigh_numeric.dat'
     dat2 = 'data/ghigh_series_ours_2.dat'
     dat3 = 'data/ghigh_series_ours_6.dat'
@@ -1109,6 +1151,13 @@ the ratio.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
+    set linetype 1 lc rgb "#5e81b5" lw 2 ps 2
+    set linetype 2 lc rgb "#e19c24" lw 2 ps 2
+    set linetype 3 lc rgb "#8fb032" lw 2 ps 2
+    set linetype 4 lc rgb "#eb6235" lw 2 ps 2
+    set linetype 5 lc rgb "#8778b3" lw 2 ps 2
+    set linetype 6 lc rgb "#c56e1a" lw 2 ps 2
+
     dat1 = 'data/glow_numeric.dat'
     dat2 = 'data/glow_series_ours_0.dat'
     dat3 = 'data/glow_series_ours_6.dat'
