@@ -587,8 +587,8 @@ where
 The scaling function has a number of free parameters: the position $\theta_0$
 of the abrupt transition, prefactors in front of singular functions from the
 abrupt transition and the Yang--Lee point, the coefficients in the analytic
-part $G$ of $\mathcal F$, and the coefficients in the undetermined coordinate
-function $g$.  Other parameters are determined by known properties.
+part $G$ of the scaling function, and the coefficients in the undetermined
+coordinate function $g$. Other parameters are determined by known properties.
 
 For $\theta>\theta_0$, the form \eqref{eq:essential.singularity} can be
 expanded around $\theta=\theta_0$ to yield
@@ -642,17 +642,19 @@ This leaves as unknown variables the positions $\theta_0$ and
 $\theta_{\mathrm{YL}}$ of the abrupt transition and Yang--Lee edge singularity,
 the amplitude $C_\mathrm{YL}$ of the latter, and the unknown functions $G$ and
 $g$. We determine these approximately by iteration in the polynomial order at
-which the free energy and its derivative matches known results. We write as a
-cost function the difference between the known series coefficients of the
-scaling functions $\mathcal F_\pm$ and the series coefficients of our
-parametric form evaluated at the same points, $\theta=0$ and $\theta=\theta_0$,
-weighted by the uncertainty in the value of the known coefficients or by a
-machine-precision cutoff, whichever is larger. We also add the difference
-between the predictions for $A_\mathrm{YL}$ and $\xi_\mathrm{YL}$ and their
-known numeric values, again weighted by their uncertainty. In order to
-encourage convergence, we also add to the cost the weighted coefficients
-$j!g_j$ and $j!G_j$ defining the function $g$ and $G$ in
-\eqref{eq:schofield.funcs} and \eqref{eq:analytic.free.enery}.
+which the free energy and its derivative matches known results, shown in
+Table~\ref{tab:data}. We write as a cost function the difference between the
+known series coefficients of the scaling functions $\mathcal F_\pm$ and the
+series coefficients of our parametric form evaluated at the same points,
+$\theta=0$ and $\theta=\theta_0$, weighted by the uncertainty in the value of
+the known coefficients or by a machine-precision cutoff, whichever is larger.
+We also add the difference between the predictions for $A_\mathrm{YL}$ and
+$\xi_\mathrm{YL}$ and their known numeric values, again weighted by their
+uncertainty. In order to encourage convergence, we also add to the cost the
+weighted coefficients $j!g_j$ and $j!G_j$ defining the function $g$ and $G$ in
+\eqref{eq:schofield.funcs} and \eqref{eq:analytic.free.enery}. This can be
+interpreted as a prior which expects these functions to be analytic, and
+therefore have series coefficients which decay with a factorial.
 
 A Levenberg--Marquardt algorithm is performed on the cost function to find a
 parameter combination which minimizes it. As larger polynomial order in the
@@ -661,14 +663,15 @@ that the codimension of the fit is constant.
 
 We performed this procedure starting at $n=2$, or matching the scaling
 function at the low and high temperature zero field points to quadratic order,
-through $n=6$. The resulting fit coefficients can be found in Table
-\ref{tab:data} without any sort of uncertainty, which is difficult to quantify
-directly due to the truncation of series. However, precise results exist for
-the value of the scaling function at the critical isotherm, or equivalently for
-the series coefficients of the scaling function $\mathcal F_0$. Since we do not
-use these coefficients to fix the unknown functions $G$ and $g$, the error in
-the approximate functions and their derivatives can be evaluated by comparison
-to their known values at the critical isotherm, or $\theta=1$.
+through $n=6$. At higher order we began to have difficulty minimizing the cost.
+The resulting fit coefficients can be found in Table \ref{tab:data} without any
+sort of uncertainty, which is difficult to quantify directly due to the
+truncation of series. However, precise results exist for the value of the
+scaling function and its derivatives at the critical isotherm, or equivalently
+for the series coefficients of the scaling function $\mathcal F_0$. Since we do
+not use these coefficients in our fits, the error in the approximate scaling
+functions and their derivatives can be evaluated by comparison to their known
+values at the critical isotherm, or $\theta=1$.
 
 \begin{table}
   \begin{tabular}{r|lll}
@@ -870,14 +873,41 @@ to their known values at the critical isotherm, or $\theta=1$.
   } \label{fig:error}
 \end{figure}
 
-The difference between the numeric values the coefficients $\mathcal F_0^{(m)}$
-and those predicted by the iteratively fit scaling function are shown in
-Fig.~\ref{fig:error}. For the values for which we were able to make a fit, the
-error in the function and its first several derivatives appears to trend
-towards zero exponentially in the polynomial order $n$.
+The difference between the numeric values of the coefficients $\mathcal
+F_0^{(m)}$ and those predicted by the iteratively fit scaling functions are
+shown in Fig.~\ref{fig:error}. For the values for which we were able to make a
+fit, the error in the function and its first several derivatives appear to
+trend exponentially towards zero in the polynomial order $n$. The predictions
+of our fits at the critical isotherm can be compared with the numeric values to
+higher order in Fig.~\ref{fig:phi.series}, where the absolute values of both
+are plotted.
 
-Even at $n=2$, where only six unknown parameters have been fit, the results are
-accurate to within $3\times10^{-4}$. This approximation for the scaling
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/phi_numeric.dat'
+    dat2 = 'data/phi_series_ours_2.dat'
+    dat3 = 'data/phi_series_ours_6.dat'
+    set key top right
+    set logscale y
+    set xlabel '$m$'
+    set ylabel '$|\mathcal F_0^{(m)}|$'
+    set format y '$10^{%T}$'
+    set xrange [-0.5:10.5]
+
+    plot \
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=6$)'
+  \end{gnuplot}
+  \caption{
+    The series coefficients for the scaling function $\mathcal F_0$ as a
+    function of polynomial order $m$. The numeric values are from Table
+    \ref{tab:data}.
+  } \label{fig:phi.series}
+\end{figure}
+
+Even at $n=2$, where only seven unknown parameters have been fit, the results
+are accurate to within $3\times10^{-4}$. This approximation for the scaling
 functions also captures the singularities at the high- and low-temperature
 zero-field points well. A direct comparison between the magnitudes of the
 series coefficients known numerically and those given by the approximate
@@ -913,6 +943,46 @@ Fig.~\ref{fig:phi.series}.
     accurate scaling function listed in \cite{Caselle_2001_The}.
   } \label{fig:glow.series}
 \end{figure}
+
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    dat1 = 'data/ghigh_numeric.dat'
+    dat2 = 'data/ghigh_series_ours_2.dat'
+    dat3 = 'data/ghigh_series_ours_6.dat'
+    dat4 = 'data/ghigh_caselle.dat'
+
+    set key top left Left reverse
+    set logscale y
+    set xlabel '$m$'
+    set ylabel '$\mathcal F_+^{(m)}$'
+    set format y '$10^{%T}$'
+    set xrange [1.5:14.5]
+
+    plot \
+      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
+      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
+      dat3 using 1:(abs($2)) title 'This work ($n=6$)', \
+      dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
+  \end{gnuplot}
+  \caption{
+    The series coefficients for the scaling function $\mathcal F_+$ as a
+    function of polynomial order $m$. The numeric values are from Table
+    \ref{tab:data}, and those of Caselle \textit{et al.} are from the most
+    accurate scaling function listed in \cite{Caselle_2001_The}.
+  } \label{fig:ghigh.series}
+\end{figure}
+
+Also shown are the ratio between the series in $\mathcal F_-$ and $\mathcal
+F_+$ and their asymptotic behavior, in Fig.~\ref{fig:glow.series.scaled} and
+Fig.~\ref{fig:ghigh.series.scaled}, respectively. While our functions have the
+correct asymptotic behavior by construction, for $\mathcal F_-$ they appear to
+do poorly in an intermediate regime which begins at larger order as the order
+of the fit becomes larger. This is due to the analytic part of the scaling
+function and the analytic coordinate change, which despite having small
+high-order coefficients as functions of $\theta$ produce large intermediate
+derivatives as functions of $\xi$. We suspect that the nature of the truncation
+of these functions is responsible, and are investigating modifications that
+would converge better.
 
 \begin{figure}
   \begin{gnuplot}[terminal=epslatex]
@@ -952,34 +1022,6 @@ Fig.~\ref{fig:phi.series}.
     dat3 = 'data/ghigh_series_ours_6.dat'
     dat4 = 'data/ghigh_caselle.dat'
 
-    set key top left Left reverse
-    set logscale y
-    set xlabel '$m$'
-    set ylabel '$\mathcal F_+^{(m)}$'
-    set format y '$10^{%T}$'
-    set xrange [1.5:14.5]
-
-    plot \
-      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=6$)', \
-      dat4 using 1:(abs($2)) title 'Caselle \textit{et al.}'
-  \end{gnuplot}
-  \caption{
-    The series coefficients for the scaling function $\mathcal F_+$ as a
-    function of polynomial order $m$. The numeric values are from Table
-    \ref{tab:data}, and those of Caselle \textit{et al.} are from the most
-    accurate scaling function listed in \cite{Caselle_2001_The}.
-  } \label{fig:ghigh.series}
-\end{figure}
-
-\begin{figure}
-  \begin{gnuplot}[terminal=epslatex]
-    dat1 = 'data/ghigh_numeric.dat'
-    dat2 = 'data/ghigh_series_ours_2.dat'
-    dat3 = 'data/ghigh_series_ours_6.dat'
-    dat4 = 'data/ghigh_caselle.dat'
-
     set xlabel '$m$'
     set ylabel '$\mathcal F_+^{(m)}/\mathcal F_+^\infty(m)$'
     set yrange [0.8:1.5]
@@ -1005,31 +1047,7 @@ Fig.~\ref{fig:phi.series}.
   } \label{fig:ghigh.series.scaled}
 \end{figure}
 
-\begin{figure}
-  \begin{gnuplot}[terminal=epslatex]
-    dat1 = 'data/phi_numeric.dat'
-    dat2 = 'data/phi_series_ours_2.dat'
-    dat3 = 'data/phi_series_ours_6.dat'
-    set key top right
-    set logscale y
-    set xlabel '$m$'
-    set ylabel '$|\mathcal F_0^{(m)}|$'
-    set format y '$10^{%T}$'
-    set xrange [-0.5:10.5]
-
-    plot \
-      dat1 using 1:(abs($2)):3 title 'Numeric' with yerrorbars, \
-      dat2 using 1:(abs($2)) title 'This work ($n=2$)', \
-      dat3 using 1:(abs($2)) title 'This work ($n=6$)'
-  \end{gnuplot}
-  \caption{
-    The series coefficients for the scaling function $\mathcal F_0$ as a
-    function of polynomial order $m$. The numeric values are from Table
-    \ref{tab:data}.
-  } \label{fig:phi.series}
-\end{figure}
-
-Besides reproducing the high derivatives in the series well, the approximate
+Besides reproducing the high derivatives in the series, the approximate
 functions defined here feature the appropriate singularity at the abrupt
 transition. Fig.~\ref{fig:glow.radius} shows the ratio of subsequent series
 coefficients for $\mathcal F_-$ as a function of the inverse order, which
@@ -1075,13 +1093,21 @@ Ising universal scaling function in the relevant variables. These functions are
 smooth to all orders, include the correct singularities, and appear to converge
 exponentially to the function as they are fixed to larger polynomial order.
 
+This method has some shortcomings, namely that it becomes difficult to fit the
+unknown functions at progressively higher order due to the complexity of the
+chain-rule derivatives, and in the inflation of intermediate large coefficients
+at the abrupt transition. These problems may be related to the precise form and
+method of truncation for the unknown functions.
+
 The successful smooth description of the Ising free energy produced in part by
 analytically continuing the singular imaginary part of the metastable free
 energy inspires an extension of this work: a smooth function that captures the
 universal scaling \emph{through the coexistence line and into the metastable
-phase}. Indeed, the tools exist to produce this: by writing
-$t=R(1-\theta^2)(1-(\theta/\theta_m)^2)$ for some $\theta_m>\theta_0$, the
-invariant scaling combination
+phase}. The functions here are not appropriate for this except for a small
+distance into the metastable phase, at which point the coordinate
+transformation becomes untrustworthy. In order to do this, the parametric
+coordinates used here would need to be modified so as to have an appropriate
+limit as $\theta\to\infty$.
 
 \begin{acknowledgments}
   The authors would like to thank Tom Lubensky, Andrea Liu, and Randy Kamien
