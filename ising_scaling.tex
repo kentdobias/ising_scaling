@@ -332,6 +332,40 @@ the low-temperature zero-field (phase coexistence) line.
 In practice the infinite series in \eqref{eq:schofield.funcs} cannot be
 entirely fixed, and it will be truncated at finite order.
 
+\begin{figure}
+  \begin{gnuplot}[terminal=epslatex]
+    t0 = 1.36261
+    g0 = 0.438453
+    g1 = -0.0531270
+    g2 = -0.00391478
+    g3 = -0.000408016
+    g4 = 0.0000262629
+    g5 = -0.00000109745
+
+    g(t) = (1-(t/t0)**2)*(g0*t + g1*t**3 + g2*t**5 + g3*t**7 + g4*t**9 + g5*t**11)
+
+    set xlabel '$u_t$'
+    set ylabel '$u_h$'
+    set key left bottom reverse title '\raisebox{1em}{$R$}' 
+
+    set xzeroaxis
+    set yzeroaxis
+
+    set parametric
+    set trange [-t0:t0]
+
+    plot \
+      (1-t**2),g(t) title '$1$', \
+      2*(1-t**2),2*g(t) title '$2$', \
+      4*(1-t**2),4*g(t) title '$4$'
+  \end{gnuplot}
+  \caption{
+    Example of the parametric coordinates. Lines are of constant $R$ from
+    $-\theta_0$ to $\theta_0$ for $g(\theta)$ taken from the $n=6$ entry of
+    Table \ref{tab:fits}.
+  } \label{fig:schofield}
+\end{figure}
+
 One can now see the convenience of these coordinates. Both invariant scaling
 combinations depend only on $\theta$, as
 \begin{align}
