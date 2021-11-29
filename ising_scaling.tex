@@ -67,10 +67,11 @@ universality class.
 
 The continuous phase transition in the two-dimensional Ising model is the most
 well studied, and its universal thermodynamic functions have likewise received
-the most attention. Without a field, an exact solution is known for some
-lattice models \cite{Onsager_1944_Crystal}. Precision numeric work both on
+the most attention. Onsager provided an exact solution in the absence of an external field \cite{Onsager_1944_Crystal}. Here we provide a high-precision, rapidly converging calculation of the universal scaling function for the 2D Ising model in a field. Our solution is not an exact formula in terms of well-known special functions (as is Onsager's result). Indeed, it seems likely that there is no such formula. The critical exponents for the 3D Ising model have recently been determined to high-precision calculations using conformal bootstrap methods, which should be viewed as a solution to that outstanding problem. The universal scaling function for the 2D Ising model in a field is a well-defined function with known singularities; in analogy, we tentatively suggest that our convergent, high-precision approximation for the function can be viewed as the complete solution to the universal part of the 2D Ising free energy in an external field.
+
+Precision numeric work both on
 lattice models and on the ``Ising'' conformal field theory (related by
-universality) have yielded high-order polynomial expansions of those functions,
+universality) have yielded high-order polynomial expansions of the free energy and other universal thermodynamic functions,
 along with a comprehensive understanding of their analytic properties
 \cite{Fonseca_2003_Ising, Mangazeev_2008_Variational, Mangazeev_2010_Scaling}.
 In parallel, smooth approximations of the Ising equation of state produce
@@ -83,7 +84,7 @@ This paper attempts to find the best of both worlds: a smooth approximate
 universal thermodynamic function that respects the global analytic properties
 of the Ising free energy. By constructing approximate functions with the
 correct singularities, corrections converge \emph{exponentially} to the true
-function.  To make the construction, we review the analytic properties of the
+function. To make the construction, we review the analytic properties of the
 Ising scaling function. Parametric coordinates are introduced that remove
 unnecessary singularities that are a remnant of the coordinate choice. The
 singularities known to be present in the scaling function are incorporated in
@@ -102,6 +103,7 @@ what advances in conformal bootstrap did for critical exponents
 \cite{Gliozzi_2014_Critical}. Mathematica and Python implementations will be provided in the supplemental material.
 
 \section{Universal scaling functions}
+\label{sec:UniversalScalingFunctions}
 
 A renormalization group analysis predicts that certain thermodynamic functions
 will be universal in the vicinity of \emph{any} critical point in the Ising
@@ -130,8 +132,12 @@ $\delta=15$ are dimensionless constants. The combination
 $\Delta=\beta\delta=\frac{15}8$ will appear often. The flow equations are
 truncated here, but in general all terms allowed by the symmetries of the
 parameters are present on their righthand side. By making a near-identity
-transformation to the coordinates and the free energy of the form $u_t(t,
-h)=t+\cdots$, $u_h(t, h)=h+\cdots$, and $u_f(f,u_t,u_h)\propto f(t,h)-f_a(t,h)$, one can bring
+transformation to the coordinates and the free energy of the form 
+\begin{equation}
+    \label{eq:AnalyticCOV}
+u_t(t,h)=t+\cdots, ~~~~u_h(t, h)=h+\cdots,~~~\mathrm{and}~u_f(f,u_t,u_h)\propto f(t,h)-f_a(t,h),
+\end{equation}
+one can bring
 the flow equations into the agreed upon simplest normal form
 \begin{align} \label{eq:flow}
   \frac{du_t}{d\ell}=\frac1\nu u_t
@@ -149,6 +155,7 @@ matter of convention, fixing the scale of $u_t$. Here the free energy $f=u_f+f_a
 
 Solving these equations for $u_f$ yields
 \begin{equation}
+\label{eq:FpmF0eqns}
   \begin{aligned}
     u_f(u_t, u_h)
     &=|u_t|^{D\nu}\mathcal F_\pm(u_h|u_t|^{-\Delta})+\frac{|u_t|^{D\nu}}{8\pi}\log u_t^2 \\
@@ -594,6 +601,7 @@ Because the real part of $\mathcal F$ is even, the imaginary part must be odd. T
 \end{equation}
 Evaluating these ordinary integrals, we find for $\theta\in\mathbb R$
 \begin{equation}
+\label{eq:FfromFoFYLG}
   \operatorname{Re}\mathcal F(\theta)=\operatorname{Re}\mathcal F_0(\theta)+\mathcal F_\mathrm{YL}(\theta)+G(\theta)
 \end{equation}
 where
@@ -611,6 +619,7 @@ where $\mathcal R$ is given by the function
 \end{equation}
 and
 \begin{equation}
+\label{eq:FYL}
   \mathcal F_{\mathrm{YL}}(\theta)=2C_\mathrm{YL}\left[2(\theta^2+\theta_\mathrm{YL}^2)^{(1+\sigma)/2}\cos\left((1+\sigma)\tan^{-1}\frac\theta{\theta_\mathrm{YL}}\right)-\theta_\mathrm{YL}^{1+\sigma}\right]
 \end{equation}
 We have also included the analytic part $G$, which we assume has a simple
@@ -1195,14 +1204,21 @@ the ratio.
 We have introduced explicit approximate functions forms for the two-dimensional
 Ising universal scaling function in the relevant variables. These functions are
 smooth to all orders, include the correct singularities, and appear to converge
-exponentially to the function as they are fixed to larger polynomial order.
+exponentially to the function as they are fixed to larger polynomial order. The universal scaling function will be available in both Mathematica and Python in the supplemental material. It is implicitly defined by $\mathcal{F}_0$ and $\mathcal{F}_\pm$ in Eq.~\eqref{eq:scaling.function.equivalences.2d}, where $g(\theta}$ is defined in Eq.~\eqref{eq:schofield.funcs}, $\mathcal{F}$ in Eqs.~\eqref{eq:FfromFoFYLG}--\eqref{eq:FYL}, and the fit constants at various levels of approximation are given in Table~\ref{tab:fits}.
 
 This method, although spectacularly successful, could be improved. It becomes difficult to fit the
 unknown functions at progressively higher order due to the complexity of the
 chain-rule derivatives, and we find an inflation of predicted coefficients in our higher-precision fits. These problems may be related to the precise form and
 method of truncation for the unknown functions.
 
-The successful smooth description of the Ising free energy produced in part by
+It would be natural to extend our approach to the 3D Ising model, where enough high-precision information is available to provide the first few levels of approximation. In 3D, there is an important singular correction to scaling, which could be incorporated as a third invariant scaling variable in the universal scaling function. Indeed, it is believed that there are singular corrections to scaling also in 2D, which happen to vanish for the exactly solvable models~\cite{BarmaFisherPRB}.
+
+Derivatives of our Ising free energy provides most bulk thermodynamic properties, but not the correlation functions. The 2D Ising correlation function has been estimated~\cite{ChenPMSnn}, but without incorporating the effects of the essential singularity as one crosses the abrupt transition line. This correlation function would be experimentally useful, for example, in analyzing FRET data for two-dimensional membranes.
+
+It is interesting to note the close analogy between our analysis and the incorporation of analytic corrections to scaling discussed in section~\ref{sec:UniversalScalingFunctions}. Here the added function $G(\theta)$ corresponds to the analytic part of the free energy $f_a(t,h)$, and the coordinate change $g(\theta)$ corresponds to the scaling field change of variables $u_t(t,h)$ and $u_h(t,h)$
+(Eqs.~\ref{eq:AnalyticCOV} and~\ref{eq:FpmF0eqns}). One might view the universal scaling form for the Ising free energy as a scaling function describing the crossover scaling between the universal essential singularities at the two abrupt, `first-order' transition at $\pm H$, $T<T_c$. 
+
+Finally, the successful smooth description of the Ising free energy produced in part by
 analytically continuing the singular imaginary part of the metastable free
 energy inspires an extension of this work: a smooth function that captures the
 universal scaling \emph{through the coexistence line and into the metastable
