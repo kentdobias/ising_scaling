@@ -46,7 +46,7 @@ linkcolor=purple
   the low- and high-temperature zero-field limits fixes the parametric
   coordinate transformation. For the two-dimensional Ising model, we show that
   this procedure converges exponentially with the order to which the series are
-  matched, up to seven digits of accuracy. 
+  matched, up to seven digits of accuracy.
   To facilitate use, we provide Python and Mathematica implementations of the code at both lowest order (three digit) and high accuracy.
   %We speculate that with appropriately modified parametric coordinates, the method may converge even deep into the metastable phase.
 \end{abstract}
@@ -132,7 +132,7 @@ $\delta=15$ are dimensionless constants. The combination
 $\Delta=\beta\delta=\frac{15}8$ will appear often. The flow equations are
 truncated here, but in general all terms allowed by the symmetries of the
 parameters are present on their righthand side. By making a near-identity
-transformation to the coordinates and the free energy of the form 
+transformation to the coordinates and the free energy of the form
 \begin{equation}
     \label{eq:AnalyticCOV}
 u_t(t,h)=t+\cdots, ~~~~u_h(t, h)=h+\cdots,~~~\mathrm{and}~u_f(f,u_t,u_h)\propto f(t,h)-f_a(t,h),
@@ -170,7 +170,7 @@ $\mathcal F_\pm(\xi)=G_{\mathrm{high}/\mathrm{low}}(\xi)$.}.  The scaling
 functions are universal in the sense that any system in the same universality class will share the free energy \eqref{eq:flow}, for suitable analytic functions $u_t$, $u_h$, and analytic background $f_a$ -- the singular behavior is universal up to an analytic coordinate change.
 %if another system whose critical
 %point belongs to the same universality class has its parameters brought to the
-%form \eqref{eq:flow}, one will see the same functional form, up to the units of $u_t$ and $u_h$. 
+%form \eqref{eq:flow}, one will see the same functional form, up to the units of $u_t$ and $u_h$.
 The invariant scaling combinations that appear as the
 arguments to the universal scaling functions will come up often, and we will
 use $\xi=u_h|u_t|^{-\Delta}$ and $\eta=u_t|u_h|^{-1/\Delta}$.
@@ -424,7 +424,7 @@ entirely fixed, and it will be truncated at finite order.
       [0:20:0.1] '+' u ($1*f(12*-t0/16)):($1**del*g(12*-t0/16)) dt 2 lc black  lw 2 , \
       [0:20:0.1] '+' u ($1*f(13*-t0/16)):($1**del*g(13*-t0/16)) dt 2 lc black  lw 2 , \
       [0:20:0.1] '+' u ($1*f(14*-t0/16)):($1**del*g(14*-t0/16)) dt 2 lc black  lw 2 , \
-      [0:20:0.1] '+' u ($1*f(15*-t0/16)):($1**del*g(15*-t0/16)) dt 2 lc black  lw 2 
+      [0:20:0.1] '+' u ($1*f(15*-t0/16)):($1**del*g(15*-t0/16)) dt 2 lc black  lw 2
   \end{gnuplot}
   \caption{
     Example of the parametric coordinates. Solid lines are of constant
@@ -1110,7 +1110,7 @@ Notice that this infelicity does not appear to cause significant errors in the f
     function of polynomial order $m$, rescaled by their asymptotic limit
     $\mathcal F_-^\infty(m)$ from \eqref{eq:low.asymptotic}. The numeric values
     are from Table \ref{tab:data}, and those of Caselle \textit{et al.} are
-    from the most accurate scaling function listed in \cite{Caselle_2001_The}. Note that our $n=6$ fit generates significant deviations in polynomial coefficients $m$ above around 10. 
+    from the most accurate scaling function listed in \cite{Caselle_2001_The}. Note that our $n=6$ fit generates significant deviations in polynomial coefficients $m$ above around 10.
   } \label{fig:glow.series.scaled}
 \end{figure}
 
@@ -1216,7 +1216,7 @@ It would be natural to extend our approach to the 3D Ising model, where enough h
 Derivatives of our Ising free energy provides most bulk thermodynamic properties, but not the correlation functions. The 2D Ising correlation function has been estimated~\cite{ChenPMSnn}, but without incorporating the effects of the essential singularity as one crosses the abrupt transition line. This correlation function would be experimentally useful, for example, in analyzing FRET data for two-dimensional membranes.
 
 It is interesting to note the close analogy between our analysis and the incorporation of analytic corrections to scaling discussed in section~\ref{sec:UniversalScalingFunctions}. Here the added function $G(\theta)$ corresponds to the analytic part of the free energy $f_a(t,h)$, and the coordinate change $g(\theta)$ corresponds to the scaling field change of variables $u_t(t,h)$ and $u_h(t,h)$
-(Eqs.~\ref{eq:AnalyticCOV} and~\ref{eq:FpmF0eqns}). One might view the universal scaling form for the Ising free energy as a scaling function describing the crossover scaling between the universal essential singularities at the two abrupt, `first-order' transition at $\pm H$, $T<T_c$. 
+(Eqs.~\ref{eq:AnalyticCOV} and~\ref{eq:FpmF0eqns}). One might view the universal scaling form for the Ising free energy as a scaling function describing the crossover scaling between the universal essential singularities at the two abrupt, `first-order' transition at $\pm H$, $T<T_c$.
 
 Finally, the successful smooth description of the Ising free energy produced in part by
 analytically continuing the singular imaginary part of the metastable free
