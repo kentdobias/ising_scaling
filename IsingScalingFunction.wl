@@ -1,4 +1,3 @@
-
 BeginPackage["IsingScalingFunction`"]
 
 g::usage = "g[θ0, gs][θ] gives the Schofield coordinate transformation defined in (14)."
@@ -31,13 +30,14 @@ DufDut::usage =
 
 DufDuh::usage =
   "DufDuh computes derivatives of the singular free energy u_f with respect to the temperature-like scaling field u_h."
-ruleB::usage = ""
 
-ruleC0::usage = ""
+ruleB::usage = "Fixes B given other data as in (38)."
 
-Data::usage = ""
+ruleC0::usage = "Fixes C0 given other data as in (39)."
 
-PrepareArgument::usage = ""
+Data::usage = "Data[n] gives data from the fit to nth order from Table II."
+
+PrepareArgument::usage = "Converts scaling function data into appropriate argument to function interfaces."
 
 Begin["Private`"]
 
