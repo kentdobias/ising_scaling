@@ -1,5 +1,7 @@
 BeginPackage["IsingScalingFunction`"]
 
+InverseCoordinates::usage = ""
+
 g::usage = "g[θ0, gs][θ] gives the Schofield coordinate transformation defined in (14)."
 
 ut::usage = "ut[θ] gives the scaling field u_t as a function of Schofield coordinates."
@@ -23,6 +25,8 @@ DScriptFPlusMinusDξList::usage =
 DScriptF0DηList::usage =
   "DScriptF0DηList computes the first m derivatives of the scaling function F_0."
 
+DScriptMCasDξList::usage = "Computes the first m derivatives of the scaling function M given by Caselle et al."
+
 uf::usage = "uf computes the singular free energy u_f."
 
 DufDut::usage =
@@ -38,6 +42,16 @@ ruleC0::usage = "Fixes C0 given other data as in (39)."
 Data::usage = "Data[n] gives data from the fit to nth order from Table II."
 
 PrepareArgument::usage = "Converts scaling function data into appropriate argument to function interfaces."
+
+θ0Cas::usage = ""
+
+gsCas::usage = ""
+
+Φs::usage = ""
+
+Gls::usage = ""
+
+Ghs::usage = ""
 
 Begin["Private`"]
 
@@ -238,17 +252,36 @@ DScriptF0Dη[params__][m_, θ_] := Last[DScriptF0DηList[params][m, θ]]
 
 DufDut[θ0_, θYL_, B_, C0_, CYL_, Gs_, gs_][m_][R_, θ_] := m! RealAbs[uh[θ0, gs][R, θ]]^(2 / Δ - m / Δ) DScriptF0Dη[θ0, θYL, B, C0, CYL, Gs, gs][m, θ] + Log[uh[θ0, gs][R, θ]^2] / (8 π Δ) Derivative[m][Function[utp, utp^2]][ut[R, θ]]
 
-DufDuh[θ0_, θYL_, B_, C0_, CYL_, Gs_, gs_][m_][R_, θ_] := m! RealAbs[ut[R, θ]]^(2-m Δ) DScriptFPlusMinusDξ[θ0, θYL, B, C0, CYL, Gs, gs][m, θ] + ut[R, θ]^2 / (8 π) Log[ut[R, θ]^2]
+DufDuh[θ0_, θYL_, B_, C0_, CYL_, Gs_, gs_][m_][R_, θ_] := m! RealAbs[ut[R, θ]]^(2-m Δ) DScriptFPlusMinusDξ[θ0, θYL, B, C0, CYL, Gs, gs][m, θ] + Derivative[m][Identity][θ] ut[R, θ]^2 / (8 π) Log[ut[R, θ]^2]
 
 ruleB[θ0_, gs_] := (2 * OverlineS / π) * (- g[θ0, gs]'[θ0] / t[θ0]^Δ)
 
 ruleC0[θ0_, gs_] := Exp[Δ t[θ0]^(Δ - 1) t'[θ0] / (2 OverlineS / π g[θ0, gs]'[θ0]) - t[θ0]^Δ g[θ0, gs]''[θ0] / (4 OverlineS / π g[θ0, gs]'[θ0]^2)] t[θ0]^(1/8) OverlineS / (2 π) * g[θ0, gs]'[θ0]
 
-Unprotect[Derivative]
+θ0Cas := Sqrt[1.16951];
 
+h0Cas := a b ρ /. {
+    a -> c2^2/c4,
+    b -> (-c4/c2^3)^(1/2),
+    ρ -> 2.00881
+  } /. {
+    c2->Ghs[[3]]2!,
+    c4->Ghs[[5]]["Value"]4!
+  }
 
+gsCas := h0Cas * {
+    1,
+    -0.222389,
+    -0.043547,
+    -0.014809,
+    -0.007168
+  }
 
-Protect[Derivative]
+m0Cas := -Ghs[[3]]2! h0Cas
+
+DScriptMCasDξList[m_, θ_] := CompositeFunctionDerivativeList[
+    Identity, Function[θp, m0Cas * θp / RealAbs[θp^2 - 1]^β], ξ[θ0Cas, gsCas]
+  ][m, θ]
 
 End[]
 
