@@ -25,6 +25,9 @@ DScriptFPlusMinusDξList::usage =
 DScriptF0DηList::usage =
   "DScriptF0DηList computes the first m derivatives of the scaling function F_0."
 
+DScriptF0Dη::usage =
+  "DScriptF0Dη computes the mth derivative of the scaling function F_0."
+
 DScriptMCasDξList::usage = "Computes the first m derivatives of the scaling function M given by Caselle et al."
 
 uf::usage = "uf computes the singular free energy u_f."
@@ -44,6 +47,8 @@ Data::usage = "Data[n] gives data from the fit to nth order from Table II."
 PrepareArgument::usage = "Converts scaling function data into appropriate argument to function interfaces."
 
 θ0Cas::usage = ""
+
+h0Cas::usage = ""
 
 gsCas::usage = ""
 
@@ -252,7 +257,7 @@ DScriptF0Dη[params__][m_, θ_] := Last[DScriptF0DηList[params][m, θ]]
 
 DufDut[θ0_, θYL_, B_, C0_, CYL_, Gs_, gs_][m_][R_, θ_] := m! RealAbs[uh[θ0, gs][R, θ]]^(2 / Δ - m / Δ) DScriptF0Dη[θ0, θYL, B, C0, CYL, Gs, gs][m, θ] + Log[uh[θ0, gs][R, θ]^2] / (8 π Δ) Derivative[m][Function[utp, utp^2]][ut[R, θ]]
 
-DufDuh[θ0_, θYL_, B_, C0_, CYL_, Gs_, gs_][m_][R_, θ_] := m! RealAbs[ut[R, θ]]^(2-m Δ) DScriptFPlusMinusDξ[θ0, θYL, B, C0, CYL, Gs, gs][m, θ] + Derivative[m][Identity][θ] ut[R, θ]^2 / (8 π) Log[ut[R, θ]^2]
+DufDuh[θ0_, θYL_, B_, C0_, CYL_, Gs_, gs_][m_][R_, θ_] := m! RealAbs[ut[R, θ]]^(2-m Δ) DScriptFPlusMinusDξ[θ0, θYL, B, C0, CYL, Gs, gs][m, θ] + Derivative[m][1&][θ] ut[R, θ]^2 / (8 π) Log[ut[R, θ]^2]
 
 ruleB[θ0_, gs_] := (2 * OverlineS / π) * (- g[θ0, gs]'[θ0] / t[θ0]^Δ)
 
@@ -265,8 +270,8 @@ h0Cas := a b ρ /. {
     b -> (-c4/c2^3)^(1/2),
     ρ -> 2.00881
   } /. {
-    c2->Ghs[[3]]2!,
-    c4->Ghs[[5]]["Value"]4!
+    c2->Ghs[[3]] 2!,
+    c4->Ghs[[5]]["Value"] 4!
   }
 
 gsCas := h0Cas * {
