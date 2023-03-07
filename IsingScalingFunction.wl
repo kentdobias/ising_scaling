@@ -46,17 +46,15 @@ Data::usage = "Data[n] gives data from the fit to nth order from Table II."
 
 PrepareArgument::usage = "Converts scaling function data into appropriate argument to function interfaces."
 
-θ0Cas::usage = ""
+θ0Cas::usage = "θ0 from Caselle et al."
 
-h0Cas::usage = ""
+gsCas::usage = "g function coefficients from Caselle et al."
 
-gsCas::usage = ""
+Φs::usage = "List of numeric coefficients for the scaling function F_0"
 
-Φs::usage = ""
+Gls::usage = "List of numeric coefficients for the scaling function F_-"
 
-Gls::usage = ""
-
-Ghs::usage = ""
+Ghs::usage = "List of numeric coefficients for the scaling function F_+"
 
 Begin["Private`"]
 
