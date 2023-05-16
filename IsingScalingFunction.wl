@@ -1,6 +1,6 @@
 BeginPackage["IsingScalingFunction`"]
 
-InverseCoordinates::usage = ""
+InverseCoordinates::usage = "Numerically convert Schofield coordinates to t and h."
 
 g::usage = "g[θ0, gs][θ] gives the Schofield coordinate transformation defined in (14)."
 
