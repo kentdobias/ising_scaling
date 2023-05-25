@@ -9,5 +9,6 @@
 *.fls
 *.out
 /*.pdf
+figs/*eps-converted-to.pdf
 *.gnuploterrors
 gnuplottex/*
